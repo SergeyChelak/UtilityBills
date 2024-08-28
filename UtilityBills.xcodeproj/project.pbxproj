@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
+		A540DD232C7F707500F5624E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD222C7F707500F5624E /* Currency.swift */; };
+		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
+		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
+		A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD282C7F729700F5624E /* CalculationParameter.swift */; };
+		A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2A2C7F734E00F5624E /* BillingItem.swift */; };
+		A540DD2E2C7F740800F5624E /* PropertyObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2D2C7F740800F5624E /* PropertyObjectService.swift */; };
+		A540DD302C7F74D800F5624E /* MeterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2F2C7F74D800F5624E /* MeterService.swift */; };
+		A540DD322C7F754D00F5624E /* TariffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD312C7F754D00F5624E /* TariffService.swift */; };
+		A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD332C7F764700F5624E /* CalculationParameterService.swift */; };
+		A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD352C7F776500F5624E /* HistoryBillService.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D8092F2C7156A300F2E6AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092E2C7156A300F2E6AF /* ContentView.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
@@ -34,6 +45,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
+		A540DD222C7F707500F5624E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
+		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
+		A540DD282C7F729700F5624E /* CalculationParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameter.swift; sourceTree = "<group>"; };
+		A540DD2A2C7F734E00F5624E /* BillingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingItem.swift; sourceTree = "<group>"; };
+		A540DD2D2C7F740800F5624E /* PropertyObjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectService.swift; sourceTree = "<group>"; };
+		A540DD2F2C7F74D800F5624E /* MeterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterService.swift; sourceTree = "<group>"; };
+		A540DD312C7F754D00F5624E /* TariffService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffService.swift; sourceTree = "<group>"; };
+		A540DD332C7F764700F5624E /* CalculationParameterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameterService.swift; sourceTree = "<group>"; };
+		A540DD352C7F776500F5624E /* HistoryBillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBillService.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D8092E2C7156A300F2E6AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,9 +93,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A540DD1F2C7F6FD600F5624E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A540DD202C7F6FE800F5624E /* PropertyObject.swift */,
+				A540DD222C7F707500F5624E /* Currency.swift */,
+				A540DD242C7F711B00F5624E /* Meter.swift */,
+				A540DD262C7F718800F5624E /* Tariff.swift */,
+				A540DD282C7F729700F5624E /* CalculationParameter.swift */,
+				A540DD2A2C7F734E00F5624E /* BillingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A540DD2C2C7F73F100F5624E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A540DD2D2C7F740800F5624E /* PropertyObjectService.swift */,
+				A540DD2F2C7F74D800F5624E /* MeterService.swift */,
+				A540DD312C7F754D00F5624E /* TariffService.swift */,
+				A540DD332C7F764700F5624E /* CalculationParameterService.swift */,
+				A540DD352C7F776500F5624E /* HistoryBillService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A540DD372C7F77D900F5624E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		A5D809202C7156A300F2E6AF = {
 			isa = PBXGroup;
 			children = (
+				A540DD2C2C7F73F100F5624E /* API */,
+				A540DD1F2C7F6FD600F5624E /* Model */,
+				A540DD372C7F77D900F5624E /* CoreData */,
 				A5D8092B2C7156A300F2E6AF /* UtilityBills */,
 				A5D8093C2C7156A400F2E6AF /* UtilityBillsTests */,
 				A5D809462C7156A400F2E6AF /* UtilityBillsUITests */,
@@ -257,8 +314,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
 				A5D8092F2C7156A300F2E6AF /* ContentView.swift in Sources */,
+				A540DD2E2C7F740800F5624E /* PropertyObjectService.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
+				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
+				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
+				A540DD302C7F74D800F5624E /* MeterService.swift in Sources */,
+				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
+				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
+				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
+				A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */,
+				A540DD232C7F707500F5624E /* Currency.swift in Sources */,
+				A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
