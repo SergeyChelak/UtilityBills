@@ -8,7 +8,7 @@
 import Foundation
 
 struct PropertyObject {
-    let id: String
+    let id: UUID
     let name: String
     let description: String?
 //    let type: PropertyObjectType

@@ -18,6 +18,9 @@
 		A540DD322C7F754D00F5624E /* TariffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD312C7F754D00F5624E /* TariffService.swift */; };
 		A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD332C7F764700F5624E /* CalculationParameterService.swift */; };
 		A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD352C7F776500F5624E /* HistoryBillService.swift */; };
+		A540DD3A2C7F79D000F5624E /* UtilityBillsStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A540DD382C7F79D000F5624E /* UtilityBillsStorage.xcdatamodeld */; };
+		A540DD3C2C7F8CF100F5624E /* UtilityBillsCoreDataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3B2C7F8CF100F5624E /* UtilityBillsCoreDataServices.swift */; };
+		A540DD3E2C7FB1D800F5624E /* UtilityBillsCoreDataServicesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3D2C7FB1D800F5624E /* UtilityBillsCoreDataServicesTest.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D8092F2C7156A300F2E6AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092E2C7156A300F2E6AF /* ContentView.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 		A540DD312C7F754D00F5624E /* TariffService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffService.swift; sourceTree = "<group>"; };
 		A540DD332C7F764700F5624E /* CalculationParameterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameterService.swift; sourceTree = "<group>"; };
 		A540DD352C7F776500F5624E /* HistoryBillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBillService.swift; sourceTree = "<group>"; };
+		A540DD392C7F79D000F5624E /* UtilityBillsStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UtilityBillsStorage.xcdatamodel; sourceTree = "<group>"; };
+		A540DD3B2C7F8CF100F5624E /* UtilityBillsCoreDataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsCoreDataServices.swift; sourceTree = "<group>"; };
+		A540DD3D2C7FB1D800F5624E /* UtilityBillsCoreDataServicesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsCoreDataServicesTest.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D8092E2C7156A300F2E6AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 		A540DD372C7F77D900F5624E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A540DD382C7F79D000F5624E /* UtilityBillsStorage.xcdatamodeld */,
+				A540DD3B2C7F8CF100F5624E /* UtilityBillsCoreDataServices.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				A5D8093D2C7156A400F2E6AF /* UtilityBillsTests.swift */,
+				A540DD3D2C7FB1D800F5624E /* UtilityBillsCoreDataServicesTest.swift */,
 			);
 			path = UtilityBillsTests;
 			sourceTree = "<group>";
@@ -316,12 +325,14 @@
 			files = (
 				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
 				A5D8092F2C7156A300F2E6AF /* ContentView.swift in Sources */,
+				A540DD3C2C7F8CF100F5624E /* UtilityBillsCoreDataServices.swift in Sources */,
 				A540DD2E2C7F740800F5624E /* PropertyObjectService.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A540DD302C7F74D800F5624E /* MeterService.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
+				A540DD3A2C7F79D000F5624E /* UtilityBillsStorage.xcdatamodeld in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
 				A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */,
@@ -334,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540DD3E2C7FB1D800F5624E /* UtilityBillsCoreDataServicesTest.swift in Sources */,
 				A5D8093E2C7156A400F2E6AF /* UtilityBillsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +662,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A540DD382C7F79D000F5624E /* UtilityBillsStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A540DD392C7F79D000F5624E /* UtilityBillsStorage.xcdatamodel */,
+			);
+			currentVersion = A540DD392C7F79D000F5624E /* UtilityBillsStorage.xcdatamodel */;
+			name = UtilityBillsStorage.xcdatamodeld;
+			path = /Users/sergey/workspace/private/UtilityBills/CoreData/UtilityBillsStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5D809212C7156A300F2E6AF /* Project object */;
 }
