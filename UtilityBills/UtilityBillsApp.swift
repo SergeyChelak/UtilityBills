@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct UtilityBillsApp: App {
+    let factory = UtilityBillsFactory()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            factory.landingScreen()
         }
     }
 }
