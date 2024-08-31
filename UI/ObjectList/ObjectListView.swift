@@ -21,20 +21,31 @@ struct ObjectListView: View {
                     let item = store.items[index]
                     ObjectListCell(item: item)
                 }
+                .onDelete(perform: { indexSet in
+                    store.addToRemoveSet(indexSet)
+                })
+                .deleteDisabled(!store.isEditMode)
             }
             Spacer()
         }
         .navigationTitle(screenTitle)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button("Add") {
-                    store.addObject()
+            if store.isEditMode {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancel") {
+                        store.cancelEdit()
+                    }
+                }
+            } else {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Add") {
+                        store.addObject()
+                    }
                 }
             }
-            
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Edit") {
-                    //
+                Button(store.isEditMode ? "Done" : "Edit") {
+                    store.toggleEditMode()
                 }
             }
         }

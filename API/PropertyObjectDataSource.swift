@@ -14,5 +14,7 @@ protocol PropertyObjectDataSource {
     
     func deleteProperty(_ propertyObject: PropertyObject) throws
     
+    func deleteProperties(_ objects: [PropertyObject]) throws
+    
     func updateProperty(_ propertyObject: PropertyObject) throws
 }

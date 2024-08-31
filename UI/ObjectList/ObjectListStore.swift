@@ -11,6 +11,9 @@ class ObjectListStore: ObservableObject {
     private let dataSource: PropertyObjectDataSource
     
     @Published private(set) var items: [PropertyObject] = []
+    @Published private(set) var isEditMode = false
+    
+    private(set) var indicesToRemove: Set<UUID> = []
     
     init(dataSource: PropertyObjectDataSource) {
         self.dataSource = dataSource
@@ -27,9 +30,46 @@ class ObjectListStore: ObservableObject {
     func addObject() {
         do {
             _ = try dataSource.createProperty()
-            items = try dataSource.allProperties()
+            load()
         } catch {
             fatalError("Failed to add property")
+        }
+    }
+    
+    private func delete() {
+        let objToRemove = items
+            .filter {
+                indicesToRemove.contains($0.id)
+            }
+        guard !objToRemove.isEmpty else {
+            return
+        }
+        do {
+            try dataSource.deleteProperties(objToRemove)
+            load()
+        } catch {
+            fatalError("Failed to remove objects \(objToRemove)")
+        }
+    }
+    
+    func cancelEdit() {
+        indicesToRemove.removeAll()
+        isEditMode = false
+        load()
+    }
+    
+    func toggleEditMode() {
+        if isEditMode {
+            delete()
+            indicesToRemove.removeAll()
+        }
+        isEditMode.toggle()
+    }
+    
+    func addToRemoveSet(_ indexSet: IndexSet) {
+        indexSet.forEach {
+            let item = items[$0]
+            indicesToRemove.insert(item.id)
         }
     }
 }

@@ -25,14 +25,23 @@ extension LocalStorage: PropertyObjectDataSource {
     }
     
     func deleteProperty(_ propertyObject: PropertyObject) throws {
+        try deleteProperties([propertyObject])
+    }
+    
+    func deleteProperties(_ objects: [PropertyObject]) throws {
         let request = CDPropertyObject.fetchRequest()
-        request.predicate = NSPredicate(format: "uuid == %@", propertyObject.id as NSUUID)
+        let array = objects.map { $0.id }
+        request.predicate = NSPredicate(format: "SELF.uuid IN %@", array)
         let context = viewContext
-        guard let obj = try context.fetch(request).first else {
-            return
+        do {
+            let result = try context.fetch(request)
+            result.forEach {
+                context.delete($0)
+            }
+            try context.save()
+        } catch {
+            fatalError("Failed to delete property object")
         }
-        context.delete(obj)
-        try context.save()
     }
     
     func updateProperty(_ propertyObject: PropertyObject) throws {
