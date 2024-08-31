@@ -8,9 +8,28 @@
 import Foundation
 
 class ObjectListStore: ObservableObject {
-    let propertyObjectService: PropertyObjectService
+    private let dataSource: PropertyObjectDataSource
     
-    init(propertyObjectService: PropertyObjectService) {
-        self.propertyObjectService = propertyObjectService
+    @Published private(set) var items: [PropertyObject] = []
+    
+    init(dataSource: PropertyObjectDataSource) {
+        self.dataSource = dataSource
+    }
+    
+    func load() {
+        do {
+            items = try dataSource.allProperties()
+        } catch {
+            fatalError("Failed to load properties")
+        }
+    }
+    
+    func addObject() {
+        do {
+            _ = try dataSource.createProperty()
+            items = try dataSource.allProperties()
+        } catch {
+            fatalError("Failed to add property")
+        }
     }
 }

@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct ObjectListCell: View {
+    let item: PropertyObject
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack(alignment: .leading) {
+            Text(item.name)
+                .font(.title)
+            
+            Text(item.details ?? "")
+                .font(.headline)
+        }
     }
 }
 
 #Preview {
-    ObjectListCell()
+    let item = PropertyObject(
+        id: UUID(),
+        name: "House",
+        details: "Best Street, 74",
+        currencyId: nil
+    )
+    return ObjectListCell(item: item)
 }

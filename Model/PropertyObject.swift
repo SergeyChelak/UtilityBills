@@ -10,7 +10,7 @@ import Foundation
 struct PropertyObject {
     let id: UUID
     let name: String
-    let description: String?
+    let details: String?
 //    let type: PropertyObjectType
     let currencyId: String?
 }
