@@ -23,15 +23,14 @@ extension LocalStorage: PropertyObjectDataSource {
         try context.save()
         return map(obj)
     }
-    
-    func deleteProperty(_ propertyObject: PropertyObject) throws {
+
+    func deleteProperty(_ propertyObject: PropertyObjectId) throws {
         try deleteProperties([propertyObject])
     }
     
-    func deleteProperties(_ objects: [PropertyObject]) throws {
+    func deleteProperties(_ objects: [PropertyObjectId]) throws {
         let request = CDPropertyObject.fetchRequest()
-        let array = objects.map { $0.id }
-        request.predicate = NSPredicate(format: "SELF.uuid IN %@", array)
+        request.predicate = NSPredicate(format: "SELF.uuid IN %@", objects)
         let context = viewContext
         do {
             let result = try context.fetch(request)

@@ -11,9 +11,8 @@ class ObjectListStore: ObservableObject {
     private let dataSource: PropertyObjectDataSource
     
     @Published private(set) var items: [PropertyObject] = []
+    private(set) var editItems: [PropertyObject] = []
     @Published private(set) var isEditMode = false
-    
-    private(set) var indicesToRemove: Set<UUID> = []
     
     init(dataSource: PropertyObjectDataSource) {
         self.dataSource = dataSource
@@ -37,23 +36,26 @@ class ObjectListStore: ObservableObject {
     }
     
     private func delete() {
-        let objToRemove = items
+        let leftoverIds = editItems.map { $0.id }
+        let removeIds = items
             .filter {
-                indicesToRemove.contains($0.id)
+                !leftoverIds.contains($0.id)
             }
-        guard !objToRemove.isEmpty else {
+            .map {
+                $0.id
+            }
+        guard !removeIds.isEmpty else {
             return
         }
         do {
-            try dataSource.deleteProperties(objToRemove)
+            try dataSource.deleteProperties(removeIds)
             load()
         } catch {
-            fatalError("Failed to remove objects \(objToRemove)")
+            fatalError("Failed to remove objects \(removeIds)")
         }
     }
     
     func cancelEdit() {
-        indicesToRemove.removeAll()
         isEditMode = false
         load()
     }
@@ -61,15 +63,12 @@ class ObjectListStore: ObservableObject {
     func toggleEditMode() {
         if isEditMode {
             delete()
-            indicesToRemove.removeAll()
         }
+        editItems = items
         isEditMode.toggle()
     }
     
     func addToRemoveSet(_ indexSet: IndexSet) {
-        indexSet.forEach {
-            let item = items[$0]
-            indicesToRemove.insert(item.id)
-        }
+        editItems.remove(atOffsets: indexSet)
     }
 }

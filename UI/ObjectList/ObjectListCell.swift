@@ -15,7 +15,7 @@ struct ObjectListCell: View {
             Text(item.name)
                 .font(.title)
             
-            Text(item.details ?? "")
+            Text(item.details ?? item.id.uuidString)
                 .font(.headline)
         }
     }
