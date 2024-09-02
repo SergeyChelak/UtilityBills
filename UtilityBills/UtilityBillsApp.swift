@@ -33,10 +33,7 @@ struct UtilityBillsApp: App {
 }
 
 protocol ViewFactory {
-    func initialView() -> any View
-    
-    associatedtype RouteType: Hashable
-    func view(for route: RouteType) -> any View
+    func view(for route: Route) -> any View
 }
 
 typealias PropertyObjectSelectionCallback = (UUID) -> Void

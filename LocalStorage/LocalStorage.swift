@@ -24,9 +24,7 @@ struct LocalStorage {
     var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext
     }
-    
-    let backgroundContext: NSManagedObjectContext
-    
+        
     private init(modelName: String, inMemory: Bool) {
         let container = NSPersistentContainer(name: modelName)
         if inMemory {
@@ -38,6 +36,5 @@ struct LocalStorage {
             }
         }        
         self.persistentContainer = container
-        self.backgroundContext = container.newBackgroundContext()
     }
 }

@@ -9,15 +9,12 @@ import Foundation
 import SwiftUI
 
 struct iOSAppViewFactory: ViewFactory {
+    // TODO: make dependency via protocol
     let storage = LocalStorage.instance()
     let navigationController: NavigationController
     
     init(navigationController: NavigationController) {
         self.navigationController = navigationController
-    }
-    
-    func initialView() -> any View {
-        composePropertyObjectListView()
     }
     
     private func composePropertyObjectListView() -> some View {
@@ -34,7 +31,7 @@ struct iOSAppViewFactory: ViewFactory {
     func view(for route: Route) -> any View {
         switch route {
         case .properlyObjectList:
-            initialView()
+            composePropertyObjectListView()
         case .propertyDetails(let uuid):
             composePropertyDetailsView(uuid)
         }
