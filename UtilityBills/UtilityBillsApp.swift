@@ -9,7 +9,21 @@ import SwiftUI
 
 @main
 struct UtilityBillsApp: App {
-    let contentView: some View = iOSAppBootstrap()
+    private var contentView: AnyView
+    
+    init() {
+        let navigationStore = iOSNavigationStore()
+        let navigationController = iOSNavigationController(store: navigationStore)
+        let factory = iOSAppViewFactory(navigationController: navigationController)
+        let navigationView = iOSNavigationView(
+            rootView: AnyView(factory.view(for: .properlyObjectList)),
+            navigationStore: navigationStore,
+            createViewCallback: {
+                AnyView(factory.view(for: $0))
+            }
+        )
+        contentView = AnyView(navigationView)
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -18,8 +32,23 @@ struct UtilityBillsApp: App {
     }
 }
 
-func iOSAppBootstrap() -> some View {
-    let factory = iOSAppViewFactory<Int>()
-    let router = iOSAppRouter(appFactory: factory)
-    return router.view
+protocol ViewFactory {
+    func initialView() -> any View
+    
+    associatedtype RouteType: Hashable
+    func view(for route: RouteType) -> any View
+}
+
+typealias PropertyObjectSelectionCallback = (UUID) -> Void
+
+enum Route: Hashable {
+    case properlyObjectList
+    case propertyDetails(UUID)
+}
+
+protocol NavigationController {
+    func push(_ route: Route)
+    func pop()
+    func popToRoot()
+    func showOverlay(_ route: Route)
 }

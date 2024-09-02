@@ -8,22 +8,35 @@
 import Foundation
 import SwiftUI
 
-protocol ViewFactory {
-    func initialView() -> any View
-    
-    associatedtype RouteType: Hashable
-    func view(for route: RouteType) -> any View
-}
-
-struct iOSAppViewFactory<RouteType: Hashable>: ViewFactory {
+struct iOSAppViewFactory: ViewFactory {
     let storage = LocalStorage.instance()
+    let navigationController: NavigationController
     
-    func initialView() -> any View {
-        let store = ObjectListStore(dataSource: storage)
-        return ObjectListView(store: store)
+    init(navigationController: NavigationController) {
+        self.navigationController = navigationController
     }
     
-    func view(for route: RouteType) -> any View {
-        EmptyView()
+    func initialView() -> any View {
+        composePropertyObjectListView()
+    }
+    
+    private func composePropertyObjectListView() -> some View {
+        let store = ObjectListStore(dataSource: storage)
+        return ObjectListView(store: store) {
+            navigationController.push(.propertyDetails($0))
+        }
+    }
+    
+    private func composePropertyDetailsView(_ uuid: UUID) -> some View {
+        PropertyObjectTabContainer()
+    }
+    
+    func view(for route: Route) -> any View {
+        switch route {
+        case .properlyObjectList:
+            initialView()
+        case .propertyDetails(let uuid):
+            composePropertyDetailsView(uuid)
+        }
     }
 }

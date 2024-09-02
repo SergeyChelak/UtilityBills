@@ -7,31 +7,48 @@
 
 import SwiftUI
 
-protocol AppRouter {
-//    func route(to route: any Hashable)
-    
-    associatedtype V: View
-    var view: V { get }
+class iOSNavigationStore: ObservableObject {
+    @Published
+    var navigationPath = NavigationPath()    
 }
 
-struct iOSAppRouter<VF: ViewFactory, RT: Hashable>: AppRouter, View where VF.RouteType == RT {
-    private let appFactory: VF
-    private var navigationPath = NavigationPath()
+class iOSNavigationController: NavigationController {
+    private let store: iOSNavigationStore
     
-    init(appFactory: VF) {
-        self.appFactory = appFactory
+    init(store: iOSNavigationStore) {
+        self.store = store
+    }
+        
+    func push(_ route: Route) {
+        store.navigationPath.append(route)
     }
     
-    var body: some View {
-        NavigationStack {
-            AnyView(appFactory.initialView())
-                .navigationDestination(for: RT.self) { route in
-                    AnyView(appFactory.view(for: route))
-                }
-        }
+    func pop() {
+        store.navigationPath.removeLast()
     }
     
-    var view: Self {
-        self
+    func popToRoot() {
+        let count = store.navigationPath.count
+        store.navigationPath.removeLast(count)
+    }
+    
+    func showOverlay(_ view: Route) {
+        fatalError("Show overlay not implemented yet")
     }
 }
+
+struct iOSNavigationView: View {
+    let rootView: AnyView
+    @StateObject
+    var navigationStore: iOSNavigationStore
+    var createViewCallback: (Route) -> AnyView
+    
+    var body: some View {
+        NavigationStack(path: $navigationStore.navigationPath) {
+            rootView
+                .navigationDestination(for: Route.self, destination: createViewCallback)
+        }
+    }
+}
+
+

@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ObjectListView: View {
     @ObservedObject var store: ObjectListStore
+    private var objectSelection: PropertyObjectSelectionCallback
+    
+    init(store: ObjectListStore, objectSelection: @escaping PropertyObjectSelectionCallback) {
+        self.store = store
+        self.objectSelection = objectSelection
+    }
     
     private var screenTitle: String {
         "My Objects"
@@ -20,6 +26,9 @@ struct ObjectListView: View {
                 ForEach(store.items.indices, id: \.self) { index in
                     let item = store.items[index]
                     ObjectListCell(item: item)
+                        .onTapGesture {
+                            objectSelection(item.id)
+                        }
                 }
                 .onDelete(perform: { indexSet in
                     store.addToRemoveSet(indexSet)
@@ -27,6 +36,7 @@ struct ObjectListView: View {
                 .deleteDisabled(!store.isEditMode)
             }
             Spacer()
+            Text("Items: \(store.items.count)")
         }
         .navigationTitle(screenTitle)
         .toolbar {
@@ -44,7 +54,7 @@ struct ObjectListView: View {
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button(store.isEditMode ? "Done" : "Edit") {
+                Button(store.isEditMode ? "Save" : "Edit") {
                     store.toggleEditMode()
                 }
             }
@@ -58,7 +68,10 @@ struct ObjectListView: View {
 #Preview {
     // TODO: replace to interface to avoid coupling with a local storage class
     let store = ObjectListStore(dataSource: LocalStorage.previewInstance())
-    let view = ObjectListView(store: store)
+    let view = ObjectListView(
+        store: store,
+        objectSelection: { _ in}
+    )
     
     struct ObjectListViewWrap: View {
         let contentView: ObjectListView
