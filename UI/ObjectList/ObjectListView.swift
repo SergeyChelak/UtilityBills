@@ -36,7 +36,6 @@ struct ObjectListView: View {
                 .deleteDisabled(!store.isEditMode)
             }
             Spacer()
-            Text("Items: \(store.items.count)")
         }
         .navigationTitle(screenTitle)
         .toolbar {

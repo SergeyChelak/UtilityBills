@@ -10,7 +10,7 @@ import SwiftUI
 struct PropertyObjectTabContainer: View {
     var body: some View {
         TabView {
-            PropertyObjectInfoScreen()
+            PropertyObjectInfoView()
                 .tabItem {
                     Text("Home")
                 }

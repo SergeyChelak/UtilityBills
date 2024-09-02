@@ -23,7 +23,7 @@
 		A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63392C7FB67B00F66741 /* ObjectListCell.swift */; };
 		A55C633E2C7FB70D00F66741 /* ObjectListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C633D2C7FB70D00F66741 /* ObjectListStore.swift */; };
 		A55C63412C7FD64800F66741 /* PropertyObjectTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */; };
-		A55C63432C7FD69D00F66741 /* PropertyObjectInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63422C7FD69D00F66741 /* PropertyObjectInfoScreen.swift */; };
+		A55C63432C7FD69D00F66741 /* PropertyObjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */; };
 		A55C63452C7FD74900F66741 /* MeterListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63442C7FD74900F66741 /* MeterListScreen.swift */; };
 		A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63462C7FD77100F66741 /* TariffListScreen.swift */; };
 		A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63482C7FD7AB00F66741 /* BillingScreen.swift */; };
@@ -73,7 +73,7 @@
 		A55C63392C7FB67B00F66741 /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
 		A55C633D2C7FB70D00F66741 /* ObjectListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListStore.swift; sourceTree = "<group>"; };
 		A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectTabContainer.swift; sourceTree = "<group>"; };
-		A55C63422C7FD69D00F66741 /* PropertyObjectInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoScreen.swift; sourceTree = "<group>"; };
+		A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoView.swift; sourceTree = "<group>"; };
 		A55C63442C7FD74900F66741 /* MeterListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListScreen.swift; sourceTree = "<group>"; };
 		A55C63462C7FD77100F66741 /* TariffListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListScreen.swift; sourceTree = "<group>"; };
 		A55C63482C7FD7AB00F66741 /* BillingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingScreen.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		A55C634D2C7FD82400F66741 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				A55C63422C7FD69D00F66741 /* PropertyObjectInfoScreen.swift */,
+				A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -427,7 +427,7 @@
 				A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */,
 				A540DD422C7FB58A00F5624E /* ObjectListView.swift in Sources */,
 				A540DD232C7F707500F5624E /* Currency.swift in Sources */,
-				A55C63432C7FD69D00F66741 /* PropertyObjectInfoScreen.swift in Sources */,
+				A55C63432C7FD69D00F66741 /* PropertyObjectInfoView.swift in Sources */,
 				A55C63412C7FD64800F66741 /* PropertyObjectTabContainer.swift in Sources */,
 				A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */,
 				A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */,
