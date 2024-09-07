@@ -17,25 +17,20 @@ struct PropertyObjectInfo {
     }
 }
 
-protocol PropertyObjectInfoDataSource {
-    func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject?
-    func updateProperty(_ propertyObject: PropertyObject) throws
-}
-
 class PropertyObjectInfoStore: ObservableObject {
-    let storage: PropertyObjectInfoDataSource
+    let dataSource: PropertyObjectInfoDataSource
     private let id: PropertyObjectId
     
     @Published var info: PropertyObjectInfo?
     
     init(_ id: PropertyObjectId, storage: PropertyObjectInfoDataSource) {
         self.id = id
-        self.storage = storage
+        self.dataSource = storage
     }
     
     func load() {
         do {
-            guard let obj = try storage.fetchProperty(id) else {
+            guard let obj = try dataSource.fetchProperty(id) else {
                 print("obj with \(id) not found")
                 return
             }

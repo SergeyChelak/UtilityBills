@@ -16,3 +16,9 @@ protocol PropertyObjectDataSource {
     
     func deleteProperties(_ objects: [PropertyObjectId]) throws
 }
+
+protocol PropertyObjectInfoDataSource {
+    func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject?
+
+    func updateProperty(_ propertyObject: PropertyObject) throws
+}

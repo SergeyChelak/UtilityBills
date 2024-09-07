@@ -66,6 +66,16 @@ extension LocalStorage: PropertyObjectInfoDataSource {
     }
 }
 
+extension LocalStorage: MeterListDataSource {
+    func allMeters(for property: PropertyObjectId) throws -> [Meter] {
+        fatalError("Not implemented allMeters")
+    }
+    
+    func newMeter(for property: PropertyObjectId) throws -> Meter {
+        fatalError("Not implemented newMeter")
+    }
+}
+
 // utils
 extension LocalStorage {
     private func fetchPropertyObject(

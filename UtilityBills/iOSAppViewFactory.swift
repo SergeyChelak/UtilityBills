@@ -24,7 +24,7 @@ struct iOSAppViewFactory: ViewFactory {
         }
     }
     
-    private func composePropertyDetailsView(_ uuid: UUID) -> some View {
+    private func composePropertyDetailsView(_ uuid: PropertyObjectId) -> some View {
         let tabs = [
             TabDescriptor(view: composePropertyInfoView(uuid), text: "Info"),
             TabDescriptor(view: composeMeterListView(uuid), text: "Meters"),
@@ -34,20 +34,21 @@ struct iOSAppViewFactory: ViewFactory {
         return PropertyObjectTabContainer(tabs: tabs)
     }
     
-    private func composePropertyInfoView(_ uuid: UUID) -> some View {
+    private func composePropertyInfoView(_ uuid: PropertyObjectId) -> some View {
         let store = PropertyObjectInfoStore(uuid, storage: storage)
         return PropertyObjectInfoView(store: store)
     }
     
-    private func composeMeterListView(_ uuid: UUID) -> some View {
-        MeterListScreen()
+    private func composeMeterListView(_ uuid: PropertyObjectId) -> some View {
+        let store = MeterListStore(propertyId: uuid, dataSource: storage)
+        return MeterListView(store: store)
     }
     
-    private func composeTariffListView(_ uuid: UUID) -> some View {
+    private func composeTariffListView(_ uuid: PropertyObjectId) -> some View {
         TariffListScreen()
     }
     
-    private func composeBillingView(_ uuid: UUID) -> some View {
+    private func composeBillingView(_ uuid: PropertyObjectId) -> some View {
         BillingScreen()
     }
     
