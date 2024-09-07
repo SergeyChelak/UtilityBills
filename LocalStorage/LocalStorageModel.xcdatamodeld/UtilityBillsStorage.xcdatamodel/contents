@@ -23,7 +23,7 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="mapping" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDBillingMap" inverseName="meters" inverseEntity="CDBillingMap"/>
-        <relationship name="properyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="meters" inverseEntity="CDPropertyObject"/>
+        <relationship name="propertyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="meters" inverseEntity="CDPropertyObject"/>
         <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDMeterValue" inverseName="meter" inverseEntity="CDMeterValue"/>
     </entity>
     <entity name="CDMeterValue" representedClassName=".CDMeterValue" syncable="YES" codeGenerationType="class">
@@ -38,7 +38,7 @@
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="billingMap" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDBillingMap" inverseName="properyObject" inverseEntity="CDBillingMap"/>
         <relationship name="bills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDBill" inverseName="properyObject" inverseEntity="CDBill"/>
-        <relationship name="meters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDMeter" inverseName="properyObject" inverseEntity="CDMeter"/>
+        <relationship name="meters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDMeter" inverseName="propertyObject" inverseEntity="CDMeter"/>
         <relationship name="tariifs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDTariff" inverseName="properyObject" inverseEntity="CDTariff"/>
     </entity>
     <entity name="CDTariff" representedClassName=".CDTariff" syncable="YES" codeGenerationType="class">

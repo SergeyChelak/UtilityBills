@@ -11,10 +11,18 @@ struct MeterListView: View {
     @ObservedObject var store: MeterListStore
     
     var body: some View {
-        Text("MeterListScreen")
-            .task {
-                store.load()
+        VStack {
+            List {
+                ForEach(store.meters.indices, id: \.self) { i in
+                    let meter = store.meters[i]
+                    Text(meter.name)
+                }
             }
+            Spacer()
+        }
+        .task {
+            store.load()
+        }
     }
 }
 
@@ -23,5 +31,20 @@ struct MeterListView: View {
         propertyId: UUID(),
         dataSource: LocalStorage.previewInstance()
     )
-    return MeterListView(store: store)
+    
+    struct Wrapper<T: View>: View {
+        let view: T
+        var body: some View {
+            NavigationStack {
+                TabView {
+                    view
+                        .tabItem { Text("Test") }
+                }
+            }
+        }
+    }
+    
+    let view = MeterListView(store: store)
+    
+    return Wrapper(view: view)
 }

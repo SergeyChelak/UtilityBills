@@ -11,6 +11,9 @@ class MeterListStore: ObservableObject {
     let propertyId: PropertyObjectId
     let dataSource: MeterListDataSource
     
+    @Published var meters: [Meter] = []
+    @Published var isEdit = false
+    
     init(propertyId: PropertyObjectId, dataSource: MeterListDataSource) {
         self.propertyId = propertyId
         self.dataSource = dataSource
@@ -18,7 +21,7 @@ class MeterListStore: ObservableObject {
     
     func load() {
         do {
-            try dataSource.allMeters(for: propertyId)
+            meters = try dataSource.allMeters(for: propertyId)
         } catch {
             fatalError(error.localizedDescription)
         }

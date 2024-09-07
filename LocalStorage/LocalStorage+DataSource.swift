@@ -67,12 +67,32 @@ extension LocalStorage: PropertyObjectInfoDataSource {
 }
 
 extension LocalStorage: MeterListDataSource {
-    func allMeters(for property: PropertyObjectId) throws -> [Meter] {
-        fatalError("Not implemented allMeters")
+    func allMeters(for propertyId: PropertyObjectId) throws -> [Meter] {
+        let context = viewContext
+        guard let obj = try fetchPropertyObject(propertyId, into: context) else {
+            return []
+        }
+        let request = CDMeter.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.propertyObject == %@", obj)
+        
+        return try context.fetch(request).map(map)
     }
     
-    func newMeter(for property: PropertyObjectId) throws -> Meter {
-        fatalError("Not implemented newMeter")
+    func newMeter(for propertyId: PropertyObjectId) throws -> Meter {
+        let context = viewContext
+        guard let propertyObject = try fetchPropertyObject(propertyId, into: context) else {
+            // TODO: fix this
+            throw NSError()
+        }
+        let meterObj = CDMeter(context: context)
+        meterObj.uuid = UUID()
+        meterObj.name = "New Meter"
+        meterObj.capacity = 5
+        meterObj.propertyObject = propertyObject
+        
+        try context.save()
+        
+        return map(meterObj)
     }
 }
 
@@ -84,6 +104,7 @@ extension LocalStorage {
     ) throws -> CDPropertyObject? {
         let request = CDPropertyObject.fetchRequest()
         request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        request.fetchLimit = 1
         return try context.fetch(request).first
     }
 }
@@ -94,4 +115,13 @@ func map(_ cdPropertyObject: CDPropertyObject) -> PropertyObject {
         name: cdPropertyObject.name!,
         details: cdPropertyObject.details,
         currencyId: nil)
+}
+
+func map(_ cdMeter: CDMeter) -> Meter {
+    Meter(
+        id: cdMeter.uuid!,
+        name: cdMeter.name!,
+        capacity: (cdMeter.capacity as NSNumber).intValue,
+        inspectionDate: cdMeter.inspectionDate
+    )
 }

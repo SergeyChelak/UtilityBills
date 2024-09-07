@@ -7,8 +7,10 @@
 
 import Foundation
 
+typealias MeterId = UUID
+
 struct Meter {
-    let id: String
+    let id: MeterId
 //    let type: MeterType
     let name: String
     let capacity: Int?

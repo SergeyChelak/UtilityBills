@@ -26,16 +26,32 @@ struct iOSAppViewFactory: ViewFactory {
     
     private func composePropertyDetailsView(_ uuid: PropertyObjectId) -> some View {
         let tabs = [
-            TabDescriptor(view: composePropertyInfoView(uuid), text: "Info"),
-            TabDescriptor(view: composeMeterListView(uuid), text: "Meters"),
-            TabDescriptor(view: composeTariffListView(uuid), text: "Tariff"),
-            TabDescriptor(view: composeBillingView(uuid), text: "Billing"),
+            TabDescriptor(
+                view: composePropertyInfoView(uuid),
+                text: "Info",
+                imageDescriptor: .system("info.circle.fill")
+            ),
+            TabDescriptor(
+                view: composeMeterListView(uuid),
+                text: "Meters",
+                imageDescriptor: .system("gauge.with.dots.needle.33percent")
+            ),
+            TabDescriptor(
+                view: composeTariffListView(uuid), 
+                text: "Tariff",
+                imageDescriptor: .system("dollarsign.circle.fill")
+            ),
+            TabDescriptor(
+                view: composeBillingView(uuid),
+                text: "Billing",
+                imageDescriptor: .system("gearshape.fill")
+            ),
         ]
         return PropertyObjectTabContainer(tabs: tabs)
     }
     
     private func composePropertyInfoView(_ uuid: PropertyObjectId) -> some View {
-        let store = PropertyObjectInfoStore(uuid, storage: storage)
+        let store = PropertyObjectInfoStore(uuid, dataSource: storage)
         return PropertyObjectInfoView(store: store)
     }
     

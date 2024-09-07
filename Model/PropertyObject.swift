@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias PropertyObjectId = UUID
+
 struct PropertyObject {
     let id: PropertyObjectId
     var name: String

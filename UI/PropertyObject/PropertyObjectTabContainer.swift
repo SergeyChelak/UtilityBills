@@ -10,12 +10,12 @@ import SwiftUI
 struct TabDescriptor {
     let view: AnyView
     let text: String?
-    let image: String?
+    let imageDescriptor: ImageDescriptor?
     
-    init<T: View>(view: T, text: String? = nil, image: String? = nil) {
+    init<T: View>(view: T, text: String? = nil, imageDescriptor: ImageDescriptor? = nil) {
         self.view = AnyView(view)
         self.text = text
-        self.image = image
+        self.imageDescriptor = imageDescriptor
     }
 }
 
@@ -28,6 +28,9 @@ struct PropertyObjectTabContainer: View {
                 let tab = tabs[index]
                 tab.view
                     .tabItem {
+                        if let descriptor = tab.imageDescriptor {
+                            UBImage(descriptor: descriptor)
+                        }
                         if let text = tab.text {
                             Text(text)
                         }

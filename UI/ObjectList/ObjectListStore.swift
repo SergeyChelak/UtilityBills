@@ -12,7 +12,7 @@ class ObjectListStore: ObservableObject {
     
     @Published private(set) var items: [PropertyObject] = []
     private(set) var editItems: [PropertyObject] = []
-    @Published private(set) var isEditMode = false
+    @Published var isEditMode = false
     
     init(dataSource: PropertyObjectListDataSource) {
         self.dataSource = dataSource

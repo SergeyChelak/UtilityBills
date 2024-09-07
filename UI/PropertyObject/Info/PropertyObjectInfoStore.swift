@@ -23,9 +23,9 @@ class PropertyObjectInfoStore: ObservableObject {
     
     @Published var info: PropertyObjectInfo?
     
-    init(_ id: PropertyObjectId, storage: PropertyObjectInfoDataSource) {
+    init(_ id: PropertyObjectId, dataSource: PropertyObjectInfoDataSource) {
         self.id = id
-        self.dataSource = storage
+        self.dataSource = dataSource
     }
     
     func load() {

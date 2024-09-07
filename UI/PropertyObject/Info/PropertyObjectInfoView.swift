@@ -31,7 +31,7 @@ struct PropertyObjectDetails: View {
             VStack {
                 HStack(spacing: 8) {
                     Text("Object:")
-                    Text(info.name)                    
+                    Text(info.name)
                 }
                 HStack(spacing: 8) {
                     Text("Details:")
@@ -47,7 +47,7 @@ struct PropertyObjectDetails: View {
 #Preview {
     let store = PropertyObjectInfoStore(
         UUID(),
-        storage: LocalStorage.previewInstance()
+        dataSource: LocalStorage.previewInstance()
     )
     return PropertyObjectInfoView(store: store)
 }

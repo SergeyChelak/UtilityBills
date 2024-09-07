@@ -33,13 +33,13 @@
 		A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635C2C8384AC00F66741 /* LocalStorage+DataSource.swift */; };
 		A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635E2C838AD600F66741 /* LocalStorageTest.swift */; };
 		A55C63612C8C6B3D00F66741 /* PropertyObjectInfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */; };
-		A55C63632C8C700000F66741 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63622C8C700000F66741 /* Common.swift */; };
 		A55C63652C8C876100F66741 /* MeterListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63642C8C876100F66741 /* MeterListStore.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
 		A5D809482C7156A400F2E6AF /* UtilityBillsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */; };
 		A5D8094A2C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */; };
+		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +86,6 @@
 		A55C635C2C8384AC00F66741 /* LocalStorage+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+DataSource.swift"; sourceTree = "<group>"; };
 		A55C635E2C838AD600F66741 /* LocalStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTest.swift; sourceTree = "<group>"; };
 		A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoStore.swift; sourceTree = "<group>"; };
-		A55C63622C8C700000F66741 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		A55C63642C8C876100F66741 /* MeterListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListStore.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		A5D809432C7156A400F2E6AF /* UtilityBillsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilityBillsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITests.swift; sourceTree = "<group>"; };
 		A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,6 @@
 		A540DD1F2C7F6FD600F5624E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A55C63622C8C700000F66741 /* Common.swift */,
 				A540DD202C7F6FE800F5624E /* PropertyObject.swift */,
 				A540DD222C7F707500F5624E /* Currency.swift */,
 				A540DD242C7F711B00F5624E /* Meter.swift */,
@@ -162,6 +161,7 @@
 		A540DD3F2C7FB53400F5624E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A55C63662C8C94FB00F66741 /* Common */,
 				A55C633F2C7FD50E00F66741 /* PropertyObject */,
 				A540DD402C7FB57000F5624E /* ObjectList */,
 			);
@@ -222,6 +222,14 @@
 				A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		A55C63662C8C94FB00F66741 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A5F944362C8CC4F600A5FD47 /* UBImage.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		A5D809202C7156A300F2E6AF = {
@@ -420,6 +428,7 @@
 				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A540DD2E2C7F740800F5624E /* PropertyObjectListDataSource.swift in Sources */,
+				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
@@ -428,7 +437,6 @@
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A540DD302C7F74D800F5624E /* MetersDataSource.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
-				A55C63632C8C700000F66741 /* Common.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */,
 				A55C63452C7FD74900F66741 /* MeterListView.swift in Sources */,
