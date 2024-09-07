@@ -19,7 +19,8 @@ extension LocalStorage: PropertyObjectDataSource {
         let context = viewContext
         let obj = CDPropertyObject(context: context)
         obj.uuid = UUID()
-        obj.name = "Unnamed";
+        obj.name = "Title";
+        obj.details = "Details";
         try context.save()
         return map(obj)
     }
@@ -43,8 +44,37 @@ extension LocalStorage: PropertyObjectDataSource {
         }
     }
     
+}
+
+extension LocalStorage: PropertyObjectInfoDataSource {
+    func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {
+        guard let obj = try fetchPropertyObject(uuid, into: viewContext) else {
+            return nil
+        }
+        return map(obj)
+    }
+    
     func updateProperty(_ propertyObject: PropertyObject) throws {
-        fatalError("Not implemented")
+        let context = viewContext
+        guard let obj = try fetchPropertyObject(propertyObject.id, into: context) else {
+            return
+        }
+        // TODO: add more fields if needed
+        obj.name = propertyObject.name
+        obj.details = propertyObject.details
+        try context.save()
+    }
+}
+
+// utils
+extension LocalStorage {
+    private func fetchPropertyObject(
+        _ uuid: PropertyObjectId,
+        into context: NSManagedObjectContext
+    ) throws -> CDPropertyObject? {
+        let request = CDPropertyObject.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        return try context.fetch(request).first
     }
 }
 

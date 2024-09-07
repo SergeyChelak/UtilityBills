@@ -8,9 +8,9 @@
 import Foundation
 
 struct PropertyObject {
-    let id: UUID
-    let name: String
-    let details: String?
+    let id: PropertyObjectId
+    var name: String
+    var details: String?
 //    let type: PropertyObjectType
-    let currencyId: String?
+    var currencyId: String?
 }

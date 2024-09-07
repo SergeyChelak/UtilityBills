@@ -8,8 +8,8 @@
 import SwiftUI
 
 class iOSNavigationStore: ObservableObject {
-    @Published
-    var navigationPath = NavigationPath()    
+    @Published var navigationPath = NavigationPath()
+    @Published var overlay: Route?
 }
 
 class iOSNavigationController: NavigationController {
@@ -20,20 +20,27 @@ class iOSNavigationController: NavigationController {
     }
         
     func push(_ route: Route) {
+        hideOverlay()
         store.navigationPath.append(route)
     }
     
     func pop() {
+        hideOverlay()
         store.navigationPath.removeLast()
     }
     
     func popToRoot() {
+        hideOverlay()
         let count = store.navigationPath.count
         store.navigationPath.removeLast(count)
     }
     
-    func showOverlay(_ view: Route) {
-        fatalError("Show overlay not implemented yet")
+    func showOverlay(_ overlay: Route) {
+        store.overlay = overlay
+    }
+    
+    private func hideOverlay() {
+        store.overlay = nil
     }
 }
 
@@ -46,7 +53,10 @@ struct iOSNavigationView: View {
     var body: some View {
         NavigationStack(path: $navigationStore.navigationPath) {
             rootView
-                .navigationDestination(for: Route.self, destination: createViewCallback)
+                .navigationDestination(
+                    for: Route.self,
+                    destination: createViewCallback
+                )
         }
     }
 }

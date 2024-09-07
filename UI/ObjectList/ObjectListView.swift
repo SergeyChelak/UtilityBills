@@ -65,7 +65,6 @@ struct ObjectListView: View {
 }
 
 #Preview {
-    // TODO: replace to interface to avoid coupling with a local storage class
     let store = ObjectListStore(dataSource: LocalStorage.previewInstance())
     let view = ObjectListView(
         store: store,

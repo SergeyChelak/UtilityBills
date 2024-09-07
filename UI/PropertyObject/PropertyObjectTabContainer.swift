@@ -7,29 +7,37 @@
 
 import SwiftUI
 
+struct TabDescriptor {
+    let view: AnyView
+    let text: String?
+    let image: String?
+    
+    init<T: View>(view: T, text: String? = nil, image: String? = nil) {
+        self.view = AnyView(view)
+        self.text = text
+        self.image = image
+    }
+}
+
 struct PropertyObjectTabContainer: View {
+    let tabs: [TabDescriptor]
+    
     var body: some View {
         TabView {
-            PropertyObjectInfoView()
-                .tabItem {
-                    Text("Home")
-                }
-            MeterListScreen()
-                .tabItem {
-                    Text("Meters")
-                }
-            TariffListScreen()
-                .tabItem {
-                    Text("Tariffs")
-                }
-            BillingScreen()
-                .tabItem {
-                    Text("Billing")
-                }
+            ForEach(tabs.indices, id: \.self) { index in
+                let tab = tabs[index]
+                tab.view
+                    .tabItem {
+                        if let text = tab.text {
+                            Text(text)
+                        }
+                    }
+            }
         }
     }
 }
 
 #Preview {
-    PropertyObjectTabContainer()
+    let tabs: [TabDescriptor] = []
+    return PropertyObjectTabContainer(tabs: tabs)
 }

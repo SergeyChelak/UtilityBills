@@ -13,11 +13,14 @@ struct ObjectListCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(item.name)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.title)
             
             Text(item.details ?? item.id.uuidString)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.headline)
         }
+        .contentShape(Rectangle())
     }
 }
 

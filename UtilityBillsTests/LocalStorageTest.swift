@@ -60,4 +60,27 @@ final class LocalStorageTest: XCTestCase {
         let after = try! storage.allProperties()
         XCTAssertEqual(after.count, count - prefix)
     }
+    
+    func test_updatePropertyObject() {
+        let storage: LocalStorage = .previewInstance()
+        
+        let objId = try! storage.createProperty().id
+        
+        let newName = UUID().uuidString
+        let newDetails = UUID().uuidString
+        
+        let newObj = PropertyObject(
+            id: objId,
+            name: newName,
+            details: newDetails
+        )
+        
+        try! storage.updateProperty(newObj)
+        
+        let updatedObj = try! storage.fetchProperty(objId)!
+        
+        XCTAssertEqual(updatedObj.id, objId)
+        XCTAssertEqual(updatedObj.name, newName)
+        XCTAssertEqual(updatedObj.details, newDetails)
+    }
 }

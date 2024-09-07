@@ -7,8 +7,6 @@
 
 import Foundation
 
-typealias PropertyObjectId = UUID
-
 protocol PropertyObjectDataSource {
     func allProperties() throws -> [PropertyObject]
     
@@ -17,6 +15,4 @@ protocol PropertyObjectDataSource {
     func deleteProperty(_ propertyObject: PropertyObjectId) throws
     
     func deleteProperties(_ objects: [PropertyObjectId]) throws
-    
-    func updateProperty(_ propertyObject: PropertyObject) throws
 }
