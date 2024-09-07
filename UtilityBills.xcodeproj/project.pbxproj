@@ -13,7 +13,7 @@
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
 		A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD282C7F729700F5624E /* CalculationParameter.swift */; };
 		A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2A2C7F734E00F5624E /* BillingItem.swift */; };
-		A540DD2E2C7F740800F5624E /* PropertyObjectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2D2C7F740800F5624E /* PropertyObjectDataSource.swift */; };
+		A540DD2E2C7F740800F5624E /* PropertyObjectListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2D2C7F740800F5624E /* PropertyObjectListDataSource.swift */; };
 		A540DD302C7F74D800F5624E /* MetersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2F2C7F74D800F5624E /* MetersDataSource.swift */; };
 		A540DD322C7F754D00F5624E /* TariffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD312C7F754D00F5624E /* TariffService.swift */; };
 		A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD332C7F764700F5624E /* CalculationParameterService.swift */; };
@@ -66,7 +66,7 @@
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		A540DD282C7F729700F5624E /* CalculationParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameter.swift; sourceTree = "<group>"; };
 		A540DD2A2C7F734E00F5624E /* BillingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingItem.swift; sourceTree = "<group>"; };
-		A540DD2D2C7F740800F5624E /* PropertyObjectDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectDataSource.swift; sourceTree = "<group>"; };
+		A540DD2D2C7F740800F5624E /* PropertyObjectListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectListDataSource.swift; sourceTree = "<group>"; };
 		A540DD2F2C7F74D800F5624E /* MetersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersDataSource.swift; sourceTree = "<group>"; };
 		A540DD312C7F754D00F5624E /* TariffService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffService.swift; sourceTree = "<group>"; };
 		A540DD332C7F764700F5624E /* CalculationParameterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameterService.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		A540DD2C2C7F73F100F5624E /* API */ = {
 			isa = PBXGroup;
 			children = (
-				A540DD2D2C7F740800F5624E /* PropertyObjectDataSource.swift */,
+				A540DD2D2C7F740800F5624E /* PropertyObjectListDataSource.swift */,
 				A540DD2F2C7F74D800F5624E /* MetersDataSource.swift */,
 				A540DD312C7F754D00F5624E /* TariffService.swift */,
 				A540DD332C7F764700F5624E /* CalculationParameterService.swift */,
@@ -419,7 +419,7 @@
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,
 				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
-				A540DD2E2C7F740800F5624E /* PropertyObjectDataSource.swift in Sources */,
+				A540DD2E2C7F740800F5624E /* PropertyObjectListDataSource.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,

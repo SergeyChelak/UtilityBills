@@ -8,13 +8,13 @@
 import Foundation
 
 class ObjectListStore: ObservableObject {
-    private let dataSource: PropertyObjectDataSource
+    private let dataSource: PropertyObjectListDataSource
     
     @Published private(set) var items: [PropertyObject] = []
     private(set) var editItems: [PropertyObject] = []
     @Published private(set) var isEditMode = false
     
-    init(dataSource: PropertyObjectDataSource) {
+    init(dataSource: PropertyObjectListDataSource) {
         self.dataSource = dataSource
     }
     

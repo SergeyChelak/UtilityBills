@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PropertyObjectDataSource {
+protocol PropertyObjectListDataSource {
     func allProperties() throws -> [PropertyObject]
     
     func createProperty() throws -> PropertyObject

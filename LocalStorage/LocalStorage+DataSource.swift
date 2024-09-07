@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-extension LocalStorage: PropertyObjectDataSource {
+extension LocalStorage: PropertyObjectListDataSource {
     func allProperties() throws -> [PropertyObject] {
         let request = CDPropertyObject.fetchRequest()
         let result = try viewContext.fetch(request)
