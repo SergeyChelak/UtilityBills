@@ -18,10 +18,19 @@ struct iOSAppViewFactory: ViewFactory {
     }
     
     private func composePropertyObjectListView() -> some View {
-        let store = ObjectListStore(dataSource: storage)
-        return ObjectListView(store: store) {
-            navigationController.push(.propertyDetails($0))
-        }
+        let store = EditableListStore<PropertyObject>(
+            loader: storage.allProperties,
+            remover: storage.deleteProperty,
+            creator: storage.createProperty
+        )
+        let view = EditableListView(
+            title: "My Objects",
+            store: store,
+            factory: { ObjectListCell(item: $0) },
+            selection: { navigationController.push(.propertyDetails($0.id)) } 
+//            selection: { navigationController.push(.meterList($0.id)) }
+        )
+        return view
     }
     
     private func composePropertyDetailsView(_ uuid: PropertyObjectId) -> some View {
@@ -56,8 +65,25 @@ struct iOSAppViewFactory: ViewFactory {
     }
     
     private func composeMeterListView(_ uuid: PropertyObjectId) -> some View {
-        let store = MeterListStore(propertyId: uuid, dataSource: storage)
-        return MeterListView(store: store)
+//        let store = MeterListStore(propertyId: uuid, dataSource: storage)
+//        return MeterListView(store: store)
+        let store = EditableListStore<Meter>(
+            loader: { try storage.allMeters(for: uuid) },
+            creator: { try storage.newMeter(for: uuid) }
+        )
+        let view = EditableListView(
+            title: "Meters",
+            store: store,
+            // TODO: fix stub
+            factory: {
+                TitleSubtitleCell(
+                    title: $0.name,
+                    subtitle: $0.id.uuidString)
+            },
+            selection: { _ in print("navigation not implemented") }
+        )
+        return view
+
     }
     
     private func composeTariffListView(_ uuid: PropertyObjectId) -> some View {
@@ -74,6 +100,8 @@ struct iOSAppViewFactory: ViewFactory {
             composePropertyObjectListView()
         case .propertyDetails(let uuid):
             composePropertyDetailsView(uuid)
+        case .meterList(let uuid):
+            composeMeterListView(uuid)
         }
     }
 }

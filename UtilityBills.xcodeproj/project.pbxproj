@@ -19,12 +19,9 @@
 		A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD332C7F764700F5624E /* CalculationParameterService.swift */; };
 		A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD352C7F776500F5624E /* HistoryBillService.swift */; };
 		A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */; };
-		A540DD422C7FB58A00F5624E /* ObjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD412C7FB58A00F5624E /* ObjectListView.swift */; };
 		A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63392C7FB67B00F66741 /* ObjectListCell.swift */; };
-		A55C633E2C7FB70D00F66741 /* ObjectListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C633D2C7FB70D00F66741 /* ObjectListStore.swift */; };
 		A55C63412C7FD64800F66741 /* PropertyObjectTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */; };
 		A55C63432C7FD69D00F66741 /* PropertyObjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */; };
-		A55C63452C7FD74900F66741 /* MeterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63442C7FD74900F66741 /* MeterListView.swift */; };
 		A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63462C7FD77100F66741 /* TariffListScreen.swift */; };
 		A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63482C7FD7AB00F66741 /* BillingScreen.swift */; };
 		A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */; };
@@ -33,13 +30,14 @@
 		A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635C2C8384AC00F66741 /* LocalStorage+DataSource.swift */; };
 		A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635E2C838AD600F66741 /* LocalStorageTest.swift */; };
 		A55C63612C8C6B3D00F66741 /* PropertyObjectInfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */; };
-		A55C63652C8C876100F66741 /* MeterListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63642C8C876100F66741 /* MeterListStore.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
 		A5D809482C7156A400F2E6AF /* UtilityBillsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */; };
 		A5D8094A2C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */; };
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
+		A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944382C8CC8A700A5FD47 /* EditableListView.swift */; };
+		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,12 +70,9 @@
 		A540DD332C7F764700F5624E /* CalculationParameterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameterService.swift; sourceTree = "<group>"; };
 		A540DD352C7F776500F5624E /* HistoryBillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBillService.swift; sourceTree = "<group>"; };
 		A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		A540DD412C7FB58A00F5624E /* ObjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListView.swift; sourceTree = "<group>"; };
 		A55C63392C7FB67B00F66741 /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
-		A55C633D2C7FB70D00F66741 /* ObjectListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListStore.swift; sourceTree = "<group>"; };
 		A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectTabContainer.swift; sourceTree = "<group>"; };
 		A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoView.swift; sourceTree = "<group>"; };
-		A55C63442C7FD74900F66741 /* MeterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListView.swift; sourceTree = "<group>"; };
 		A55C63462C7FD77100F66741 /* TariffListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListScreen.swift; sourceTree = "<group>"; };
 		A55C63482C7FD7AB00F66741 /* BillingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingScreen.swift; sourceTree = "<group>"; };
 		A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppViewFactory.swift; sourceTree = "<group>"; };
@@ -86,7 +81,6 @@
 		A55C635C2C8384AC00F66741 /* LocalStorage+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+DataSource.swift"; sourceTree = "<group>"; };
 		A55C635E2C838AD600F66741 /* LocalStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTest.swift; sourceTree = "<group>"; };
 		A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoStore.swift; sourceTree = "<group>"; };
-		A55C63642C8C876100F66741 /* MeterListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterListStore.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +90,8 @@
 		A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITests.swift; sourceTree = "<group>"; };
 		A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
+		A5F944382C8CC8A700A5FD47 /* EditableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableListView.swift; sourceTree = "<group>"; };
+		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +167,6 @@
 		A540DD402C7FB57000F5624E /* ObjectList */ = {
 			isa = PBXGroup;
 			children = (
-				A540DD412C7FB58A00F5624E /* ObjectListView.swift */,
-				A55C633D2C7FB70D00F66741 /* ObjectListStore.swift */,
 				A55C63392C7FB67B00F66741 /* ObjectListCell.swift */,
 			);
 			path = ObjectList;
@@ -201,8 +195,6 @@
 		A55C634B2C7FD7E300F66741 /* Meters */ = {
 			isa = PBXGroup;
 			children = (
-				A55C63442C7FD74900F66741 /* MeterListView.swift */,
-				A55C63642C8C876100F66741 /* MeterListStore.swift */,
 			);
 			path = Meters;
 			sourceTree = "<group>";
@@ -228,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				A5F944362C8CC4F600A5FD47 /* UBImage.swift */,
+				A5F944382C8CC8A700A5FD47 /* EditableListView.swift */,
+				A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -423,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,
 				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
@@ -432,21 +427,18 @@
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
-				A55C633E2C7FB70D00F66741 /* ObjectListStore.swift in Sources */,
 				A55C63612C8C6B3D00F66741 /* PropertyObjectInfoStore.swift in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A540DD302C7F74D800F5624E /* MetersDataSource.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */,
-				A55C63452C7FD74900F66741 /* MeterListView.swift in Sources */,
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
 				A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */,
-				A55C63652C8C876100F66741 /* MeterListStore.swift in Sources */,
-				A540DD422C7FB58A00F5624E /* ObjectListView.swift in Sources */,
 				A540DD232C7F707500F5624E /* Currency.swift in Sources */,
+				A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */,
 				A55C63432C7FD69D00F66741 /* PropertyObjectInfoView.swift in Sources */,
 				A55C63412C7FD64800F66741 /* PropertyObjectTabContainer.swift in Sources */,
 				A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */,

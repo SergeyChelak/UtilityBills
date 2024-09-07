@@ -16,9 +16,16 @@ struct ObjectListCell: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.title)
             
-            Text(item.details ?? item.id.uuidString)
+            if let details = item.details {
+                Text(details)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.headline)
+            }
+            #if DEBUG
+            Text(item.id.uuidString)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.headline)
+                .font(.subheadline)
+            #endif
         }
         .contentShape(Rectangle())
     }

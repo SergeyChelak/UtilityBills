@@ -29,6 +29,10 @@ extension LocalStorage: PropertyObjectListDataSource {
         try deleteProperties([propertyObject])
     }
     
+    func deleteProperty(_ propertyObject: PropertyObject) throws {
+        try deleteProperty(propertyObject.id)
+    }
+    
     func deleteProperties(_ objects: [PropertyObjectId]) throws {
         let request = CDPropertyObject.fetchRequest()
         request.predicate = NSPredicate(format: "SELF.uuid IN %@", objects)

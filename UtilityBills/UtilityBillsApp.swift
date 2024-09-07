@@ -36,11 +36,10 @@ protocol ViewFactory {
     func view(for route: Route) -> any View
 }
 
-typealias PropertyObjectSelectionCallback = (UUID) -> Void
-
 enum Route: Hashable {
     case properlyObjectList
-    case propertyDetails(UUID)
+    case propertyDetails(PropertyObjectId)
+    case meterList(PropertyObjectId)
 }
 
 protocol NavigationController {
