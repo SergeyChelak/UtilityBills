@@ -28,7 +28,6 @@ struct iOSAppViewFactory {
             store: store,
             factory: { ObjectListCell(item: $0) },
             selection: { navigationController.push(.propertyObjectHome($0.id)) }
-            //            selection: { navigationController.push(.meterList($0.id)) }
         )
         return view
     }
@@ -36,26 +35,6 @@ struct iOSAppViewFactory {
     private func composePropertyHomeView(_ uuid: PropertyObjectId) -> some View {
         let store = PropertyObjectStore(uuid, dataSource: storage)
         return PropertyObjectHome(store: store)
-    }
-        
-    private func composeMeterListView(_ uuid: PropertyObjectId) -> some View {
-        let store = EditableListStore<Meter>(
-            loader: { try storage.allMeters(for: uuid) },
-            creator: { try storage.newMeter(for: uuid) }
-        )
-        let view = EditableListView(
-            title: "Meters",
-            store: store,
-            // TODO: fix stub
-            factory: {
-                TitleSubtitleCell(
-                    title: $0.name,
-                    subtitle: $0.id.uuidString)
-            },
-            selection: { _ in print("navigation not implemented") }
-        )
-        return view
-        
     }
 }
 
@@ -67,8 +46,6 @@ extension iOSAppViewFactory: ViewFactory {
             composePropertyObjectListView()
         case .propertyObjectHome(let uuid):
             composePropertyHomeView(uuid)
-        case .meterList(let uuid):
-            composeMeterListView(uuid)
         }
     }
 }

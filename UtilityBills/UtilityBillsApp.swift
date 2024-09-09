@@ -39,7 +39,6 @@ protocol ViewFactory {
 enum Route: Hashable {
     case properlyObjectList
     case propertyObjectHome(PropertyObjectId)
-    case meterList(PropertyObjectId)
 }
 
 protocol NavigationController {
