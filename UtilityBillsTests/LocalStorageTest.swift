@@ -40,7 +40,7 @@ final class LocalStorageTest: XCTestCase {
         let before = try! storage.allProperties()
         XCTAssertEqual(before.count, 1)
         
-        try! storage.deleteProperty(obj.id)
+        try! storage.deleteProperty(obj)
         
         let after = try! storage.allProperties()
         XCTAssertEqual(after.count, 0)

@@ -38,17 +38,9 @@ extension PublishedLocalStorage: PropertyObjectListDataSource, PropertyObjectDat
     
     func deleteProperty(_ propertyObject: PropertyObject) throws {
         try storage.deleteProperty(propertyObject)
-    }
-    
-    func deleteProperty(_ id: PropertyObjectId) throws {
-        try storage.deleteProperty(id)
-    }
-    
-    func deleteProperties(_ objects: [PropertyObjectId]) throws {
-        try storage.deleteProperties(objects)
         notify()
     }
-    
+            
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {
         try storage.fetchProperty(uuid)
     }

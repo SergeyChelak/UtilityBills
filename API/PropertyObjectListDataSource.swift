@@ -13,10 +13,6 @@ protocol PropertyObjectListDataSource {
     func createProperty() throws -> PropertyObject
     
     func deleteProperty(_ propertyObject: PropertyObject) throws
-    
-    func deleteProperty(_ propertyObject: PropertyObjectId) throws
-    
-    func deleteProperties(_ objects: [PropertyObjectId]) throws
 }
 
 protocol PropertyObjectDataSource {
