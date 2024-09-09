@@ -20,8 +20,6 @@
 		A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD352C7F776500F5624E /* HistoryBillService.swift */; };
 		A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */; };
 		A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63392C7FB67B00F66741 /* ObjectListCell.swift */; };
-		A55C63412C7FD64800F66741 /* PropertyObjectTabContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */; };
-		A55C63432C7FD69D00F66741 /* PropertyObjectInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */; };
 		A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63462C7FD77100F66741 /* TariffListScreen.swift */; };
 		A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63482C7FD7AB00F66741 /* BillingScreen.swift */; };
 		A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */; };
@@ -29,7 +27,6 @@
 		A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A55C63592C83808800F66741 /* LocalStorageModel.xcdatamodeld */; };
 		A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635C2C8384AC00F66741 /* LocalStorage+DataSource.swift */; };
 		A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635E2C838AD600F66741 /* LocalStorageTest.swift */; };
-		A55C63612C8C6B3D00F66741 /* PropertyObjectInfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -38,6 +35,11 @@
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 		A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944382C8CC8A700A5FD47 /* EditableListView.swift */; };
 		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
+		A5F9443F2C8D130E00A5FD47 /* PropertyObjectHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443E2C8D130E00A5FD47 /* PropertyObjectHome.swift */; };
+		A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944412C8F5D2400A5FD47 /* SectionHeaderView.swift */; };
+		A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944432C8F5F9000A5FD47 /* SectionViewModifier.swift */; };
+		A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */; };
+		A5F944482C8F664700A5FD47 /* MetersInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944472C8F664700A5FD47 /* MetersInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +73,6 @@
 		A540DD352C7F776500F5624E /* HistoryBillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBillService.swift; sourceTree = "<group>"; };
 		A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		A55C63392C7FB67B00F66741 /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
-		A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectTabContainer.swift; sourceTree = "<group>"; };
-		A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoView.swift; sourceTree = "<group>"; };
 		A55C63462C7FD77100F66741 /* TariffListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListScreen.swift; sourceTree = "<group>"; };
 		A55C63482C7FD7AB00F66741 /* BillingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingScreen.swift; sourceTree = "<group>"; };
 		A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppViewFactory.swift; sourceTree = "<group>"; };
@@ -80,7 +80,6 @@
 		A55C635A2C83808800F66741 /* UtilityBillsStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UtilityBillsStorage.xcdatamodel; sourceTree = "<group>"; };
 		A55C635C2C8384AC00F66741 /* LocalStorage+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+DataSource.swift"; sourceTree = "<group>"; };
 		A55C635E2C838AD600F66741 /* LocalStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTest.swift; sourceTree = "<group>"; };
-		A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectInfoStore.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +91,11 @@
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 		A5F944382C8CC8A700A5FD47 /* EditableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableListView.swift; sourceTree = "<group>"; };
 		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
+		A5F9443E2C8D130E00A5FD47 /* PropertyObjectHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectHome.swift; sourceTree = "<group>"; };
+		A5F944412C8F5D2400A5FD47 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		A5F944432C8F5F9000A5FD47 /* SectionViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModifier.swift; sourceTree = "<group>"; };
+		A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyInfoView.swift; sourceTree = "<group>"; };
+		A5F944472C8F664700A5FD47 /* MetersInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,11 +179,12 @@
 		A55C633F2C7FD50E00F66741 /* PropertyObject */ = {
 			isa = PBXGroup;
 			children = (
-				A55C634D2C7FD82400F66741 /* Info */,
 				A55C634C2C7FD7F100F66741 /* Tariff */,
 				A55C634B2C7FD7E300F66741 /* Meters */,
 				A55C634A2C7FD7D700F66741 /* Billing */,
-				A55C63402C7FD64800F66741 /* PropertyObjectTabContainer.swift */,
+				A5F9443E2C8D130E00A5FD47 /* PropertyObjectHome.swift */,
+				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
+				A5F944472C8F664700A5FD47 /* MetersInfoView.swift */,
 			);
 			path = PropertyObject;
 			sourceTree = "<group>";
@@ -207,21 +212,14 @@
 			path = Tariff;
 			sourceTree = "<group>";
 		};
-		A55C634D2C7FD82400F66741 /* Info */ = {
-			isa = PBXGroup;
-			children = (
-				A55C63422C7FD69D00F66741 /* PropertyObjectInfoView.swift */,
-				A55C63602C8C6B3D00F66741 /* PropertyObjectInfoStore.swift */,
-			);
-			path = Info;
-			sourceTree = "<group>";
-		};
 		A55C63662C8C94FB00F66741 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				A5F944362C8CC4F600A5FD47 /* UBImage.swift */,
 				A5F944382C8CC8A700A5FD47 /* EditableListView.swift */,
 				A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */,
+				A5F944412C8F5D2400A5FD47 /* SectionHeaderView.swift */,
+				A5F944432C8F5F9000A5FD47 /* SectionViewModifier.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -418,7 +416,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
+				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
+				A5F9443F2C8D130E00A5FD47 /* PropertyObjectHome.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,
 				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
@@ -427,20 +427,20 @@
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
-				A55C63612C8C6B3D00F66741 /* PropertyObjectInfoStore.swift in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A540DD302C7F74D800F5624E /* MetersDataSource.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
+				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
 				A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */,
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
 				A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */,
+				A5F944482C8F664700A5FD47 /* MetersInfoView.swift in Sources */,
 				A540DD232C7F707500F5624E /* Currency.swift in Sources */,
 				A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */,
-				A55C63432C7FD69D00F66741 /* PropertyObjectInfoView.swift in Sources */,
-				A55C63412C7FD64800F66741 /* PropertyObjectTabContainer.swift in Sources */,
+				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,
 				A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */,
 				A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */,
 			);

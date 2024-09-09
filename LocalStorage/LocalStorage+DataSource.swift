@@ -50,7 +50,7 @@ extension LocalStorage: PropertyObjectListDataSource {
     
 }
 
-extension LocalStorage: PropertyObjectInfoDataSource {
+extension LocalStorage: PropertyObjectDataSource {
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {
         guard let obj = try fetchPropertyObject(uuid, into: viewContext) else {
             return nil
