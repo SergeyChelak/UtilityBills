@@ -7,10 +7,14 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct iOSAppViewFactory {
-    // TODO: make dependency via protocol
-    let storage = LocalStorage.instance()
+//     TODO: make dependency via protocol
+    let storage = {
+        let ls = LocalStorage.instance()
+        return PublishedLocalStorage(storage: ls)
+    }()
     let navigationController: NavigationController
     
     init(navigationController: NavigationController) {
@@ -36,6 +40,7 @@ struct iOSAppViewFactory {
         let store = PropertyObjectStore(uuid, dataSource: storage)
         return PropertyObjectHome(
             store: store,
+            updatePublisher: storage.publisher,
             infoSectionCallback: { navigationController.showOverlay(.editPropertyInfo($0)) }
         )
     }

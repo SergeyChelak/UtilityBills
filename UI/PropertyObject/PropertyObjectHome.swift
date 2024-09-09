@@ -5,6 +5,7 @@
 //  Created by Sergey on 08.09.2024.
 //
 
+import Combine
 import SwiftUI
 
 class PropertyObjectStore: ObservableObject {
@@ -32,6 +33,7 @@ class PropertyObjectStore: ObservableObject {
 
 struct PropertyObjectHome: View {
     @StateObject var store: PropertyObjectStore
+    let updatePublisher: AnyPublisher<(), Never>
     let infoSectionCallback: (PropertyObject) -> Void
     
     var body: some View {
@@ -60,6 +62,9 @@ struct PropertyObjectHome: View {
         .task {
             store.load()
         }
+        .onReceive(updatePublisher) {
+            store.load()
+        }
         
         
         // Display historical data
@@ -77,6 +82,7 @@ struct PropertyObjectHome: View {
         dataSource: ds)
     return PropertyObjectHome(
         store: store,
+        updatePublisher: Empty().eraseToAnyPublisher(),
         infoSectionCallback: { _ in }
     )
 }
