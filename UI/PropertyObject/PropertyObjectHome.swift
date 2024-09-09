@@ -24,7 +24,6 @@ class PropertyObjectStore: ObservableObject {
         do {
             propObj = try dataSource.fetchProperty(objectId)
             meters = try dataSource.allMeters(for: objectId)
-            objectWillChange.send()
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -46,7 +45,7 @@ struct PropertyObjectHome: View {
                             title: "Info",
                             action: HeaderAction(
                                 title: "Edit",
-                                imageDescriptor: nil,
+                                imageDescriptor: .system("pencil"),
                                 callback: { infoSectionCallback(obj) })
                         )
                 }        

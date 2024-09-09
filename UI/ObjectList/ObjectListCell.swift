@@ -11,21 +11,21 @@ struct ObjectListCell: View {
     let item: PropertyObject
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(item.name)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.title)
-            
-            if !item.details.isEmpty {
-                Text(item.details)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+        HStack {
+            Image(systemName: "house.fill")
+            VStack(alignment: .leading) {
+                Text(item.name)
                     .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(.primary)
+                
+                if !item.details.isEmpty {
+                    Text(item.details)
+                        .font(.subheadline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.secondary)
+                }
             }
-            #if DEBUG
-            Text(item.id.uuidString)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.subheadline)
-            #endif
         }
         .contentShape(Rectangle())
     }

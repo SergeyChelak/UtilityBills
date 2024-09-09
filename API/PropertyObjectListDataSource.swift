@@ -20,3 +20,15 @@ protocol PropertyObjectDataSource {
 
     func updateProperty(_ propertyObject: PropertyObject) throws
 }
+
+//protocol __PropertyDataSource {
+//    func allProperties(_ callback: @escaping (Result<[PropertyObject], Error>) -> Void)
+//    
+//    func createProperty(_ callback: @escaping (Result<PropertyObject, Error>) -> Void)
+//    
+//    func deleteProperty(_ propertyObject: PropertyObject, _ callback: @escaping (Result<(), Error>) -> Void)
+//    
+//    func fetchProperty(_ uuid: PropertyObjectId, _ callback: @escaping (Result<PropertyObject?, Error>) -> Void)
+//
+//    func updateProperty(_ propertyObject: PropertyObject, _ callback: @escaping (Result<(), Error>) -> Void) throws
+//}

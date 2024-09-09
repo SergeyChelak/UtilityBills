@@ -17,10 +17,12 @@ struct TitleSubtitleCell: View {
                 Text(title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.title)
+                    .foregroundColor(.primary)
                 
                 Text(subtitle)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
+                    .foregroundColor(.secondary)
             }
         }
         .contentShape(Rectangle())

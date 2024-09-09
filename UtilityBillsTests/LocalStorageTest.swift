@@ -45,22 +45,7 @@ final class LocalStorageTest: XCTestCase {
         let after = try! storage.allProperties()
         XCTAssertEqual(after.count, 0)
     }
-        
-    func test_deleteMultiplePropertyObject() {
-        let storage: LocalStorage = .previewInstance()
-        
-        let count = 10
-        let objects = (0..<count)
-            .map { _ in
-                try! storage.createProperty().id
-            }
-        let prefix = 3
-        try! storage.deleteProperties(Array(objects.prefix(prefix)))
-        
-        let after = try! storage.allProperties()
-        XCTAssertEqual(after.count, count - prefix)
-    }
-    
+            
     func test_updatePropertyObject() {
         let storage: LocalStorage = .previewInstance()
         

@@ -11,21 +11,16 @@ struct PropertyInfoView: View {
     let propertyObject: PropertyObject
     
     var body: some View {
-        HStack(spacing: 12) {
-            VStack(alignment: .leading) {
-                Text("Object")
-                Text("Details")
-                Text("UUID")
-            }
-            
-            VStack(alignment: .leading) {
-                Text(propertyObject.name)
-                    .lineLimit(1)
-                Text(propertyObject.details)
-                    .lineLimit(1)
-                Text(propertyObject.id.uuidString)
-                    .lineLimit(1)
-            }
+        VStack(alignment: .leading, spacing: 8) {
+            CaptionValueCell(
+                caption: "Object",
+                value: propertyObject.name
+            )
+            Divider()
+            CaptionValueCell(
+                caption: "Details",
+                value: propertyObject.details
+            )
         }
     }
 }

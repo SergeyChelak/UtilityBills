@@ -31,6 +31,7 @@
 		A5E00B802C8F9347002BC8EF /* UBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B7F2C8F9347002BC8EF /* UBTextField.swift */; };
 		A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B812C8F9726002BC8EF /* CTAButton.swift */; };
 		A5E00B842C8FA291002BC8EF /* PublishedLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B832C8FA291002BC8EF /* PublishedLocalStorage.swift */; };
+		A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */; };
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 		A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944382C8CC8A700A5FD47 /* EditableListView.swift */; };
 		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
@@ -86,6 +87,7 @@
 		A5E00B7F2C8F9347002BC8EF /* UBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBTextField.swift; sourceTree = "<group>"; };
 		A5E00B812C8F9726002BC8EF /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
 		A5E00B832C8FA291002BC8EF /* PublishedLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedLocalStorage.swift; sourceTree = "<group>"; };
+		A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionValueCell.swift; sourceTree = "<group>"; };
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 		A5F944382C8CC8A700A5FD47 /* EditableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableListView.swift; sourceTree = "<group>"; };
 		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				A5E00B7F2C8F9347002BC8EF /* UBTextField.swift */,
 				A5F944382C8CC8A700A5FD47 /* EditableListView.swift */,
 				A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */,
+				A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */,
 				A5F944412C8F5D2400A5FD47 /* SectionHeaderView.swift */,
 				A5F944432C8F5F9000A5FD47 /* SectionViewModifier.swift */,
 				A5E00B812C8F9726002BC8EF /* CTAButton.swift */,
@@ -392,6 +395,7 @@
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectHome.swift in Sources */,
+				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* UBTextField.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,

@@ -15,9 +15,15 @@ typealias HeaderActionCallback = () -> Void
 //}
 
 struct HeaderAction {
-    let title: String
+    let title: String?
     let imageDescriptor: ImageDescriptor?
     let callback: HeaderActionCallback
+    
+    init(title: String? = nil, imageDescriptor: ImageDescriptor? = nil, callback: @escaping HeaderActionCallback) {
+        self.title = title
+        self.imageDescriptor = imageDescriptor
+        self.callback = callback
+    }
 }
 
 struct SectionHeaderView: View {
@@ -30,13 +36,17 @@ struct SectionHeaderView: View {
                 .fontWeight(.semibold)
             Spacer()
             if let action {
-                if let descriptor = action.imageDescriptor {
-                    UBImage(descriptor: descriptor)
-                        .foregroundStyle(.selection)
+                HStack(spacing: 4) {
+                    if let descriptor = action.imageDescriptor {
+                        UBImage(descriptor: descriptor)
+                            .foregroundStyle(.selection)
+                    }
+                    if let title = action.title {
+                        Text(title)
+                            .foregroundStyle(.selection)
+                    }
                 }
-                Text(action.title)
-                    .foregroundStyle(.selection)
-                    .onTapGesture(perform: action.callback)
+                .onTapGesture(perform: action.callback)
             }
         }
         .padding(.horizontal)
