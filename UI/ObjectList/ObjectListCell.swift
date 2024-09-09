@@ -16,8 +16,8 @@ struct ObjectListCell: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.title)
             
-            if let details = item.details {
-                Text(details)
+            if !item.details.isEmpty {
+                Text(item.details)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
             }

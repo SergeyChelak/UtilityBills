@@ -41,7 +41,10 @@ struct iOSAppViewFactory {
     }
     
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
-        return EditPropertyInfoView(propertyObject: obj)
+        EditPropertyInfoView(
+            propertyObject: obj,
+            callback: { try storage.updateProperty($0) }
+        )
     }
 }
 

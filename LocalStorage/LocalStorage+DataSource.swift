@@ -117,7 +117,7 @@ func map(_ cdPropertyObject: CDPropertyObject) -> PropertyObject {
     PropertyObject(
         id: cdPropertyObject.uuid!,
         name: cdPropertyObject.name!,
-        details: cdPropertyObject.details,
+        details: cdPropertyObject.details ?? "",
         currencyId: nil)
 }
 

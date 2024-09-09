@@ -28,6 +28,8 @@
 		A5D809482C7156A400F2E6AF /* UtilityBillsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */; };
 		A5D8094A2C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */; };
 		A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */; };
+		A5E00B802C8F9347002BC8EF /* UBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B7F2C8F9347002BC8EF /* UBTextField.swift */; };
+		A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B812C8F9726002BC8EF /* CTAButton.swift */; };
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 		A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944382C8CC8A700A5FD47 /* EditableListView.swift */; };
 		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
@@ -80,6 +82,8 @@
 		A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITests.swift; sourceTree = "<group>"; };
 		A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPropertyInfoView.swift; sourceTree = "<group>"; };
+		A5E00B7F2C8F9347002BC8EF /* UBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBTextField.swift; sourceTree = "<group>"; };
+		A5E00B812C8F9726002BC8EF /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 		A5F944382C8CC8A700A5FD47 /* EditableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableListView.swift; sourceTree = "<group>"; };
 		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
@@ -180,10 +184,12 @@
 			isa = PBXGroup;
 			children = (
 				A5F944362C8CC4F600A5FD47 /* UBImage.swift */,
+				A5E00B7F2C8F9347002BC8EF /* UBTextField.swift */,
 				A5F944382C8CC8A700A5FD47 /* EditableListView.swift */,
 				A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */,
 				A5F944412C8F5D2400A5FD47 /* SectionHeaderView.swift */,
 				A5F944432C8F5F9000A5FD47 /* SectionViewModifier.swift */,
+				A5E00B812C8F9726002BC8EF /* CTAButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectHome.swift in Sources */,
+				A5E00B802C8F9347002BC8EF /* UBTextField.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A540DD2E2C7F740800F5624E /* PropertyObjectListDataSource.swift in Sources */,
@@ -402,6 +409,7 @@
 				A5F944482C8F664700A5FD47 /* MetersInfoView.swift in Sources */,
 				A540DD232C7F707500F5624E /* Currency.swift in Sources */,
 				A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */,
+				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
 				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

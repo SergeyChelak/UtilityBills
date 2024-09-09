@@ -12,7 +12,7 @@ typealias PropertyObjectId = UUID
 struct PropertyObject {
     let id: PropertyObjectId
     var name: String
-    var details: String?
+    var details: String
 //    let type: PropertyObjectType
     var currencyId: String?
 }

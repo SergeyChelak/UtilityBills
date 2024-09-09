@@ -21,7 +21,7 @@ struct PropertyInfoView: View {
             VStack(alignment: .leading) {
                 Text(propertyObject.name)
                     .lineLimit(1)
-                Text(propertyObject.details ?? "")
+                Text(propertyObject.details)
                     .lineLimit(1)
                 Text(propertyObject.id.uuidString)
                     .lineLimit(1)
