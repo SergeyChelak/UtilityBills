@@ -20,8 +20,6 @@
 		A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD352C7F776500F5624E /* HistoryBillService.swift */; };
 		A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */; };
 		A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63392C7FB67B00F66741 /* ObjectListCell.swift */; };
-		A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63462C7FD77100F66741 /* TariffListScreen.swift */; };
-		A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63482C7FD7AB00F66741 /* BillingScreen.swift */; };
 		A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */; };
 		A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63552C83358900F66741 /* iOSAppRouter.swift */; };
 		A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A55C63592C83808800F66741 /* LocalStorageModel.xcdatamodeld */; };
@@ -73,8 +71,6 @@
 		A540DD352C7F776500F5624E /* HistoryBillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBillService.swift; sourceTree = "<group>"; };
 		A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		A55C63392C7FB67B00F66741 /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
-		A55C63462C7FD77100F66741 /* TariffListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffListScreen.swift; sourceTree = "<group>"; };
-		A55C63482C7FD7AB00F66741 /* BillingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingScreen.swift; sourceTree = "<group>"; };
 		A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppViewFactory.swift; sourceTree = "<group>"; };
 		A55C63552C83358900F66741 /* iOSAppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppRouter.swift; sourceTree = "<group>"; };
 		A55C635A2C83808800F66741 /* UtilityBillsStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UtilityBillsStorage.xcdatamodel; sourceTree = "<group>"; };
@@ -179,9 +175,7 @@
 		A55C633F2C7FD50E00F66741 /* PropertyObject */ = {
 			isa = PBXGroup;
 			children = (
-				A55C634C2C7FD7F100F66741 /* Tariff */,
 				A55C634B2C7FD7E300F66741 /* Meters */,
-				A55C634A2C7FD7D700F66741 /* Billing */,
 				A5F9443E2C8D130E00A5FD47 /* PropertyObjectHome.swift */,
 				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
 				A5F944472C8F664700A5FD47 /* MetersInfoView.swift */,
@@ -189,27 +183,11 @@
 			path = PropertyObject;
 			sourceTree = "<group>";
 		};
-		A55C634A2C7FD7D700F66741 /* Billing */ = {
-			isa = PBXGroup;
-			children = (
-				A55C63482C7FD7AB00F66741 /* BillingScreen.swift */,
-			);
-			path = Billing;
-			sourceTree = "<group>";
-		};
 		A55C634B2C7FD7E300F66741 /* Meters */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Meters;
-			sourceTree = "<group>";
-		};
-		A55C634C2C7FD7F100F66741 /* Tariff */ = {
-			isa = PBXGroup;
-			children = (
-				A55C63462C7FD77100F66741 /* TariffListScreen.swift */,
-			);
-			path = Tariff;
 			sourceTree = "<group>";
 		};
 		A55C63662C8C94FB00F66741 /* Common */ = {
@@ -432,7 +410,6 @@
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
-				A55C63492C7FD7AB00F66741 /* BillingScreen.swift in Sources */,
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
@@ -442,7 +419,6 @@
 				A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */,
 				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,
 				A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */,
-				A55C63472C7FD77100F66741 /* TariffListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

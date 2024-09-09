@@ -37,12 +37,7 @@ struct iOSAppViewFactory {
         let store = PropertyObjectStore(uuid, dataSource: storage)
         return PropertyObjectHome(store: store)
     }
-    
-//    private func composePropertyInfoView(_ uuid: PropertyObjectId) -> some View {
-//        let store = PropertyObjectInfoStore(uuid, dataSource: storage)
-//        return PropertyObjectInfoView(store: store)
-//    }
-    
+        
     private func composeMeterListView(_ uuid: PropertyObjectId) -> some View {
         let store = EditableListStore<Meter>(
             loader: { try storage.allMeters(for: uuid) },
@@ -61,14 +56,6 @@ struct iOSAppViewFactory {
         )
         return view
         
-    }
-    
-    private func composeTariffListView(_ uuid: PropertyObjectId) -> some View {
-        TariffListScreen()
-    }
-    
-    private func composeBillingView(_ uuid: PropertyObjectId) -> some View {
-        BillingScreen()
     }
 }
 
