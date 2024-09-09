@@ -23,6 +23,7 @@ class PropertyObjectStore: ObservableObject {
         do {
             propObj = try dataSource.fetchProperty(objectId)
             meters = try dataSource.allMeters(for: objectId)
+            objectWillChange.send()
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -30,7 +31,8 @@ class PropertyObjectStore: ObservableObject {
 }
 
 struct PropertyObjectHome: View {
-    @ObservedObject var store: PropertyObjectStore
+    @StateObject var store: PropertyObjectStore
+    let infoSectionCallback: (PropertyObject) -> Void
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -38,9 +40,14 @@ struct PropertyObjectHome: View {
                 // Manage estate data
                 if let obj = store.propObj {
                     PropertyInfoView(propertyObject: obj)
-                        .sectionWith(title: "Info")
-                }
-        
+                        .sectionWith(
+                            title: "Info",
+                            action: HeaderAction(
+                                title: "Edit",
+                                imageDescriptor: nil,
+                                callback: { infoSectionCallback(obj) })
+                        )
+                }        
                 // Manage meters/meter data
                 if !store.meters.isEmpty {
                     MetersInfoView(meters: store.meters)
@@ -68,5 +75,8 @@ struct PropertyObjectHome: View {
     let store = PropertyObjectStore(
         UUID(),
         dataSource: ds)
-    return PropertyObjectHome(store: store)
+    return PropertyObjectHome(
+        store: store,
+        infoSectionCallback: { _ in }
+    )
 }

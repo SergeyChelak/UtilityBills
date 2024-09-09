@@ -34,7 +34,14 @@ struct iOSAppViewFactory {
     
     private func composePropertyHomeView(_ uuid: PropertyObjectId) -> some View {
         let store = PropertyObjectStore(uuid, dataSource: storage)
-        return PropertyObjectHome(store: store)
+        return PropertyObjectHome(
+            store: store,
+            infoSectionCallback: { navigationController.showOverlay(.editPropertyInfo($0)) }
+        )
+    }
+    
+    private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
+        return EditPropertyInfoView(propertyObject: obj)
     }
 }
 
@@ -46,6 +53,8 @@ extension iOSAppViewFactory: ViewFactory {
             composePropertyObjectListView()
         case .propertyObjectHome(let uuid):
             composePropertyHomeView(uuid)
+        case .editPropertyInfo(let obj):
+            composeEditPropertyInfoView(obj)
         }
     }
 }

@@ -32,8 +32,10 @@ struct SectionHeaderView: View {
             if let action {
                 if let descriptor = action.imageDescriptor {
                     UBImage(descriptor: descriptor)
+                        .foregroundStyle(.selection)
                 }
                 Text(action.title)
+                    .foregroundStyle(.selection)
                     .onTapGesture(perform: action.callback)
             }
         }

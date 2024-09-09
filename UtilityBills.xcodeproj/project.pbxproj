@@ -15,9 +15,6 @@
 		A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2A2C7F734E00F5624E /* BillingItem.swift */; };
 		A540DD2E2C7F740800F5624E /* PropertyObjectListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2D2C7F740800F5624E /* PropertyObjectListDataSource.swift */; };
 		A540DD302C7F74D800F5624E /* MetersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD2F2C7F74D800F5624E /* MetersDataSource.swift */; };
-		A540DD322C7F754D00F5624E /* TariffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD312C7F754D00F5624E /* TariffService.swift */; };
-		A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD332C7F764700F5624E /* CalculationParameterService.swift */; };
-		A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD352C7F776500F5624E /* HistoryBillService.swift */; };
 		A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */; };
 		A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63392C7FB67B00F66741 /* ObjectListCell.swift */; };
 		A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */; };
@@ -30,6 +27,7 @@
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
 		A5D809482C7156A400F2E6AF /* UtilityBillsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */; };
 		A5D8094A2C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */; };
+		A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */; };
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 		A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944382C8CC8A700A5FD47 /* EditableListView.swift */; };
 		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
@@ -66,9 +64,6 @@
 		A540DD2A2C7F734E00F5624E /* BillingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingItem.swift; sourceTree = "<group>"; };
 		A540DD2D2C7F740800F5624E /* PropertyObjectListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectListDataSource.swift; sourceTree = "<group>"; };
 		A540DD2F2C7F74D800F5624E /* MetersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersDataSource.swift; sourceTree = "<group>"; };
-		A540DD312C7F754D00F5624E /* TariffService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffService.swift; sourceTree = "<group>"; };
-		A540DD332C7F764700F5624E /* CalculationParameterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationParameterService.swift; sourceTree = "<group>"; };
-		A540DD352C7F776500F5624E /* HistoryBillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryBillService.swift; sourceTree = "<group>"; };
 		A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		A55C63392C7FB67B00F66741 /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
 		A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppViewFactory.swift; sourceTree = "<group>"; };
@@ -84,6 +79,7 @@
 		A5D809432C7156A400F2E6AF /* UtilityBillsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilityBillsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D809472C7156A400F2E6AF /* UtilityBillsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITests.swift; sourceTree = "<group>"; };
 		A5D809492C7156A400F2E6AF /* UtilityBillsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPropertyInfoView.swift; sourceTree = "<group>"; };
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 		A5F944382C8CC8A700A5FD47 /* EditableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableListView.swift; sourceTree = "<group>"; };
 		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
@@ -137,9 +133,6 @@
 			children = (
 				A540DD2D2C7F740800F5624E /* PropertyObjectListDataSource.swift */,
 				A540DD2F2C7F74D800F5624E /* MetersDataSource.swift */,
-				A540DD312C7F754D00F5624E /* TariffService.swift */,
-				A540DD332C7F764700F5624E /* CalculationParameterService.swift */,
-				A540DD352C7F776500F5624E /* HistoryBillService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -175,19 +168,12 @@
 		A55C633F2C7FD50E00F66741 /* PropertyObject */ = {
 			isa = PBXGroup;
 			children = (
-				A55C634B2C7FD7E300F66741 /* Meters */,
 				A5F9443E2C8D130E00A5FD47 /* PropertyObjectHome.swift */,
 				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
+				A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */,
 				A5F944472C8F664700A5FD47 /* MetersInfoView.swift */,
 			);
 			path = PropertyObject;
-			sourceTree = "<group>";
-		};
-		A55C634B2C7FD7E300F66741 /* Meters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Meters;
 			sourceTree = "<group>";
 		};
 		A55C63662C8C94FB00F66741 /* Common */ = {
@@ -398,7 +384,6 @@
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectHome.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,
-				A540DD322C7F754D00F5624E /* TariffService.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A540DD2E2C7F740800F5624E /* PropertyObjectListDataSource.swift in Sources */,
 				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
@@ -413,12 +398,11 @@
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
-				A540DD362C7F776500F5624E /* HistoryBillService.swift in Sources */,
+				A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */,
 				A5F944482C8F664700A5FD47 /* MetersInfoView.swift in Sources */,
 				A540DD232C7F707500F5624E /* Currency.swift in Sources */,
 				A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */,
 				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,
-				A540DD342C7F764700F5624E /* CalculationParameterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

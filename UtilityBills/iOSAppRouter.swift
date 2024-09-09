@@ -9,7 +9,7 @@ import SwiftUI
 
 class iOSNavigationStore: ObservableObject {
     @Published var navigationPath = NavigationPath()
-    @Published var overlay: Route?
+    @Published var popover: Route?
 }
 
 class iOSNavigationController: NavigationController {
@@ -18,7 +18,7 @@ class iOSNavigationController: NavigationController {
     init(store: iOSNavigationStore) {
         self.store = store
     }
-        
+    
     func push(_ route: Route) {
         hideOverlay()
         store.navigationPath.append(route)
@@ -36,11 +36,11 @@ class iOSNavigationController: NavigationController {
     }
     
     func showOverlay(_ overlay: Route) {
-        store.overlay = overlay
+        store.popover = overlay
     }
     
     private func hideOverlay() {
-        store.overlay = nil
+        store.popover = nil
     }
 }
 
@@ -50,6 +50,13 @@ struct iOSNavigationView: View {
     var navigationStore: iOSNavigationStore
     var createViewCallback: (Route) -> AnyView
     
+    private var isPopoverVisible: Binding<Bool> {
+        Binding(
+            get: { navigationStore.popover != nil },
+            set: { if !$0 { navigationStore.popover = nil } }
+        )
+    }
+    
     var body: some View {
         NavigationStack(path: $navigationStore.navigationPath) {
             rootView
@@ -57,6 +64,11 @@ struct iOSNavigationView: View {
                     for: Route.self,
                     destination: createViewCallback
                 )
+        }
+        .sheet(isPresented: isPopoverVisible) {
+            if let overlay = navigationStore.popover {
+                createViewCallback(overlay)
+            }
         }
     }
 }

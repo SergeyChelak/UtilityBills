@@ -16,3 +16,5 @@ struct PropertyObject {
 //    let type: PropertyObjectType
     var currencyId: String?
 }
+
+extension PropertyObject: Equatable, Hashable { }
