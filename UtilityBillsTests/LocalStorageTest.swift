@@ -73,8 +73,10 @@ final class LocalStorageTest: XCTestCase {
         let storage: LocalStorage = .previewInstance()
         let obj = try! storage.createProperty()
         
-        let meter = try! storage.newMeter(for: obj.id)
-        
-        XCTAssertFalse(meter.name.isEmpty)
+        let data: NewMeterData = .newData(propertyObjectId: obj.id)
+        let _ = try! storage.newMeter(data)
+    
+        let allMeters = try! storage.allMeters(for: obj.id)
+        XCTAssertTrue(allMeters.count == 1)
     }
 }
