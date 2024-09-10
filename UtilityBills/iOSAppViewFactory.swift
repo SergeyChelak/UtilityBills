@@ -41,7 +41,8 @@ struct iOSAppViewFactory {
         return PropertyObjectHome(
             store: store,
             updatePublisher: storage.publisher,
-            infoSectionCallback: { navigationController.showOverlay(.editPropertyInfo($0)) }
+            infoSectionCallback: { navigationController.showOverlay(.editPropertyInfo($0)) },
+            meterHeaderSectionCallback: { navigationController.showOverlay(.addMeter($0)) }
         )
     }
     
@@ -50,6 +51,12 @@ struct iOSAppViewFactory {
             propertyObject: obj,
             callback: { try storage.updateProperty($0) }
         )
+    }
+    
+    private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
+        AddMeterView(state: .newData(propertyObjectId: propObjId)) {
+            try storage.newMeter($0)
+        }
     }
 }
 
@@ -63,6 +70,8 @@ extension iOSAppViewFactory: ViewFactory {
             composePropertyHomeView(uuid)
         case .editPropertyInfo(let obj):
             composeEditPropertyInfoView(obj)
+        case .addMeter(let objId):
+            composeAddMeterView(objId)
         }
     }
 }

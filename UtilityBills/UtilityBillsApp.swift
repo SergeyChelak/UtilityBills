@@ -40,6 +40,7 @@ enum Route: Hashable {
     case properlyObjectList
     case propertyObjectHome(PropertyObjectId)
     case editPropertyInfo(PropertyObject)
+    case addMeter(PropertyObjectId)
 }
 
 protocol NavigationController {

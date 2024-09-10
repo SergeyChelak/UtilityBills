@@ -9,11 +9,6 @@ import SwiftUI
 
 typealias HeaderActionCallback = () -> Void
 
-//struct HeaderModel {
-//    let title: String
-//    let action: HeaderAction?
-//}
-
 struct HeaderAction {
     let title: String?
     let imageDescriptor: ImageDescriptor?

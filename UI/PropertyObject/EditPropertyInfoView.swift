@@ -19,11 +19,11 @@ struct EditPropertyInfoView: View {
             Text("Object Properties")
                 .padding(.top, 12)
             Spacer()
-            UBTextField("Title", text: $propertyObject.name)
-                .padding(.horizontal)
+            TextField("", text: $propertyObject.name)
+                .inputStyle(caption: "Title")
                         
-            UBTextField("Details", text: $propertyObject.details)
-                .padding(.horizontal)
+            TextField("", text: $propertyObject.details)
+                .inputStyle(caption: "Details")
             
             Spacer()
             CTAButton(caption: "Save") {
@@ -34,9 +34,9 @@ struct EditPropertyInfoView: View {
                     fatalError(error.localizedDescription)
                 }
             }
-            .padding(.horizontal)
             .padding(.bottom, 12)
         }
+        .padding(.horizontal)
     }
 }
 

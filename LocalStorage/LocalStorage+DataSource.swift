@@ -74,18 +74,24 @@ extension LocalStorage: MeterListDataSource {
         return try context.fetch(request).map(map)
     }
     
-    func newMeter(for propertyId: PropertyObjectId) throws -> Meter {
+    func newMeter(_ data: NewMeterData) throws -> Meter {
         let context = viewContext
-        guard let propertyObject = try fetchPropertyObject(propertyId, into: context) else {
+        guard let propertyObject = try fetchPropertyObject(data.propertyObjectId, into: context) else {
             // TODO: fix this
             throw NSError()
         }
         let meterObj = CDMeter(context: context)
         meterObj.uuid = UUID()
-        meterObj.name = "New Meter"
-        meterObj.capacity = 5
+        meterObj.name = data.name
+        if data.isCapacityApplicable {
+            meterObj.capacity = data.capacity as NSNumber
+        }
+        if data.isInspectionDateApplicable {
+            meterObj.inspectionDate = data.inspectionDate
+        }
         meterObj.propertyObject = propertyObject
         
+        // TODO: insert initial value
         try context.save()
         
         return map(meterObj)
@@ -117,7 +123,7 @@ func map(_ cdMeter: CDMeter) -> Meter {
     Meter(
         id: cdMeter.uuid!,
         name: cdMeter.name!,
-        capacity: (cdMeter.capacity as NSNumber).intValue,
+        capacity: cdMeter.capacity?.intValue,
         inspectionDate: cdMeter.inspectionDate
     )
 }

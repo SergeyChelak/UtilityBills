@@ -1,5 +1,5 @@
 //
-//  UBTextField.swift
+//  InputStyleViewModifier.swift
 //  UtilityBills
 //
 //  Created by Sergey on 09.09.2024.
@@ -7,40 +7,35 @@
 
 import SwiftUI
 
-struct UBTextField: View {
+struct InputStyleViewModifier: ViewModifier {
     let caption: String?
-    let placeholder: String?
-    @Binding var text: String
     
-    init(_ caption: String?, placeholder: String? = nil, text: Binding<String>) {
-        self.caption = caption
-        self.placeholder = placeholder
-        self._text = text
-    }
-    
-    var body: some View {
+    func body(content: Content) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             if let caption {
                 Text(caption)
                     .lineLimit(1)
             }
-            TextField(placeholder ?? "", text: $text)
+            content
                 .padding(8)
                 .background(
                     RoundedRectangle(cornerRadius: .infinity)
                         .fill(.fill)
-                        .stroke(Color.primary, lineWidth: 1)
                 )
                 .padding(.horizontal, 1)
         }
     }
 }
 
+extension View {
+    func inputStyle(caption: String? = nil) -> some View {
+        modifier(InputStyleViewModifier(caption: caption))
+    }
+}
+
 #Preview {
     var text = "Villa California"
     let binding = Binding(get: { text }, set: { text = $0 })
-    return UBTextField(
-        "Name:",
-        text: binding
-    )
+    return TextField("Placeholder:", text: binding)
+        .inputStyle(caption: "Name")
 }

@@ -18,7 +18,7 @@
         <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDBill" inverseName="records" inverseEntity="CDBill"/>
     </entity>
     <entity name="CDMeter" representedClassName=".CDMeter" syncable="YES" codeGenerationType="class">
-        <attribute name="capacity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="capacity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="inspectionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>

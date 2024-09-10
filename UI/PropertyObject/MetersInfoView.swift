@@ -12,12 +12,16 @@ struct MetersInfoView: View {
     
     var body: some View {
         VStack {
-            ForEach(meters.indices, id: \.self) { i in
-                Text(meters[i].name)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(4)
-                if i < meters.count - 1 {
-                    Divider()
+            if meters.isEmpty {
+                Text("You have no meters yet")
+            } else {
+                ForEach(meters.indices, id: \.self) { i in
+                    Text(meters[i].name)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(4)
+                    if i < meters.count - 1 {
+                        Divider()
+                    }
                 }
             }
         }

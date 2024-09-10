@@ -10,5 +10,5 @@ import Foundation
 protocol MeterListDataSource {
     func allMeters(for property: PropertyObjectId) throws -> [Meter]
     
-    func newMeter(for property: PropertyObjectId) throws -> Meter    
+    func newMeter(_ data: NewMeterData) throws -> Meter
 }

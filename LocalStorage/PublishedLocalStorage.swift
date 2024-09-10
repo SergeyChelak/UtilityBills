@@ -54,8 +54,8 @@ extension PublishedLocalStorage: PropertyObjectListDataSource, PropertyObjectDat
         try storage.allMeters(for: property)
     }
         
-    func newMeter(for property: PropertyObjectId) throws -> Meter {
-        let val = try storage.newMeter(for: property)
+    func newMeter(_ data: NewMeterData) throws -> Meter {
+        let val = try storage.newMeter(data)
         notify()
         return val
     }
