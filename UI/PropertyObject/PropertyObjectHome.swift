@@ -35,6 +35,7 @@ struct PropertyObjectHome: View {
     let updatePublisher: AnyPublisher<(), Never>
     let infoSectionCallback: (PropertyObject) -> Void
     let meterHeaderSectionCallback: (PropertyObjectId) -> Void
+    let meterSelectionCallback: (MeterId) -> Void
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -51,16 +52,18 @@ struct PropertyObjectHome: View {
                         )
                 }        
                 // Manage meters/meter data
-                MetersInfoView(meters: store.meters)
-                    .sectionWith(
-                        title: "Meters",
-                        action: HeaderAction(
-                            title: "Add",
-                            imageDescriptor: .system("plus.circle"),
-                            callback: { meterHeaderSectionCallback(store.objectId) }
-                        )
+                MetersInfoView(
+                    meters: store.meters,
+                    meterSelectionCallback: meterSelectionCallback
+                )
+                .sectionWith(
+                    title: "Meters",
+                    action: HeaderAction(
+                        title: "Add",
+                        imageDescriptor: .system("plus.circle"),
+                        callback: { meterHeaderSectionCallback(store.objectId) }
                     )
-                
+                )
                 Spacer()
             }
         }
@@ -90,6 +93,7 @@ struct PropertyObjectHome: View {
         store: store,
         updatePublisher: Empty().eraseToAnyPublisher(),
         infoSectionCallback: { _ in },
-        meterHeaderSectionCallback: { _ in }
+        meterHeaderSectionCallback: { _ in },
+        meterSelectionCallback: { _ in }
     )
 }

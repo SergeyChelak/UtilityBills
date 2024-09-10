@@ -35,17 +35,3 @@ struct UtilityBillsApp: App {
 protocol ViewFactory {
     func view(for route: Route) -> any View
 }
-
-enum Route: Hashable {
-    case properlyObjectList
-    case propertyObjectHome(PropertyObjectId)
-    case editPropertyInfo(PropertyObject)
-    case addMeter(PropertyObjectId)
-}
-
-protocol NavigationController {
-    func push(_ route: Route)
-    func pop()
-    func popToRoot()
-    func showOverlay(_ route: Route)
-}

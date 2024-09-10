@@ -59,4 +59,8 @@ extension PublishedLocalStorage: PropertyObjectListDataSource, PropertyObjectDat
         notify()
         return val
     }
+    
+    func meterValues(_ meterId: MeterId) throws -> [MeterValue] {
+        try storage.meterValues(meterId)        
+    }
 }

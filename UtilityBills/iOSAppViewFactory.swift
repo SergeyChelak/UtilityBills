@@ -15,10 +15,10 @@ struct iOSAppViewFactory {
         let ls = LocalStorage.instance()
         return PublishedLocalStorage(storage: ls)
     }()
-    let navigationController: NavigationController
+    let router: Router
     
-    init(navigationController: NavigationController) {
-        self.navigationController = navigationController
+    init(navigationController: Router) {
+        self.router = navigationController
     }
     
     private func composePropertyObjectListView() -> some View {
@@ -31,7 +31,7 @@ struct iOSAppViewFactory {
             title: "My Objects",
             store: store,
             factory: { ObjectListCell(item: $0) },
-            selection: { navigationController.push(.propertyObjectHome($0.id)) }
+            selection: { router.push(.propertyObjectHome($0.id)) }
         )
         return view
     }
@@ -41,8 +41,9 @@ struct iOSAppViewFactory {
         return PropertyObjectHome(
             store: store,
             updatePublisher: storage.publisher,
-            infoSectionCallback: { navigationController.showOverlay(.editPropertyInfo($0)) },
-            meterHeaderSectionCallback: { navigationController.showOverlay(.addMeter($0)) }
+            infoSectionCallback: { router.showOverlay(.editPropertyInfo($0)) },
+            meterHeaderSectionCallback: { router.showOverlay(.addMeter($0)) },
+            meterSelectionCallback: { router.push(.meterValues($0)) }
         )
     }
     
@@ -55,8 +56,22 @@ struct iOSAppViewFactory {
     
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
         AddMeterView(state: .newData(propertyObjectId: propObjId)) {
-            try storage.newMeter($0)
+            _ = try storage.newMeter($0)
         }
+    }
+    
+    private func composeMeterValuesView(_ meterId: MeterId) -> some View {
+        let store = EditableListStore<MeterValue>(
+            loader: { try storage.meterValues(meterId) }
+        )
+        return EditableListView(
+            title: "Values",
+            store: store,
+            factory: { _ in
+                CaptionValueCell(caption: "???", value: "***")
+            },
+            selection: { _ in }
+        )
     }
 }
 
@@ -72,6 +87,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeEditPropertyInfoView(obj)
         case .addMeter(let objId):
             composeAddMeterView(objId)
+        case .meterValues(let meterId):
+            composeMeterValuesView(meterId)
         }
     }
 }

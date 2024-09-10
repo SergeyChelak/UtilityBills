@@ -12,7 +12,7 @@ class iOSNavigationStore: ObservableObject {
     @Published var popover: Route?
 }
 
-class iOSNavigationController: NavigationController {
+class iOSNavigationController: Router {
     private let store: iOSNavigationStore
     
     init(store: iOSNavigationStore) {

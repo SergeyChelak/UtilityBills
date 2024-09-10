@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MetersInfoView: View {
     let meters: [Meter]
+    let meterSelectionCallback: (MeterId) -> Void
     
     var body: some View {
         VStack {
@@ -18,6 +19,9 @@ struct MetersInfoView: View {
                 ForEach(meters.indices, id: \.self) { i in
                     Text(meters[i].name)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .onTapGesture {
+                            meterSelectionCallback(meters[i].id)
+                        }
                         .padding(4)
                     if i < meters.count - 1 {
                         Divider()
@@ -34,5 +38,5 @@ struct MetersInfoView: View {
         name: "Hot Water",
         capacity: 9,
         inspectionDate: nil)
-    return MetersInfoView(meters: [meter])
+    return MetersInfoView(meters: [meter]) { _ in }
 }

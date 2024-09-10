@@ -34,6 +34,8 @@
 		A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */; };
 		A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B872C905104002BC8EF /* AddMeterView.swift */; };
 		A5E00B8A2C905C0F002BC8EF /* NewMeterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B892C905C0F002BC8EF /* NewMeterData.swift */; };
+		A5E00B8C2C90736D002BC8EF /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B8B2C90736D002BC8EF /* Route.swift */; };
+		A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B8D2C90757F002BC8EF /* MeterValue.swift */; };
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 		A5F944392C8CC8A700A5FD47 /* EditableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944382C8CC8A700A5FD47 /* EditableListView.swift */; };
 		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
@@ -92,6 +94,8 @@
 		A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionValueCell.swift; sourceTree = "<group>"; };
 		A5E00B872C905104002BC8EF /* AddMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterView.swift; sourceTree = "<group>"; };
 		A5E00B892C905C0F002BC8EF /* NewMeterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeterData.swift; sourceTree = "<group>"; };
+		A5E00B8B2C90736D002BC8EF /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		A5E00B8D2C90757F002BC8EF /* MeterValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValue.swift; sourceTree = "<group>"; };
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 		A5F944382C8CC8A700A5FD47 /* EditableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableListView.swift; sourceTree = "<group>"; };
 		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				A540DD202C7F6FE800F5624E /* PropertyObject.swift */,
 				A540DD242C7F711B00F5624E /* Meter.swift */,
 				A5E00B892C905C0F002BC8EF /* NewMeterData.swift */,
+				A5E00B8D2C90757F002BC8EF /* MeterValue.swift */,
 				A540DD262C7F718800F5624E /* Tariff.swift */,
 				A540DD282C7F729700F5624E /* CalculationParameter.swift */,
 				A540DD2A2C7F734E00F5624E /* BillingItem.swift */,
@@ -166,17 +171,19 @@
 			children = (
 				A55C63662C8C94FB00F66741 /* Common */,
 				A55C633F2C7FD50E00F66741 /* PropertyObject */,
-				A540DD402C7FB57000F5624E /* ObjectList */,
+				A540DD402C7FB57000F5624E /* Cells */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		A540DD402C7FB57000F5624E /* ObjectList */ = {
+		A540DD402C7FB57000F5624E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */,
+				A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */,
 				A55C63392C7FB67B00F66741 /* ObjectListCell.swift */,
 			);
-			path = ObjectList;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A55C633F2C7FD50E00F66741 /* PropertyObject */ = {
@@ -197,8 +204,6 @@
 				A5F944362C8CC4F600A5FD47 /* UBImage.swift */,
 				A5E00B7F2C8F9347002BC8EF /* InputStyleViewModifier.swift */,
 				A5F944382C8CC8A700A5FD47 /* EditableListView.swift */,
-				A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */,
-				A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */,
 				A5F944412C8F5D2400A5FD47 /* SectionHeaderView.swift */,
 				A5F944432C8F5F9000A5FD47 /* SectionViewModifier.swift */,
 				A5E00B812C8F9726002BC8EF /* CTAButton.swift */,
@@ -235,6 +240,7 @@
 			children = (
 				A5D809302C7156A300F2E6AF /* Assets.xcassets */,
 				A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */,
+				A5E00B8B2C90736D002BC8EF /* Route.swift */,
 				A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */,
 				A55C63552C83358900F66741 /* iOSAppRouter.swift */,
 				A5D809322C7156A300F2E6AF /* Preview Content */,
@@ -399,8 +405,10 @@
 			files = (
 				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
+				A5E00B8C2C90736D002BC8EF /* Route.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectHome.swift in Sources */,
+				A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */,
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+DataSource.swift in Sources */,

@@ -96,6 +96,15 @@ extension LocalStorage: MeterListDataSource {
         
         return map(meterObj)
     }
+    
+    func meterValues(_ meterId: MeterId) throws -> [MeterValue] {
+        let context = viewContext
+        let request = CDMeterValue.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.meter.uuid == %@", meterId.uuidString)
+        return try context.fetch(request).map(map)
+    }
+    
+//    func addValue(_ meterId: MeterId, value: )
 }
 
 // utils
@@ -126,4 +135,8 @@ func map(_ cdMeter: CDMeter) -> Meter {
         capacity: cdMeter.capacity?.intValue,
         inspectionDate: cdMeter.inspectionDate
     )
+}
+
+func map(_ cdMeterValue: CDMeterValue) -> MeterValue {
+    MeterValue()
 }
