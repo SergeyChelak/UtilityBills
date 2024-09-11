@@ -67,8 +67,11 @@ struct iOSAppViewFactory {
         return EditableListView(
             title: "Values",
             store: store,
-            factory: { _ in
-                CaptionValueCell(caption: "???", value: "***")
+            factory: {
+                CaptionValueCell(
+                    caption: $0.date.formatted(),
+                    value: $0.value.formatted()
+                )
             },
             selection: { _ in }
         )

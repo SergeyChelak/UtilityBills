@@ -91,7 +91,8 @@ extension LocalStorage: MeterListDataSource {
         }
         meterObj.propertyObject = propertyObject
         
-        // TODO: insert initial value
+        let initial: MeterValue = .initial(data.initialValue)
+        _ = try createMeterValue(with: initial, for: meterObj)
         try context.save()
         
         return map(meterObj)
@@ -101,10 +102,19 @@ extension LocalStorage: MeterListDataSource {
         let context = viewContext
         let request = CDMeterValue.fetchRequest()
         request.predicate = NSPredicate(format: "SELF.meter.uuid == %@", meterId.uuidString)
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         return try context.fetch(request).map(map)
     }
     
-//    func addValue(_ meterId: MeterId, value: )
+    func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws {
+        let context = viewContext
+        guard let meter = try fetchMeter(meterId, into: context) else {
+            // TODO: fix error type
+            throw NSError()
+        }
+        _ = try createMeterValue(with: value, for: meter)
+        try context.save()
+    }
 }
 
 // utils
@@ -117,6 +127,29 @@ extension LocalStorage {
         request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
         request.fetchLimit = 1
         return try context.fetch(request).first
+    }
+    
+    private func fetchMeter(
+        _ uuid: MeterId,
+        into context: NSManagedObjectContext
+    ) throws -> CDMeter? {
+        let request = CDMeter.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    private  func createMeterValue(with value: MeterValue, for meter: CDMeter) throws -> CDMeterValue {
+        guard let context = meter.managedObjectContext else {
+            throw NSError()
+        }
+        let cdValue = CDMeterValue(context: context)
+        cdValue.uuid = UUID()
+        cdValue.meter = meter
+        cdValue.date = value.date
+        cdValue.isPaid = value.isPaid
+        cdValue.value = value.value as NSNumber
+        return cdValue
     }
 }
 
@@ -138,5 +171,10 @@ func map(_ cdMeter: CDMeter) -> Meter {
 }
 
 func map(_ cdMeterValue: CDMeterValue) -> MeterValue {
-    MeterValue()
+    MeterValue(
+        date: cdMeterValue.date!,
+        value: cdMeterValue.value!.doubleValue,
+        isPaid: cdMeterValue.isPaid,
+        id: cdMeterValue.uuid!
+    )
 }
