@@ -25,7 +25,7 @@ struct PublishedLocalStorage {
     }
 }
 
-extension PublishedLocalStorage: PropertyObjectListDataSource, PropertyObjectDataSource, MeterListDataSource {
+extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO {
     func allProperties() throws -> [PropertyObject] {
         try storage.allProperties()
     }

@@ -9,13 +9,14 @@ import Combine
 import SwiftUI
 
 class PropertyObjectStore: ObservableObject {
-    let dataSource: PropertyObjectDataSource & MeterListDataSource
+    let dataSource: PropertyObjectDAO & MetersDAO
     let objectId: PropertyObjectId
     
     @Published var propObj: PropertyObject?
     @Published var meters: [Meter] = []
+    @Published var tariffs: [Tariff] = []
     
-    init(_ objectId: PropertyObjectId, dataSource: PropertyObjectDataSource & MeterListDataSource) {
+    init(_ objectId: PropertyObjectId, dataSource: PropertyObjectDAO & MetersDAO) {
         self.objectId = objectId
         self.dataSource = dataSource
     }
@@ -62,6 +63,16 @@ struct PropertyObjectHome: View {
                         title: "Add",
                         imageDescriptor: .system("plus.circle"),
                         callback: { meterHeaderSectionCallback(store.objectId) }
+                    )
+                )
+                TariffInfoView(
+                    tariffs: []
+                )
+                .sectionWith(
+                    title: "Tariffs",
+                    action: HeaderAction(
+                        title: "Add",
+                        callback: { fatalError() }
                     )
                 )
                 Spacer()

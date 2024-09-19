@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-extension LocalStorage: PropertyObjectListDataSource {
+extension LocalStorage: PropertyObjectDAO {
     func allProperties() throws -> [PropertyObject] {
         let request = CDPropertyObject.fetchRequest()
         let result = try viewContext.fetch(request)
@@ -40,9 +40,6 @@ extension LocalStorage: PropertyObjectListDataSource {
         }
     }
     
-}
-
-extension LocalStorage: PropertyObjectDataSource {
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {
         guard let obj = try fetchPropertyObject(uuid, into: viewContext) else {
             return nil
@@ -62,7 +59,7 @@ extension LocalStorage: PropertyObjectDataSource {
     }
 }
 
-extension LocalStorage: MeterListDataSource {
+extension LocalStorage: MetersDAO {
     func allMeters(for propertyId: PropertyObjectId) throws -> [Meter] {
         let context = viewContext
         guard let obj = try fetchPropertyObject(propertyId, into: context) else {

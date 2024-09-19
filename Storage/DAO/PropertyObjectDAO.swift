@@ -7,15 +7,13 @@
 
 import Foundation
 
-protocol PropertyObjectListDataSource {
+protocol PropertyObjectDAO {
     func allProperties() throws -> [PropertyObject]
     
     func createProperty() throws -> PropertyObject
     
     func deleteProperty(_ propertyObject: PropertyObject) throws
-}
 
-protocol PropertyObjectDataSource {
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject?
 
     func updateProperty(_ propertyObject: PropertyObject) throws

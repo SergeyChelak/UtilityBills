@@ -7,10 +7,27 @@
 
 import Foundation
 
+typealias TariffId = UUID
+
+fileprivate let wholeYearMask = 0b111111111111
+
 struct Tariff {
-    let id: String
-    let name: String
-//    let type: TariffType
-    let price: Decimal
-//    let periodicity: ???
+    let id: TariffId
+    var name: String
+    var price: Decimal
+    var activeMonthMask: Int = wholeYearMask
+    
+    func isActiveMonth(_ number: Int) -> Bool {
+        let monthMask = 1 << (number + 1)
+        return activeMonthMask & monthMask != 0
+    }
+    
+    mutating func setMonth(_ number: Int, isActive: Bool) {
+        let monthMask = 1 << (number + 1)
+        if isActive {
+            activeMonthMask |= monthMask
+        } else {
+            activeMonthMask ^= monthMask
+        }
+    }
 }
