@@ -38,3 +38,39 @@ struct LocalStorage {
         self.persistentContainer = container
     }
 }
+
+// utils
+extension LocalStorage {
+    func fetchPropertyObject(
+        _ uuid: PropertyObjectId,
+        into context: NSManagedObjectContext
+    ) throws -> CDPropertyObject? {
+        let request = CDPropertyObject.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    func fetchMeter(
+        _ uuid: MeterId,
+        into context: NSManagedObjectContext
+    ) throws -> CDMeter? {
+        let request = CDMeter.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    func createMeterValue(with value: MeterValue, for meter: CDMeter) throws -> CDMeterValue {
+        guard let context = meter.managedObjectContext else {
+            throw NSError()
+        }
+        let cdValue = CDMeterValue(context: context)
+        cdValue.uuid = UUID()
+        cdValue.meter = meter
+        cdValue.date = value.date
+        cdValue.isPaid = value.isPaid
+        cdValue.value = value.value as NSNumber
+        return cdValue
+    }
+}
