@@ -12,7 +12,7 @@ extension LocalStorage: PropertyObjectDAO {
     func allProperties() throws -> [PropertyObject] {
         let request = CDPropertyObject.fetchRequest()
         let result = try viewContext.fetch(request)
-        return result.map(map(_:))
+        return result.map(mapPropertyObject(_:))
     }
     
     func createProperty() throws -> PropertyObject {
@@ -22,12 +22,12 @@ extension LocalStorage: PropertyObjectDAO {
         obj.name = "Title";
         obj.details = "Details";
         try context.save()
-        return map(obj)
+        return mapPropertyObject(obj)
     }
     
     func deleteProperty(_ propertyObject: PropertyObject) throws {
         let request = CDPropertyObject.fetchRequest()
-        request.predicate = NSPredicate(format: "SELF.uuid == %@", propertyObject.id.uuidString)
+        request.predicate = .byOwnUUID(propertyObject.id)
         let context = viewContext
         do {
             let result = try context.fetch(request)
@@ -44,7 +44,7 @@ extension LocalStorage: PropertyObjectDAO {
         guard let obj = try fetchPropertyObject(uuid, into: viewContext) else {
             return nil
         }
-        return map(obj)
+        return mapPropertyObject(obj)
     }
     
     func updateProperty(_ propertyObject: PropertyObject) throws {

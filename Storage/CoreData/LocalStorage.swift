@@ -46,7 +46,7 @@ extension LocalStorage {
         into context: NSManagedObjectContext
     ) throws -> CDPropertyObject? {
         let request = CDPropertyObject.fetchRequest()
-        request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        request.predicate = .byOwnUUID(uuid)
         request.fetchLimit = 1
         return try context.fetch(request).first
     }
@@ -56,7 +56,7 @@ extension LocalStorage {
         into context: NSManagedObjectContext
     ) throws -> CDMeter? {
         let request = CDMeter.fetchRequest()
-        request.predicate = NSPredicate(format: "SELF.uuid == %@", uuid.uuidString)
+        request.predicate = .byOwnUUID(uuid)
         request.fetchLimit = 1
         return try context.fetch(request).first
     }
@@ -74,3 +74,4 @@ extension LocalStorage {
         return cdValue
     }
 }
+

@@ -10,7 +10,10 @@
 		A50302742C9CD65300033AE3 /* MetersDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50302712C9CD65300033AE3 /* MetersDAO.swift */; };
 		A50302752C9CD65300033AE3 /* PropertyObjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50302722C9CD65300033AE3 /* PropertyObjectDAO.swift */; };
 		A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50302762C9CD71600033AE3 /* LocalStorage+MetersDAO.swift */; };
-		A50302792C9CD77F00033AE3 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50302782C9CD77F00033AE3 /* Mapper.swift */; };
+		A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50302782C9CD77F00033AE3 /* Mappers.swift */; };
+		A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503027A2C9CD7D900033AE3 /* TariffDAO.swift */; };
+		A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503027C2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift */; };
+		A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503027E2C9CD8B300033AE3 /* NSPredicate+CoreData.swift */; };
 		A510F24C2C9CD06500942F8A /* PropertyObjectHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510F24B2C9CD06500942F8A /* PropertyObjectHomePresenter.swift */; };
 		A510F24E2C9CD42A00942F8A /* TariffInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
@@ -70,7 +73,10 @@
 		A50302712C9CD65300033AE3 /* MetersDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetersDAO.swift; sourceTree = "<group>"; };
 		A50302722C9CD65300033AE3 /* PropertyObjectDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyObjectDAO.swift; sourceTree = "<group>"; };
 		A50302762C9CD71600033AE3 /* LocalStorage+MetersDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+MetersDAO.swift"; sourceTree = "<group>"; };
-		A50302782C9CD77F00033AE3 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		A50302782C9CD77F00033AE3 /* Mappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappers.swift; sourceTree = "<group>"; };
+		A503027A2C9CD7D900033AE3 /* TariffDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffDAO.swift; sourceTree = "<group>"; };
+		A503027C2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+TariffDAO.swift"; sourceTree = "<group>"; };
+		A503027E2C9CD8B300033AE3 /* NSPredicate+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+CoreData.swift"; sourceTree = "<group>"; };
 		A510F24B2C9CD06500942F8A /* PropertyObjectHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectHomePresenter.swift; sourceTree = "<group>"; };
 		A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffInfoView.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
@@ -140,8 +146,9 @@
 		A50302732C9CD65300033AE3 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
-				A50302712C9CD65300033AE3 /* MetersDAO.swift */,
 				A50302722C9CD65300033AE3 /* PropertyObjectDAO.swift */,
+				A50302712C9CD65300033AE3 /* MetersDAO.swift */,
+				A503027A2C9CD7D900033AE3 /* TariffDAO.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -176,8 +183,10 @@
 				A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */,
 				A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */,
 				A50302762C9CD71600033AE3 /* LocalStorage+MetersDAO.swift */,
+				A503027C2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift */,
 				A5E00B832C8FA291002BC8EF /* PublishedLocalStorage.swift */,
-				A50302782C9CD77F00033AE3 /* Mapper.swift */,
+				A503027E2C9CD8B300033AE3 /* NSPredicate+CoreData.swift */,
+				A50302782C9CD77F00033AE3 /* Mappers.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -429,7 +438,7 @@
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */,
-				A50302792C9CD77F00033AE3 /* Mapper.swift in Sources */,
+				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
@@ -438,7 +447,10 @@
 				A50302742C9CD65300033AE3 /* MetersDAO.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
+				A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */,
+				A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */,
 				A510F24C2C9CD06500942F8A /* PropertyObjectHomePresenter.swift in Sources */,
+				A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,

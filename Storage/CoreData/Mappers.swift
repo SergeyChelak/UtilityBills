@@ -1,5 +1,5 @@
 //
-//  Mapper.swift
+//  Mappers.swift
 //  UtilityBills
 //
 //  Created by Sergey on 20.09.2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-func map(_ cdPropertyObject: CDPropertyObject) -> PropertyObject {
+func mapPropertyObject(_ cdPropertyObject: CDPropertyObject) -> PropertyObject {
     PropertyObject(
         id: cdPropertyObject.uuid!,
         name: cdPropertyObject.name!,
@@ -15,7 +15,7 @@ func map(_ cdPropertyObject: CDPropertyObject) -> PropertyObject {
         currencyId: nil)
 }
 
-func map(_ cdMeter: CDMeter) -> Meter {
+func mapMeter(_ cdMeter: CDMeter) -> Meter {
     Meter(
         id: cdMeter.uuid!,
         name: cdMeter.name!,
@@ -24,7 +24,7 @@ func map(_ cdMeter: CDMeter) -> Meter {
     )
 }
 
-func map(_ cdMeterValue: CDMeterValue) -> MeterValue {
+func mapMeterValue(_ cdMeterValue: CDMeterValue) -> MeterValue {
     MeterValue(
         date: cdMeterValue.date!,
         value: cdMeterValue.value!.doubleValue,

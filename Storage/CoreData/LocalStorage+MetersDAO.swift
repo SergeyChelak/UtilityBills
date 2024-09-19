@@ -16,7 +16,7 @@ extension LocalStorage: MetersDAO {
         let request = CDMeter.fetchRequest()
         request.predicate = NSPredicate(format: "SELF.propertyObject == %@", obj)
         
-        return try context.fetch(request).map(map)
+        return try context.fetch(request).map(mapMeter)
     }
     
     func newMeter(_ data: NewMeterData) throws -> Meter {
@@ -40,7 +40,7 @@ extension LocalStorage: MetersDAO {
         _ = try createMeterValue(with: initial, for: meterObj)
         try context.save()
         
-        return map(meterObj)
+        return mapMeter(meterObj)
     }
     
     func meterValues(_ meterId: MeterId) throws -> [MeterValue] {
@@ -48,7 +48,7 @@ extension LocalStorage: MetersDAO {
         let request = CDMeterValue.fetchRequest()
         request.predicate = NSPredicate(format: "SELF.meter.uuid == %@", meterId.uuidString)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        return try context.fetch(request).map(map)
+        return try context.fetch(request).map(mapMeterValue)
     }
     
     func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws {
