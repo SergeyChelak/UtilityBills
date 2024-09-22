@@ -8,61 +8,34 @@
 import Combine
 import SwiftUI
 
-class PropertyObjectStore: ObservableObject {
-    let dataSource: PropertyObjectDAO & MetersDAO
-    let objectId: PropertyObjectId
-    
-    @Published var propObj: PropertyObject?
-    @Published var meters: [Meter] = []
-    @Published var tariffs: [Tariff] = []
-    
-    init(_ objectId: PropertyObjectId, dataSource: PropertyObjectDAO & MetersDAO) {
-        self.objectId = objectId
-        self.dataSource = dataSource
-    }
-    
-    func load() {
-        do {
-            propObj = try dataSource.fetchProperty(objectId)
-            meters = try dataSource.allMeters(for: objectId)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
-}
-
 struct PropertyObjectHome: View {
-    @StateObject var store: PropertyObjectStore
-    let updatePublisher: AnyPublisher<(), Never>
-    let infoSectionCallback: (PropertyObject) -> Void
-    let meterHeaderSectionCallback: (PropertyObjectId) -> Void
-    let meterSelectionCallback: (MeterId) -> Void
+    @StateObject var viewModel: PropertyObjectViewModel
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 24) {
                 // Manage estate data
-                if let obj = store.propObj {
+                if let obj = viewModel.propObj {
                     PropertyInfoView(propertyObject: obj)
                         .sectionWith(
                             title: "Info",
                             action: HeaderAction(
                                 title: "Edit",
                                 imageDescriptor: .system("pencil"),
-                                callback: { infoSectionCallback(obj) })
+                                callback: viewModel.infoSectionSelected)
                         )
                 }        
                 // Manage meters/meter data
                 MetersInfoView(
-                    meters: store.meters,
-                    meterSelectionCallback: meterSelectionCallback
+                    meters: viewModel.meters,
+                    meterSelectionCallback: viewModel.meterSelected(_:)
                 )
                 .sectionWith(
                     title: "Meters",
                     action: HeaderAction(
                         title: "Add",
                         imageDescriptor: .system("plus.circle"),
-                        callback: { meterHeaderSectionCallback(store.objectId) }
+                        callback: viewModel.meterHeaderSectionSelected
                     )
                 )
                 TariffInfoView(
@@ -78,14 +51,10 @@ struct PropertyObjectHome: View {
                 Spacer()
             }
         }
-        .navigationTitle(store.propObj?.name ?? "")
+        .navigationTitle(viewModel.propObj?.name ?? "")
         .task {
-            store.load()
+            viewModel.load()
         }
-        .onReceive(updatePublisher) {
-            store.load()
-        }
-        
         
         // Display historical data
         
@@ -97,14 +66,9 @@ struct PropertyObjectHome: View {
 
 #Preview {
     let ds = LocalStorage.previewInstance()
-    let store = PropertyObjectStore(
+    let store = PropertyObjectViewModel(
         UUID(),
-        dataSource: ds)
-    return PropertyObjectHome(
-        store: store,
-        updatePublisher: Empty().eraseToAnyPublisher(),
-        infoSectionCallback: { _ in },
-        meterHeaderSectionCallback: { _ in },
-        meterSelectionCallback: { _ in }
-    )
+        dataSource: ds,
+        updatePublisher: Empty().eraseToAnyPublisher())
+    return PropertyObjectHome(viewModel: store)
 }

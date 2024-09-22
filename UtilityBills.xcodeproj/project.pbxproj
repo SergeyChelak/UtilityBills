@@ -14,7 +14,7 @@
 		A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503027A2C9CD7D900033AE3 /* TariffDAO.swift */; };
 		A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503027C2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift */; };
 		A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503027E2C9CD8B300033AE3 /* NSPredicate+CoreData.swift */; };
-		A510F24C2C9CD06500942F8A /* PropertyObjectHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510F24B2C9CD06500942F8A /* PropertyObjectHomePresenter.swift */; };
+		A51082B22CA0934100103E76 /* PropertyObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082B12CA0934100103E76 /* PropertyObjectViewModel.swift */; };
 		A510F24E2C9CD42A00942F8A /* TariffInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
@@ -77,7 +77,7 @@
 		A503027A2C9CD7D900033AE3 /* TariffDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffDAO.swift; sourceTree = "<group>"; };
 		A503027C2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+TariffDAO.swift"; sourceTree = "<group>"; };
 		A503027E2C9CD8B300033AE3 /* NSPredicate+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+CoreData.swift"; sourceTree = "<group>"; };
-		A510F24B2C9CD06500942F8A /* PropertyObjectHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectHomePresenter.swift; sourceTree = "<group>"; };
+		A51082B12CA0934100103E76 /* PropertyObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectViewModel.swift; sourceTree = "<group>"; };
 		A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffInfoView.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
@@ -215,12 +215,12 @@
 			isa = PBXGroup;
 			children = (
 				A5F9443E2C8D130E00A5FD47 /* PropertyObjectHome.swift */,
+				A51082B12CA0934100103E76 /* PropertyObjectViewModel.swift */,
 				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
 				A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */,
 				A5F944472C8F664700A5FD47 /* MetersInfoView.swift */,
 				A5E00B872C905104002BC8EF /* AddMeterView.swift */,
 				A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */,
-				A510F24B2C9CD06500942F8A /* PropertyObjectHomePresenter.swift */,
 			);
 			path = PropertyObject;
 			sourceTree = "<group>";
@@ -445,11 +445,11 @@
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A50302742C9CD65300033AE3 /* MetersDAO.swift in Sources */,
+				A51082B22CA0934100103E76 /* PropertyObjectViewModel.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */,
 				A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */,
-				A510F24C2C9CD06500942F8A /* PropertyObjectHomePresenter.swift in Sources */,
 				A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,

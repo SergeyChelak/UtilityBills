@@ -37,14 +37,15 @@ struct iOSAppViewFactory {
     }
     
     private func composePropertyHomeView(_ uuid: PropertyObjectId) -> some View {
-        let store = PropertyObjectStore(uuid, dataSource: storage)
-        return PropertyObjectHome(
-            store: store,
+        let store = PropertyObjectViewModel(
+            uuid,
+            dataSource: storage,
             updatePublisher: storage.publisher,
             infoSectionCallback: { router.showOverlay(.editPropertyInfo($0)) },
             meterHeaderSectionCallback: { router.showOverlay(.addMeter($0)) },
             meterSelectionCallback: { router.push(.meterValues($0)) }
         )
+        return PropertyObjectHome(viewModel: store)
     }
     
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
