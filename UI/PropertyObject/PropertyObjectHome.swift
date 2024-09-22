@@ -39,13 +39,13 @@ struct PropertyObjectHome: View {
                     )
                 )
                 TariffInfoView(
-                    tariffs: []
+                    tariffs: viewModel.tariffs
                 )
                 .sectionWith(
                     title: "Tariffs",
                     action: HeaderAction(
                         title: "Add",
-                        callback: { fatalError() }
+                        callback: viewModel.tariffSectionSelected
                     )
                 )
                 Spacer()

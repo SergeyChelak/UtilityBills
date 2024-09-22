@@ -14,8 +14,7 @@ extension LocalStorage: MetersDAO {
             return []
         }
         let request = CDMeter.fetchRequest()
-        request.predicate = NSPredicate(format: "SELF.propertyObject == %@", obj)
-        
+        request.predicate = .byPropertyObject(obj)
         return try context.fetch(request).map(mapMeter)
     }
     

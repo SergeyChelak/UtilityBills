@@ -32,3 +32,12 @@ func mapMeterValue(_ cdMeterValue: CDMeterValue) -> MeterValue {
         id: cdMeterValue.uuid!
     )
 }
+
+func mapTariff(_ cdTariff: CDTariff) -> Tariff {
+    Tariff(
+        id: cdTariff.uuid!,
+        name: cdTariff.name!,
+        price: cdTariff.price!.decimalValue as Decimal,
+        activeMonthMask: Int(cdTariff.activeMonthMask)
+    )
+}

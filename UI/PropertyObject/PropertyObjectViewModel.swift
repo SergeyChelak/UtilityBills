@@ -7,7 +7,7 @@
 
 import Combine
 
-typealias PropertyObjectDataSource = PropertyObjectDAO & MetersDAO
+typealias PropertyObjectDataSource = PropertyObjectDAO & MetersDAO & TariffDAO
 
 class PropertyObjectViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
@@ -45,6 +45,7 @@ class PropertyObjectViewModel: ObservableObject {
         do {
             propObj = try dataSource.fetchProperty(objectId)
             meters = try dataSource.allMeters(for: objectId)
+            tariffs = try dataSource.allTariffs(for: objectId)
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -63,6 +64,10 @@ class PropertyObjectViewModel: ObservableObject {
     
     func meterSelected(_ meterId: MeterId) {
         meterSelectionCallback(meterId)
+    }
+    
+    func tariffSectionSelected() {
+        print("Not implemented")
     }
 }
 

@@ -8,7 +8,14 @@
 import Foundation
 
 extension LocalStorage: TariffDAO {
-    func allTariffs(for property: PropertyObjectId) throws -> [Tariff] {
-        fatalError()
+    func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff] {
+        let context = viewContext
+        guard let obj = try fetchPropertyObject(propertyId, into: context) else {
+            return []
+        }
+        let request = CDTariff.fetchRequest()
+        request.predicate = .byPropertyObject(obj)
+        return try context.fetch(request).map(mapTariff)
+
     }
 }

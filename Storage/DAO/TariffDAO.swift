@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TariffDAO {
-    func allTariffs(for property: PropertyObjectId) throws -> [Tariff]
+    func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff]
 }

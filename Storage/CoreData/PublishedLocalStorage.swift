@@ -25,7 +25,11 @@ struct PublishedLocalStorage {
     }
 }
 
-extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO {
+extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
+    func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff] {
+        try storage.allTariffs(for: propertyId)
+    }
+    
     func allProperties() throws -> [PropertyObject] {
         try storage.allProperties()
     }
