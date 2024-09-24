@@ -57,9 +57,21 @@ extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
     func allMeters(for property: PropertyObjectId) throws -> [Meter] {
         try storage.allMeters(for: property)
     }
-        
-    func newMeter(_ data: NewMeterData) throws -> Meter {
-        let val = try storage.newMeter(data)
+
+    func newMeter(
+        propertyObjectId: PropertyObjectId,
+        name: String,
+        capacity: Int?,
+        inspectionDate: Date?,
+        initialValue: Double
+    ) throws -> Meter {
+        let val = try storage.newMeter(
+            propertyObjectId: propertyObjectId,
+            name: name,
+            capacity: capacity,
+            inspectionDate: inspectionDate,
+            initialValue: initialValue
+        )
         notify()
         return val
     }

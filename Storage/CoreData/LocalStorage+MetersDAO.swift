@@ -18,30 +18,33 @@ extension LocalStorage: MetersDAO {
         return try context.fetch(request).map(mapMeter)
     }
     
-    func newMeter(_ data: NewMeterData) throws -> Meter {
+    func newMeter(
+        propertyObjectId: PropertyObjectId,
+        name: String,
+        capacity: Int?,
+        inspectionDate: Date?,
+        initialValue: Double
+    ) throws -> Meter {
         let context = viewContext
-        guard let propertyObject = try fetchPropertyObject(data.propertyObjectId, into: context) else {
+        guard let propertyObject = try fetchPropertyObject(propertyObjectId, into: context) else {
             // TODO: fix this
             throw NSError()
         }
         let meterObj = CDMeter(context: context)
-        meterObj.uuid = UUID()
-        meterObj.name = data.name
-        if data.isCapacityApplicable {
-            meterObj.capacity = data.capacity as NSNumber
-        }
-        if data.isInspectionDateApplicable {
-            meterObj.inspectionDate = data.inspectionDate
-        }
         meterObj.propertyObject = propertyObject
+        meterObj.uuid = UUID()
+        meterObj.name = name
+        meterObj.capacity = capacity as? NSNumber
+        meterObj.inspectionDate = inspectionDate
         
-        let initial: MeterValue = .initial(data.initialValue)
+        let initial: MeterValue = .initial(initialValue)
         _ = try createMeterValue(with: initial, for: meterObj)
         try context.save()
         
         return mapMeter(meterObj)
+
     }
-    
+        
     func meterValues(_ meterId: MeterId) throws -> [MeterValue] {
         let context = viewContext
         let request = CDMeterValue.fetchRequest()

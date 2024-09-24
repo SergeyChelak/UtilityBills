@@ -1,5 +1,5 @@
 //
-//  PropertyObjectHome.swift
+//  PropertyObjectView.swift
 //  UtilityBills
 //
 //  Created by Sergey on 08.09.2024.
@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-struct PropertyObjectHome: View {
+struct PropertyObjectView: View {
     @StateObject var viewModel: PropertyObjectViewModel
     
     var body: some View {
@@ -70,5 +70,5 @@ struct PropertyObjectHome: View {
         UUID(),
         dataSource: ds,
         updatePublisher: Empty().eraseToAnyPublisher())
-    return PropertyObjectHome(viewModel: store)
+    return PropertyObjectView(viewModel: store)
 }

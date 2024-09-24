@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct AddMeterView: View {
-    @Environment(\.dismiss) var dismiss
-    
-    @State var state: NewMeterData
-    
-    let saveMeterCallback: (NewMeterData) throws -> Void
+    @ObservedObject
+    var viewModel: AddMeterViewModel
         
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
@@ -20,47 +17,40 @@ struct AddMeterView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.top, 12)
             
-            TextField("", text: $state.name)
+            TextField("", text: $viewModel.name)
                 .inputStyle(caption: "Meter name")
             
             VStack {
-                Toggle(isOn: $state.isCapacityApplicable, label: {
+                Toggle(isOn: $viewModel.isCapacityApplicable, label: {
                     Text("Capacity is applicable for this meter")
                 })
-                if state.isCapacityApplicable {
-                    Picker("Capacity", selection: $state.capacity) {
-                        ForEach(NewMeterData.capacities, id: \.self) {
+                if viewModel.isCapacityApplicable {
+                    Picker("Capacity", selection: $viewModel.capacity) {
+                        ForEach(viewModel.capacities, id: \.self) {
                             Text(formatPicker(for: $0))
                         }
                     }
                 }
             }
             VStack {
-                Toggle(isOn: $state.isInspectionDateApplicable, label: {
+                Toggle(isOn: $viewModel.isInspectionDateApplicable, label: {
                     Text("Inspection date is applicable")
                 })
-                if state.isInspectionDateApplicable {
+                if viewModel.isInspectionDateApplicable {
                     DatePicker(
                         "Inspection Date",
-                        selection: $state.inspectionDate,
+                        selection: $viewModel.inspectionDate,
                         displayedComponents: [.date]
                     )
                 }
             }
             
-            TextField("", value: $state.initialValue, format: .number)
+            TextField("", value: $viewModel.initialValue, format: .number)
                 .keyboardType(.decimalPad)
                 .inputStyle(caption: "Initial value")
             
             Spacer()
-            CTAButton(caption: "Add Meter") {
-                do {
-                    try saveMeterCallback(state)
-                    dismiss()
-                } catch {
-                    fatalError(error.localizedDescription)
-                }
-            }
+            CTAButton(caption: "Add Meter", callback: viewModel.save)
             .padding(.bottom, 12)
         }
         .padding(.horizontal)
@@ -68,5 +58,17 @@ struct AddMeterView: View {
 }
 
 #Preview {
-    AddMeterView(state: .newData(propertyObjectId: UUID())) { _ in }
+    let vm = AddMeterViewModel(
+        propertyObjectId: PropertyObjectId(),
+        actionSave: { _, _, _, _ in }
+    )
+    return AddMeterView(viewModel: vm)
+}
+
+func maxValue(for capacity: Int) -> Double {
+    (pow(10, capacity) as NSNumber).doubleValue - 1
+}
+
+func formatPicker(for capacity: Int) -> String {
+    String(format: "%d digits, max value: %.0f", capacity, maxValue(for: capacity) as CVarArg)
 }

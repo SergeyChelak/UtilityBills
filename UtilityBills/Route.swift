@@ -21,4 +21,5 @@ protocol Router {
     func pop()
     func popToRoot()
     func showOverlay(_ route: Route)
+    func hideOverlay()
 }

@@ -39,7 +39,7 @@ class iOSNavigationController: Router {
         store.popover = overlay
     }
     
-    private func hideOverlay() {
+    func hideOverlay() {
         store.popover = nil
     }
 }

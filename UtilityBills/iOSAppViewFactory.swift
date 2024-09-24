@@ -41,7 +41,7 @@ struct iOSAppViewFactory {
             meterHeaderSectionCallback: { router.showOverlay(.addMeter($0)) },
             meterSelectionCallback: { router.push(.meterValues($0)) }
         )
-        return PropertyObjectHome(viewModel: viewModel)
+        return PropertyObjectView(viewModel: viewModel)
     }
     
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
@@ -52,9 +52,16 @@ struct iOSAppViewFactory {
     }
     
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
-        AddMeterView(state: .newData(propertyObjectId: propObjId)) {
-            _ = try storage.newMeter($0)
+        let vm = AddMeterViewModel(propertyObjectId: propObjId) { name, capacity, inspectionDate, initialValue in
+            _ = try storage.newMeter(
+                propertyObjectId: propObjId,
+                name: name,
+                capacity: capacity,
+                inspectionDate: inspectionDate,
+                initialValue: initialValue)
+            router.hideOverlay()
         }
+        return AddMeterView(viewModel: vm)
     }
     
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
