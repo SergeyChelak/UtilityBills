@@ -12,50 +12,53 @@ struct PropertyObjectView: View {
     @StateObject var viewModel: PropertyObjectViewModel
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 24) {
-                // Manage estate data
-                if let obj = viewModel.propObj {
-                    PropertyInfoView(propertyObject: obj)
-                        .sectionWith(
-                            title: "Info",
-                            action: HeaderAction(
-                                title: "Edit",
-                                imageDescriptor: .system("pencil"),
-                                callback: viewModel.infoSectionSelected)
+        VStack {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 24) {
+                    // Manage estate data
+                    if let obj = viewModel.propObj {
+                        PropertyInfoView(propertyObject: obj)
+                            .sectionWith(
+                                title: "Info",
+                                action: HeaderAction(
+                                    title: "Edit",
+                                    imageDescriptor: .system("pencil"),
+                                    callback: viewModel.infoSectionSelected)
+                            )
+                    }
+                    // Manage meters/meter data
+                    MetersInfoView(
+                        meters: viewModel.meters,
+                        meterSelectionCallback: viewModel.meterSelected(_:)
+                    )
+                    .sectionWith(
+                        title: "Meters",
+                        action: HeaderAction(
+                            title: "Add",
+                            imageDescriptor: .system("plus.circle"),
+                            callback: viewModel.meterHeaderSectionSelected
                         )
-                }        
-                // Manage meters/meter data
-                MetersInfoView(
-                    meters: viewModel.meters,
-                    meterSelectionCallback: viewModel.meterSelected(_:)
-                )
-                .sectionWith(
-                    title: "Meters",
-                    action: HeaderAction(
-                        title: "Add",
-                        imageDescriptor: .system("plus.circle"),
-                        callback: viewModel.meterHeaderSectionSelected
                     )
-                )
-                TariffInfoView(
-                    tariffs: viewModel.tariffs
-                )
-                .sectionWith(
-                    title: "Tariffs",
-                    action: HeaderAction(
-                        title: "Add",
-                        callback: viewModel.tariffSectionSelected
+                    TariffInfoView(
+                        tariffs: viewModel.tariffs
                     )
-                )
-                Spacer()
-                CTAButton(
-                    caption: "Delete Object",
-                    fillColor: .red,
-                    callback: viewModel.deleteObject
-                )
-                .padding(.horizontal)
-            }
+                    .sectionWith(
+                        title: "Tariffs",
+                        action: HeaderAction(
+                            title: "Add",
+                            callback: viewModel.tariffSectionSelected
+                        )
+                    )
+                    
+                }
+            }            
+            Spacer()
+            CTAButton(
+                caption: "Delete Object",
+                fillColor: .red,
+                callback: viewModel.deleteObject
+            )
+            .padding(.horizontal)
         }
         .navigationTitle(viewModel.propObj?.name ?? "")
         .task {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MeterValuesListView: View {
-    @ObservedObject
+    @StateObject
     var viewModel: MeterValuesListViewModel
     
     var body: some View {
@@ -35,6 +35,13 @@ struct MeterValuesListView: View {
             .padding(.horizontal)
         }
         .navigationTitle("Values")
+        .toolbar {
+            ToolbarItem {
+                Button("Add") {
+                    viewModel.newValue()
+                }
+            }
+        }
         .task {
             viewModel.load()
         }
@@ -51,6 +58,7 @@ struct MeterValuesListView: View {
     ].reversed()
     let vm = MeterValuesListViewModel(
         actionLoad: { Array(values) },
+        actionNewValue: { },
         actionSelect:  { _ in },
         actionDeleteMeter: { }
     )

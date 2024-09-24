@@ -19,4 +19,6 @@ protocol MetersDAO {
         meter: Meter,
         initialValue: Double
     ) throws -> Meter
+ 
+    func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws
 }

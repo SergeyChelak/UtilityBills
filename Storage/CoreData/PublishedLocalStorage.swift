@@ -25,16 +25,7 @@ struct PublishedLocalStorage {
     }
 }
 
-extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
-    func deleteMeter(_ meterId: MeterId) throws {
-        try storage.deleteMeter(meterId)
-        notify()
-    }
-    
-    func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff] {
-        try storage.allTariffs(for: propertyId)
-    }
-    
+extension PublishedLocalStorage: PropertyObjectDAO {
     func allProperties() throws -> [PropertyObject] {
         try storage.allProperties()
     }
@@ -49,7 +40,7 @@ extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
         try storage.deleteProperty(propertyObjectId)
         notify()
     }
-            
+    
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {
         try storage.fetchProperty(uuid)
     }
@@ -58,7 +49,9 @@ extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
         try storage.updateProperty(propertyObject)
         notify()
     }
-    
+}
+ 
+extension PublishedLocalStorage: MetersDAO {
     func allMeters(for property: PropertyObjectId) throws -> [Meter] {
         try storage.allMeters(for: property)
     }
@@ -79,5 +72,21 @@ extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
     
     func meterValues(_ meterId: MeterId) throws -> [MeterValue] {
         try storage.meterValues(meterId)        
+    }
+    
+    func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws {
+        try storage.insertMeterValue(meterId, value: value)
+        notify()
+    }
+    
+    func deleteMeter(_ meterId: MeterId) throws {
+        try storage.deleteMeter(meterId)
+        notify()
+    }
+}
+
+extension PublishedLocalStorage: TariffDAO {
+    func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff] {
+        try storage.allTariffs(for: propertyId)
     }
 }

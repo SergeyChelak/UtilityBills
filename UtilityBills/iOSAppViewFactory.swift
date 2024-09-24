@@ -75,6 +75,9 @@ struct iOSAppViewFactory {
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
         let viewModel = MeterValuesListViewModel(
             actionLoad: { try storage.meterValues(meterId) },
+            actionNewValue: {
+                router.showOverlay(.addMeterValue(meterId))
+            },
             actionSelect: { _ in },
             actionDeleteMeter: {
                 try storage.deleteMeter(meterId)
@@ -82,6 +85,18 @@ struct iOSAppViewFactory {
             }
         )
         return MeterValuesListView(viewModel: viewModel)
+    }
+    
+    private func composeAddMeterValueView(_ meterId: MeterId) -> some View {
+        let viewModel = MeterNewValueViewModel(
+            date: Date(),
+            value: 0,
+            actionSave: {
+                try storage.insertMeterValue(meterId, value: $0)
+                router.hideOverlay()
+            }
+        )
+        return MeterNewValueView(viewModel: viewModel)
     }
 }
 
@@ -98,6 +113,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeAddMeterView(objId)
         case .meterValues(let meterId):
             composeMeterValuesView(meterId)
+        case .addMeterValue(let meterId):
+            composeAddMeterValueView(meterId)
         }
     }
 }

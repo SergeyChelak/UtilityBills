@@ -22,6 +22,8 @@
 		A51082C72CA2E7C200103E76 /* AddMeterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082C62CA2E7C200103E76 /* AddMeterViewModel.swift */; };
 		A51082C92CA2FB0F00103E76 /* MeterValuesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082C82CA2FB0F00103E76 /* MeterValuesListView.swift */; };
 		A51082CB2CA2FB1E00103E76 /* MeterValuesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082CA2CA2FB1E00103E76 /* MeterValuesListViewModel.swift */; };
+		A51082CD2CA3269D00103E76 /* MeterNewValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082CC2CA3269D00103E76 /* MeterNewValueView.swift */; };
+		A51082CF2CA3277000103E76 /* MeterNewValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082CE2CA3277000103E76 /* MeterNewValueViewModel.swift */; };
 		A510F24E2C9CD42A00942F8A /* TariffInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
@@ -90,6 +92,8 @@
 		A51082C62CA2E7C200103E76 /* AddMeterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterViewModel.swift; sourceTree = "<group>"; };
 		A51082C82CA2FB0F00103E76 /* MeterValuesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValuesListView.swift; sourceTree = "<group>"; };
 		A51082CA2CA2FB1E00103E76 /* MeterValuesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValuesListViewModel.swift; sourceTree = "<group>"; };
+		A51082CC2CA3269D00103E76 /* MeterNewValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterNewValueView.swift; sourceTree = "<group>"; };
+		A51082CE2CA3277000103E76 /* MeterNewValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterNewValueViewModel.swift; sourceTree = "<group>"; };
 		A510F24D2C9CD42A00942F8A /* TariffInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffInfoView.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				A51082C62CA2E7C200103E76 /* AddMeterViewModel.swift */,
 				A51082C82CA2FB0F00103E76 /* MeterValuesListView.swift */,
 				A51082CA2CA2FB1E00103E76 /* MeterValuesListViewModel.swift */,
+				A51082CC2CA3269D00103E76 /* MeterNewValueView.swift */,
+				A51082CE2CA3277000103E76 /* MeterNewValueViewModel.swift */,
 			);
 			path = Meters;
 			sourceTree = "<group>";
@@ -481,6 +487,7 @@
 				A5E00B8C2C90736D002BC8EF /* Route.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectView.swift in Sources */,
+				A51082CD2CA3269D00103E76 /* MeterNewValueView.swift in Sources */,
 				A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */,
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */,
@@ -505,6 +512,7 @@
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* CalculationParameter.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
+				A51082CF2CA3277000103E76 /* MeterNewValueViewModel.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertyListViewModel.swift in Sources */,
 				A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */,
 				A51082C72CA2E7C200103E76 /* AddMeterViewModel.swift in Sources */,
