@@ -63,20 +63,11 @@ struct iOSAppViewFactory {
     }
     
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
-        let viewModel = EditableListViewModel<MeterValue>(
-            loadAction: { try storage.meterValues(meterId) }
-//            createAction: { router.showOverlay(.addMeterValue(meterId)) }
+        let viewModel = MeterValuesListViewModel(
+            actionLoad: { try storage.meterValues(meterId) },
+            actionSelect: { _ in }
         )
-        return EditableListView(
-            title: "Values",
-            viewModel: viewModel,
-            factory: {
-                CaptionValueCell(
-                    caption: $0.date.formatted(),
-                    value: $0.value.formatted()
-                )
-            }
-        )
+        return MeterValuesListView(viewModel: viewModel)
     }
     
     private func composeAddMeterValueView(_ meterId: MeterId) -> some View {
