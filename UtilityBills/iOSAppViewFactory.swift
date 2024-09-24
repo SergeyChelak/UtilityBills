@@ -22,16 +22,16 @@ struct iOSAppViewFactory {
     }
     
     private func composePropertyObjectListView() -> some View {
-        let store = EditableListStore<PropertyObject>(
-            loader: storage.allProperties,
-            remover: storage.deleteProperty,
-            creator: storage.createProperty
+        let store = CommonListViewModel<PropertyObject>(
+            loadAction: storage.allProperties,
+            selectAction: { router.push(.propertyObjectHome($0.id)) },
+            removeAction: storage.deleteProperty,
+            createAction: storage.createProperty
         )
-        let view = EditableListView(
+        let view = CommonListView(
             title: "My Objects",
-            store: store,
-            factory: { ObjectListCell(item: $0) },
-            selection: { router.push(.propertyObjectHome($0.id)) }
+            viewModel: store,
+            factory: { ObjectListCell(item: $0) }
         )
         return view
     }
@@ -62,19 +62,18 @@ struct iOSAppViewFactory {
     }
     
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
-        let store = EditableListStore<MeterValue>(
-            loader: { try storage.meterValues(meterId) }
+        let store = CommonListViewModel<MeterValue>(
+            loadAction: { try storage.meterValues(meterId) }
         )
-        return EditableListView(
+        return CommonListView(
             title: "Values",
-            store: store,
+            viewModel: store,
             factory: {
                 CaptionValueCell(
                     caption: $0.date.formatted(),
                     value: $0.value.formatted()
                 )
-            },
-            selection: { _ in }
+            }
         )
     }
 }

@@ -16,6 +16,5 @@ extension LocalStorage: TariffDAO {
         let request = CDTariff.fetchRequest()
         request.predicate = .byPropertyObject(obj)
         return try context.fetch(request).map(mapTariff)
-
     }
 }
