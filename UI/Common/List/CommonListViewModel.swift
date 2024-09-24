@@ -7,74 +7,43 @@
 
 import Foundation
 
-typealias ListActionLoad<T> = () throws -> [T]
-typealias ListActionSelect<T> = (T) -> ()
-typealias ListActionRemove<T> = (T) throws -> Void
-typealias ListActionCreate<T> = () throws -> T
+typealias CommonListActionLoad<T> = () throws -> [T]
+typealias CommonListActionSelect<T> = (T) -> ()
 
-final class CommonListViewModel<T>: ObservableObject {
+class CommonListViewModel<T>: ObservableObject {
     @Published
-    private(set) var items: [T] = []
+    var items: [T] = []
     @Published
     var error: Error?
     
-    private let loadAction: ListActionLoad<T>
-    private let selectAction: ListActionSelect<T>
-    private let removeAction: ListActionRemove<T>?
-    private let createAction: ListActionCreate<T>?
+    let actionLoad: CommonListActionLoad<T>
+    let actionSelect: CommonListActionSelect<T>
     
     init(
-        loadAction: @escaping ListActionLoad<T>,
-        selectAction: @escaping ListActionSelect<T> = { _ in },
-        removeAction: ListActionRemove<T>? = nil,
-        createAction: ListActionCreate<T>? = nil
+        actionLoad: @escaping CommonListActionLoad<T>,
+        actionSelect: @escaping CommonListActionSelect<T>
     ) {
-        self.loadAction = loadAction
-        self.selectAction = selectAction
-        self.removeAction = removeAction
-        self.createAction = createAction
+        self.actionLoad = actionLoad
+        self.actionSelect = actionSelect
     }
     
-    var isDeleteAllowed: Bool {
-        removeAction != nil
+    var isEmpty: Bool {
+        items.isEmpty
     }
     
-    var canCreateItems: Bool {
-        createAction != nil
-    }
-        
     func load() {
         do {
-            self.items = try loadAction()
+            self.items = try actionLoad()
         } catch {
             self.error = error
-            print("Failed to load data: \(error)")
+            print("CommonListViewModel load failed: \(error)")
         }
     }
     
-    func onDelete(_ indexSet: IndexSet) {
-        do {
-            for index in indexSet {
-                let item = items[index]
-                try removeAction?(item)
-            }
-        } catch {
-            print("Failed to remove items: \(error)")
-            load()
+    func select(index: Int) {
+        guard !items.isEmpty, (0..<items.count).contains(index) else {
+            fatalError("Selected index \(index) is out of bounds 0..\(items.count)")
         }
-    }
-    
-    func onCreate() {
-        do {
-            _ = try createAction?()
-            load()
-        } catch {
-            self.error = error
-            print("Failed to create item: \(error)")
-        }
-    }
-    
-    func onSelect(index: Int) {
-        selectAction(items[index])
+        actionSelect(items[index])
     }
 }

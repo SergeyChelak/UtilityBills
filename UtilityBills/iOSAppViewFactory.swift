@@ -22,22 +22,18 @@ struct iOSAppViewFactory {
     }
     
     private func composePropertyObjectListView() -> some View {
-        let store = CommonListViewModel<PropertyObject>(
-            loadAction: storage.allProperties,
-            selectAction: { router.push(.propertyObjectHome($0.id)) },
-            removeAction: storage.deleteProperty,
-            createAction: storage.createProperty
+        let viewModel = PropertyListViewModel(
+            actionLoad: storage.allProperties,
+            actionSelect: { router.push(.propertyObjectHome($0.id)) },
+            actionCreate: storage.createProperty,
+            actionRemove: storage.deleteProperty
         )
-        let view = CommonListView(
-            title: "My Objects",
-            viewModel: store,
-            factory: { ObjectListCell(item: $0) }
-        )
-        return view
+        return PropertyListView(viewModel: viewModel)
     }
     
     private func composePropertyHomeView(_ uuid: PropertyObjectId) -> some View {
-        let store = PropertyObjectViewModel(
+        // TODO: looks bad, refactor this
+        let viewModel = PropertyObjectViewModel(
             uuid,
             dataSource: storage,
             updatePublisher: storage.publisher,
@@ -45,7 +41,7 @@ struct iOSAppViewFactory {
             meterHeaderSectionCallback: { router.showOverlay(.addMeter($0)) },
             meterSelectionCallback: { router.push(.meterValues($0)) }
         )
-        return PropertyObjectHome(viewModel: store)
+        return PropertyObjectHome(viewModel: viewModel)
     }
     
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
@@ -62,12 +58,13 @@ struct iOSAppViewFactory {
     }
     
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
-        let store = CommonListViewModel<MeterValue>(
+        let viewModel = EditableListViewModel<MeterValue>(
             loadAction: { try storage.meterValues(meterId) }
+//            createAction: { router.showOverlay(.addMeterValue(meterId)) }
         )
-        return CommonListView(
+        return EditableListView(
             title: "Values",
-            viewModel: store,
+            viewModel: viewModel,
             factory: {
                 CaptionValueCell(
                     caption: $0.date.formatted(),
@@ -76,8 +73,11 @@ struct iOSAppViewFactory {
             }
         )
     }
+    
+    private func composeAddMeterValueView(_ meterId: MeterId) -> some View {
+        Text("AddMeterValueView")
+    }
 }
-
 
 extension iOSAppViewFactory: ViewFactory {
     func view(for route: Route) -> any View {
@@ -92,6 +92,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeAddMeterView(objId)
         case .meterValues(let meterId):
             composeMeterValuesView(meterId)
+        case .addMeterValue(let meterId):
+            composeAddMeterValueView(meterId)
         }
     }
 }
