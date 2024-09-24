@@ -7,9 +7,7 @@
 
 import Foundation
 
-typealias AddMeterActionSave = (_ name: String,
-                                _ capacity: Int?,
-                                _ inspectionDate: Date?,
+typealias AddMeterActionSave = (_ meter: Meter,
                                 _ initialValue: Double) throws -> Void
 
 class AddMeterViewModel: ObservableObject {
@@ -55,9 +53,15 @@ class AddMeterViewModel: ObservableObject {
     }
     
     func save() {
+        let meter = Meter(
+            id: UUID(),
+            name: name,
+            capacity: selectedCapacity,
+            inspectionDate: selectedInspectionDate
+        )
         // TODO: validate initial value
         do {
-            try actionSave(name, capacity, inspectionDate, initialValue)
+            try actionSave(meter, initialValue)
         } catch {
             self.error = error
         }

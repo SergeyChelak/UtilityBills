@@ -20,9 +20,7 @@ extension LocalStorage: MetersDAO {
     
     func newMeter(
         propertyObjectId: PropertyObjectId,
-        name: String,
-        capacity: Int?,
-        inspectionDate: Date?,
+        meter: Meter,
         initialValue: Double
     ) throws -> Meter {
         let context = viewContext
@@ -32,10 +30,10 @@ extension LocalStorage: MetersDAO {
         }
         let meterObj = CDMeter(context: context)
         meterObj.propertyObject = propertyObject
-        meterObj.uuid = UUID()
-        meterObj.name = name
-        meterObj.capacity = capacity as? NSNumber
-        meterObj.inspectionDate = inspectionDate
+        meterObj.uuid = meter.id
+        meterObj.name = meter.name
+        meterObj.capacity = meter.capacity as? NSNumber
+        meterObj.inspectionDate = meter.inspectionDate
         
         let initial: MeterValue = .initial(initialValue)
         _ = try createMeterValue(with: initial, for: meterObj)

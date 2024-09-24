@@ -14,9 +14,7 @@ protocol MetersDAO {
     
     func newMeter(
         propertyObjectId: PropertyObjectId,
-        name: String,
-        capacity: Int?,
-        inspectionDate: Date?,
+        meter: Meter,
         initialValue: Double
     ) throws -> Meter
 }

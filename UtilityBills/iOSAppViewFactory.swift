@@ -52,12 +52,10 @@ struct iOSAppViewFactory {
     }
     
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
-        let vm = AddMeterViewModel(propertyObjectId: propObjId) { name, capacity, inspectionDate, initialValue in
+        let vm = AddMeterViewModel(propertyObjectId: propObjId) { meter, initialValue in
             _ = try storage.newMeter(
                 propertyObjectId: propObjId,
-                name: name,
-                capacity: capacity,
-                inspectionDate: inspectionDate,
+                meter: meter,
                 initialValue: initialValue)
             router.hideOverlay()
         }

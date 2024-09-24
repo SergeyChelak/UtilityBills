@@ -11,7 +11,6 @@ typealias MeterId = UUID
 
 struct Meter {
     let id: MeterId
-//    let type: MeterType
     let name: String
     let capacity: Int?
     let inspectionDate: Date?

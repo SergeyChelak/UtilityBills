@@ -60,16 +60,12 @@ extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
 
     func newMeter(
         propertyObjectId: PropertyObjectId,
-        name: String,
-        capacity: Int?,
-        inspectionDate: Date?,
+        meter: Meter,
         initialValue: Double
     ) throws -> Meter {
         let val = try storage.newMeter(
             propertyObjectId: propertyObjectId,
-            name: name,
-            capacity: capacity,
-            inspectionDate: inspectionDate,
+            meter: meter,
             initialValue: initialValue
         )
         notify()
