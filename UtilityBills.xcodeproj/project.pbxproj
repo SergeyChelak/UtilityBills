@@ -45,7 +45,7 @@
 		A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */; };
 		A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B7F2C8F9347002BC8EF /* InputStyleViewModifier.swift */; };
 		A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B812C8F9726002BC8EF /* CTAButton.swift */; };
-		A5E00B842C8FA291002BC8EF /* PublishedLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B832C8FA291002BC8EF /* PublishedLocalStorage.swift */; };
+		A5E00B842C8FA291002BC8EF /* StorageWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B832C8FA291002BC8EF /* StorageWatcher.swift */; };
 		A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */; };
 		A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B872C905104002BC8EF /* AddMeterView.swift */; };
 		A5E00B8C2C90736D002BC8EF /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B8B2C90736D002BC8EF /* Route.swift */; };
@@ -118,7 +118,7 @@
 		A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPropertyInfoView.swift; sourceTree = "<group>"; };
 		A5E00B7F2C8F9347002BC8EF /* InputStyleViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyleViewModifier.swift; sourceTree = "<group>"; };
 		A5E00B812C8F9726002BC8EF /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
-		A5E00B832C8FA291002BC8EF /* PublishedLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedLocalStorage.swift; sourceTree = "<group>"; };
+		A5E00B832C8FA291002BC8EF /* StorageWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWatcher.swift; sourceTree = "<group>"; };
 		A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionValueCell.swift; sourceTree = "<group>"; };
 		A5E00B872C905104002BC8EF /* AddMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterView.swift; sourceTree = "<group>"; };
 		A5E00B8B2C90736D002BC8EF /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 				A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */,
 				A50302762C9CD71600033AE3 /* LocalStorage+MetersDAO.swift */,
 				A503027C2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift */,
-				A5E00B832C8FA291002BC8EF /* PublishedLocalStorage.swift */,
+				A5E00B832C8FA291002BC8EF /* StorageWatcher.swift */,
 				A503027E2C9CD8B300033AE3 /* NSPredicate+CoreData.swift */,
 				A50302782C9CD77F00033AE3 /* Mappers.swift */,
 			);
@@ -521,7 +521,7 @@
 				A510F24E2C9CD42A00942F8A /* TariffInfoView.swift in Sources */,
 				A5F944482C8F664700A5FD47 /* MetersInfoView.swift in Sources */,
 				A51082C32CA2DC2800103E76 /* AlertErrorViewModifier.swift in Sources */,
-				A5E00B842C8FA291002BC8EF /* PublishedLocalStorage.swift in Sources */,
+				A5E00B842C8FA291002BC8EF /* StorageWatcher.swift in Sources */,
 				A51082BB2CA2D4F300103E76 /* PropertyListView.swift in Sources */,
 				A51082C92CA2FB0F00103E76 /* MeterValuesListView.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,

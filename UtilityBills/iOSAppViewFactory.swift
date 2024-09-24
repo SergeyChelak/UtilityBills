@@ -10,15 +10,19 @@ import SwiftUI
 import Combine
 
 struct iOSAppViewFactory {
-//     TODO: make dependency via protocol
-    let storage = {
-        let ls = LocalStorage.instance()
-        return PublishedLocalStorage(storage: ls)
-    }()
+    let storage: LocalStorage
+    let storageWatcher: StorageWatcher
     let router: Router
     
     init(navigationController: Router) {
         self.router = navigationController
+        
+        // TODO: inject dependency as protocol
+        let storage = LocalStorage.instance()
+        let storageWatcher = StorageWatcher(storage: storage)
+        
+        self.storage = storage
+        self.storageWatcher = storageWatcher
     }
     
     private func composePropertyObjectListView() -> some View {
@@ -49,7 +53,7 @@ struct iOSAppViewFactory {
                 try storage.deleteProperty(objectId)
                 router.pop()
             },
-            updatePublisher: storage.publisher
+            updatePublisher: storageWatcher.publisher
         )
         return PropertyObjectView(viewModel: viewModel)
     }
@@ -82,7 +86,8 @@ struct iOSAppViewFactory {
             actionDeleteMeter: {
                 try storage.deleteMeter(meterId)
                 router.pop()
-            }
+            },
+            updatePublisher: storageWatcher.publisher
         )
         return MeterValuesListView(viewModel: viewModel)
     }

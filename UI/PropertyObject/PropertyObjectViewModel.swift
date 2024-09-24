@@ -72,7 +72,7 @@ class PropertyObjectViewModel: ObservableObject {
         do {
             data = try actionLoad()
         } catch {
-            fatalError(error.localizedDescription)
+            self.error = error
         }
     }
     

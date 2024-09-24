@@ -49,6 +49,8 @@ struct MeterValuesListView: View {
     }
 }
 
+import Combine
+
 #Preview {
     let values = [
         MeterValue(date: Date(), value: 10, isPaid: true, id: UUID()),
@@ -60,7 +62,8 @@ struct MeterValuesListView: View {
         actionLoad: { Array(values) },
         actionNewValue: { },
         actionSelect:  { _ in },
-        actionDeleteMeter: { }
+        actionDeleteMeter: { },
+        updatePublisher: Empty().eraseToAnyPublisher()
     )
     return MeterValuesListView(viewModel: vm)
 }
