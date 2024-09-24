@@ -69,10 +69,6 @@ struct iOSAppViewFactory {
         )
         return MeterValuesListView(viewModel: viewModel)
     }
-    
-    private func composeAddMeterValueView(_ meterId: MeterId) -> some View {
-        Text("AddMeterValueView")
-    }
 }
 
 extension iOSAppViewFactory: ViewFactory {
@@ -88,8 +84,6 @@ extension iOSAppViewFactory: ViewFactory {
             composeAddMeterView(objId)
         case .meterValues(let meterId):
             composeMeterValuesView(meterId)
-        case .addMeterValue(let meterId):
-            composeAddMeterValueView(meterId)
         }
     }
 }
