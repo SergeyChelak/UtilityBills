@@ -49,12 +49,19 @@ struct PropertyObjectView: View {
                     )
                 )
                 Spacer()
+                CTAButton(
+                    caption: "Delete Object",
+                    fillColor: .red,
+                    callback: viewModel.deleteObject
+                )
+                .padding(.horizontal)
             }
         }
         .navigationTitle(viewModel.propObj?.name ?? "")
         .task {
             viewModel.load()
         }
+        .errorAlert(for: $viewModel.error)
         
         // Display historical data
         
@@ -65,10 +72,23 @@ struct PropertyObjectView: View {
 }
 
 #Preview {
-    let ds = LocalStorage.previewInstance()
     let store = PropertyObjectViewModel(
         UUID(),
-        dataSource: ds,
-        updatePublisher: Empty().eraseToAnyPublisher())
+        actionLoad: {
+            let obj = PropertyObject(id: UUID(), name: "House", details: "My home")
+            let meters: [Meter] = []
+            let tariffs: [Tariff] = []
+            return PropertyObjectData(
+                propObj: obj,
+                meters: meters,
+                tariffs: tariffs
+            )
+        },
+        actionInfoSectionTap: { _ in },
+        actionMeterHeaderSectionTap: { _ in },
+        actionMeterSelectionTap: { _ in },
+        actionDelete: { },
+        updatePublisher: Empty().eraseToAnyPublisher()
+    )
     return PropertyObjectView(viewModel: store)
 }

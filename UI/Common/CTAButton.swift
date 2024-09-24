@@ -11,12 +11,19 @@ typealias CTAButtonCallback = () -> Void
 
 struct CTAButton: View {
     let caption: String
-    private var maxWidth: CGFloat
+    let fillColor: Color
+    let maxWidth: CGFloat
     let callback: CTAButtonCallback
     
-    init(caption: String, maxWidth: CGFloat = .infinity, callback: @escaping CTAButtonCallback) {
+    init(
+        caption: String,
+        maxWidth: CGFloat = .infinity,
+        fillColor: Color = .blue,
+        callback: @escaping CTAButtonCallback
+    ) {
         self.caption = caption
         self.maxWidth = maxWidth
+        self.fillColor = fillColor
         self.callback = callback
     }
     
@@ -28,7 +35,7 @@ struct CTAButton: View {
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: .infinity)
-                    .fill(.blue)
+                    .fill(fillColor)
             )
             .padding(.horizontal, 1)
             .onTapGesture(perform: callback)

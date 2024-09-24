@@ -21,7 +21,6 @@ struct PropertyListView: View {
                     ObjectListCell(item: viewModel.items[i])
                         .onTapGesture(perform: { viewModel.select(index: i) })
                 }
-                .onDelete(perform: viewModel.onDelete(_:))
             }
         }
         .navigationTitle("My Objects")

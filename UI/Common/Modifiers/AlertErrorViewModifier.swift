@@ -23,7 +23,7 @@ struct AlertErrorViewModifier: ViewModifier {
     }
     
     private var message: String {
-        error?.localizedDescription ?? "Something went wrong"
+        error?.localizedDescription ??  "Something went wrong"
     }
     
     func body(content: Content) -> some View {

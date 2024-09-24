@@ -26,6 +26,13 @@ struct MeterValuesListView: View {
                     .onTapGesture(perform: { viewModel.select(index: i) })
                 }
             }
+            Spacer()
+            CTAButton(
+                caption: "Delete Meter",
+                fillColor: .red,
+                callback: viewModel.deleteMeter
+            )
+            .padding(.horizontal)
         }
         .navigationTitle("Values")
         .task {
@@ -44,7 +51,8 @@ struct MeterValuesListView: View {
     ].reversed()
     let vm = MeterValuesListViewModel(
         actionLoad: { Array(values) },
-        actionSelect:  { _ in }
+        actionSelect:  { _ in },
+        actionDeleteMeter: { }
     )
     return MeterValuesListView(viewModel: vm)
 }

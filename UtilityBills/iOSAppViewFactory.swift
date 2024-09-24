@@ -25,21 +25,31 @@ struct iOSAppViewFactory {
         let viewModel = PropertyListViewModel(
             actionLoad: storage.allProperties,
             actionSelect: { router.push(.propertyObjectHome($0.id)) },
-            actionCreate: storage.createProperty,
-            actionRemove: storage.deleteProperty
+            actionCreate: storage.createProperty
         )
         return PropertyListView(viewModel: viewModel)
     }
     
-    private func composePropertyHomeView(_ uuid: PropertyObjectId) -> some View {
-        // TODO: looks bad, refactor this
+    private func composePropertyHomeView(_ objectId: PropertyObjectId) -> some View {
         let viewModel = PropertyObjectViewModel(
-            uuid,
-            dataSource: storage,
-            updatePublisher: storage.publisher,
-            infoSectionCallback: { router.showOverlay(.editPropertyInfo($0)) },
-            meterHeaderSectionCallback: { router.showOverlay(.addMeter($0)) },
-            meterSelectionCallback: { router.push(.meterValues($0)) }
+            objectId,
+            actionLoad: {
+                let propObj = try storage.fetchProperty(objectId)
+                let meters = try storage.allMeters(for: objectId)
+                let tariffs = try storage.allTariffs(for: objectId)
+                return PropertyObjectData(
+                    propObj: propObj,
+                    meters: meters,
+                    tariffs: tariffs)
+            },
+            actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
+            actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
+            actionMeterSelectionTap: { router.push(.meterValues($0)) },
+            actionDelete: {
+                try storage.deleteProperty(objectId)
+                router.pop()
+            },
+            updatePublisher: storage.publisher
         )
         return PropertyObjectView(viewModel: viewModel)
     }
@@ -65,7 +75,11 @@ struct iOSAppViewFactory {
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
         let viewModel = MeterValuesListViewModel(
             actionLoad: { try storage.meterValues(meterId) },
-            actionSelect: { _ in }
+            actionSelect: { _ in },
+            actionDeleteMeter: {
+                try storage.deleteMeter(meterId)
+                router.pop()
+            }
         )
         return MeterValuesListView(viewModel: viewModel)
     }

@@ -26,6 +26,11 @@ struct PublishedLocalStorage {
 }
 
 extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
+    func deleteMeter(_ meterId: MeterId) throws {
+        try storage.deleteMeter(meterId)
+        notify()
+    }
+    
     func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff] {
         try storage.allTariffs(for: propertyId)
     }
@@ -40,8 +45,8 @@ extension PublishedLocalStorage: PropertyObjectDAO, MetersDAO, TariffDAO {
         return result
     }
     
-    func deleteProperty(_ propertyObject: PropertyObject) throws {
-        try storage.deleteProperty(propertyObject)
+    func deleteProperty(_ propertyObjectId: PropertyObjectId) throws {
+        try storage.deleteProperty(propertyObjectId)
         notify()
     }
             

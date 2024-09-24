@@ -10,6 +10,8 @@ import Foundation
 protocol MetersDAO {
     func allMeters(for property: PropertyObjectId) throws -> [Meter]
     
+    func deleteMeter(_ meterId: MeterId) throws
+    
     func meterValues(_ meterId: MeterId) throws -> [MeterValue]
     
     func newMeter(

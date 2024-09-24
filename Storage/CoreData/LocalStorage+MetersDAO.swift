@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension LocalStorage: MetersDAO {
     func allMeters(for propertyId: PropertyObjectId) throws -> [Meter] {
@@ -16,6 +17,18 @@ extension LocalStorage: MetersDAO {
         let request = CDMeter.fetchRequest()
         request.predicate = .byPropertyObject(obj)
         return try context.fetch(request).map(mapMeter)
+    }
+    
+    func deleteMeter(_ meterId: MeterId) throws {
+        let context = viewContext
+        let request = CDMeter.fetchRequest()
+        request.predicate = .byOwnUUID(meterId)
+        
+        try context.fetch(request)
+            .forEach {
+                context.delete($0)
+            }
+        try context.save()
     }
     
     func newMeter(

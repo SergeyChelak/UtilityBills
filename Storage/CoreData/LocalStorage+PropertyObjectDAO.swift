@@ -25,19 +25,15 @@ extension LocalStorage: PropertyObjectDAO {
         return mapPropertyObject(obj)
     }
     
-    func deleteProperty(_ propertyObject: PropertyObject) throws {
+    func deleteProperty(_ propertyObjectId: PropertyObjectId) throws {
         let request = CDPropertyObject.fetchRequest()
-        request.predicate = .byOwnUUID(propertyObject.id)
+        request.predicate = .byOwnUUID(propertyObjectId)
         let context = viewContext
-        do {
-            let result = try context.fetch(request)
-            result.forEach {
-                context.delete($0)
-            }
-            try context.save()
-        } catch {
-            fatalError("Failed to delete property object")
+        let result = try context.fetch(request)
+        result.forEach {
+            context.delete($0)
         }
+        try context.save()
     }
     
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {

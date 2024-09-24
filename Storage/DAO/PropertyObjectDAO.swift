@@ -12,7 +12,7 @@ protocol PropertyObjectDAO {
     
     func createProperty() throws -> PropertyObject
     
-    func deleteProperty(_ propertyObject: PropertyObject) throws
+    func deleteProperty(_ propertyObjectId: PropertyObjectId) throws
 
     func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject?
 
