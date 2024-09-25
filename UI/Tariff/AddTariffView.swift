@@ -11,6 +11,10 @@ struct AddTariffView: View {
     @StateObject
     var viewModel: AddTariffViewModel
     
+    private let adaptiveColumn = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
             Text("Add new tariff")
@@ -25,7 +29,16 @@ struct AddTariffView: View {
                 .keyboardType(.decimalPad)
                 .inputStyle(caption: "Price")
             
-            Text("Place active month grid here")
+            LazyVGrid(columns: adaptiveColumn, spacing: 10) {
+                ForEach(viewModel.monthList.indices, id: \.self) { i in
+                    Text(viewModel.monthList[i])
+                        .foregroundStyle(viewModel.selected[i] ? .green : .primary)
+                        .onTapGesture {
+                            viewModel.toggle(i)
+                        }
+                        .padding(.vertical)
+                }
+            }
         
             Spacer()
             CTAButton(caption: "Add Tariff", callback: viewModel.save)
