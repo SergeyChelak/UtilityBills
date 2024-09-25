@@ -87,11 +87,11 @@ class PropertyObjectViewModel: ObservableObject {
         actionMeterHeaderSectionTap(objectId)
     }
     
-    func meterSelected(_ meterId: MeterId) {
-        actionMeterSelectionTap(meterId)
+    func meterSelected(_ meter: Meter) {
+        actionMeterSelectionTap(meter.id)
     }
     
-    func tariffSelected(_ tariffId: TariffId) {
+    func tariffSelected(_ tariff: Tariff) {
         print("Not implemented")
     }
     

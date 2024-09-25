@@ -22,25 +22,30 @@ struct PropertyObjectView: View {
                                 title: "Info",
                                 action: HeaderAction(
                                     title: "Edit",
-                                    imageDescriptor: .system("pencil"),
                                     callback: viewModel.infoSectionSelected)
                             )
                     }
-                    // Manage meters/meter data
-                    MetersInfoView(
-                        meters: viewModel.meters,
-                        meterSelectionCallback: viewModel.meterSelected(_:)
+                    SectionListView(
+                        items: viewModel.meters,
+                        emptyListMessage: "You have no meters yet",
+                        selectionCallback: viewModel.meterSelected(_:),
+                        cellProducer: { CaptionValueCell(caption: $0.name) }
                     )
                     .sectionWith(
                         title: "Meters",
                         action: HeaderAction(
                             title: "Add",
-                            imageDescriptor: .system("plus.circle"),
                             callback: viewModel.addMeter
                         )
                     )
-                    TariffInfoView(
-                        tariffs: viewModel.tariffs
+                    
+                    // TODO: Display historical data
+                    
+                    SectionListView(
+                        items: viewModel.tariffs,
+                        emptyListMessage: "You have no tariffs yet",
+                        selectionCallback: viewModel.tariffSelected(_:),
+                        cellProducer: { CaptionValueCell(caption: $0.name) }
                     )
                     .sectionWith(
                         title: "Tariffs",
@@ -65,8 +70,6 @@ struct PropertyObjectView: View {
             viewModel.load()
         }
         .errorAlert(for: $viewModel.error)
-        
-        // Display historical data
         
         // Manage tariffs
         
