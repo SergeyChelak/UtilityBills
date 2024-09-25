@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 
+// TODO: this is temporary solution to notify view models about managed context changes
 class StorageWatcher {
     private var cancellables: Set<AnyCancellable> = []
     let _publisher = PassthroughSubject<(), Never>()
@@ -19,8 +20,8 @@ class StorageWatcher {
                 $0.object as? AnyObject === storage.viewContext
             }
             .receive(on: DispatchQueue.main)
-            .sink { notification in
-                self._publisher.send()
+            .sink { [weak self] notification in
+                self?._publisher.send()
             }
             .store(in: &cancellables)
     }

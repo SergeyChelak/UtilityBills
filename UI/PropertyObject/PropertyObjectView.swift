@@ -36,7 +36,7 @@ struct PropertyObjectView: View {
                         action: HeaderAction(
                             title: "Add",
                             imageDescriptor: .system("plus.circle"),
-                            callback: viewModel.meterHeaderSectionSelected
+                            callback: viewModel.addMeter
                         )
                     )
                     TariffInfoView(
@@ -46,7 +46,7 @@ struct PropertyObjectView: View {
                         title: "Tariffs",
                         action: HeaderAction(
                             title: "Add",
-                            callback: viewModel.tariffSectionSelected
+                            callback: viewModel.addTariff
                         )
                     )
                     

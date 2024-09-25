@@ -15,6 +15,8 @@ class MeterNewValueViewModel: ObservableObject {
     @Published
     var value: Double
     @Published
+    var isPaid = false
+    @Published
     var error: Error?
     
     private let actionSave: MeterValueAddAction
@@ -33,7 +35,7 @@ class MeterNewValueViewModel: ObservableObject {
         let value = MeterValue(
             date: date,
             value: value,
-            isPaid: false,
+            isPaid: isPaid,
             id: UUID())
         do {
             try actionSave(value)

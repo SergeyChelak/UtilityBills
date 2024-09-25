@@ -28,6 +28,10 @@ struct MeterNewValueView: View {
             TextField("", value: $viewModel.value, format: .number)
                 .keyboardType(.decimalPad)
                 .inputStyle(caption: "Value")
+            
+            Toggle(isOn: $viewModel.isPaid, label: {
+                Text("Value already included in bill")
+            })
                         
             Spacer()
             CTAButton(caption: "Save", callback: viewModel.save)

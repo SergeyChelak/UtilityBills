@@ -11,6 +11,11 @@ struct CaptionValueCell: View {
     let caption: String
     let value: String
     
+    init(caption: String, value: String = "") {
+        self.caption = caption
+        self.value = value
+    }
+    
     var body: some View {
         HStack {
             Text(caption)
@@ -21,6 +26,7 @@ struct CaptionValueCell: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
         }
+        .contentShape(Rectangle())
     }
 }
 

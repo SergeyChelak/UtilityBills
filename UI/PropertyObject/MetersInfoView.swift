@@ -17,8 +17,7 @@ struct MetersInfoView: View {
                 Text("You have no meters yet")
             } else {
                 ForEach(meters.indices, id: \.self) { i in
-                    Text(meters[i].name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    CaptionValueCell(caption: meters[i].name)
                         .onTapGesture {
                             meterSelectionCallback(meters[i].id)
                         }
