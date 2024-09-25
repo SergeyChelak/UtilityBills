@@ -27,6 +27,8 @@
 		A51082D22CA463AF00103E76 /* SectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D12CA463AF00103E76 /* SectionListView.swift */; };
 		A51082D52CA4698C00103E76 /* AddTariffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D42CA4698C00103E76 /* AddTariffView.swift */; };
 		A51082D72CA4699800103E76 /* AddTariffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D62CA4699800103E76 /* AddTariffViewModel.swift */; };
+		A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D92CA4864C00103E76 /* BitmaskUtils.swift */; };
+		A51082DC2CA4878C00103E76 /* BitMaskUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082DB2CA4878C00103E76 /* BitMaskUtilsTest.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -98,6 +100,8 @@
 		A51082D12CA463AF00103E76 /* SectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListView.swift; sourceTree = "<group>"; };
 		A51082D42CA4698C00103E76 /* AddTariffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTariffView.swift; sourceTree = "<group>"; };
 		A51082D62CA4699800103E76 /* AddTariffViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTariffViewModel.swift; sourceTree = "<group>"; };
+		A51082D92CA4864C00103E76 /* BitmaskUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmaskUtils.swift; sourceTree = "<group>"; };
+		A51082DB2CA4878C00103E76 /* BitMaskUtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskUtilsTest.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -228,6 +232,14 @@
 			path = Tariff;
 			sourceTree = "<group>";
 		};
+		A51082D82CA4863500103E76 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A51082D92CA4864C00103E76 /* BitmaskUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +329,7 @@
 				A540DD1F2C7F6FD600F5624E /* Model */,
 				A510F24F2C9CD5FE00942F8A /* Storage */,
 				A540DD3F2C7FB53400F5624E /* UI */,
+				A51082D82CA4863500103E76 /* Utils */,
 				A5D8093C2C7156A400F2E6AF /* UtilityBillsTests */,
 				A5D809462C7156A400F2E6AF /* UtilityBillsUITests */,
 				A5D8092A2C7156A300F2E6AF /* Products */,
@@ -358,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				A55C635E2C838AD600F66741 /* LocalStorageTest.swift */,
+				A51082DB2CA4878C00103E76 /* BitMaskUtilsTest.swift */,
 			);
 			path = UtilityBillsTests;
 			sourceTree = "<group>";
@@ -514,6 +528,7 @@
 				A51082D72CA4699800103E76 /* AddTariffViewModel.swift in Sources */,
 				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
+				A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
@@ -555,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */,
+				A51082DC2CA4878C00103E76 /* BitMaskUtilsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -49,9 +49,17 @@ class AddTariffViewModel: ObservableObject {
     }
     
     func save() {
-        // TODO: fix stub
-        let tariff = Tariff(id: UUID(), name: name, price: Decimal(0))
         do {
+            let monthMask = try arrayToBitMask(selected)
+            guard let value = Decimal(string: price) else {
+                throw NSError(domain: "UB.Cast", code: 1)
+            }
+            let tariff = Tariff(
+                id: UUID(),
+                name: name,
+                price: value,
+                activeMonthMask: monthMask
+            )
             try actionSave(tariff)
         } catch {
             self.error = error

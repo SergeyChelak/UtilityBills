@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import UtilityBills
 @testable import UtilityBills
 
 final class LocalStorageTest: XCTestCase {

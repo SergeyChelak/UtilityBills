@@ -39,7 +39,6 @@ struct AddTariffView: View {
                         .padding(.vertical)
                 }
             }
-        
             Spacer()
             CTAButton(caption: "Add Tariff", callback: viewModel.save)
             .padding(.bottom, 12)

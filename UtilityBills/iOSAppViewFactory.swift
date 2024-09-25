@@ -70,7 +70,7 @@ struct iOSAppViewFactory {
     
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
         let vm = AddMeterViewModel(propertyObjectId: propObjId) { meter, initialValue in
-            _ = try storage.newMeter(
+            try storage.newMeter(
                 propertyObjectId: propObjId,
                 meter: meter,
                 initialValue: initialValue)
@@ -110,8 +110,7 @@ struct iOSAppViewFactory {
     private func composeAddTariffView(_ propertyObjectId: PropertyObjectId) -> some View {
         let viewModel = AddTariffViewModel(
             actionSave: {
-                // TODO: store in data base
-                print("Saving \($0)")
+                try storage.newTariff(propertyId: propertyObjectId, tariff: $0)
                 router.hideOverlay()
             }
         )

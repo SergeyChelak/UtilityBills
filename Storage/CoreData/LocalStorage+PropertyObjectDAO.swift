@@ -19,8 +19,8 @@ extension LocalStorage: PropertyObjectDAO {
         let context = viewContext
         let obj = CDPropertyObject(context: context)
         obj.uuid = UUID()
-        obj.name = "Title";
-        obj.details = "Details";
+        obj.name = "Title"
+        obj.details = "Details"
         try context.save()
         return mapPropertyObject(obj)
     }

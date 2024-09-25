@@ -8,6 +8,11 @@
 import Foundation
 import CoreData
 
+enum StorageError: Error {
+    case propertyObjectNotFound
+    case meterNotFound
+}
+
 struct LocalStorage {
     private static let modelName = "LocalStorageModel"
     

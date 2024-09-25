@@ -18,7 +18,7 @@ protocol MetersDAO {
         propertyObjectId: PropertyObjectId,
         meter: Meter,
         initialValue: Double
-    ) throws -> Meter
+    ) throws
  
     func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws
 }

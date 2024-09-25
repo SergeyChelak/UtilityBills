@@ -35,11 +35,10 @@ extension LocalStorage: MetersDAO {
         propertyObjectId: PropertyObjectId,
         meter: Meter,
         initialValue: Double
-    ) throws -> Meter {
+    ) throws {
         let context = viewContext
         guard let propertyObject = try fetchPropertyObject(propertyObjectId, into: context) else {
-            // TODO: fix this
-            throw NSError()
+            throw StorageError.propertyObjectNotFound
         }
         let meterObj = CDMeter(context: context)
         meterObj.propertyObject = propertyObject
@@ -51,9 +50,6 @@ extension LocalStorage: MetersDAO {
         let initial: MeterValue = .initial(initialValue)
         _ = try createMeterValue(with: initial, for: meterObj)
         try context.save()
-        
-        return mapMeter(meterObj)
-
     }
         
     func meterValues(_ meterId: MeterId) throws -> [MeterValue] {
@@ -67,8 +63,7 @@ extension LocalStorage: MetersDAO {
     func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws {
         let context = viewContext
         guard let meter = try fetchMeter(meterId, into: context) else {
-            // TODO: fix error type
-            throw NSError()
+            throw StorageError.meterNotFound
         }
         _ = try createMeterValue(with: value, for: meter)
         try context.save()
