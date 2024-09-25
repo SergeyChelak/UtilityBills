@@ -49,6 +49,9 @@ struct iOSAppViewFactory {
             actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
             actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
             actionMeterSelectionTap: { router.push(.meterValues($0)) },
+            actionAddTariff: {
+                router.showOverlay(.addTariff($0))
+            },
             actionDelete: {
                 try storage.deleteProperty(objectId)
                 router.pop()
@@ -103,6 +106,17 @@ struct iOSAppViewFactory {
         )
         return MeterNewValueView(viewModel: viewModel)
     }
+    
+    private func composeAddTariffView(_ propertyObjectId: PropertyObjectId) -> some View {
+        let viewModel = AddTariffViewModel(
+            actionSave: {
+                // TODO: store in data base
+                print("Saving \($0)")
+                router.hideOverlay()
+            }
+        )
+        return AddTariffView(viewModel: viewModel)
+    }
 }
 
 extension iOSAppViewFactory: ViewFactory {
@@ -120,6 +134,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeMeterValuesView(meterId)
         case .addMeterValue(let meterId):
             composeAddMeterValueView(meterId)
+        case .addTariff(let objId):
+            composeAddTariffView(objId)
         }
     }
 }

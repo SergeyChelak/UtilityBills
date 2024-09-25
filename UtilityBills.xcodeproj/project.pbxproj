@@ -25,6 +25,8 @@
 		A51082CD2CA3269D00103E76 /* MeterNewValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082CC2CA3269D00103E76 /* MeterNewValueView.swift */; };
 		A51082CF2CA3277000103E76 /* MeterNewValueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082CE2CA3277000103E76 /* MeterNewValueViewModel.swift */; };
 		A51082D22CA463AF00103E76 /* SectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D12CA463AF00103E76 /* SectionListView.swift */; };
+		A51082D52CA4698C00103E76 /* AddTariffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D42CA4698C00103E76 /* AddTariffView.swift */; };
+		A51082D72CA4699800103E76 /* AddTariffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082D62CA4699800103E76 /* AddTariffViewModel.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -94,6 +96,8 @@
 		A51082CC2CA3269D00103E76 /* MeterNewValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterNewValueView.swift; sourceTree = "<group>"; };
 		A51082CE2CA3277000103E76 /* MeterNewValueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterNewValueViewModel.swift; sourceTree = "<group>"; };
 		A51082D12CA463AF00103E76 /* SectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListView.swift; sourceTree = "<group>"; };
+		A51082D42CA4698C00103E76 /* AddTariffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTariffView.swift; sourceTree = "<group>"; };
+		A51082D62CA4699800103E76 /* AddTariffViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTariffViewModel.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -215,6 +219,15 @@
 			path = Section;
 			sourceTree = "<group>";
 		};
+		A51082D32CA4696A00103E76 /* Tariff */ = {
+			isa = PBXGroup;
+			children = (
+				A51082D42CA4698C00103E76 /* AddTariffView.swift */,
+				A51082D62CA4699800103E76 /* AddTariffViewModel.swift */,
+			);
+			path = Tariff;
+			sourceTree = "<group>";
+		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +272,7 @@
 				A51082B92CA2D4DB00103E76 /* PropertyList */,
 				A55C633F2C7FD50E00F66741 /* PropertyObject */,
 				A51082C52CA2E70E00103E76 /* Meters */,
+				A51082D32CA4696A00103E76 /* Tariff */,
 				A540DD402C7FB57000F5624E /* Cells */,
 			);
 			path = UI;
@@ -497,6 +511,7 @@
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */,
+				A51082D72CA4699800103E76 /* AddTariffViewModel.swift in Sources */,
 				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
@@ -509,6 +524,7 @@
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */,
 				A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */,
+				A51082D52CA4698C00103E76 /* AddTariffView.swift in Sources */,
 				A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,

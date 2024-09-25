@@ -93,6 +93,7 @@ struct PropertyObjectView: View {
         actionInfoSectionTap: { _ in },
         actionMeterHeaderSectionTap: { _ in },
         actionMeterSelectionTap: { _ in },
+        actionAddTariff: { _ in },
         actionDelete: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )

@@ -18,6 +18,7 @@ typealias PropertyObjectActionDelete = () throws -> Void
 typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
 typealias PropertyObjectActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
 typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
+typealias PropertyObjectActionAddTariff = (PropertyObjectId) -> Void
 
 
 class PropertyObjectViewModel: ObservableObject {
@@ -29,6 +30,7 @@ class PropertyObjectViewModel: ObservableObject {
     private let actionInfoSectionTap: PropertyObjectActionInfoSectionTap
     private let actionMeterHeaderSectionTap: PropertyObjectActionMeterHeaderSectionTap
     private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
+    private let actionAddTariff: PropertyObjectActionAddTariff
     private let actionDelete: PropertyObjectActionDelete
     
     @Published 
@@ -54,6 +56,7 @@ class PropertyObjectViewModel: ObservableObject {
         actionInfoSectionTap: @escaping PropertyObjectActionInfoSectionTap,
         actionMeterHeaderSectionTap: @escaping PropertyObjectActionMeterHeaderSectionTap,
         actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
+        actionAddTariff: @escaping PropertyObjectActionAddTariff,
         actionDelete: @escaping PropertyObjectActionDelete,
         updatePublisher: AnyPublisher<(), Never>
     ) {
@@ -62,6 +65,7 @@ class PropertyObjectViewModel: ObservableObject {
         self.actionInfoSectionTap = actionInfoSectionTap
         self.actionMeterHeaderSectionTap = actionMeterHeaderSectionTap
         self.actionMeterSelectionTap = actionMeterSelectionTap
+        self.actionAddTariff = actionAddTariff
         self.actionDelete = actionDelete
         updatePublisher
             .sink(receiveValue: load)
@@ -96,7 +100,7 @@ class PropertyObjectViewModel: ObservableObject {
     }
     
     func addTariff() {
-        print("Not implemented")
+        actionAddTariff(objectId)
     }
     
     func deleteObject() {
