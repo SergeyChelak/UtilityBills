@@ -26,13 +26,6 @@ struct MeterValuesListView: View {
                     .onTapGesture(perform: { viewModel.select(index: i) })
                 }
             }
-            Spacer()
-            CTAButton(
-                caption: "Delete Meter",
-                fillColor: .red,
-                callback: viewModel.deleteMeter
-            )
-            .padding(.horizontal)
         }
         .navigationTitle("Values")
         .toolbar {
@@ -62,7 +55,6 @@ import Combine
         actionLoad: { Array(values) },
         actionNewValue: { },
         actionSelect:  { _ in },
-        actionDeleteMeter: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )
     return MeterValuesListView(viewModel: vm)

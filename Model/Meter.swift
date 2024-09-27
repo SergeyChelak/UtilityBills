@@ -15,3 +15,5 @@ struct Meter {
     let capacity: Int?
     let inspectionDate: Date?
 }
+
+extension Meter: Equatable, Hashable { }

@@ -20,7 +20,7 @@ struct PropertySettingsData {
 
 typealias PropertySettingsActionLoad = () throws -> PropertySettingsData
 typealias PropertySettingsActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
-typealias PropertySettingsActionMeterSelectionTap = (MeterId) -> Void
+typealias PropertySettingsActionMeterSelectionTap = (Meter) -> Void
 typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
@@ -84,7 +84,7 @@ class PropertySettingsViewModel: ObservableObject {
     }
     
     func meterSelected(_ meter: Meter) {
-        actionMeterSelectionTap(meter.id)
+        actionMeterSelectionTap(meter)
     }
     
     func tariffSelected(_ tariff: Tariff) {

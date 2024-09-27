@@ -60,6 +60,16 @@ extension LocalStorage: MetersDAO {
         return try context.fetch(request).map(mapMeterValue)
     }
     
+    func updateMeter(_ meter: Meter) throws {
+        let context = viewContext
+        guard let cdMeter = try fetchMeter(meter.id, into: context) else {
+            throw StorageError.meterNotFound
+        }
+        cdMeter.name = meter.name
+        cdMeter.inspectionDate = meter.inspectionDate
+        try context.save()
+    }
+    
     func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws {
         let context = viewContext
         guard let meter = try fetchMeter(meterId, into: context) else {

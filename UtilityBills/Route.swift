@@ -12,6 +12,7 @@ enum Route: Hashable {
     case propertyObjectHome(PropertyObjectId)
     case editPropertyInfo(PropertyObject)
     case addMeter(PropertyObjectId)
+    case editMeter(Meter)
     case meterValues(MeterId)
     case addMeterValue(MeterId)
     case addTariff(PropertyObjectId)

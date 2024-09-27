@@ -20,5 +20,7 @@ protocol MetersDAO {
         initialValue: Double
     ) throws
  
+    func updateMeter(_ meter: Meter) throws
+    
     func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws
 }

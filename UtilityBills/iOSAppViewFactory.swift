@@ -78,10 +78,6 @@ struct iOSAppViewFactory {
                 router.showOverlay(.addMeterValue(meterId))
             },
             actionSelect: { _ in },
-            actionDeleteMeter: {
-                try storage.deleteMeter(meterId)
-                router.pop()
-            },
             updatePublisher: storageWatcher.publisher
         )
         return MeterValuesListView(viewModel: viewModel)
@@ -123,7 +119,7 @@ struct iOSAppViewFactory {
                 )
             },
             actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
-            actionMeterSelectionTap: { _ in },
+            actionMeterSelectionTap: { router.showOverlay(.editMeter($0)) },
             actionAddTariff: { router.showOverlay(.addTariff($0)) },
             actionDelete: {
                 try storage.deleteProperty(propObjId)
@@ -132,6 +128,21 @@ struct iOSAppViewFactory {
             updatePublisher: storageWatcher.publisher
         )
         return PropertySettingsView(viewModel: viewModel)
+    }
+    
+    private func composeEditMeterView(_ meter: Meter) -> some View {
+        let viewModel = EditMeterViewModel(
+            meter: meter,
+            actionUpdateMeter: {
+                try storage.updateMeter($0)
+                router.hideOverlay()
+            },
+            actionDeleteMeter: {
+                try storage.deleteMeter(meter.id)
+                router.hideOverlay()
+            }
+        )
+        return EditMeterView(viewModel: viewModel)
     }
 }
 
@@ -154,6 +165,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeAddTariffView(objId)
         case .propertyObjectSettings(let objId):
             composePropertyObjectSettingsView(objId)
+        case .editMeter(let meter):
+            composeEditMeterView(meter)
         }
     }
 }

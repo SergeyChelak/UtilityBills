@@ -7,23 +7,19 @@
 
 import Combine
 
-typealias MeterActionDelete = () throws -> ()
 typealias MeterActionNewValue = () -> ()
 
 class MeterValuesListViewModel: CommonListViewModel<MeterValue> {
     private var cancellables: Set<AnyCancellable> = []
-    private let actionNewValue: MeterActionNewValue
-    private let actionDeleteMeter: MeterActionDelete
+    private let actionNewValue: MeterActionNewValue    
     
     init(
         actionLoad: @escaping CommonListActionLoad<MeterValue>,
         actionNewValue: @escaping MeterActionNewValue,
-        actionSelect: @escaping CommonListActionSelect<MeterValue>,
-        actionDeleteMeter: @escaping MeterActionDelete,
+        actionSelect: @escaping CommonListActionSelect<MeterValue>,        
         updatePublisher: AnyPublisher<(), Never>
     ) {
-        self.actionNewValue = actionNewValue
-        self.actionDeleteMeter = actionDeleteMeter
+        self.actionNewValue = actionNewValue        
         super.init(actionLoad: actionLoad, actionSelect: actionSelect)
         updatePublisher
             .sink(receiveValue: load)
@@ -32,13 +28,5 @@ class MeterValuesListViewModel: CommonListViewModel<MeterValue> {
     
     func newValue() {
         actionNewValue()
-    }
-    
-    func deleteMeter() {
-        do {
-            try actionDeleteMeter()
-        } catch {
-            self.error = error
-        }
-    }
+    }    
 }
