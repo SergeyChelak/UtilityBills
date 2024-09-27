@@ -115,6 +115,9 @@ struct iOSAppViewFactory {
     private func composePropertyObjectSettingsView(_ propertyObjectId: PropertyObjectId) -> some View {
         let viewModel = PropertySettingsViewModel(
             objectId: propertyObjectId,
+            actionLoad: {
+                try storage.allBillingMaps(propertyObjectId)
+            },
             actionDelete: {
                 try storage.deleteProperty(propertyObjectId)
                 router.popToRoot()

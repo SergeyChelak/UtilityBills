@@ -41,3 +41,19 @@ func mapTariff(_ cdTariff: CDTariff) -> Tariff {
         activeMonthMask: Int(cdTariff.activeMonthMask)
     )
 }
+
+func mapBillingMap(_ cdBillingMap: CDBillingMap) -> BillingMap {
+    let tariff = mapTariff(cdBillingMap.tariff!)
+    let meters = cdBillingMap
+        .meters!
+        .map {
+            mapMeter($0 as! CDMeter)
+        }
+    return BillingMap(
+        id: cdBillingMap.uuid!,
+        name: cdBillingMap.name!,
+        order: Int(cdBillingMap.order),
+        tariff: tariff,
+        meters: meters
+    )
+}
