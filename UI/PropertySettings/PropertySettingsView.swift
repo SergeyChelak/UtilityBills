@@ -10,6 +10,8 @@ import SwiftUI
 struct PropertySettingsView: View {
     @StateObject
     var viewModel: PropertySettingsViewModel
+    @State
+    var isConfirmDeleteAlertVisible = false
     
     var body: some View {
         VStack {
@@ -19,11 +21,20 @@ struct PropertySettingsView: View {
             CTAButton(
                 caption: "Delete Object",
                 fillColor: .red,
-                callback: viewModel.deleteObject
+                callback: { isConfirmDeleteAlertVisible.toggle() }
             )
         }
         .padding(.horizontal)
         .navigationTitle("Settings")
+        .errorAlert(for: $viewModel.error)
+        .alert(isPresented: $isConfirmDeleteAlertVisible) {
+            Alert(
+                title: Text("Warning"),
+                message: Text("Do you want to delete this object?"),
+                primaryButton: .destructive(Text("Delete"), action: viewModel.deleteObject),
+                secondaryButton: .default(Text("Cancel"))
+            )
+        }
     }
 }
 
