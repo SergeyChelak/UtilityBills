@@ -26,7 +26,17 @@ struct PropertyObjectView: View {
                             )
                     }
                     
-                    // TODO: Display historical data                                        
+                    // TODO: Display historical data
+                    
+                    SectionListView(
+                        items: viewModel.meters,
+                        emptyListMessage: "You have no meters yet",
+                        selectionCallback: viewModel.meterSelected(_:),
+                        cellProducer: { CaptionValueCell(caption: $0.name) }
+                    )
+                    .sectionWith(
+                        title: "Meters"
+                    )
                 }
             }            
         }
@@ -51,12 +61,13 @@ struct PropertyObjectView: View {
         actionLoad: {
             let obj = PropertyObject(id: UUID(), name: "House", details: "My home")
             let meters: [Meter] = []
-            let tariffs: [Tariff] = []
             return PropertyObjectData(
-                propObj: obj
+                propObj: obj,
+                meters: meters
             )
         },
         actionInfoSectionTap: { _ in },
+        actionMeterSelectionTap: { _ in },
         actionSettings: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )

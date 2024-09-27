@@ -20,7 +20,7 @@ struct PropertySettingsData {
 
 typealias PropertySettingsActionLoad = () throws -> PropertySettingsData
 typealias PropertyObjectActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
-typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
+typealias PropertySettingsActionMeterSelectionTap = (MeterId) -> Void
 typealias PropertyObjectActionAddTariff = (PropertyObjectId) -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
@@ -30,7 +30,7 @@ class PropertySettingsViewModel: ObservableObject {
     let objectId: PropertyObjectId
     private let actionLoad: PropertySettingsActionLoad
     private let actionMeterHeaderSectionTap: PropertyObjectActionMeterHeaderSectionTap
-    private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
+    private let actionMeterSelectionTap: PropertySettingsActionMeterSelectionTap
     private let actionAddTariff: PropertyObjectActionAddTariff
     private let actionDelete: PropertySettingsActionDelete
     
@@ -43,7 +43,7 @@ class PropertySettingsViewModel: ObservableObject {
         objectId: PropertyObjectId,
         actionLoad: @escaping PropertySettingsActionLoad,
         actionMeterHeaderSectionTap: @escaping PropertyObjectActionMeterHeaderSectionTap,
-        actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
+        actionMeterSelectionTap: @escaping PropertySettingsActionMeterSelectionTap,
         actionAddTariff: @escaping PropertyObjectActionAddTariff,
         actionDelete: @escaping PropertySettingsActionDelete,
         updatePublisher: AnyPublisher<(), Never>

@@ -9,12 +9,12 @@ import Combine
 
 struct PropertyObjectData {
     let propObj: PropertyObject?
-//    let meters: [Meter]
-//    let tariffs: [Tariff]
+    let meters: [Meter]
 }
 
 typealias PropertyObjectActionLoad = () throws -> PropertyObjectData
 typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
+typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
 typealias PropertyObjectActionSettings = () -> Void
 
 
@@ -25,6 +25,7 @@ class PropertyObjectViewModel: ObservableObject {
 
     private let actionLoad: PropertyObjectActionLoad
     private let actionInfoSectionTap: PropertyObjectActionInfoSectionTap
+    private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
     private let actionSettings: PropertyObjectActionSettings
     
     @Published 
@@ -36,16 +37,22 @@ class PropertyObjectViewModel: ObservableObject {
         data?.propObj
     }
     
+    var meters: [Meter] {
+        data?.meters ?? []
+    }
+    
     init(
         _ objectId: PropertyObjectId,
         actionLoad: @escaping PropertyObjectActionLoad,
         actionInfoSectionTap: @escaping PropertyObjectActionInfoSectionTap,
+        actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
         actionSettings: @escaping PropertyObjectActionSettings,
         updatePublisher: AnyPublisher<(), Never>
     ) {
         self.objectId = objectId
         self.actionLoad = actionLoad
         self.actionInfoSectionTap = actionInfoSectionTap
+        self.actionMeterSelectionTap = actionMeterSelectionTap
         self.actionSettings = actionSettings
         updatePublisher
             .sink(receiveValue: load)
@@ -65,6 +72,10 @@ class PropertyObjectViewModel: ObservableObject {
             fatalError("Unexpected case")
         }
         actionInfoSectionTap(propObj)
+    }
+    
+    func meterSelected(_ meter: Meter) {
+        actionMeterSelectionTap(meter.id)
     }
         
     func openSettings() {

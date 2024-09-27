@@ -34,17 +34,20 @@ struct iOSAppViewFactory {
         return PropertyListView(viewModel: viewModel)
     }
     
-    private func composePropertyHomeView(_ objectId: PropertyObjectId) -> some View {
+    private func composePropertyHomeView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = PropertyObjectViewModel(
-            objectId,
+            propObjId,
             actionLoad: {
-                let propObj = try storage.fetchProperty(objectId)
+                let propObj = try storage.fetchProperty(propObjId)
+                let meters = try storage.allMeters(for: propObjId)
                 return PropertyObjectData(
-                    propObj: propObj
+                    propObj: propObj,
+                    meters: meters
                 )
             },
             actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
-            actionSettings: { router.push(.propertyObjectSettings(objectId)) },
+            actionMeterSelectionTap: { router.push(.meterValues($0)) },
+            actionSettings: { router.push(.propertyObjectSettings(propObjId)) },
             updatePublisher: storageWatcher.publisher
         )
         return PropertyObjectView(viewModel: viewModel)
@@ -96,23 +99,23 @@ struct iOSAppViewFactory {
         return MeterNewValueView(viewModel: viewModel)
     }
     
-    private func composeAddTariffView(_ propertyObjectId: PropertyObjectId) -> some View {
+    private func composeAddTariffView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = AddTariffViewModel(
             actionSave: {
-                try storage.newTariff(propertyId: propertyObjectId, tariff: $0)
+                try storage.newTariff(propertyId: propObjId, tariff: $0)
                 router.hideOverlay()
             }
         )
         return AddTariffView(viewModel: viewModel)
     }
     
-    private func composePropertyObjectSettingsView(_ propertyObjectId: PropertyObjectId) -> some View {
+    private func composePropertyObjectSettingsView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = PropertySettingsViewModel(
-            objectId: propertyObjectId,
+            objectId: propObjId,
             actionLoad: {
-                let meters = try storage.allMeters(for: propertyObjectId)
-                let tariffs = try storage.allTariffs(for: propertyObjectId)
-                let billingMaps = try storage.allBillingMaps(propertyObjectId)
+                let meters = try storage.allMeters(for: propObjId)
+                let tariffs = try storage.allTariffs(for: propObjId)
+                let billingMaps = try storage.allBillingMaps(propObjId)
                 return PropertySettingsData(
                     meters: meters,
                     tariffs: tariffs,
@@ -120,10 +123,10 @@ struct iOSAppViewFactory {
                 )
             },
             actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
-            actionMeterSelectionTap: { router.push(.meterValues($0)) },
+            actionMeterSelectionTap: { _ in },
             actionAddTariff: { router.showOverlay(.addTariff($0)) },
             actionDelete: {
-                try storage.deleteProperty(propertyObjectId)
+                try storage.deleteProperty(propObjId)
                 router.popToRoot()
             },
             updatePublisher: storageWatcher.publisher
