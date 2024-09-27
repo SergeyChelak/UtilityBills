@@ -14,11 +14,11 @@ struct PropertyObjectData {
 }
 
 typealias PropertyObjectActionLoad = () throws -> PropertyObjectData
-typealias PropertyObjectActionDelete = () throws -> Void
 typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
 typealias PropertyObjectActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
 typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
 typealias PropertyObjectActionAddTariff = (PropertyObjectId) -> Void
+typealias PropertyObjectActionSettings = () -> Void
 
 
 class PropertyObjectViewModel: ObservableObject {
@@ -30,8 +30,8 @@ class PropertyObjectViewModel: ObservableObject {
     private let actionInfoSectionTap: PropertyObjectActionInfoSectionTap
     private let actionMeterHeaderSectionTap: PropertyObjectActionMeterHeaderSectionTap
     private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
-    private let actionAddTariff: PropertyObjectActionAddTariff
-    private let actionDelete: PropertyObjectActionDelete
+    private let actionAddTariff: PropertyObjectActionAddTariff    
+    private let actionSettings: PropertyObjectActionSettings
     
     @Published 
     var data: PropertyObjectData?
@@ -56,8 +56,8 @@ class PropertyObjectViewModel: ObservableObject {
         actionInfoSectionTap: @escaping PropertyObjectActionInfoSectionTap,
         actionMeterHeaderSectionTap: @escaping PropertyObjectActionMeterHeaderSectionTap,
         actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
-        actionAddTariff: @escaping PropertyObjectActionAddTariff,
-        actionDelete: @escaping PropertyObjectActionDelete,
+        actionAddTariff: @escaping PropertyObjectActionAddTariff,    
+        actionSettings: @escaping PropertyObjectActionSettings,
         updatePublisher: AnyPublisher<(), Never>
     ) {
         self.objectId = objectId
@@ -65,8 +65,8 @@ class PropertyObjectViewModel: ObservableObject {
         self.actionInfoSectionTap = actionInfoSectionTap
         self.actionMeterHeaderSectionTap = actionMeterHeaderSectionTap
         self.actionMeterSelectionTap = actionMeterSelectionTap
-        self.actionAddTariff = actionAddTariff
-        self.actionDelete = actionDelete
+        self.actionAddTariff = actionAddTariff        
+        self.actionSettings = actionSettings
         updatePublisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
@@ -103,12 +103,8 @@ class PropertyObjectViewModel: ObservableObject {
         actionAddTariff(objectId)
     }
     
-    func deleteObject() {
-        do {
-            try actionDelete()
-        } catch {
-            self.error = error
-        }
+    func openSettings() {
+        actionSettings()
     }
 }
 

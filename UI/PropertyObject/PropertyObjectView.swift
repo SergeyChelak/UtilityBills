@@ -45,7 +45,12 @@ struct PropertyObjectView: View {
                         items: viewModel.tariffs,
                         emptyListMessage: "You have no tariffs yet",
                         selectionCallback: viewModel.tariffSelected(_:),
-                        cellProducer: { CaptionValueCell(caption: $0.name) }
+                        cellProducer: {
+                            CaptionValueCell(
+                                caption: $0.name,
+                                value: $0.price.formatted()
+                            )
+                        }
                     )
                     .sectionWith(
                         title: "Tariffs",
@@ -57,23 +62,19 @@ struct PropertyObjectView: View {
                     
                 }
             }            
-            Spacer()
-            CTAButton(
-                caption: "Delete Object",
-                fillColor: .red,
-                callback: viewModel.deleteObject
-            )
-            .padding(.horizontal)
         }
         .navigationTitle(viewModel.propObj?.name ?? "")
+        .toolbar {
+            ToolbarItem {
+                Button(action: viewModel.openSettings) {
+                    Image(systemName: "gearshape")
+                }
+            }
+        }
         .task {
             viewModel.load()
         }
         .errorAlert(for: $viewModel.error)
-        
-        // Manage tariffs
-        
-        // Manage payment's settings
     }
 }
 
@@ -94,7 +95,7 @@ struct PropertyObjectView: View {
         actionMeterHeaderSectionTap: { _ in },
         actionMeterSelectionTap: { _ in },
         actionAddTariff: { _ in },
-        actionDelete: { },
+        actionSettings: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )
     return PropertyObjectView(viewModel: store)
