@@ -5,6 +5,7 @@
 //  Created by Sergey on 27.09.2024.
 //
 
+import Combine
 import SwiftUI
 
 struct PropertySettingsView: View {
@@ -16,20 +17,53 @@ struct PropertySettingsView: View {
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
-                // Manage payment's settings
-                SectionListView(
-                    items: viewModel.billingMaps,
-                    emptyListMessage: "You didn't add any payment maps yet",
-                    selectionCallback: { _ in },
-                    cellProducer: { CaptionValueCell(caption: $0.name) }
-                )
-                .sectionWith(
-                    title: "Payment Mapping",
-                    action: HeaderAction(
-                        title: "Add",
-                        callback: { }
+                VStack(spacing: 24) {
+                    SectionListView(
+                        items: viewModel.meters,
+                        emptyListMessage: "You have no meters yet",
+                        selectionCallback: viewModel.meterSelected(_:),
+                        cellProducer: { CaptionValueCell(caption: $0.name) }
                     )
-                )
+                    .sectionWith(
+                        title: "Meters",
+                        action: HeaderAction(
+                            title: "Add",
+                            callback: viewModel.addMeter
+                        )
+                    )
+                    SectionListView(
+                        items: viewModel.tariffs,
+                        emptyListMessage: "You have no tariffs yet",
+                        selectionCallback: viewModel.tariffSelected(_:),
+                        cellProducer: {
+                            CaptionValueCell(
+                                caption: $0.name,
+                                value: $0.price.formatted()
+                            )
+                        }
+                    )
+                    .sectionWith(
+                        title: "Tariffs",
+                        action: HeaderAction(
+                            title: "Add",
+                            callback: viewModel.addTariff
+                        )
+                    )
+                    // Manage payment's settings
+                    SectionListView(
+                        items: viewModel.billingMaps,
+                        emptyListMessage: "You didn't add any payment maps yet",
+                        selectionCallback: { _ in },
+                        cellProducer: { CaptionValueCell(caption: $0.name) }
+                    )
+                    .sectionWith(
+                        title: "Payment Mapping",
+                        action: HeaderAction(
+                            title: "Add",
+                            callback: { }
+                        )
+                    )
+                }
             }
             Spacer()
             CTAButton(
@@ -37,8 +71,8 @@ struct PropertySettingsView: View {
                 fillColor: .red,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
         .navigationTitle("Settings")
         .errorAlert(for: $viewModel.error)
         .alert(isPresented: $isConfirmDeleteAlertVisible) {
@@ -75,20 +109,29 @@ struct PropertySettingsView: View {
         capacity: nil,
         inspectionDate: nil
     )
+    
+    let billingItem = BillingMap(
+        id: BillingMapId(),
+        name: "Billing map #1",
+        order: 1,
+        tariff: tariff,
+        meters: [meter1, meter2]
+    )
 
     let vm = PropertySettingsViewModel(
         objectId: PropertyObjectId(),
         actionLoad: {
-            let item = BillingMap(
-                id: BillingMapId(),
-                name: "Billing map #1",
-                order: 1,
-                tariff: tariff,
-                meters: [meter1, meter2]
+            PropertySettingsData(
+                meters: [meter1, meter2],
+                tariffs: [tariff, tariff],
+                billingMaps: [billingItem, billingItem, billingItem]
             )
-            return [item, item, item]
         },
-        actionDelete: { }
+        actionMeterHeaderSectionTap: { _ in },
+        actionMeterSelectionTap: { _ in },
+        actionAddTariff: { _ in },
+        actionDelete: { },
+        updatePublisher: Empty().eraseToAnyPublisher()
     )
     return PropertySettingsView(viewModel: vm)
 }

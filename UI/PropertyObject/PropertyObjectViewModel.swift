@@ -9,15 +9,12 @@ import Combine
 
 struct PropertyObjectData {
     let propObj: PropertyObject?
-    let meters: [Meter]
-    let tariffs: [Tariff]
+//    let meters: [Meter]
+//    let tariffs: [Tariff]
 }
 
 typealias PropertyObjectActionLoad = () throws -> PropertyObjectData
 typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
-typealias PropertyObjectActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
-typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
-typealias PropertyObjectActionAddTariff = (PropertyObjectId) -> Void
 typealias PropertyObjectActionSettings = () -> Void
 
 
@@ -28,9 +25,6 @@ class PropertyObjectViewModel: ObservableObject {
 
     private let actionLoad: PropertyObjectActionLoad
     private let actionInfoSectionTap: PropertyObjectActionInfoSectionTap
-    private let actionMeterHeaderSectionTap: PropertyObjectActionMeterHeaderSectionTap
-    private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
-    private let actionAddTariff: PropertyObjectActionAddTariff    
     private let actionSettings: PropertyObjectActionSettings
     
     @Published 
@@ -42,30 +36,16 @@ class PropertyObjectViewModel: ObservableObject {
         data?.propObj
     }
     
-    var meters: [Meter] {
-        data?.meters ?? []
-    }
-    
-    var tariffs: [Tariff] { 
-        data?.tariffs ?? []
-    }
-    
     init(
         _ objectId: PropertyObjectId,
         actionLoad: @escaping PropertyObjectActionLoad,
         actionInfoSectionTap: @escaping PropertyObjectActionInfoSectionTap,
-        actionMeterHeaderSectionTap: @escaping PropertyObjectActionMeterHeaderSectionTap,
-        actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
-        actionAddTariff: @escaping PropertyObjectActionAddTariff,    
         actionSettings: @escaping PropertyObjectActionSettings,
         updatePublisher: AnyPublisher<(), Never>
     ) {
         self.objectId = objectId
         self.actionLoad = actionLoad
         self.actionInfoSectionTap = actionInfoSectionTap
-        self.actionMeterHeaderSectionTap = actionMeterHeaderSectionTap
-        self.actionMeterSelectionTap = actionMeterSelectionTap
-        self.actionAddTariff = actionAddTariff        
         self.actionSettings = actionSettings
         updatePublisher
             .sink(receiveValue: load)
@@ -86,23 +66,7 @@ class PropertyObjectViewModel: ObservableObject {
         }
         actionInfoSectionTap(propObj)
     }
-    
-    func addMeter() {
-        actionMeterHeaderSectionTap(objectId)
-    }
-    
-    func meterSelected(_ meter: Meter) {
-        actionMeterSelectionTap(meter.id)
-    }
-    
-    func tariffSelected(_ tariff: Tariff) {
-        print("Not implemented")
-    }
-    
-    func addTariff() {
-        actionAddTariff(objectId)
-    }
-    
+        
     func openSettings() {
         actionSettings()
     }

@@ -39,17 +39,11 @@ struct iOSAppViewFactory {
             objectId,
             actionLoad: {
                 let propObj = try storage.fetchProperty(objectId)
-                let meters = try storage.allMeters(for: objectId)
-                let tariffs = try storage.allTariffs(for: objectId)
                 return PropertyObjectData(
-                    propObj: propObj,
-                    meters: meters,
-                    tariffs: tariffs)
+                    propObj: propObj
+                )
             },
             actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
-            actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
-            actionMeterSelectionTap: { router.push(.meterValues($0)) },
-            actionAddTariff: { router.showOverlay(.addTariff($0)) },
             actionSettings: { router.push(.propertyObjectSettings(objectId)) },
             updatePublisher: storageWatcher.publisher
         )
@@ -116,12 +110,23 @@ struct iOSAppViewFactory {
         let viewModel = PropertySettingsViewModel(
             objectId: propertyObjectId,
             actionLoad: {
-                try storage.allBillingMaps(propertyObjectId)
+                let meters = try storage.allMeters(for: propertyObjectId)
+                let tariffs = try storage.allTariffs(for: propertyObjectId)
+                let billingMaps = try storage.allBillingMaps(propertyObjectId)
+                return PropertySettingsData(
+                    meters: meters,
+                    tariffs: tariffs,
+                    billingMaps: billingMaps
+                )
             },
+            actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
+            actionMeterSelectionTap: { router.push(.meterValues($0)) },
+            actionAddTariff: { router.showOverlay(.addTariff($0)) },
             actionDelete: {
                 try storage.deleteProperty(propertyObjectId)
                 router.popToRoot()
-            }
+            },
+            updatePublisher: storageWatcher.publisher
         )
         return PropertySettingsView(viewModel: viewModel)
     }

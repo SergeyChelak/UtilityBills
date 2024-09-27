@@ -25,41 +25,8 @@ struct PropertyObjectView: View {
                                     callback: viewModel.infoSectionSelected)
                             )
                     }
-                    SectionListView(
-                        items: viewModel.meters,
-                        emptyListMessage: "You have no meters yet",
-                        selectionCallback: viewModel.meterSelected(_:),
-                        cellProducer: { CaptionValueCell(caption: $0.name) }
-                    )
-                    .sectionWith(
-                        title: "Meters",
-                        action: HeaderAction(
-                            title: "Add",
-                            callback: viewModel.addMeter
-                        )
-                    )
                     
-                    // TODO: Display historical data
-                    
-                    SectionListView(
-                        items: viewModel.tariffs,
-                        emptyListMessage: "You have no tariffs yet",
-                        selectionCallback: viewModel.tariffSelected(_:),
-                        cellProducer: {
-                            CaptionValueCell(
-                                caption: $0.name,
-                                value: $0.price.formatted()
-                            )
-                        }
-                    )
-                    .sectionWith(
-                        title: "Tariffs",
-                        action: HeaderAction(
-                            title: "Add",
-                            callback: viewModel.addTariff
-                        )
-                    )
-                    
+                    // TODO: Display historical data                                        
                 }
             }            
         }
@@ -86,15 +53,10 @@ struct PropertyObjectView: View {
             let meters: [Meter] = []
             let tariffs: [Tariff] = []
             return PropertyObjectData(
-                propObj: obj,
-                meters: meters,
-                tariffs: tariffs
+                propObj: obj
             )
         },
         actionInfoSectionTap: { _ in },
-        actionMeterHeaderSectionTap: { _ in },
-        actionMeterSelectionTap: { _ in },
-        actionAddTariff: { _ in },
         actionSettings: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )
