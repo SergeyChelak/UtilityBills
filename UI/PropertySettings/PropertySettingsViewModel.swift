@@ -19,9 +19,9 @@ struct PropertySettingsData {
 }
 
 typealias PropertySettingsActionLoad = () throws -> PropertySettingsData
-typealias PropertyObjectActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
+typealias PropertySettingsActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
 typealias PropertySettingsActionMeterSelectionTap = (MeterId) -> Void
-typealias PropertyObjectActionAddTariff = (PropertyObjectId) -> Void
+typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
 class PropertySettingsViewModel: ObservableObject {
@@ -29,9 +29,9 @@ class PropertySettingsViewModel: ObservableObject {
     
     let objectId: PropertyObjectId
     private let actionLoad: PropertySettingsActionLoad
-    private let actionMeterHeaderSectionTap: PropertyObjectActionMeterHeaderSectionTap
+    private let actionMeterHeaderSectionTap: PropertySettingsActionMeterHeaderSectionTap
     private let actionMeterSelectionTap: PropertySettingsActionMeterSelectionTap
-    private let actionAddTariff: PropertyObjectActionAddTariff
+    private let actionAddTariff: PropertySettingsActionAddTariff
     private let actionDelete: PropertySettingsActionDelete
     
     @Published
@@ -42,9 +42,9 @@ class PropertySettingsViewModel: ObservableObject {
     init(
         objectId: PropertyObjectId,
         actionLoad: @escaping PropertySettingsActionLoad,
-        actionMeterHeaderSectionTap: @escaping PropertyObjectActionMeterHeaderSectionTap,
+        actionMeterHeaderSectionTap: @escaping PropertySettingsActionMeterHeaderSectionTap,
         actionMeterSelectionTap: @escaping PropertySettingsActionMeterSelectionTap,
-        actionAddTariff: @escaping PropertyObjectActionAddTariff,
+        actionAddTariff: @escaping PropertySettingsActionAddTariff,
         actionDelete: @escaping PropertySettingsActionDelete,
         updatePublisher: AnyPublisher<(), Never>
     ) {
