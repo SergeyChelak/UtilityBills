@@ -60,7 +60,7 @@ struct PropertySettingsView: View {
                         title: "Payment Mapping",
                         action: HeaderAction(
                             title: "Add",
-                            callback: { }
+                            callback: viewModel.addBillingMap
                         )
                     )
                 }
@@ -130,6 +130,7 @@ struct PropertySettingsView: View {
         actionMeterHeaderSectionTap: { _ in },
         actionMeterSelectionTap: { _ in },
         actionAddTariff: { _ in },
+        actionAddBillingMap: { _ in },
         actionDelete: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )

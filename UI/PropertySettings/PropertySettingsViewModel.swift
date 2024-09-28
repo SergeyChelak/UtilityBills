@@ -22,6 +22,7 @@ typealias PropertySettingsActionLoad = () throws -> PropertySettingsData
 typealias PropertySettingsActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
 typealias PropertySettingsActionMeterSelectionTap = (Meter) -> Void
 typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
+typealias PropertySettingsActionAddBillingMap = (PropertyObjectId) throws -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
 class PropertySettingsViewModel: ObservableObject {
@@ -32,6 +33,7 @@ class PropertySettingsViewModel: ObservableObject {
     private let actionMeterHeaderSectionTap: PropertySettingsActionMeterHeaderSectionTap
     private let actionMeterSelectionTap: PropertySettingsActionMeterSelectionTap
     private let actionAddTariff: PropertySettingsActionAddTariff
+    private let actionAddBillingMap: PropertySettingsActionAddBillingMap
     private let actionDelete: PropertySettingsActionDelete
     
     @Published
@@ -45,6 +47,7 @@ class PropertySettingsViewModel: ObservableObject {
         actionMeterHeaderSectionTap: @escaping PropertySettingsActionMeterHeaderSectionTap,
         actionMeterSelectionTap: @escaping PropertySettingsActionMeterSelectionTap,
         actionAddTariff: @escaping PropertySettingsActionAddTariff,
+        actionAddBillingMap: @escaping PropertySettingsActionAddBillingMap,
         actionDelete: @escaping PropertySettingsActionDelete,
         updatePublisher: AnyPublisher<(), Never>
     ) {
@@ -53,6 +56,7 @@ class PropertySettingsViewModel: ObservableObject {
         self.actionMeterHeaderSectionTap = actionMeterHeaderSectionTap
         self.actionMeterSelectionTap = actionMeterSelectionTap
         self.actionAddTariff = actionAddTariff
+        self.actionAddBillingMap = actionAddBillingMap
         self.actionDelete = actionDelete
         updatePublisher
             .sink(receiveValue: load)
@@ -93,6 +97,14 @@ class PropertySettingsViewModel: ObservableObject {
     
     func addTariff() {
         actionAddTariff(objectId)
+    }
+    
+    func addBillingMap() {
+        do {
+            try actionAddBillingMap(objectId)
+        } catch {
+            self.error = error
+        }
     }
     
     func deleteObject() {

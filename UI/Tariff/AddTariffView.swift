@@ -18,9 +18,7 @@ struct AddTariffView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
             Text("Add new tariff")
-                .font(.title)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 12)
+                .popoverTitle()
             
             TextField("", text: $viewModel.name)
                 .inputStyle(caption: "Tariff name")

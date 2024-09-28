@@ -14,9 +14,7 @@ struct MeterNewValueView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("Add new meter value")
-                .font(.title)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 12)
+                .popoverTitle()
             
             Spacer()
             DatePicker(

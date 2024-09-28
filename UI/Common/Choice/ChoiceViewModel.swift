@@ -26,6 +26,15 @@ class SingleChoiceViewModel<T>: ChoiceViewModel {
         self.items = items
         self.isSelected = [Bool].init(repeating: false, count: items.count)
     }
+    
+    var selected: T? {
+        for i in 0..<items.count {
+            if isSelected[i] {
+                return items[i]
+            }
+        }
+        return nil
+    }
         
     func onTap(_ index: Int) {
         for i in 0..<isSelected.count {
@@ -46,6 +55,17 @@ class MultiChoiceViewModel<T>: ChoiceViewModel {
             repeating: initialSelection,
             count: items.count
         )
+    }
+    
+    var selected: [T] {
+        var result: [T] = []
+        for i in 0..<isSelected.count {
+            if !isSelected[i] {
+                continue
+            }
+            result.append(items[i])
+        }
+        return result
     }
         
     func onTap(_ index: Int) {

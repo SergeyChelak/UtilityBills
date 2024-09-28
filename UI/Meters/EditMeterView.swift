@@ -16,9 +16,7 @@ struct EditMeterView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
             Text("Edit meter")
-                .font(.title)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 12)
+                .popoverTitle()
             
             TextField("", text: $viewModel.name)
                 .inputStyle(caption: "Meter name")

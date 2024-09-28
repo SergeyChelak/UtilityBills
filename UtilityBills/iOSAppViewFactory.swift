@@ -125,6 +125,7 @@ struct iOSAppViewFactory {
             actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
             actionMeterSelectionTap: { router.showOverlay(.editMeter($0)) },
             actionAddTariff: { router.showOverlay(.addTariff($0)) },
+            actionAddBillingMap: { router.showOverlay(.addBillingMap($0)) },
             actionDelete: {
                 try storage.deleteProperty(propObjId)
                 router.popToRoot()
@@ -147,6 +148,22 @@ struct iOSAppViewFactory {
             }
         )
         return EditMeterView(viewModel: viewModel)
+    }
+    
+    private func composeAddBillingMapView(_ propObjId: PropertyObjectId) -> some View {
+        let viewModel = BillingMapViewModel(
+            actionLoad: {
+                let meters = try storage.allMeters(for: propObjId)
+                let tariffs = try storage.allTariffs(for: propObjId)
+                return BillingMapData(
+                    tariffs: tariffs,
+                    meters: meters
+                )
+            },
+            actionSave: { _ in
+                fatalError()
+            })
+        return BillingMapView(viewModel: viewModel)
     }
 }
 
@@ -171,6 +188,8 @@ extension iOSAppViewFactory: ViewFactory {
             composePropertyObjectSettingsView(objId)
         case .editMeter(let meter):
             composeEditMeterView(meter)
+        case .addBillingMap(let objId):
+            composeAddBillingMapView(objId)
         }
     }
 }

@@ -39,6 +39,9 @@
 		A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */; };
 		A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */; };
 		A51082FA2CA86B2F00103E76 /* EditPropertyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F92CA86B2F00103E76 /* EditPropertyInfoViewModel.swift */; };
+		A51082FC2CA8708B00103E76 /* BillingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082FB2CA8708B00103E76 /* BillingMapView.swift */; };
+		A51082FE2CA870F700103E76 /* BillingMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */; };
+		A51083002CA8715A00103E76 /* PopoverTitleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082FF2CA8715A00103E76 /* PopoverTitleViewModifier.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -122,6 +125,9 @@
 		A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewModel.swift; sourceTree = "<group>"; };
 		A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCellViewModifier.swift; sourceTree = "<group>"; };
 		A51082F92CA86B2F00103E76 /* EditPropertyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPropertyInfoViewModel.swift; sourceTree = "<group>"; };
+		A51082FB2CA8708B00103E76 /* BillingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingMapView.swift; sourceTree = "<group>"; };
+		A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingMapViewModel.swift; sourceTree = "<group>"; };
+		A51082FF2CA8715A00103E76 /* PopoverTitleViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTitleViewModifier.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -217,6 +223,7 @@
 			children = (
 				A51082C22CA2DC2800103E76 /* AlertErrorViewModifier.swift */,
 				A5E00B7F2C8F9347002BC8EF /* InputStyleViewModifier.swift */,
+				A51082FF2CA8715A00103E76 /* PopoverTitleViewModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -268,6 +275,8 @@
 			children = (
 				A51082DE2CA7039B00103E76 /* PropertySettingsView.swift */,
 				A51082E02CA703B300103E76 /* PropertySettingsViewModel.swift */,
+				A51082FB2CA8708B00103E76 /* BillingMapView.swift */,
+				A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */,
 			);
 			path = PropertySettings;
 			sourceTree = "<group>";
@@ -576,6 +585,7 @@
 				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
 				A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */,
+				A51082FE2CA870F700103E76 /* BillingMapViewModel.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
@@ -584,12 +594,14 @@
 				A51082B22CA0934100103E76 /* PropertyObjectViewModel.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
+				A51083002CA8715A00103E76 /* PopoverTitleViewModifier.swift in Sources */,
 				A51082E72CA7172F00103E76 /* BillMapDAO.swift in Sources */,
 				A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */,
 				A51082ED2CA74B6000103E76 /* EditMeterView.swift in Sources */,
 				A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */,
 				A51082D52CA4698C00103E76 /* AddTariffView.swift in Sources */,
 				A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */,
+				A51082FC2CA8708B00103E76 /* BillingMapView.swift in Sources */,
 				A540DD2B2C7F734E00F5624E /* BillingItem.swift in Sources */,
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A51082E22CA7040E00103E76 /* PropertySettingsViewModel.swift in Sources */,
