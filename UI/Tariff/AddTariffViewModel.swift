@@ -50,7 +50,7 @@ class AddTariffViewModel: ObservableObject {
             if monthMask == 0 {
                 throw NSError(domain: "UB.MonthMask", code: 1)
             }
-            guard let value = Decimal(string: price), value <= 0.0 else {
+            guard let value = Decimal(string: price), value > 0.0 else {
                 throw NSError(domain: "UB.PriceValue", code: 1)
             }
             if name.isEmpty {

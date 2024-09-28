@@ -9,4 +9,6 @@ import Foundation
 
 protocol BillMapDAO {
     func allBillingMaps(_ propertyObjectId: PropertyObjectId) throws -> [BillingMap]
+    
+    func newBillingMap(_ propertyObjectId: PropertyObjectId, value: BillingMap) throws
 }

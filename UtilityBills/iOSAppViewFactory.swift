@@ -160,8 +160,9 @@ struct iOSAppViewFactory {
                     meters: meters
                 )
             },
-            actionSave: { _ in
-                fatalError()
+            actionSave: {
+                try storage.newBillingMap(propObjId, value: $0)
+                router.hideOverlay()
             })
         return BillingMapView(viewModel: viewModel)
     }

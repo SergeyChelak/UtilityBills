@@ -11,6 +11,7 @@ import CoreData
 enum StorageError: Error {
     case propertyObjectNotFound
     case meterNotFound
+    case tariffNotFound
 }
 
 struct LocalStorage {
@@ -46,22 +47,29 @@ struct LocalStorage {
 
 // utils
 extension LocalStorage {
-    func fetchPropertyObject(
-        _ uuid: PropertyObjectId,
-        into context: NSManagedObjectContext
-    ) throws -> CDPropertyObject? {
+    func fetchPropertyObject(_ uuid: PropertyObjectId, into context: NSManagedObjectContext) throws -> CDPropertyObject? {
         let request = CDPropertyObject.fetchRequest()
         request.predicate = .byOwnUUID(uuid)
         request.fetchLimit = 1
         return try context.fetch(request).first
     }
     
-    func fetchMeter(
-        _ uuid: MeterId,
-        into context: NSManagedObjectContext
-    ) throws -> CDMeter? {
+    func fetchMeter(_ uuid: MeterId, into context: NSManagedObjectContext) throws -> CDMeter? {
         let request = CDMeter.fetchRequest()
         request.predicate = .byOwnUUID(uuid)
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    func fetchMeters(_ ids: [MeterId], into context: NSManagedObjectContext) throws -> [CDMeter] {
+        let request = CDMeter.fetchRequest()
+        request.predicate = NSPredicate(format: "SELF.uuid in %@", ids)
+        return try context.fetch(request)
+    }
+    
+    func fetchTariff(_ tariffId: TariffId, into context: NSManagedObjectContext) throws -> CDTariff? {
+        let request = CDTariff.fetchRequest()
+        request.predicate = .byOwnUUID(tariffId)
         request.fetchLimit = 1
         return try context.fetch(request).first
     }
