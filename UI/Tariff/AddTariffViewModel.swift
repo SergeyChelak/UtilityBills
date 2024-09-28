@@ -10,7 +10,7 @@ import Foundation
 typealias AddTariffActionSave = (Tariff) throws -> Void
 
 class AddTariffViewModel: ObservableObject {
-    private static let _monthList = [
+    private static let monthList = [
         "January",
         "February",
         "March",
@@ -31,26 +31,21 @@ class AddTariffViewModel: ObservableObject {
     var price: String = ""
     @Published
     var error: Error?
-    @Published
-    var selected = [Bool].init(repeating: true, count: _monthList.count)
+    
+    let choiceViewModel = MultiChoiceViewModel(
+        items: monthList,
+        initialSelection: true
+    )
     
     let actionSave: AddTariffActionSave
     
     init(actionSave: @escaping AddTariffActionSave) {
         self.actionSave = actionSave
     }
-    
-    var monthList: [String] {
-        Self._monthList
-    }
-    
-    func toggle(_ month: Int) {
-        selected[month].toggle()
-    }
-    
+            
     func save() {
         do {
-            let monthMask = try arrayToBitMask(selected)
+            let monthMask = try arrayToBitMask(choiceViewModel.isSelected)
             guard let value = Decimal(string: price) else {
                 throw NSError(domain: "UB.Cast", code: 1)
             }

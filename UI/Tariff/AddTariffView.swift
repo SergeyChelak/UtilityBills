@@ -29,15 +29,9 @@ struct AddTariffView: View {
                 .keyboardType(.decimalPad)
                 .inputStyle(caption: "Price")
             
-            LazyVGrid(columns: adaptiveColumn, spacing: 10) {
-                ForEach(viewModel.monthList.indices, id: \.self) { i in
-                    Text(viewModel.monthList[i])
-                        .foregroundStyle(viewModel.selected[i] ? .green : .primary)
-                        .onTapGesture {
-                            viewModel.toggle(i)
-                        }
-                        .padding(.vertical)
-                }
+            GridChoiceView(minWidth: 150, viewModel: viewModel.choiceViewModel) {
+                Text($0)
+                    .frame(width: 120)
             }
             Spacer()
             CTAButton(caption: "Add Tariff", callback: viewModel.save)

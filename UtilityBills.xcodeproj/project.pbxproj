@@ -35,6 +35,9 @@
 		A51082E72CA7172F00103E76 /* BillMapDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082E62CA7172F00103E76 /* BillMapDAO.swift */; };
 		A51082ED2CA74B6000103E76 /* EditMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082EC2CA74B6000103E76 /* EditMeterView.swift */; };
 		A51082EF2CA74B7000103E76 /* EditMeterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082EE2CA74B7000103E76 /* EditMeterViewModel.swift */; };
+		A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F12CA8591100103E76 /* ChoiceView.swift */; };
+		A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */; };
+		A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -114,6 +117,9 @@
 		A51082E62CA7172F00103E76 /* BillMapDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillMapDAO.swift; sourceTree = "<group>"; };
 		A51082EC2CA74B6000103E76 /* EditMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMeterView.swift; sourceTree = "<group>"; };
 		A51082EE2CA74B7000103E76 /* EditMeterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMeterViewModel.swift; sourceTree = "<group>"; };
+		A51082F12CA8591100103E76 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
+		A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewModel.swift; sourceTree = "<group>"; };
+		A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCellViewModifier.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -264,6 +270,16 @@
 			path = PropertySettings;
 			sourceTree = "<group>";
 		};
+		A51082F02CA858EE00103E76 /* Choice */ = {
+			isa = PBXGroup;
+			children = (
+				A51082F12CA8591100103E76 /* ChoiceView.swift */,
+				A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */,
+				A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */,
+			);
+			path = Choice;
+			sourceTree = "<group>";
+		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +355,7 @@
 		A55C63662C8C94FB00F66741 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A51082F02CA858EE00103E76 /* Choice */,
 				A51082D02CA4638200103E76 /* Section */,
 				A51082C42CA2DFA500103E76 /* Modifiers */,
 				A51082B62CA2CB5400103E76 /* VewModels */,
@@ -574,11 +591,13 @@
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A51082E22CA7040E00103E76 /* PropertySettingsViewModel.swift in Sources */,
 				A51082E32CA7044100103E76 /* PropertySettingsView.swift in Sources */,
+				A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */,
 				A51082E52CA7170A00103E76 /* LocalStorage+BillMapDAO.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A540DD292C7F729700F5624E /* BillingMap.swift in Sources */,
+				A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
 				A51082CF2CA3277000103E76 /* MeterNewValueViewModel.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertyListViewModel.swift in Sources */,
@@ -591,6 +610,7 @@
 				A51082D22CA463AF00103E76 /* SectionListView.swift in Sources */,
 				A51082BB2CA2D4F300103E76 /* PropertyListView.swift in Sources */,
 				A51082C92CA2FB0F00103E76 /* MeterValuesListView.swift in Sources */,
+				A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
 				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,
 				A51082BF2CA2D7D100103E76 /* CommonListViewModel.swift in Sources */,
