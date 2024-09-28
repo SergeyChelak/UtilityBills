@@ -103,9 +103,6 @@ struct GridChoiceView<ItemType, ViewModel: ChoiceViewModel, CellView: View>:
     let vm = MultiChoiceViewModel(
         items: ["Apple", "Orange", "Banana", "Peach"]
     )
-    let adaptiveColumn = [
-        GridItem(.adaptive(minimum: 150))
-    ]
     return GridChoiceView(viewModel: vm) { text in
         Text(text)
             .frame(width: 120)

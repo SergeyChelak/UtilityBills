@@ -46,8 +46,15 @@ class AddTariffViewModel: ObservableObject {
     func save() {
         do {
             let monthMask = try arrayToBitMask(choiceViewModel.isSelected)
-            guard let value = Decimal(string: price) else {
-                throw NSError(domain: "UB.Cast", code: 1)
+            // TODO: improve validation
+            if monthMask == 0 {
+                throw NSError(domain: "UB.MonthMask", code: 1)
+            }
+            guard let value = Decimal(string: price), value <= 0.0 else {
+                throw NSError(domain: "UB.PriceValue", code: 1)
+            }
+            if name.isEmpty {
+                throw NSError(domain: "UB.Title", code: 1)
             }
             let tariff = Tariff(
                 id: UUID(),
