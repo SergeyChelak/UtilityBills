@@ -7,36 +7,27 @@
 
 import SwiftUI
 
-typealias EditPropertyInfoViewCTACallback = (PropertyObject) throws -> Void
-
 struct EditPropertyInfoView: View {
-    @Environment(\.dismiss) var dismiss
-    @State var propertyObject: PropertyObject
-    let callback: EditPropertyInfoViewCTACallback
+    @StateObject
+    var viewModel: EditPropertyInfoViewModel
     
     var body: some View {
         VStack(spacing: 24) {
             Text("Object Properties")
                 .padding(.top, 12)
             Spacer()
-            TextField("", text: $propertyObject.name)
+            TextField("", text: $viewModel.name)
                 .inputStyle(caption: "Title")
                         
-            TextField("", text: $propertyObject.details)
+            TextField("", text: $viewModel.details)
                 .inputStyle(caption: "Details")
             
             Spacer()
-            CTAButton(caption: "Save") {
-                do {
-                    try callback(propertyObject)
-                    dismiss()
-                } catch {
-                    fatalError(error.localizedDescription)
-                }
-            }
-            .padding(.bottom, 12)
+            CTAButton(caption: "Save", callback: viewModel.save)
+                .padding(.bottom, 12)
         }
         .padding(.horizontal)
+        .errorAlert(for: $viewModel.error)
     }
 }
 
@@ -46,5 +37,9 @@ struct EditPropertyInfoView: View {
         name: "Villa",
         details: "Unknown Road, 42"
     )
-    return EditPropertyInfoView(propertyObject: obj) { _ in }
+    let vm = EditPropertyInfoViewModel(
+        propertyObject: obj,
+        actionUpdate: { _ in }
+    )
+    return EditPropertyInfoView(viewModel: vm)
 }

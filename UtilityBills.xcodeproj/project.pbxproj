@@ -38,6 +38,7 @@
 		A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F12CA8591100103E76 /* ChoiceView.swift */; };
 		A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */; };
 		A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */; };
+		A51082FA2CA86B2F00103E76 /* EditPropertyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082F92CA86B2F00103E76 /* EditPropertyInfoViewModel.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -120,6 +121,7 @@
 		A51082F12CA8591100103E76 /* ChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceView.swift; sourceTree = "<group>"; };
 		A51082F32CA8594A00103E76 /* ChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewModel.swift; sourceTree = "<group>"; };
 		A51082F72CA863A500103E76 /* ChoiceCellViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCellViewModifier.swift; sourceTree = "<group>"; };
+		A51082F92CA86B2F00103E76 /* EditPropertyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPropertyInfoViewModel.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				A51082B12CA0934100103E76 /* PropertyObjectViewModel.swift */,
 				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
 				A5E00B7D2C8F6D78002BC8EF /* EditPropertyInfoView.swift */,
+				A51082F92CA86B2F00103E76 /* EditPropertyInfoViewModel.swift */,
 			);
 			path = PropertyObject;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A51082E22CA7040E00103E76 /* PropertySettingsViewModel.swift in Sources */,
 				A51082E32CA7044100103E76 /* PropertySettingsView.swift in Sources */,
+				A51082FA2CA86B2F00103E76 /* EditPropertyInfoViewModel.swift in Sources */,
 				A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */,
 				A51082E52CA7170A00103E76 /* LocalStorage+BillMapDAO.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,

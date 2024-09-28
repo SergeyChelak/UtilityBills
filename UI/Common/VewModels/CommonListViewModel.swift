@@ -42,7 +42,8 @@ class CommonListViewModel<T>: ObservableObject {
     
     func select(index: Int) {
         guard !items.isEmpty, (0..<items.count).contains(index) else {
-            fatalError("Selected index \(index) is out of bounds 0..\(items.count)")
+            self.error = NSError(domain: "UB.Index", code: 1)
+            return
         }
         actionSelect(items[index])
     }

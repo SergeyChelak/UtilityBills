@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 struct PropertyObjectData {
     let propObj: PropertyObject?
@@ -69,7 +70,8 @@ class PropertyObjectViewModel: ObservableObject {
     
     func infoSectionSelected() {
         guard let propObj = data?.propObj else {
-            fatalError("Unexpected case")
+            self.error = NSError(domain: "UB.ObjLoad", code: 1)
+            return
         }
         actionInfoSectionTap(propObj)
     }

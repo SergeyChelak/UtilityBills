@@ -54,10 +54,14 @@ struct iOSAppViewFactory {
     }
     
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
-        EditPropertyInfoView(
+        let viewModel = EditPropertyInfoViewModel(
             propertyObject: obj,
-            callback: { try storage.updateProperty($0) }
+            actionUpdate: {
+                try storage.updateProperty($0)
+                router.hideOverlay()
+            }
         )
+        return EditPropertyInfoView(viewModel: viewModel)
     }
     
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
