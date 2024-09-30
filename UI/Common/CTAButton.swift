@@ -9,21 +9,26 @@ import SwiftUI
 
 typealias CTAButtonCallback = () -> Void
 
+enum CTAButtonStyle {
+    case normal
+    case destructive
+}
+
 struct CTAButton: View {
     let caption: String
-    let fillColor: Color
+    let style: CTAButtonStyle
     let maxWidth: CGFloat
     let callback: CTAButtonCallback
     
     init(
         caption: String,
         maxWidth: CGFloat = .infinity,
-        fillColor: Color = .blue,
+        style: CTAButtonStyle = .normal,
         callback: @escaping CTAButtonCallback
     ) {
         self.caption = caption
         self.maxWidth = maxWidth
-        self.fillColor = fillColor
+        self.style = style
         self.callback = callback
     }
     
@@ -39,6 +44,15 @@ struct CTAButton: View {
             )
             .padding(.horizontal, 1)
             .onTapGesture(perform: callback)
+    }
+    
+    private var fillColor: Color {
+        switch style {
+        case .normal:
+                .blue
+        case .destructive:
+                .red
+        }
     }
 }
 

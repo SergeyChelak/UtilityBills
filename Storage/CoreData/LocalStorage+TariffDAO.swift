@@ -31,4 +31,24 @@ extension LocalStorage: TariffDAO {
         cdTariff.activeMonthMask = Int16(tariff.activeMonthMask)
         try context.save()
     }
+    
+    func updateTariff(tariff: Tariff) throws {
+        let context = viewContext
+        guard let obj = try fetchTariff(tariff.id, into: context) else {
+            throw StorageError.tariffNotFound
+        }
+        obj.name = tariff.name
+        obj.activeMonthMask = Int16(tariff.activeMonthMask)
+        obj.price = NSDecimalNumber(decimal: tariff.price)
+        try context.save()
+    }
+    
+    func deleteTariff(tariffId: TariffId) throws {
+        let context = viewContext
+        guard let obj = try fetchTariff(tariffId, into: context) else {
+            throw StorageError.tariffNotFound
+        }
+        context.delete(obj)
+        try context.save()
+    }
 }

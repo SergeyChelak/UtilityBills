@@ -100,13 +100,28 @@ struct iOSAppViewFactory {
     }
     
     private func composeAddTariffView(_ propObjId: PropertyObjectId) -> some View {
-        let viewModel = AddTariffViewModel(
+        let viewModel = ManageTariffViewModel(
             actionSave: {
                 try storage.newTariff(propertyId: propObjId, tariff: $0)
                 router.hideOverlay()
             }
         )
-        return AddTariffView(viewModel: viewModel)
+        return ManageTariffView(viewModel: viewModel)
+    }
+    
+    private func composeEditTariffView(_ tariff: Tariff) -> some View {
+        let viewModel = ManageTariffViewModel(
+            tariff: tariff,
+            actionUpdate: {
+                try storage.updateTariff(tariff: $0)
+                router.hideOverlay()
+            },
+            actionDelete: {
+                try storage.deleteTariff(tariffId: $0)
+                router.hideOverlay()
+            }
+        )
+        return ManageTariffView(viewModel: viewModel)
     }
     
     private func composePropertyObjectSettingsView(_ propObjId: PropertyObjectId) -> some View {
@@ -125,6 +140,7 @@ struct iOSAppViewFactory {
             actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
             actionMeterSelectionTap: { router.showOverlay(.editMeter($0)) },
             actionAddTariff: { router.showOverlay(.addTariff($0)) },
+            actionEditTariff: { router.showOverlay(.editTariff($0)) },
             actionAddBillingMap: { router.showOverlay(.addBillingMap($0)) },
             actionDelete: {
                 try storage.deleteProperty(propObjId)
@@ -185,6 +201,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeAddMeterValueView(meterId)
         case .addTariff(let objId):
             composeAddTariffView(objId)
+        case .editTariff(let tariff):
+            composeEditTariffView(tariff)
         case .propertyObjectSettings(let objId):
             composePropertyObjectSettingsView(objId)
         case .editMeter(let meter):

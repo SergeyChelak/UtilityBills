@@ -68,7 +68,7 @@ struct PropertySettingsView: View {
             Spacer()
             CTAButton(
                 caption: "Delete Object",
-                fillColor: .red,
+                style: .destructive,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.horizontal)
@@ -130,6 +130,7 @@ struct PropertySettingsView: View {
         actionMeterHeaderSectionTap: { _ in },
         actionMeterSelectionTap: { _ in },
         actionAddTariff: { _ in },
+        actionEditTariff: { _ in },
         actionAddBillingMap: { _ in },
         actionDelete: { },
         updatePublisher: Empty().eraseToAnyPublisher()

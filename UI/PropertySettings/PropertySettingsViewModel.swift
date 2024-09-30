@@ -22,6 +22,7 @@ typealias PropertySettingsActionLoad = () throws -> PropertySettingsData
 typealias PropertySettingsActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
 typealias PropertySettingsActionMeterSelectionTap = (Meter) -> Void
 typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
+typealias PropertySettingsActionEditTariff = (Tariff) -> Void
 typealias PropertySettingsActionAddBillingMap = (PropertyObjectId) throws -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
@@ -33,6 +34,7 @@ class PropertySettingsViewModel: ObservableObject {
     private let actionMeterHeaderSectionTap: PropertySettingsActionMeterHeaderSectionTap
     private let actionMeterSelectionTap: PropertySettingsActionMeterSelectionTap
     private let actionAddTariff: PropertySettingsActionAddTariff
+    private let actionEditTariff: PropertySettingsActionEditTariff
     private let actionAddBillingMap: PropertySettingsActionAddBillingMap
     private let actionDelete: PropertySettingsActionDelete
     
@@ -47,6 +49,7 @@ class PropertySettingsViewModel: ObservableObject {
         actionMeterHeaderSectionTap: @escaping PropertySettingsActionMeterHeaderSectionTap,
         actionMeterSelectionTap: @escaping PropertySettingsActionMeterSelectionTap,
         actionAddTariff: @escaping PropertySettingsActionAddTariff,
+        actionEditTariff: @escaping PropertySettingsActionEditTariff,
         actionAddBillingMap: @escaping PropertySettingsActionAddBillingMap,
         actionDelete: @escaping PropertySettingsActionDelete,
         updatePublisher: AnyPublisher<(), Never>
@@ -56,6 +59,7 @@ class PropertySettingsViewModel: ObservableObject {
         self.actionMeterHeaderSectionTap = actionMeterHeaderSectionTap
         self.actionMeterSelectionTap = actionMeterSelectionTap
         self.actionAddTariff = actionAddTariff
+        self.actionEditTariff = actionEditTariff
         self.actionAddBillingMap = actionAddBillingMap
         self.actionDelete = actionDelete
         updatePublisher
@@ -92,7 +96,7 @@ class PropertySettingsViewModel: ObservableObject {
     }
     
     func tariffSelected(_ tariff: Tariff) {
-        print("Not implemented")
+        actionEditTariff(tariff)
     }
     
     func addTariff() {

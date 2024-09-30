@@ -11,4 +11,8 @@ protocol TariffDAO {
     func allTariffs(for propertyId: PropertyObjectId) throws -> [Tariff]
     
     func newTariff(propertyId: PropertyObjectId, tariff: Tariff) throws
+    
+    func updateTariff(tariff: Tariff) throws
+    
+    func deleteTariff(tariffId: TariffId) throws
 }

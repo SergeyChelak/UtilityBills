@@ -15,3 +15,5 @@ struct Tariff {
     var price: Decimal
     var activeMonthMask: Int
 }
+
+extension Tariff: Equatable, Hashable { }

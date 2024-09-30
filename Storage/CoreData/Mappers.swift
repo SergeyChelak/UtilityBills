@@ -42,7 +42,7 @@ func mapTariff(_ cdTariff: CDTariff) -> Tariff {
     )
 }
 
-func mapBillingMap(_ cdBillingMap: CDBillingMap) -> BillingMap {
+func mapBillingMap(_ cdBillingMap: CDBillingMap) -> BillingMap  {
     let tariff = mapTariff(cdBillingMap.tariff!)
     let meters = cdBillingMap
         .meters!

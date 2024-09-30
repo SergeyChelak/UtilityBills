@@ -57,6 +57,18 @@ class MultiChoiceViewModel<T>: ChoiceViewModel {
         )
     }
     
+    init(items: [T], selection: (Int) -> Bool) {
+        self.items = items
+        self.isSelected = [Bool].init(
+            repeating: false,
+            count: items.count
+        )
+        for i in 0..<items.count {
+            self.isSelected[i] = selection(i)
+        }
+    }
+
+    
     var selected: [T] {
         var result: [T] = []
         for i in 0..<isSelected.count {
