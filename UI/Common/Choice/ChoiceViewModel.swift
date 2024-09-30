@@ -27,6 +27,10 @@ class SingleChoiceViewModel<T>: ChoiceViewModel {
         self.isSelected = [Bool].init(repeating: false, count: items.count)
     }
     
+    var isEmpty: Bool {
+        items.isEmpty
+    }
+    
     var selected: T? {
         for i in 0..<items.count {
             if isSelected[i] {
@@ -68,6 +72,9 @@ class MultiChoiceViewModel<T>: ChoiceViewModel {
         }
     }
 
+    var isEmpty: Bool {
+        items.isEmpty
+    }
     
     var selected: [T] {
         var result: [T] = []

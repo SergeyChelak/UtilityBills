@@ -11,7 +11,7 @@ typealias TariffActionNew = (Tariff) throws -> Void
 typealias TariffActionUpdate = (Tariff) throws -> Void
 typealias TariffActionDelete = (TariffId) throws -> Void
 
-class ManageTariffViewModel: ObservableObject {
+class ManageTariffViewModel: ViewModel, ActionControllable {
     private static let monthList = [
         "January",
         "February",
@@ -31,8 +31,6 @@ class ManageTariffViewModel: ObservableObject {
     var name: String
     @Published
     var price: String
-    @Published
-    var error: Error?
     
     @Published
     var isConfirmationAlertVisible = false
@@ -137,7 +135,7 @@ class ManageTariffViewModel: ObservableObject {
             let tariff = try validatedTariff()
             try actionSave?(tariff)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -146,7 +144,7 @@ class ManageTariffViewModel: ObservableObject {
             let tariff = try validatedTariff()
             try actionUpdate?(tariff)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -154,7 +152,7 @@ class ManageTariffViewModel: ObservableObject {
         do {
             try actionDelete?(tariffId)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 }

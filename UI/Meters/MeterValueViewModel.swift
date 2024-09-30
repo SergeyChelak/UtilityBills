@@ -11,7 +11,7 @@ typealias MeterValueActionAdd = (MeterValue) throws -> Void
 typealias MeterValueActionUpdate = (MeterValue) throws -> Void
 typealias MeterValueActionDelete = (MeterValueId) throws -> Void
 
-class MeterValueViewModel: ObservableObject {
+class MeterValueViewModel: ViewModel, ActionControllable {
     let id: MeterValueId
     @Published
     var date: Date
@@ -19,8 +19,6 @@ class MeterValueViewModel: ObservableObject {
     var value: Double
     @Published
     var isPaid = false
-    @Published
-    var error: Error?
     
     let actions: [ControlAction]
     let screenTitle: String
@@ -82,7 +80,7 @@ class MeterValueViewModel: ObservableObject {
             let meterValue = try validatedMeterValue()
             try actionAdd?(meterValue)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -91,7 +89,7 @@ class MeterValueViewModel: ObservableObject {
             let meterValue = try validatedMeterValue()
             try actionUpdate?(meterValue)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -99,7 +97,7 @@ class MeterValueViewModel: ObservableObject {
         do {
             try actionDelete?(id)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 }

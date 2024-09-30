@@ -32,14 +32,8 @@ struct ManageTariffView: View {
                     .frame(width: 120)
             }
             Spacer()
-            VStack(spacing: 24) {
-                ForEach(viewModel.actions, id: \.hashValue) { action in
-                    CTAButton(caption: action.name, actionKind: action.kind) {
-                        viewModel.onAction(action)
-                    }
-                }
-            }
-            .padding(.bottom, 12)
+            ControlButtonsView(viewModel: viewModel)
+                .padding(.bottom, 12)
         }
         .padding(.horizontal)
         .errorAlert(for: $viewModel.error)

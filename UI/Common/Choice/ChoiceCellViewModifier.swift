@@ -11,7 +11,7 @@ struct ChoiceCellViewModifier: ViewModifier {
     let isSelected: Bool
     
     private var fillColor: Color {
-        isSelected ? .brown : .clear
+        isSelected ? .gray : .clear
     }
     
     func body(content: Content) -> some View {

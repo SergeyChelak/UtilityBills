@@ -35,3 +35,9 @@ enum ControlAction: Hashable {
         }
     }
 }
+
+protocol ActionControllable {
+    var actions: [ControlAction] { get }
+    
+    func onAction(_ action: ControlAction)
+}

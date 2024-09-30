@@ -20,7 +20,7 @@ struct BillingMapData {
     }
 }
 
-class BillingMapViewModel: ObservableObject {
+class BillingMapViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     let actionLoad: BillingMapActionLoadData
     let actionSave: BillingMapActionSave
@@ -33,16 +33,13 @@ class BillingMapViewModel: ObservableObject {
     @Published
     private(set) var meterModel = MultiChoiceViewModel<Meter>(items: [])
     
-    @Published
-    var error: Error?
-    
     init(
         actionLoad: @escaping BillingMapActionLoadData,
         actionSave: @escaping BillingMapActionSave
     ) {
         self.actionLoad = actionLoad
         self.actionSave = actionSave
-        self.error = error
+        super.init()
     }
     
     func load() {
@@ -52,7 +49,7 @@ class BillingMapViewModel: ObservableObject {
             self.meterModel = MultiChoiceViewModel(items: data.meters)
             observeTariffSelection()
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -62,7 +59,6 @@ class BillingMapViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let tariff = self?.tariffModel.selected else {
-                    self?.name = "Nothing is selected..."
                     return
                 }
                 self?.name = tariff.name
@@ -70,26 +66,28 @@ class BillingMapViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func save() {
+    private func validatedBillingMap() throws -> BillingMap {
         guard let tariff = tariffModel.selected else {
-            self.error = NSError(domain: "UB.Tariff", code: 1)
-            return
+            throw NSError(domain: "UB.Tariff", code: 1)
         }
         if name.isEmpty {
-            self.error = NSError(domain: "UB.Name", code: 1)
-            return
+            throw NSError(domain: "UB.Name", code: 1)
         }
-        let billingMap = BillingMap(
+        return BillingMap(
             id: UUID(),
             name: name,
             order: 0,
             tariff: tariff,
             meters: meterModel.selected
         )
+    }
+    
+    func save() {
         do {
+            let billingMap = try validatedBillingMap()
             try actionSave(billingMap)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 }

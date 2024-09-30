@@ -10,7 +10,7 @@ import Foundation
 typealias MeterActionUpdate = (Meter) throws -> Void
 typealias MeterActionDelete = () throws -> ()
 
-class EditMeterViewModel: ObservableObject {
+class EditMeterViewModel: ViewModel {
     let meter: Meter
     private let actionDeleteMeter: MeterActionDelete
     private let actionUpdateMeter: MeterActionUpdate
@@ -21,8 +21,6 @@ class EditMeterViewModel: ObservableObject {
     var inspectionDate = Date()
     @Published
     var isInspectionDateApplicable = true
-    @Published
-    var error: Error?
     
     init(
         meter: Meter,
@@ -47,7 +45,7 @@ class EditMeterViewModel: ObservableObject {
         do {
             try actionUpdateMeter(updatedMeter)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -55,7 +53,7 @@ class EditMeterViewModel: ObservableObject {
         do {
             try actionDeleteMeter()
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 

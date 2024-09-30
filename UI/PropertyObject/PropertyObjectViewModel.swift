@@ -19,7 +19,7 @@ typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
 typealias PropertyObjectActionSettings = () -> Void
 
 
-class PropertyObjectViewModel: ObservableObject {
+class PropertyObjectViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
@@ -31,9 +31,7 @@ class PropertyObjectViewModel: ObservableObject {
     
     @Published 
     var data: PropertyObjectData?
-    @Published
-    var error: Error?
-    
+
     var propObj: PropertyObject? {
         data?.propObj
     }
@@ -55,6 +53,7 @@ class PropertyObjectViewModel: ObservableObject {
         self.actionInfoSectionTap = actionInfoSectionTap
         self.actionMeterSelectionTap = actionMeterSelectionTap
         self.actionSettings = actionSettings
+        super.init()
         updatePublisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
@@ -64,7 +63,7 @@ class PropertyObjectViewModel: ObservableObject {
         do {
             data = try actionLoad()
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     

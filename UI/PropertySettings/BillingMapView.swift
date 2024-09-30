@@ -21,23 +21,29 @@ struct BillingMapView: View {
                     TextField("", text: $viewModel.name)
                         .inputStyle(caption: "Billing item name")
                     Divider()
-                    VStack(spacing: 4) {
-                        Text("Pick tariff")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .lineLimit(1)
-                        GridChoiceView(viewModel: viewModel.tariffModel) {
-                            Text($0.name)
-                                .frame(maxWidth: 130)
+                    if viewModel.tariffModel.isEmpty {
+                        Text("You should create at least one tariff")
+                    } else {
+                        VStack(spacing: 4) {
+                            Text("Pick tariff")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .lineLimit(1)
+                            GridChoiceView(viewModel: viewModel.tariffModel) {
+                                Text($0.name)
+                                    .frame(maxWidth: 130)
+                            }
                         }
                     }
                     Divider()
-                    VStack(spacing: 4) {
-                        Text("Pick meter(s) if needed")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .lineLimit(1)
-                        GridChoiceView(viewModel: viewModel.meterModel) {
-                            Text($0.name)
-                                .frame(maxWidth: 130)
+                    if !viewModel.meterModel.isEmpty {
+                        VStack(spacing: 4) {
+                            Text("Pick meter(s) if needed")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .lineLimit(1)
+                            GridChoiceView(viewModel: viewModel.meterModel) {
+                                Text($0.name)
+                                    .frame(maxWidth: 130)
+                            }
                         }
                     }
                 }

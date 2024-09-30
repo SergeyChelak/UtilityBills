@@ -10,7 +10,7 @@ import Foundation
 typealias AddMeterActionSave = (_ meter: Meter,
                                 _ initialValue: Double) throws -> Void
 
-class AddMeterViewModel: ObservableObject {
+class AddMeterViewModel: ViewModel {
     private static let availableCapacities = [5, 6, 7, 8, 9, 10, 11, 12]
     
     let propertyObjectId: PropertyObjectId
@@ -29,9 +29,6 @@ class AddMeterViewModel: ObservableObject {
     @Published
     var initialValue: Double = 0.0
 
-    @Published
-    var error: Error?
-    
     init(
         propertyObjectId: PropertyObjectId,
         actionSave: @escaping AddMeterActionSave
@@ -63,7 +60,7 @@ class AddMeterViewModel: ObservableObject {
         do {
             try actionSave(meter, initialValue)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 }

@@ -27,7 +27,7 @@ class PropertyListViewModel: CommonListViewModel<PropertyObject> {
             _ = try actionCreate()
             load()
         } catch {
-            self.error = error
+            setError(error)
             print("Failed to create item: \(error)")
         }
     }

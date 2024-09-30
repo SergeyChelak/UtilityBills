@@ -9,7 +9,7 @@ import Foundation
 
 typealias PropertyObjectActionUpdateInfo = (PropertyObject) throws -> Void
 
-class EditPropertyInfoViewModel: ObservableObject {
+class EditPropertyInfoViewModel: ViewModel {
     private let propertyObject: PropertyObject
     private let actionUpdate: PropertyObjectActionUpdateInfo
     
@@ -17,8 +17,6 @@ class EditPropertyInfoViewModel: ObservableObject {
     var name: String
     @Published
     var details: String
-    @Published
-    var error: Error?
     
     init(
         propertyObject: PropertyObject,
@@ -42,7 +40,7 @@ class EditPropertyInfoViewModel: ObservableObject {
         do {
             try actionUpdate(obj)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 }

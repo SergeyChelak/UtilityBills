@@ -43,6 +43,8 @@
 		A51082FE2CA870F700103E76 /* BillingMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */; };
 		A51083002CA8715A00103E76 /* PopoverTitleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51082FF2CA8715A00103E76 /* PopoverTitleViewModifier.swift */; };
 		A51083022CAB0F3100103E76 /* ControlAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083012CAB0F3100103E76 /* ControlAction.swift */; };
+		A51083042CAB1D5800103E76 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083032CAB1D5700103E76 /* ViewModel.swift */; };
+		A51083092CAB209100103E76 /* ControlButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083082CAB209100103E76 /* ControlButtonsView.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -130,6 +132,8 @@
 		A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingMapViewModel.swift; sourceTree = "<group>"; };
 		A51082FF2CA8715A00103E76 /* PopoverTitleViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverTitleViewModifier.swift; sourceTree = "<group>"; };
 		A51083012CAB0F3100103E76 /* ControlAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlAction.swift; sourceTree = "<group>"; };
+		A51083032CAB1D5700103E76 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A51083082CAB209100103E76 /* ControlButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButtonsView.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 		A51082B62CA2CB5400103E76 /* VewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A51083032CAB1D5700103E76 /* ViewModel.swift */,
 				A51082BE2CA2D7D100103E76 /* CommonListViewModel.swift */,
 			);
 			path = VewModels;
@@ -293,6 +298,16 @@
 			path = Choice;
 			sourceTree = "<group>";
 		};
+		A51083052CAB206200103E76 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				A5E00B812C8F9726002BC8EF /* CTAButton.swift */,
+				A51083012CAB0F3100103E76 /* ControlAction.swift */,
+				A51083082CAB209100103E76 /* ControlButtonsView.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,13 +384,12 @@
 		A55C63662C8C94FB00F66741 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A51083052CAB206200103E76 /* Action */,
 				A51082F02CA858EE00103E76 /* Choice */,
 				A51082D02CA4638200103E76 /* Section */,
 				A51082C42CA2DFA500103E76 /* Modifiers */,
 				A51082B62CA2CB5400103E76 /* VewModels */,
 				A5F944362C8CC4F600A5FD47 /* UBImage.swift */,
-				A5E00B812C8F9726002BC8EF /* CTAButton.swift */,
-				A51083012CAB0F3100103E76 /* ControlAction.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -595,6 +609,7 @@
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A50302742C9CD65300033AE3 /* MetersDAO.swift in Sources */,
 				A51082B22CA0934100103E76 /* PropertyObjectViewModel.swift in Sources */,
+				A51083042CAB1D5800103E76 /* ViewModel.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A51083002CA8715A00103E76 /* PopoverTitleViewModifier.swift in Sources */,
@@ -609,6 +624,7 @@
 				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
 				A51082E22CA7040E00103E76 /* PropertySettingsViewModel.swift in Sources */,
 				A51082E32CA7044100103E76 /* PropertySettingsView.swift in Sources */,
+				A51083092CAB209100103E76 /* ControlButtonsView.swift in Sources */,
 				A51082FA2CA86B2F00103E76 /* EditPropertyInfoViewModel.swift in Sources */,
 				A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */,
 				A51082E52CA7170A00103E76 /* LocalStorage+BillMapDAO.swift in Sources */,

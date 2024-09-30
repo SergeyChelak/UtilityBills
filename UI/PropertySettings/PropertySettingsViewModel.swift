@@ -26,7 +26,7 @@ typealias PropertySettingsActionEditTariff = (Tariff) -> Void
 typealias PropertySettingsActionAddBillingMap = (PropertyObjectId) throws -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
-class PropertySettingsViewModel: ObservableObject {
+class PropertySettingsViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
@@ -40,8 +40,6 @@ class PropertySettingsViewModel: ObservableObject {
     
     @Published
     var data: PropertySettingsData = .default()
-    @Published
-    var error: Error?
     
     init(
         objectId: PropertyObjectId,
@@ -62,6 +60,7 @@ class PropertySettingsViewModel: ObservableObject {
         self.actionEditTariff = actionEditTariff
         self.actionAddBillingMap = actionAddBillingMap
         self.actionDelete = actionDelete
+        super.init()
         updatePublisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
@@ -83,7 +82,7 @@ class PropertySettingsViewModel: ObservableObject {
         do {
             data = try actionLoad()
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -107,7 +106,7 @@ class PropertySettingsViewModel: ObservableObject {
         do {
             try actionAddBillingMap(objectId)
         } catch {
-            self.error = error
+            setError(error)
         }
     }
     
@@ -115,7 +114,7 @@ class PropertySettingsViewModel: ObservableObject {
         do {
             try actionDelete()
         } catch {
-            self.error = error
+            setError(error)
         }
     }
 }

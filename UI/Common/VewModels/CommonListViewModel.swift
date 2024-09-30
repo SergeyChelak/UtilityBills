@@ -10,11 +10,9 @@ import Foundation
 typealias CommonListActionLoad<T> = () throws -> [T]
 typealias CommonListActionSelect<T> = (T) -> ()
 
-class CommonListViewModel<T>: ObservableObject {
+class CommonListViewModel<T>: ViewModel {
     @Published
     var items: [T] = []
-    @Published
-    var error: Error?
     
     let actionLoad: CommonListActionLoad<T>
     let actionSelect: CommonListActionSelect<T>
@@ -35,7 +33,7 @@ class CommonListViewModel<T>: ObservableObject {
         do {
             self.items = try actionLoad()
         } catch {
-            self.error = error
+            setError(error)
             print("CommonListViewModel load failed: \(error)")
         }
     }
