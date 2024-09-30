@@ -48,7 +48,7 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="mapping" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDBillingMap" inverseName="tariff" inverseEntity="CDBillingMap"/>
+        <relationship name="mapping" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDBillingMap" inverseName="tariff" inverseEntity="CDBillingMap"/>
         <relationship name="propertyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="tariffs" inverseEntity="CDPropertyObject"/>
     </entity>
 </model>
