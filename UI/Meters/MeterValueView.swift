@@ -1,5 +1,5 @@
 //
-//  MeterNewValueView.swift
+//  MeterValueView.swift
 //  UtilityBills
 //
 //  Created by Sergey on 24.09.2024.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct MeterNewValueView: View {
+struct MeterValueView: View {
     @ObservedObject
-    var viewModel: MeterNewValueViewModel
+    var viewModel: MeterValueViewModel
     
     var body: some View {
         VStack(alignment: .center) {
-            Text("Add new meter value")
+            Text(viewModel.screenTitle)
                 .popoverTitle()
             
             Spacer()
@@ -32,21 +32,42 @@ struct MeterNewValueView: View {
             })
                         
             Spacer()
-            CTAButton(caption: "Save", callback: viewModel.save)
-                .padding(.bottom, 12)
+            VStack(spacing: 24) {
+                ForEach(viewModel.actions, id: \.hashValue) { action in
+                    CTAButton(caption: action.name, actionKind: action.kind) {
+                        viewModel.onAction(action)
+                    }
+                }
+            }
+            .padding(.bottom, 12)
         }
         .padding(.horizontal)
         .errorAlert(for: $viewModel.error)
     }
 }
 
-#Preview {
-    let vm = MeterNewValueViewModel(
+#Preview("New") {
+    let vm = MeterValueViewModel(
         date: Date(),
         value: 123,
-        actionSave: { _ in
+        actionAdd: { _ in
             throw NSError(domain: "MeterNewValueViewModel", code: 1)
         }
     )
-    return MeterNewValueView(viewModel: vm)
+    return MeterValueView(viewModel: vm)
+}
+
+#Preview("Edit") {
+    let value = MeterValue(
+        id: MeterValueId(),
+        date: Date(),
+        value: 1.23,
+        isPaid: true
+    )
+    let vm = MeterValueViewModel(
+        meterValue: value,
+        actionUpdate: { _ in },
+        actionDelete: { _ in }
+    )
+    return MeterValueView(viewModel: vm)
 }

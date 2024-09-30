@@ -78,4 +78,24 @@ extension LocalStorage: MetersDAO {
         _ = try createMeterValue(with: value, for: meter)
         try context.save()
     }
+    
+    func updateMeterValue(_ meterValue: MeterValue) throws {
+        let context = viewContext
+        guard let obj = try fetchMeterValue(meterValue.id, into: context) else {
+            throw StorageError.meterValueNotFound
+        }
+        obj.date = meterValue.date
+        obj.value = meterValue.value as NSNumber
+        obj.isPaid = meterValue.isPaid
+        try context.save()
+    }
+    
+    func deleteMeterValue(_ meterValueId: MeterValueId) throws {
+        let context = viewContext
+        guard let obj = try fetchMeterValue(meterValueId, into: context) else {
+            throw StorageError.meterValueNotFound
+        }
+        context.delete(obj)
+        try context.save()
+    }
 }

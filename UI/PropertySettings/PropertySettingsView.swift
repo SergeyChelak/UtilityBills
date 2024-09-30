@@ -68,7 +68,7 @@ struct PropertySettingsView: View {
             Spacer()
             CTAButton(
                 caption: "Delete Object",
-                style: .destructive,
+                actionKind: .destructive,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.horizontal)

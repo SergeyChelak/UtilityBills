@@ -23,4 +23,8 @@ protocol MetersDAO {
     func updateMeter(_ meter: Meter) throws
     
     func insertMeterValue(_ meterId: MeterId, value: MeterValue) throws
+    
+    func updateMeterValue(_ meterValue: MeterValue) throws
+    
+    func deleteMeterValue(_ meterValueId: MeterValueId) throws
 }

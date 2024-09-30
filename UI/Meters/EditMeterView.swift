@@ -40,7 +40,7 @@ struct EditMeterView: View {
             
             CTAButton(
                 caption: "Delete Meter",
-                style: .destructive,
+                actionKind: .destructive,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.bottom, 12)

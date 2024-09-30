@@ -11,6 +11,7 @@ import CoreData
 enum StorageError: Error {
     case propertyObjectNotFound
     case meterNotFound
+    case meterValueNotFound
     case tariffNotFound
 }
 
@@ -56,6 +57,13 @@ extension LocalStorage {
     
     func fetchMeter(_ uuid: MeterId, into context: NSManagedObjectContext) throws -> CDMeter? {
         let request = CDMeter.fetchRequest()
+        request.predicate = .byOwnUUID(uuid)
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    func fetchMeterValue(_ uuid: MeterValueId, into context: NSManagedObjectContext) throws -> CDMeterValue? {
+        let request = CDMeterValue.fetchRequest()
         request.predicate = .byOwnUUID(uuid)
         request.fetchLimit = 1
         return try context.fetch(request).first

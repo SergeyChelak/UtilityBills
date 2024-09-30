@@ -7,20 +7,24 @@
 
 import Foundation
 
+typealias MeterValueId = UUID
+
 struct MeterValue {
+    let id: MeterValueId
     let date: Date
     let value: Double
     let isPaid: Bool
-    let id: UUID
 }
+
+extension MeterValue: Equatable, Hashable { }
 
 extension MeterValue {
     static func initial(_ value: Double) -> MeterValue {
         MeterValue(
+            id: MeterValueId(),         // should be ignored!
             date: Date(),
             value: value,
-            isPaid: true,
-            id: UUID()          // should be ignored!
+            isPaid: true
         )
     }
 }

@@ -34,7 +34,7 @@ struct ManageTariffView: View {
             Spacer()
             VStack(spacing: 24) {
                 ForEach(viewModel.actions, id: \.hashValue) { action in
-                    CTAButton(caption: action.name, style: action.style) {
+                    CTAButton(caption: action.name, actionKind: action.kind) {
                         viewModel.onAction(action)
                     }
                 }

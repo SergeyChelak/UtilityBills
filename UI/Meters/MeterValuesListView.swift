@@ -46,10 +46,10 @@ import Combine
 
 #Preview {
     let values = [
-        MeterValue(date: Date(), value: 10, isPaid: true, id: UUID()),
-        MeterValue(date: Date(), value: 17, isPaid: true, id: UUID()),
-        MeterValue(date: Date(), value: 24, isPaid: true, id: UUID()),
-        MeterValue(date: Date(), value: 25, isPaid: false, id: UUID())
+        MeterValue(id: UUID(), date: Date(), value: 10, isPaid: true),
+        MeterValue(id: UUID(), date: Date(), value: 17, isPaid: true),
+        MeterValue(id: UUID(), date: Date(), value: 24, isPaid: true),
+        MeterValue(id: UUID(), date: Date(), value: 25, isPaid: false)
     ].reversed()
     let vm = MeterValuesListViewModel(
         actionLoad: { Array(values) },

@@ -11,33 +11,6 @@ typealias TariffActionNew = (Tariff) throws -> Void
 typealias TariffActionUpdate = (Tariff) throws -> Void
 typealias TariffActionDelete = (TariffId) throws -> Void
 
-enum TariffAction: Hashable {
-    case new, update, delete
-    
-    // TODO: move to presentation layer
-    var name: String {
-        switch self {
-        case .new:
-            "Add new tariff"
-        case .update:
-            "Update tariff"
-        case .delete:
-            "Delete tariff"
-        }
-    }
-    
-    var style: CTAButtonStyle {
-        switch self {
-        case .new:
-                .normal
-        case .update:
-                .normal
-        case .delete:
-                .destructive
-        }
-    }
-}
-
 class ManageTariffViewModel: ObservableObject {
     private static let monthList = [
         "January",
@@ -63,16 +36,15 @@ class ManageTariffViewModel: ObservableObject {
     
     @Published
     var isConfirmationAlertVisible = false
-    private var deferredAction: TariffAction?
+    private var deferredAction: ControlAction?
 
-    
-    let tariffId: TariffId
+    private let tariffId: TariffId
     let dialogTitle: String
-    let actions: [TariffAction]
+    let actions: [ControlAction]
     let choiceViewModel: MultiChoiceViewModel<String>
-    let actionSave: TariffActionNew?
-    let actionUpdate: TariffActionUpdate?
-    let actionDelete: TariffActionDelete?
+    private let actionSave: TariffActionNew?
+    private let actionUpdate: TariffActionUpdate?
+    private let actionDelete: TariffActionDelete?
     
     init(actionSave: @escaping TariffActionNew) {
         self.tariffId = TariffId()
@@ -132,7 +104,7 @@ class ManageTariffViewModel: ObservableObject {
         )
     }
     
-    func onAction(_ action: TariffAction) {
+    func onAction(_ action: ControlAction) {
         switch action {
         case .delete:
             deferredAction = action
@@ -149,7 +121,7 @@ class ManageTariffViewModel: ObservableObject {
         performAction(deferredAction)
     }
     
-    private func performAction(_ action: TariffAction) {
+    private func performAction(_ action: ControlAction) {
         switch action {
         case .new:
             new()

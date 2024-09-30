@@ -81,22 +81,39 @@ struct iOSAppViewFactory {
             actionNewValue: {
                 router.showOverlay(.addMeterValue(meterId))
             },
-            actionSelect: { _ in },
+            actionSelect: {
+                router.showOverlay(.editMeterValue($0))
+            },
             updatePublisher: storageWatcher.publisher
         )
         return MeterValuesListView(viewModel: viewModel)
     }
     
     private func composeAddMeterValueView(_ meterId: MeterId) -> some View {
-        let viewModel = MeterNewValueViewModel(
+        let viewModel = MeterValueViewModel(
             date: Date(),
             value: 0,
-            actionSave: {
+            actionAdd: {
                 try storage.insertMeterValue(meterId, value: $0)
                 router.hideOverlay()
             }
         )
-        return MeterNewValueView(viewModel: viewModel)
+        return MeterValueView(viewModel: viewModel)
+    }
+    
+    private func composeEditMeterValueView(_ meterValue: MeterValue) -> some View {
+        let viewModel = MeterValueViewModel(
+            meterValue: meterValue,
+            actionUpdate: {
+                try storage.updateMeterValue($0)
+                router.hideOverlay()
+            },
+            actionDelete: {
+                try storage.deleteMeterValue($0)
+                router.hideOverlay()
+            }
+        )
+        return MeterValueView(viewModel: viewModel)
     }
     
     private func composeAddTariffView(_ propObjId: PropertyObjectId) -> some View {
@@ -199,6 +216,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeMeterValuesView(meterId)
         case .addMeterValue(let meterId):
             composeAddMeterValueView(meterId)
+        case .editMeterValue(let meterValue):
+            composeEditMeterValueView(meterValue)
         case .addTariff(let objId):
             composeAddTariffView(objId)
         case .editTariff(let tariff):

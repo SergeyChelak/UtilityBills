@@ -26,10 +26,10 @@ func mapMeter(_ cdMeter: CDMeter) -> Meter {
 
 func mapMeterValue(_ cdMeterValue: CDMeterValue) -> MeterValue {
     MeterValue(
+        id: cdMeterValue.uuid!,
         date: cdMeterValue.date!,
         value: cdMeterValue.value!.doubleValue,
-        isPaid: cdMeterValue.isPaid,
-        id: cdMeterValue.uuid!
+        isPaid: cdMeterValue.isPaid
     )
 }
 
@@ -42,7 +42,7 @@ func mapTariff(_ cdTariff: CDTariff) -> Tariff {
     )
 }
 
-func mapBillingMap(_ cdBillingMap: CDBillingMap) -> BillingMap  {
+func mapBillingMap(_ cdBillingMap: CDBillingMap) -> BillingMap {
     let tariff = mapTariff(cdBillingMap.tariff!)
     let meters = cdBillingMap
         .meters!
