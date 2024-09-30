@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 enum StorageError: Error {
+    case noContext
     case propertyObjectNotFound
     case meterNotFound
     case meterValueNotFound
@@ -84,7 +85,7 @@ extension LocalStorage {
     
     func createMeterValue(with value: MeterValue, for meter: CDMeter) throws -> CDMeterValue {
         guard let context = meter.managedObjectContext else {
-            throw NSError()
+            throw StorageError.noContext
         }
         let cdValue = CDMeterValue(context: context)
         cdValue.uuid = UUID()

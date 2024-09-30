@@ -40,7 +40,7 @@ class CommonListViewModel<T>: ViewModel {
     
     func select(index: Int) {
         guard !items.isEmpty, (0..<items.count).contains(index) else {
-            self.error = NSError(domain: "UB.Index", code: 1)
+            self.error = UtilityBillsError.outOfBounds
             return
         }
         actionSelect(items[index])

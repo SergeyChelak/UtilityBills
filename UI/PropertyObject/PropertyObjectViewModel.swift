@@ -69,7 +69,7 @@ class PropertyObjectViewModel: ViewModel {
     
     func infoSectionSelected() {
         guard let propObj = data?.propObj else {
-            self.error = NSError(domain: "UB.ObjLoad", code: 1)
+            self.error = UtilityBillsError.loadingFailure
             return
         }
         actionInfoSectionTap(propObj)

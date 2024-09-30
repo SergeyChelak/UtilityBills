@@ -31,7 +31,7 @@ class EditPropertyInfoViewModel: ViewModel {
     
     func save() {
         if name.isEmpty {
-            self.error = NSError(domain: "UB.bad_value", code: 1)
+            self.error = UtilityBillsError.emptyName
             return
         }
         var obj = propertyObject

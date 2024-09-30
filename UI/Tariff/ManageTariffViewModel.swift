@@ -86,13 +86,13 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
         let monthMask = try arrayToBitMask(choiceViewModel.isSelected)
         // TODO: improve validation
         if monthMask == 0 {
-            throw NSError(domain: "UB.MonthMask", code: 1)
+            throw UtilityBillsError.noMonthSelected
         }
         guard let value = Decimal(string: price), value > 0.0 else {
-            throw NSError(domain: "UB.PriceValue", code: 1)
+            throw UtilityBillsError.invalidPriceValue
         }
         if name.isEmpty {
-            throw NSError(domain: "UB.Title", code: 1)
+            throw UtilityBillsError.emptyName
         }
         return Tariff(
             id: tariffId,

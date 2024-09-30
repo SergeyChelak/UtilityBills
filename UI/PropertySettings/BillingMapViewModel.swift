@@ -22,9 +22,10 @@ struct BillingMapData {
 
 class BillingMapViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
+    let billingMapId: BillingMapId
     let actionLoad: BillingMapActionLoadData
     let actionSave: BillingMapActionSave
-    
+        
     @Published
     var name: String = ""
 
@@ -39,6 +40,7 @@ class BillingMapViewModel: ViewModel {
     ) {
         self.actionLoad = actionLoad
         self.actionSave = actionSave
+        self.billingMapId = BillingMapId()
         super.init()
     }
     
@@ -68,13 +70,13 @@ class BillingMapViewModel: ViewModel {
     
     private func validatedBillingMap() throws -> BillingMap {
         guard let tariff = tariffModel.selected else {
-            throw NSError(domain: "UB.Tariff", code: 1)
+            throw UtilityBillsError.noTariffSelected
         }
         if name.isEmpty {
-            throw NSError(domain: "UB.Name", code: 1)
+            throw UtilityBillsError.emptyName
         }
         return BillingMap(
-            id: UUID(),
+            id: billingMapId,
             name: name,
             order: 0,
             tariff: tariff,
