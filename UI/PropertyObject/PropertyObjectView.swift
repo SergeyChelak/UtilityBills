@@ -60,10 +60,16 @@ struct PropertyObjectView: View {
         UUID(),
         actionLoad: {
             let obj = PropertyObject(id: UUID(), name: "House", details: "My home")
-            let meters: [Meter] = []
+            let meters: [Meter] = [
+                // TODO: ...
+            ]
+            let bills: [Bill] = [
+                // TODO: ...
+            ]
             return PropertyObjectData(
                 propObj: obj,
-                meters: meters
+                meters: meters,
+                bills: bills
             )
         },
         actionInfoSectionTap: { _ in },

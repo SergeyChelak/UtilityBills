@@ -57,3 +57,22 @@ func mapBillingMap(_ cdBillingMap: CDBillingMap) -> BillingMap {
         meters: meters
     )
 }
+
+func mapBill(_ cdBill: CDBill) -> Bill {
+    let records = cdBill
+        .records!
+        .map {
+            mapBillRecord($0 as! CDBillRecord)
+        }
+    return Bill(
+        date: cdBill.date!,
+        records: records
+    )
+}
+
+func mapBillRecord(_ cdBill: CDBillRecord) -> BillRecord {
+    BillRecord(
+        name: cdBill.name ?? "",
+        price: cdBill.price!.decimalValue as Decimal
+    )
+}

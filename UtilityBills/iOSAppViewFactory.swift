@@ -39,10 +39,12 @@ struct iOSAppViewFactory {
             propObjId,
             actionLoad: {
                 let propObj = try storage.fetchProperty(propObjId)
-                let meters = try storage.allMeters(for: propObjId)
+                let meters = try storage.allMeters(propObjId)
+                let bills = try storage.allBills(propObjId)
                 return PropertyObjectData(
                     propObj: propObj,
-                    meters: meters
+                    meters: meters,
+                    bills: bills
                 )
             },
             actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
@@ -145,8 +147,8 @@ struct iOSAppViewFactory {
         let viewModel = PropertySettingsViewModel(
             objectId: propObjId,
             actionLoad: {
-                let meters = try storage.allMeters(for: propObjId)
-                let tariffs = try storage.allTariffs(for: propObjId)
+                let meters = try storage.allMeters(propObjId)
+                let tariffs = try storage.allTariffs(propObjId)
                 let billingMaps = try storage.allBillingMaps(propObjId)
                 return PropertySettingsData(
                     meters: meters,
