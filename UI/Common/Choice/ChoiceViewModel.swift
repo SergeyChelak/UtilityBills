@@ -27,6 +27,15 @@ class SingleChoiceViewModel<T>: ChoiceViewModel {
         self.isSelected = [Bool].init(repeating: false, count: items.count)
     }
     
+    init(items: [T], selection: (T) -> Bool) {
+        self.items = items
+        self.isSelected = [Bool].init(repeating: false, count: items.count)
+        for (i, item) in items.enumerated() where selection(item) {
+            isSelected[i] = true
+            break
+        }
+    }
+    
     var isEmpty: Bool {
         items.isEmpty
     }
@@ -61,14 +70,25 @@ class MultiChoiceViewModel<T>: ChoiceViewModel {
         )
     }
     
-    init(items: [T], selection: (Int) -> Bool) {
+    init(items: [T], selection: (T) -> Bool) {
+        self.items = items
+        self.isSelected = [Bool].init(
+            repeating: false,
+            count: items.count
+        )
+        for (i, item) in items.enumerated() {
+            self.isSelected[i] = selection(item)
+        }
+    }
+    
+    init(items: [T], indexSelection: (Int) -> Bool) {
         self.items = items
         self.isSelected = [Bool].init(
             repeating: false,
             count: items.count
         )
         for i in 0..<items.count {
-            self.isSelected[i] = selection(i)
+            self.isSelected[i] = indexSelection(i)
         }
     }
 
