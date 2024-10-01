@@ -18,3 +18,8 @@ struct PropertyObject {
 }
 
 extension PropertyObject: Equatable, Hashable { }
+
+struct PropertyObjectData {
+    let propObj: PropertyObject?
+    let meters: [Meter]
+}

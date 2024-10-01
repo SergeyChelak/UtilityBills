@@ -14,7 +14,7 @@ struct UtilityBillsApp: App {
     init() {
         let navigationStore = iOSNavigationStore()
         let navigationController = iOSNavigationController(store: navigationStore)
-        let factory = iOSAppViewFactory(navigationController: navigationController)
+        let factory = iOSAppViewFactory(router: navigationController)
         let navigationView = iOSNavigationView(
             rootView: AnyView(factory.view(for: .properlyObjectList)),
             navigationStore: navigationStore,

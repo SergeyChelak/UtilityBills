@@ -8,11 +8,6 @@
 import Combine
 import Foundation
 
-struct PropertyObjectData {
-    let propObj: PropertyObject?
-    let meters: [Meter]
-}
-
 typealias PropertyObjectActionLoad = () throws -> PropertyObjectData
 typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
 typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void

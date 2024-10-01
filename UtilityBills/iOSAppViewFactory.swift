@@ -14,8 +14,8 @@ struct iOSAppViewFactory {
     let storageWatcher: StorageWatcher
     let router: Router
     
-    init(navigationController: Router) {
-        self.router = navigationController
+    init(router: Router) {
+        self.router = router
         
         // TODO: inject dependency as protocol
         let storage = LocalStorage.instance()
