@@ -19,8 +19,8 @@ enum Route: Hashable {
     case addTariff(PropertyObjectId)
     case editTariff(Tariff)
     case propertyObjectSettings(PropertyObjectId)
-    case addBillingMap(PropertyObjectId)
-    case editBillingMap(PropertyObjectId, BillingMap)
+    case addBillingMap(BillingMapData)
+    case editBillingMap(BillingMap, BillingMapData)
 }
 
 protocol Router {

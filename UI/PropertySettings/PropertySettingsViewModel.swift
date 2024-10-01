@@ -23,8 +23,8 @@ typealias PropertySettingsActionMeterHeaderSectionTap = (PropertyObjectId) -> Vo
 typealias PropertySettingsActionMeterSelectionTap = (Meter) -> Void
 typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
 typealias PropertySettingsActionEditTariff = (Tariff) -> Void
-typealias PropertySettingsActionAddBillingMap = (PropertyObjectId) throws -> Void
-typealias PropertySettingsActionEditBillingMap = (PropertyObjectId, BillingMap) -> Void
+typealias PropertySettingsActionAddBillingMap = (BillingMapData) throws -> Void
+typealias PropertySettingsActionEditBillingMap = (BillingMap, BillingMapData) -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
 class PropertySettingsViewModel: ViewModel {
@@ -108,14 +108,14 @@ class PropertySettingsViewModel: ViewModel {
     
     func addBillingMap() {
         do {
-            try actionAddBillingMap(objectId)
+            try actionAddBillingMap(billingMapData)
         } catch {
             setError(error)
         }
     }
     
     func editBillingMap(_ billingMap: BillingMap) {
-        actionEditBillingMap(objectId, billingMap)
+        actionEditBillingMap(billingMap, billingMapData)
     }
     
     func deleteObject() {
@@ -124,5 +124,13 @@ class PropertySettingsViewModel: ViewModel {
         } catch {
             setError(error)
         }
+    }
+    
+    private var billingMapData: BillingMapData {
+        BillingMapData(
+            tariffs: tariffs,
+            meters: meters, 
+            propertyObjectId: objectId
+        )
     }
 }

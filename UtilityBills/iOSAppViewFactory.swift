@@ -184,35 +184,20 @@ struct iOSAppViewFactory {
         return EditMeterView(viewModel: viewModel)
     }
     
-    private func composeAddBillingMapView(_ propObjId: PropertyObjectId) -> some View {
+    private func composeAddBillingMapView(_ billingMapData: BillingMapData) -> some View {
         let viewModel = BillingMapViewModel(
-            actionLoad: {
-                let meters = try storage.allMeters(for: propObjId)
-                let tariffs = try storage.allTariffs(for: propObjId)
-                return BillingMapData(
-                    tariffs: tariffs,
-                    meters: meters
-                )
-            },
+            billingMapData: billingMapData,
             actionSave: {
-                try storage.newBillingMap(propObjId, value: $0)
+                try storage.newBillingMap(billingMapData.propertyObjectId, value: $0)
                 router.hideOverlay()
             })
         return BillingMapView(viewModel: viewModel)
     }
     
-    private func composeEditBillingMapView(_ propObjId: PropertyObjectId, billingMap: BillingMap) -> some View {
+    private func composeEditBillingMapView(_ billingMap: BillingMap, billingMapData: BillingMapData) -> some View {
         let viewModel = BillingMapViewModel(
             billingMap: billingMap,
-            // TODO: fix copy-paste!!!
-            actionLoad: {
-                let meters = try storage.allMeters(for: propObjId)
-                let tariffs = try storage.allTariffs(for: propObjId)
-                return BillingMapData(
-                    tariffs: tariffs,
-                    meters: meters
-                )
-            },
+            billingMapData: billingMapData,
             actionUpdate: {
                 try storage.updateBillingMap($0)
                 router.hideOverlay()
@@ -253,8 +238,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeEditMeterView(meter)
         case .addBillingMap(let objId):
             composeAddBillingMapView(objId)
-        case .editBillingMap(let objId, let billingMap):
-            composeEditBillingMapView(objId, billingMap: billingMap)
+        case .editBillingMap(let billingMap, let data):
+            composeEditBillingMapView(billingMap, billingMapData: data)
         }
     }
 }

@@ -18,3 +18,9 @@ struct BillingMap {
 }
 
 extension BillingMap: Equatable, Hashable { }
+
+struct BillingMapData: Equatable, Hashable {
+    let tariffs: [Tariff]
+    let meters: [Meter]
+    let propertyObjectId: PropertyObjectId
+}

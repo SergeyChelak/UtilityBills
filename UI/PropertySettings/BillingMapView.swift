@@ -54,44 +54,43 @@ struct BillingMapView: View {
         }
         .padding(.horizontal)
         .errorAlert(for: $viewModel.error)
-        .task {
-            viewModel.load()
-        }
     }
 }
 
 #Preview {
+    let data = {
+        let tariff1 = Tariff(
+            id: TariffId(),
+            name: "Tariff 1",
+            price: Decimal(10.11),
+            activeMonthMask: 4095
+        )
+        let tariff2 = Tariff(
+            id: TariffId(),
+            name: "Tariff 2",
+            price: Decimal(32.10),
+            activeMonthMask: 4094
+        )
+        let meter1 = Meter(
+            id: MeterId(),
+            name: "M1",
+            capacity: nil,
+            inspectionDate: nil)
+            
+        let meter2 = Meter(
+            id: MeterId(),
+            name: "M2",
+            capacity: nil,
+            inspectionDate: nil
+        )
+        return BillingMapData(
+            tariffs: [tariff1, tariff2],
+            meters: [meter1, meter2, meter2, meter1, meter1],
+            propertyObjectId: PropertyObjectId()
+        )
+    }()
     let vm = BillingMapViewModel(
-        actionLoad: {
-            let tariff1 = Tariff(
-                id: TariffId(),
-                name: "Tariff 1",
-                price: Decimal(10.11),
-                activeMonthMask: 4095
-            )
-            let tariff2 = Tariff(
-                id: TariffId(),
-                name: "Tariff 2",
-                price: Decimal(32.10),
-                activeMonthMask: 4094
-            )
-            let meter1 = Meter(
-                id: MeterId(),
-                name: "M1",
-                capacity: nil,
-                inspectionDate: nil)
-                
-            let meter2 = Meter(
-                id: MeterId(),
-                name: "M2",
-                capacity: nil,
-                inspectionDate: nil
-            )
-            return BillingMapData(
-                tariffs: [tariff1, tariff2],
-                meters: [meter1, meter2, meter2, meter1, meter1]
-            )
-        },
+        billingMapData: data,
         actionSave: { _ in }
     )
     return BillingMapView(viewModel: vm)

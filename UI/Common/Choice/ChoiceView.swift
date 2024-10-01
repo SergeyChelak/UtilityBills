@@ -65,7 +65,9 @@ struct GridChoiceView<ItemType, ViewModel: ChoiceViewModel, CellView: View>:
     ) {
         self.viewModel = viewModel
         self.viewBuilder = viewBuilder
-        self.adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
+        self.adaptiveColumn = [
+            GridItem(.adaptive(minimum: minWidth))
+        ]
     }
     
     var body: some View {

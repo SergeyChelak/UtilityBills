@@ -11,7 +11,7 @@
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="meters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMeter" inverseName="mapping" inverseEntity="CDMeter"/>
         <relationship name="propertyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="billingMap" inverseEntity="CDPropertyObject"/>
-        <relationship name="tariff" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CDTariff" inverseName="mapping" inverseEntity="CDTariff"/>
+        <relationship name="tariff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTariff" inverseName="mapping" inverseEntity="CDTariff"/>
     </entity>
     <entity name="CDBillRecord" representedClassName=".CDBillRecord" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
