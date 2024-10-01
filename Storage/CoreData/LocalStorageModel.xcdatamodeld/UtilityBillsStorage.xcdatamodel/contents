@@ -11,7 +11,7 @@
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="meters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMeter" inverseName="mapping" inverseEntity="CDMeter"/>
         <relationship name="propertyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="billingMap" inverseEntity="CDPropertyObject"/>
-        <relationship name="tariff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTariff" inverseName="mapping" inverseEntity="CDTariff"/>
+        <relationship name="tariff" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDTariff" inverseName="mapping" inverseEntity="CDTariff"/>
     </entity>
     <entity name="CDBillRecord" representedClassName=".CDBillRecord" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
@@ -48,7 +48,7 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="mapping" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDBillingMap" inverseName="tariff" inverseEntity="CDBillingMap"/>
+        <relationship name="mapping" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDBillingMap" inverseName="tariff" inverseEntity="CDBillingMap"/>
         <relationship name="propertyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="tariffs" inverseEntity="CDPropertyObject"/>
     </entity>
 </model>
