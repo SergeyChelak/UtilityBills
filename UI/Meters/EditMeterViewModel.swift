@@ -36,13 +36,16 @@ class EditMeterViewModel: ViewModel {
     }
     
     func save() {
-        let updatedMeter = Meter(
-            id: meter.id,
-            name: name,
-            capacity: meter.capacity,
-            inspectionDate: isInspectionDateApplicable ? inspectionDate : nil
-        )
         do {
+            if name.isEmpty {
+                throw UtilityBillsError.emptyName
+            }
+            let updatedMeter = Meter(
+                id: meter.id,
+                name: name,
+                capacity: meter.capacity,
+                inspectionDate: isInspectionDateApplicable ? inspectionDate : nil
+            )            
             try actionUpdateMeter(updatedMeter)
         } catch {
             setError(error)

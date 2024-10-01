@@ -66,23 +66,24 @@ struct PropertySettingsView: View {
                 }
             }
             Spacer()
+                .errorAlert(for: $viewModel.error)
+            
             CTAButton(
                 caption: "Delete Object",
                 actionKind: .destructive,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.horizontal)
+            .alert(isPresented: $isConfirmDeleteAlertVisible) {
+                Alert(
+                    title: Text("Warning"),
+                    message: Text("Do you want to delete this object?"),
+                    primaryButton: .destructive(Text("Delete"), action: viewModel.deleteObject),
+                    secondaryButton: .default(Text("Cancel"))
+                )
+            }
         }
         .navigationTitle("Settings")
-        .errorAlert(for: $viewModel.error)
-        .alert(isPresented: $isConfirmDeleteAlertVisible) {
-            Alert(
-                title: Text("Warning"),
-                message: Text("Do you want to delete this object?"),
-                primaryButton: .destructive(Text("Delete"), action: viewModel.deleteObject),
-                secondaryButton: .default(Text("Cancel"))
-            )
-        }
         .task {
             viewModel.load()
         }

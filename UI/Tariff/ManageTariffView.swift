@@ -30,21 +30,21 @@ struct ManageTariffView: View {
             GridChoiceView(minWidth: 150, viewModel: viewModel.choiceViewModel) {
                 Text($0)
                     .frame(width: 120)
-            }
+            }            
             Spacer()
+                .errorAlert(for: $viewModel.error)
             ControlButtonsView(viewModel: viewModel)
                 .padding(.bottom, 12)
+                .alert(isPresented: $viewModel.isConfirmationAlertVisible) {
+                    Alert(
+                        title: Text("Warning"),
+                        message: Text("This action isn't undoable. Do you want to proceed?"),
+                        primaryButton: .destructive(Text("Proceed"), action: viewModel.confirm),
+                        secondaryButton: .default(Text("Cancel"))
+                    )
+                }
         }
         .padding(.horizontal)
-        .errorAlert(for: $viewModel.error)
-        .alert(isPresented: $viewModel.isConfirmationAlertVisible) {
-            Alert(
-                title: Text("Warning"),
-                message: Text("This action isn't undoable. Do you want to proceed?"),
-                primaryButton: .destructive(Text("Proceed"), action: viewModel.confirm),
-                secondaryButton: .default(Text("Cancel"))
-            )
-        }
     }
 }
 

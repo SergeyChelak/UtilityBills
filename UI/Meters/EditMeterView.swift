@@ -37,6 +37,7 @@ struct EditMeterView: View {
             Spacer()
             CTAButton(caption: "Update", callback: viewModel.save)
                 .padding(.bottom, 10)
+                .errorAlert(for: $viewModel.error)
             
             CTAButton(
                 caption: "Delete Meter",
@@ -44,17 +45,16 @@ struct EditMeterView: View {
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.bottom, 12)
+            .alert(isPresented: $isConfirmDeleteAlertVisible) {
+                Alert(
+                    title: Text("Warning"),
+                    message: Text("Do you want to delete this meter (\(viewModel.name))?"),
+                    primaryButton: .destructive(Text("Delete"), action: viewModel.delete),
+                    secondaryButton: .default(Text("Cancel"))
+                )
+            }
         }
         .padding(.horizontal)
-        .errorAlert(for: $viewModel.error)
-        .alert(isPresented: $isConfirmDeleteAlertVisible) {
-            Alert(
-                title: Text("Warning"),
-                message: Text("Do you want to delete this meter (\(viewModel.name))?"),
-                primaryButton: .destructive(Text("Delete"), action: viewModel.delete),
-                secondaryButton: .default(Text("Cancel"))
-            )
-        }
     }
 }
 
