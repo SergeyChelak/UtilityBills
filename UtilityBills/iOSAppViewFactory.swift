@@ -159,6 +159,7 @@ struct iOSAppViewFactory {
             actionAddTariff: { router.showOverlay(.addTariff($0)) },
             actionEditTariff: { router.showOverlay(.editTariff($0)) },
             actionAddBillingMap: { router.showOverlay(.addBillingMap($0)) },
+            actionEditBillingMap: { router.showOverlay(.editBillingMap($0, $1)) },
             actionDelete: {
                 try storage.deleteProperty(propObjId)
                 router.popToRoot()
@@ -199,6 +200,10 @@ struct iOSAppViewFactory {
             })
         return BillingMapView(viewModel: viewModel)
     }
+    
+    private func composeEditBillingMapView(_ propObjId: PropertyObjectId, billingMap: BillingMap) -> some View {
+        Text("Hi!")
+    }
 }
 
 extension iOSAppViewFactory: ViewFactory {
@@ -228,6 +233,8 @@ extension iOSAppViewFactory: ViewFactory {
             composeEditMeterView(meter)
         case .addBillingMap(let objId):
             composeAddBillingMapView(objId)
+        case .editBillingMap(let objId, let billingMap):
+            composeEditBillingMapView(objId, billingMap: billingMap)
         }
     }
 }

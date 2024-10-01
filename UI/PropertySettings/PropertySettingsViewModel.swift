@@ -24,6 +24,7 @@ typealias PropertySettingsActionMeterSelectionTap = (Meter) -> Void
 typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
 typealias PropertySettingsActionEditTariff = (Tariff) -> Void
 typealias PropertySettingsActionAddBillingMap = (PropertyObjectId) throws -> Void
+typealias PropertySettingsActionEditBillingMap = (PropertyObjectId, BillingMap) -> Void
 typealias PropertySettingsActionDelete = () throws -> Void
 
 class PropertySettingsViewModel: ViewModel {
@@ -36,6 +37,7 @@ class PropertySettingsViewModel: ViewModel {
     private let actionAddTariff: PropertySettingsActionAddTariff
     private let actionEditTariff: PropertySettingsActionEditTariff
     private let actionAddBillingMap: PropertySettingsActionAddBillingMap
+    private let actionEditBillingMap: PropertySettingsActionEditBillingMap
     private let actionDelete: PropertySettingsActionDelete
     
     @Published
@@ -49,6 +51,7 @@ class PropertySettingsViewModel: ViewModel {
         actionAddTariff: @escaping PropertySettingsActionAddTariff,
         actionEditTariff: @escaping PropertySettingsActionEditTariff,
         actionAddBillingMap: @escaping PropertySettingsActionAddBillingMap,
+        actionEditBillingMap: @escaping PropertySettingsActionEditBillingMap,
         actionDelete: @escaping PropertySettingsActionDelete,
         updatePublisher: AnyPublisher<(), Never>
     ) {
@@ -59,6 +62,7 @@ class PropertySettingsViewModel: ViewModel {
         self.actionAddTariff = actionAddTariff
         self.actionEditTariff = actionEditTariff
         self.actionAddBillingMap = actionAddBillingMap
+        self.actionEditBillingMap = actionEditBillingMap
         self.actionDelete = actionDelete
         super.init()
         updatePublisher
@@ -108,6 +112,10 @@ class PropertySettingsViewModel: ViewModel {
         } catch {
             setError(error)
         }
+    }
+    
+    func editBillingMap(_ billingMap: BillingMap) {
+        actionEditBillingMap(objectId, billingMap)
     }
     
     func deleteObject() {

@@ -16,3 +16,5 @@ struct BillingMap {
     let tariff: Tariff
     let meters: [Meter]
 }
+
+extension BillingMap: Equatable, Hashable { }

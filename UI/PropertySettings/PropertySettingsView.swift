@@ -53,7 +53,7 @@ struct PropertySettingsView: View {
                     SectionListView(
                         items: viewModel.billingMaps,
                         emptyListMessage: "You didn't add any payment maps yet",
-                        selectionCallback: { _ in },
+                        selectionCallback: viewModel.editBillingMap(_:),
                         cellProducer: { CaptionValueCell(caption: $0.name) }
                     )
                     .sectionWith(
@@ -132,6 +132,7 @@ struct PropertySettingsView: View {
         actionAddTariff: { _ in },
         actionEditTariff: { _ in },
         actionAddBillingMap: { _ in },
+        actionEditBillingMap: { _, _ in },
         actionDelete: { },
         updatePublisher: Empty().eraseToAnyPublisher()
     )
