@@ -49,7 +49,7 @@ struct BillingMapView: View {
                 }
             }
             Spacer()
-            CTAButton(caption: "Save mapping", callback: viewModel.save)
+            ControlButtonsView(viewModel: viewModel)
                 .padding(.bottom, 12)
         }
         .padding(.horizontal)

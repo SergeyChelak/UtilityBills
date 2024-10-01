@@ -202,7 +202,27 @@ struct iOSAppViewFactory {
     }
     
     private func composeEditBillingMapView(_ propObjId: PropertyObjectId, billingMap: BillingMap) -> some View {
-        Text("Hi!")
+        let viewModel = BillingMapViewModel(
+            billingMap: billingMap,
+            // TODO: fix copy-paste!!!
+            actionLoad: {
+                let meters = try storage.allMeters(for: propObjId)
+                let tariffs = try storage.allTariffs(for: propObjId)
+                return BillingMapData(
+                    tariffs: tariffs,
+                    meters: meters
+                )
+            },
+            actionUpdate: {
+                try storage.updateBillingMap($0)
+                router.hideOverlay()
+            },
+            actionDelete: {
+                try storage.deleteBillingMap($0)
+                router.hideOverlay()
+            }
+        )
+        return BillingMapView(viewModel: viewModel)
     }
 }
 

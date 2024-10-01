@@ -14,6 +14,7 @@ enum StorageError: Error {
     case meterNotFound
     case meterValueNotFound
     case tariffNotFound
+    case billingMapNotFound
 }
 
 struct LocalStorage {
@@ -79,6 +80,13 @@ extension LocalStorage {
     func fetchTariff(_ tariffId: TariffId, into context: NSManagedObjectContext) throws -> CDTariff? {
         let request = CDTariff.fetchRequest()
         request.predicate = .byOwnUUID(tariffId)
+        request.fetchLimit = 1
+        return try context.fetch(request).first
+    }
+    
+    func fetchBillingMap(_ billingMapId: BillingMapId, into context: NSManagedObjectContext) throws -> CDBillingMap? {
+        let request = CDBillingMap.fetchRequest()
+        request.predicate = .byOwnUUID(billingMapId)
         request.fetchLimit = 1
         return try context.fetch(request).first
     }

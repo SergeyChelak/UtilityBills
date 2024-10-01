@@ -12,6 +12,7 @@ class ViewModel: ObservableObject {
     var error: Error?
     
     func setError(_ error: Error) {
+        print(error)
         self.error = error
     }
 }

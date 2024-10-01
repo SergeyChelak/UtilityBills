@@ -11,4 +11,6 @@ protocol BillMapDAO {
     func allBillingMaps(_ propertyObjectId: PropertyObjectId) throws -> [BillingMap]
     
     func newBillingMap(_ propertyObjectId: PropertyObjectId, value: BillingMap) throws
+    
+    func deleteBillingMap(_ billingMapId: BillingMapId) throws
 }

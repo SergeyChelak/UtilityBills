@@ -37,4 +37,30 @@ extension LocalStorage: BillMapDAO {
         billingMap.meters = Set(meters) as NSSet
         try context.save()
     }
+    
+    func updateBillingMap(_ billingMap: BillingMap) throws {
+        let context = viewContext
+        guard let obj = try fetchBillingMap(billingMap.id, into: context) else {
+            throw StorageError.billingMapNotFound
+        }
+        // TODO: review code duplicates
+        guard let tariff = try fetchTariff(billingMap.tariff.id, into: context) else {
+            throw StorageError.tariffNotFound
+        }
+        let meters = try fetchMeters(billingMap.meters.map { $0.id }, into: context)
+        obj.name = billingMap.name
+        obj.order = Int16(billingMap.order)
+        obj.tariff = tariff
+        obj.meters = Set(meters) as NSSet
+        try context.save()
+    }
+    
+    func deleteBillingMap(_ billingMapId: BillingMapId) throws {
+        let context = viewContext
+        guard let obj = try fetchBillingMap(billingMapId, into: context) else {
+            throw StorageError.billingMapNotFound
+        }
+        context.delete(obj)
+        try context.save()
+    }
 }
