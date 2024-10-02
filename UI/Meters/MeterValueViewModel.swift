@@ -74,7 +74,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     
     private func add() {
         guard let meterId else {
-            setError(UtilityBillsError.unexpectedState("MeterValueViewModel: meterId is nil"))
+            unexpectedError("MeterValueViewModel: meterId is nil")
             return
         }
         do {

@@ -49,7 +49,10 @@ struct ManageTariffView: View {
 }
 
 #Preview("Add") {
-    let vm = ManageTariffViewModel(actionSave: { _ in })
+    let vm = ManageTariffViewModel(
+        propertyObjectId: PropertyObjectId(),
+        delegate: nil
+    )
     return ManageTariffView(viewModel: vm)
 }
 
@@ -62,8 +65,7 @@ struct ManageTariffView: View {
     )
     let vm = ManageTariffViewModel(
         tariff: tariff,
-        actionUpdate: { _ in },
-        actionDelete: { _ in }
+        delegate: nil
     )
     return ManageTariffView(viewModel: vm)
 }

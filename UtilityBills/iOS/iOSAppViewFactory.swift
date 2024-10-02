@@ -86,10 +86,8 @@ struct iOSAppViewFactory {
     
     private func composeAddTariffView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = ManageTariffViewModel(
-            actionSave: {
-                try storage.newTariff(propertyId: propObjId, tariff: $0)
-                router.hideOverlay()
-            }
+            propertyObjectId: propObjId,
+            delegate: appFlow
         )
         return ManageTariffView(viewModel: viewModel)
     }
@@ -97,14 +95,7 @@ struct iOSAppViewFactory {
     private func composeEditTariffView(_ tariff: Tariff) -> some View {
         let viewModel = ManageTariffViewModel(
             tariff: tariff,
-            actionUpdate: {
-                try storage.updateTariff(tariff: $0)
-                router.hideOverlay()
-            },
-            actionDelete: {
-                try storage.deleteTariff(tariffId: $0)
-                router.hideOverlay()
-            }
+            delegate: appFlow
         )
         return ManageTariffView(viewModel: viewModel)
     }

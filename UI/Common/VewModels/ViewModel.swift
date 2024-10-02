@@ -15,4 +15,9 @@ class ViewModel: ObservableObject {
         print(error)
         self.error = error
     }
+    
+    func unexpectedError(_ message: String) {
+        let error = UtilityBillsError.unexpectedState(message)
+        setError(error)
+    }
 }

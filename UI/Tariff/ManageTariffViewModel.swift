@@ -7,10 +7,6 @@
 
 import Foundation
 
-typealias TariffActionNew = (Tariff) throws -> Void
-typealias TariffActionUpdate = (Tariff) throws -> Void
-typealias TariffActionDelete = (TariffId) throws -> Void
-
 class ManageTariffViewModel: ViewModel, ActionControllable {
     private static let monthList = [
         "January",
@@ -40,11 +36,15 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     let dialogTitle: String
     let actions: [ControlAction]
     let choiceViewModel: MultiChoiceViewModel<String>
-    private let actionSave: TariffActionNew?
-    private let actionUpdate: TariffActionUpdate?
-    private let actionDelete: TariffActionDelete?
+    let propertyObjectId: PropertyObjectId?
+    private weak var delegate: ManageTariffFlow?
     
-    init(actionSave: @escaping TariffActionNew) {
+    init(
+        propertyObjectId: PropertyObjectId,
+        delegate: ManageTariffFlow?
+    ) {
+        self.propertyObjectId = propertyObjectId
+        self.delegate = delegate
         self.tariffId = TariffId()
         self.name = ""
         self.price = ""
@@ -54,16 +54,16 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
         )
         self.dialogTitle = "Add new tariff"
         self.actions = [.new]
-        self.actionSave = actionSave
-        self.actionUpdate = nil
-        self.actionDelete = nil
+        self.delegate = delegate
     }
     
     init(
         tariff: Tariff,
-        actionUpdate: @escaping TariffActionUpdate,
-        actionDelete: @escaping TariffActionDelete
+        delegate: ManageTariffFlow?
     ) {
+        self.propertyObjectId = nil
+        self.delegate = delegate
+        
         self.tariffId = tariff.id
         self.name = tariff.name
         
@@ -77,9 +77,6 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
         }
         self.dialogTitle = "Edit tariff"
         self.actions = [.update, .delete]
-        self.actionSave = nil
-        self.actionUpdate = actionUpdate
-        self.actionDelete = actionDelete
     }
     
     private func validatedTariff() throws -> Tariff {
@@ -131,9 +128,13 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     }
     
     private func new() {
+        guard let propertyObjectId else {
+            unexpectedError("ManageTariffViewModel: propertyObjectId is nil")
+            return
+        }
         do {
             let tariff = try validatedTariff()
-            try actionSave?(tariff)
+            try delegate?.addNewTariff(propertyObjectId, tariff: tariff)
         } catch {
             setError(error)
         }
@@ -142,7 +143,7 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     private func update() {
         do {
             let tariff = try validatedTariff()
-            try actionUpdate?(tariff)
+            try delegate?.updateTariff(tariff)
         } catch {
             setError(error)
         }
@@ -150,7 +151,7 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     
     private func delete() {
         do {
-            try actionDelete?(tariffId)
+            try delegate?.deleteTariff(tariffId)
         } catch {
             setError(error)
         }
