@@ -42,3 +42,9 @@ protocol ManageMeterValueFlow: AnyObject {
     func updateMeterValue(_ value: MeterValue) throws
     func deleteMeterValue(_ meterValueId: MeterValueId) throws
 }
+
+protocol ManageTariffFlow: AnyObject {
+    func addNewTariff(_ propertyObjectId: PropertyObjectId, tariff: Tariff) throws
+    func updateTariff(_ tariff: Tariff) throws
+    func deleteTariff(_ tariffId: TariffId) throws
+}

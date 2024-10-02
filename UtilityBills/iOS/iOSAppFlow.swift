@@ -120,3 +120,23 @@ extension iOSAppFlow: ManageMeterValueFlow {
     }
     
 }
+
+// MARK: ManageTariffFlow
+extension iOSAppFlow: ManageTariffFlow {
+    func addNewTariff(_ propertyObjectId: PropertyObjectId, tariff: Tariff) throws {
+        try storage.newTariff(
+            propertyId: propertyObjectId,
+            tariff: tariff)
+        router.hideOverlay()
+    }
+    
+    func updateTariff(_ tariff: Tariff) throws {
+        try storage.updateTariff(tariff: tariff)
+        router.hideOverlay()
+    }
+    
+    func deleteTariff(_ tariffId: TariffId) throws {
+        try storage.deleteTariff(tariffId: tariffId)
+        router.hideOverlay()
+    }
+}
