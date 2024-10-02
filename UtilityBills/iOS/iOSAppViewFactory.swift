@@ -111,14 +111,7 @@ struct iOSAppViewFactory {
     private func composeEditMeterView(_ meter: Meter) -> some View {
         let viewModel = EditMeterViewModel(
             meter: meter,
-            actionUpdateMeter: {
-                try storage.updateMeter($0)
-                router.hideOverlay()
-            },
-            actionDeleteMeter: {
-                try storage.deleteMeter(meter.id)
-                router.hideOverlay()
-            }
+            delegate: appFlow
         )
         return EditMeterView(viewModel: viewModel)
     }

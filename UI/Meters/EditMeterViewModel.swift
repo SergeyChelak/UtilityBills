@@ -7,13 +7,9 @@
 
 import Foundation
 
-typealias MeterActionUpdate = (Meter) throws -> Void
-typealias MeterActionDelete = () throws -> ()
-
 class EditMeterViewModel: ViewModel {
     let meter: Meter
-    private let actionDeleteMeter: MeterActionDelete
-    private let actionUpdateMeter: MeterActionUpdate
+    private weak var delegate: ManageMeterFlow?
     
     @Published
     var name: String
@@ -24,12 +20,10 @@ class EditMeterViewModel: ViewModel {
     
     init(
         meter: Meter,
-        actionUpdateMeter: @escaping MeterActionUpdate,
-        actionDeleteMeter: @escaping MeterActionDelete
+        delegate: ManageMeterFlow?
     ) {
         self.meter = meter
-        self.actionUpdateMeter = actionUpdateMeter
-        self.actionDeleteMeter = actionDeleteMeter
+        self.delegate = delegate
         self.name = meter.name
         self.isInspectionDateApplicable = meter.inspectionDate != nil
         self.inspectionDate = meter.inspectionDate ?? Date()
@@ -46,7 +40,7 @@ class EditMeterViewModel: ViewModel {
                 capacity: meter.capacity,
                 inspectionDate: isInspectionDateApplicable ? inspectionDate : nil
             )            
-            try actionUpdateMeter(updatedMeter)
+            try delegate?.updateMeter(updatedMeter)
         } catch {
             setError(error)
         }
@@ -54,7 +48,7 @@ class EditMeterViewModel: ViewModel {
     
     func delete() {
         do {
-            try actionDeleteMeter()
+            try delegate?.deleteMeter(meter.id)
         } catch {
             setError(error)
         }

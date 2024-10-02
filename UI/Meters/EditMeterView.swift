@@ -67,8 +67,7 @@ struct EditMeterView: View {
     )
     let vm = EditMeterViewModel(
         meter: meter,
-        actionUpdateMeter: { _ in },
-        actionDeleteMeter: { }
+        delegate: nil
     )
     return EditMeterView(viewModel: vm)
 }

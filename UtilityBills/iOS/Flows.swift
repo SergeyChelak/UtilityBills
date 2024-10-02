@@ -26,8 +26,10 @@ protocol EditPropertyInfoFlow: AnyObject {
     func updatePropertyObject(_ propertyObject: PropertyObject) throws
 }
 
-protocol AddMeterFlow: AnyObject {
+protocol ManageMeterFlow: AnyObject {
     func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Double) throws
+    func updateMeter(_ meter: Meter) throws
+    func deleteMeter(_ meterId: MeterId) throws
 }
 
 protocol MeterValuesListFlow: AnyObject {
