@@ -8,13 +8,16 @@
 import Foundation
 
 extension LocalStorage: BillDAO {
-    func allBills(_ propertyObjectId: PropertyObjectId) throws -> [Bill] {
+    func bills(_ propertyObjectId: PropertyObjectId, limit: Int?) throws -> [Bill] {
         let context = viewContext
         guard let obj = try fetchPropertyObject(propertyObjectId, into: context) else {
             return []
         }
         let request = CDBill.fetchRequest()
         request.predicate = .byPropertyObject(obj)
+        if let limit {
+            request.fetchLimit = limit
+        }
         return try context
             .fetch(request)
             .map(mapBill)

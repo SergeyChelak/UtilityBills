@@ -12,6 +12,7 @@ typealias PropertyObjectActionLoad = () throws -> PropertyObjectData
 typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
 typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
 typealias PropertyObjectActionSettings = () -> Void
+typealias PropertyObjectActionGenerateBill = (PropertyObjectId) -> Void
 
 
 class PropertyObjectViewModel: ViewModel {
@@ -23,6 +24,7 @@ class PropertyObjectViewModel: ViewModel {
     private let actionInfoSectionTap: PropertyObjectActionInfoSectionTap
     private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
     private let actionSettings: PropertyObjectActionSettings
+    private let actionGenerateBill: PropertyObjectActionGenerateBill
     
     @Published 
     var data: PropertyObjectData?
@@ -35,12 +37,17 @@ class PropertyObjectViewModel: ViewModel {
         data?.meters ?? []
     }
     
+    var bills: [Bill] {
+        data?.bills ?? []
+    }
+    
     init(
         _ objectId: PropertyObjectId,
         actionLoad: @escaping PropertyObjectActionLoad,
         actionInfoSectionTap: @escaping PropertyObjectActionInfoSectionTap,
         actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
         actionSettings: @escaping PropertyObjectActionSettings,
+        actionGenerateBill: @escaping PropertyObjectActionGenerateBill,
         updatePublisher: AnyPublisher<(), Never>
     ) {
         self.objectId = objectId
@@ -48,6 +55,7 @@ class PropertyObjectViewModel: ViewModel {
         self.actionInfoSectionTap = actionInfoSectionTap
         self.actionMeterSelectionTap = actionMeterSelectionTap
         self.actionSettings = actionSettings
+        self.actionGenerateBill = actionGenerateBill
         super.init()
         updatePublisher
             .sink(receiveValue: load)
@@ -76,6 +84,20 @@ class PropertyObjectViewModel: ViewModel {
         
     func openSettings() {
         actionSettings()
+    }
+    
+    func generateBill() {
+        actionGenerateBill(objectId)
+    }
+    
+    func billSelected(_ bill: Bill) {
+        setError(UtilityBillsError.notImplemented("billSelected"))
+        print("Not implemented: billSelected")
+    }
+    
+    func viewAllBills() {
+        setError(UtilityBillsError.notImplemented("viewAllBills"))
+        print("Not implemented: viewAllBills")
     }
 }
 

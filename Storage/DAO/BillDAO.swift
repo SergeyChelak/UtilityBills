@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BillDAO {
-    func allBills(_ propertyObjectId: PropertyObjectId) throws -> [Bill]
+    func bills(_ propertyObjectId: PropertyObjectId, limit: Int?) throws -> [Bill]
 }

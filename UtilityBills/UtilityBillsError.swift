@@ -8,11 +8,32 @@
 import Foundation
 
 enum UtilityBillsError: Error {
+    case notImplemented(String)
     case tariffNotSelected
     case emptyName
     case outOfBounds
     case loadingFailure
-    case noTariffSelected
     case noMonthSelected
     case invalidPriceValue
+}
+
+extension UtilityBillsError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .notImplemented(let string):
+            "Feature \(string) isn't implemented yet"
+        case .tariffNotSelected:
+            "Tariff not selected"
+        case .emptyName:
+            "Empty name isn't acceptable"
+        case .outOfBounds:
+            "Selection is out of bounds"
+        case .loadingFailure:
+            "Failed to load data"
+        case .noMonthSelected:
+            "Month not selected"
+        case .invalidPriceValue:
+            "Price value is incorrect"
+        }
+    }
 }

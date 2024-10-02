@@ -15,7 +15,7 @@ struct PropertyObjectView: View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    // Manage estate data
+                    // TODO: move to settings screen
                     if let obj = viewModel.propObj {
                         PropertyInfoView(propertyObject: obj)
                             .sectionWith(
@@ -25,20 +25,41 @@ struct PropertyObjectView: View {
                                     callback: viewModel.infoSectionSelected)
                             )
                     }
+                    if !viewModel.meters.isEmpty {
+                        SectionListView(
+                            items: viewModel.meters,
+                            selectionCallback: viewModel.meterSelected(_:),
+                            cellProducer: { CaptionValueCell(caption: $0.name) }
+                        )
+                        .sectionWith(
+                            title: "Meters"
+                        )
+                    }
                     
-                    // TODO: Display historical data
-                    
-                    SectionListView(
-                        items: viewModel.meters,
-                        emptyListMessage: "You have no meters yet",
-                        selectionCallback: viewModel.meterSelected(_:),
-                        cellProducer: { CaptionValueCell(caption: $0.name) }
-                    )
-                    .sectionWith(
-                        title: "Meters"
-                    )
+                    if !viewModel.bills.isEmpty {
+                        SectionListView(
+                            items: viewModel.bills,
+                            selectionCallback: viewModel.billSelected(_:),
+                            cellProducer: {
+                                CaptionValueCell(caption: $0.date.formatted())
+                            }
+                        )
+                        .sectionWith(
+                            title: "Bills",
+                            action: HeaderAction(
+                                title: "View all",
+                                callback: viewModel.viewAllBills
+                            )
+                        )
+                    }
                 }
-            }            
+            }
+            Spacer()
+            CTAButton(
+                caption: "Generate bill",
+                callback: viewModel.generateBill
+            )
+            .padding(.horizontal)
         }
         .navigationTitle(viewModel.propObj?.name ?? "")
         .toolbar {
@@ -75,6 +96,7 @@ struct PropertyObjectView: View {
         actionInfoSectionTap: { _ in },
         actionMeterSelectionTap: { _ in },
         actionSettings: { },
+        actionGenerateBill: { _ in },
         updatePublisher: Empty().eraseToAnyPublisher()
     )
     return PropertyObjectView(viewModel: store)

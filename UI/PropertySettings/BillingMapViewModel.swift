@@ -79,7 +79,7 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     
     private func validatedBillingMap() throws -> BillingMap {
         guard let tariff = tariffModel.selected else {
-            throw UtilityBillsError.noTariffSelected
+            throw UtilityBillsError.tariffNotSelected
         }
         if name.isEmpty {
             throw UtilityBillsError.emptyName

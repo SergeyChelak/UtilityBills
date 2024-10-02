@@ -40,7 +40,7 @@ struct iOSAppViewFactory {
             actionLoad: {
                 let propObj = try storage.fetchProperty(propObjId)
                 let meters = try storage.allMeters(propObjId)
-                let bills = try storage.allBills(propObjId)
+                let bills = try storage.bills(propObjId, limit: 5)
                 return PropertyObjectData(
                     propObj: propObj,
                     meters: meters,
@@ -50,6 +50,7 @@ struct iOSAppViewFactory {
             actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
             actionMeterSelectionTap: { router.push(.meterValues($0)) },
             actionSettings: { router.push(.propertyObjectSettings(propObjId)) },
+            actionGenerateBill: { router.push(.generateBill($0)) },
             updatePublisher: storageWatcher.publisher
         )
         return PropertyObjectView(viewModel: viewModel)
@@ -211,6 +212,10 @@ struct iOSAppViewFactory {
         )
         return BillingMapView(viewModel: viewModel)
     }
+    
+    func composeGenerateBillView(_ propObjId: PropertyObjectId) -> some View {
+        GenerateBillView()
+    }
 }
 
 extension iOSAppViewFactory: ViewFactory {
@@ -242,6 +247,9 @@ extension iOSAppViewFactory: ViewFactory {
             composeAddBillingMapView(objId)
         case .editBillingMap(let billingMap, let data):
             composeEditBillingMapView(billingMap, billingMapData: data)
+        case .generateBill(let objId):
+            composeGenerateBillView(objId)
+            
         }
     }
 }

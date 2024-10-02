@@ -49,6 +49,7 @@
 		A510830D2CAC65FD00103E76 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510830C2CAC65FD00103E76 /* Bill.swift */; };
 		A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510830E2CAC693C00103E76 /* BillDAO.swift */; };
 		A51083112CAC695900103E76 /* LocalStorage+BillDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083102CAC695900103E76 /* LocalStorage+BillDAO.swift */; };
+		A51083142CAD8A7500103E76 /* GenerateBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083132CAD8A7500103E76 /* GenerateBillView.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -141,6 +142,7 @@
 		A510830C2CAC65FD00103E76 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		A510830E2CAC693C00103E76 /* BillDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDAO.swift; sourceTree = "<group>"; };
 		A51083102CAC695900103E76 /* LocalStorage+BillDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+BillDAO.swift"; sourceTree = "<group>"; };
+		A51083132CAD8A7500103E76 /* GenerateBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBillView.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -315,6 +317,14 @@
 			path = Action;
 			sourceTree = "<group>";
 		};
+		A51083122CAD8A6000103E76 /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				A51083132CAD8A7500103E76 /* GenerateBillView.swift */,
+			);
+			path = Bill;
+			sourceTree = "<group>";
+		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +370,7 @@
 				A55C63662C8C94FB00F66741 /* Common */,
 				A51082B92CA2D4DB00103E76 /* PropertyList */,
 				A55C633F2C7FD50E00F66741 /* PropertyObject */,
+				A51083122CAD8A6000103E76 /* Bill */,
 				A51082C52CA2E70E00103E76 /* Meters */,
 				A51082D32CA4696A00103E76 /* Tariff */,
 				A51082DD2CA7036E00103E76 /* PropertySettings */,
@@ -596,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51083142CAD8A7500103E76 /* GenerateBillView.swift in Sources */,
 				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
 				A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */,
