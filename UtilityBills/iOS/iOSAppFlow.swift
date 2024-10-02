@@ -101,3 +101,22 @@ extension iOSAppFlow: MeterValuesListFlow {
         router.showOverlay(.editMeterValue(meterValue))
     }
 }
+
+// MARK: ManageMeterValueFlow
+extension iOSAppFlow: ManageMeterValueFlow {
+    func addNewMeterValue(_ meterId: MeterId, value: MeterValue) throws {
+        try storage.insertMeterValue(meterId, value: value)
+        router.hideOverlay()
+    }
+    
+    func updateMeterValue(_ value: MeterValue) throws {
+        try storage.updateMeterValue(value)
+        router.hideOverlay()
+    }
+    
+    func deleteMeterValue(_ meterValueId: MeterValueId) throws {
+        try storage.deleteMeterValue(meterValueId)
+        router.hideOverlay()
+    }
+    
+}

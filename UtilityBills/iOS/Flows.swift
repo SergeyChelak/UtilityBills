@@ -36,3 +36,9 @@ protocol MeterValuesListFlow: AnyObject {
     func openNewMeterValue(_ meterId: MeterId)
     func openMeterValue(_ meterValue: MeterValue)
 }
+
+protocol ManageMeterValueFlow: AnyObject {
+    func addNewMeterValue(_ meterId: MeterId, value: MeterValue) throws
+    func updateMeterValue(_ value: MeterValue) throws
+    func deleteMeterValue(_ meterValueId: MeterValueId) throws
+}
