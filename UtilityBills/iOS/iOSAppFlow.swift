@@ -140,3 +140,46 @@ extension iOSAppFlow: ManageTariffFlow {
         router.hideOverlay()
     }
 }
+
+// MARK: PropertyObjectSettingFlow
+extension iOSAppFlow: PropertyObjectSettingFlow {
+    func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData {
+        let meters = try storage.allMeters(propertyObjectId)
+        let tariffs = try storage.allTariffs(propertyObjectId)
+        let billingMaps = try storage.allBillingMaps(propertyObjectId)
+        return PropertySettingsData(
+            meters: meters,
+            tariffs: tariffs,
+            billingMaps: billingMaps
+        )
+    }
+    
+    func openAddMeter(_ propertyObjectId: PropertyObjectId) {
+        router.showOverlay(.addMeter(propertyObjectId))
+    }
+    
+    func openEditMeter(_ meter: Meter) {
+        router.showOverlay(.editMeter(meter))
+    }
+    
+    func openAddTariff(_ propertyObjectId: PropertyObjectId) {
+        router.showOverlay(.addTariff(propertyObjectId))
+    }
+    
+    func openEditTariff(_ tariff: Tariff) {
+        router.showOverlay(.editTariff(tariff))
+    }
+    
+    func openAddBillingMap(_ data: BillingMapData) {
+        router.showOverlay(.addBillingMap(data))
+    }
+    
+    func openEditBillingMap(_ billingMap: BillingMap, data: BillingMapData) {
+        router.showOverlay(.editBillingMap(billingMap, data))
+    }
+    
+    func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws {
+        try storage.deleteProperty(propertyObjectId)
+        router.popToRoot()
+    }
+}

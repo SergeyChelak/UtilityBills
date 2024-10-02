@@ -48,3 +48,15 @@ protocol ManageTariffFlow: AnyObject {
     func updateTariff(_ tariff: Tariff) throws
     func deleteTariff(_ tariffId: TariffId) throws
 }
+
+protocol PropertyObjectSettingFlow: AnyObject {
+    var updatePublisher: UpdatePublisher { get }
+    func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData
+    func openAddMeter(_ propertyObjectId: PropertyObjectId)
+    func openEditMeter(_ meter: Meter)
+    func openAddTariff(_ propertyObjectId: PropertyObjectId)
+    func openEditTariff(_ tariff: Tariff)
+    func openAddBillingMap(_ data: BillingMapData)
+    func openEditBillingMap(_ billingMap: BillingMap, data: BillingMapData)
+    func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws
+}
