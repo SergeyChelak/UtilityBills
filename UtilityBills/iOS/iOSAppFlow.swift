@@ -75,3 +75,14 @@ extension iOSAppFlow: EditPropertyInfoFlow {
         router.hideOverlay()
     }
 }
+
+// MARK: AddMeterFlow
+extension iOSAppFlow: AddMeterFlow {
+    func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Double) throws {
+        try storage.newMeter(
+            propertyObjectId: propertyObjectId,
+            meter: meter,
+            initialValue: initialValue)
+        router.hideOverlay()
+    }
+}

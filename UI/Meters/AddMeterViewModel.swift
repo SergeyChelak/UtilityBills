@@ -7,14 +7,11 @@
 
 import Foundation
 
-typealias AddMeterActionSave = (_ meter: Meter,
-                                _ initialValue: Double) throws -> Void
-
 class AddMeterViewModel: ViewModel {
     private static let availableCapacities = [5, 6, 7, 8, 9, 10, 11, 12]
     
     let propertyObjectId: PropertyObjectId
-    let actionSave: AddMeterActionSave
+    private weak var delegate: AddMeterFlow?
     
     @Published
     var name: String = "New Meter"
@@ -31,10 +28,10 @@ class AddMeterViewModel: ViewModel {
 
     init(
         propertyObjectId: PropertyObjectId,
-        actionSave: @escaping AddMeterActionSave
+        delegate: AddMeterFlow?
     ) {
         self.propertyObjectId = propertyObjectId
-        self.actionSave = actionSave
+        self.delegate = delegate
     }
     
     var capacities: [Int] {
@@ -58,7 +55,10 @@ class AddMeterViewModel: ViewModel {
         )
         // TODO: validate initial value
         do {
-            try actionSave(meter, initialValue)
+            try delegate?.addNewMeter(
+                meter,
+                propertyObjectId: propertyObjectId,
+                initialValue: initialValue)
         } catch {
             setError(error)
         }

@@ -60,7 +60,7 @@ struct AddMeterView: View {
 #Preview {
     let vm = AddMeterViewModel(
         propertyObjectId: PropertyObjectId(),
-        actionSave: { _, _ in }
+        delegate: nil
     )
     return AddMeterView(viewModel: vm)
 }

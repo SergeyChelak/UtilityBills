@@ -51,13 +51,10 @@ struct iOSAppViewFactory {
     }
     
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
-        let vm = AddMeterViewModel(propertyObjectId: propObjId) { meter, initialValue in
-            try storage.newMeter(
-                propertyObjectId: propObjId,
-                meter: meter,
-                initialValue: initialValue)
-            router.hideOverlay()
-        }
+        let vm = AddMeterViewModel(
+            propertyObjectId: propObjId,
+            delegate: appFlow
+        )
         return AddMeterView(viewModel: vm)
     }
     
