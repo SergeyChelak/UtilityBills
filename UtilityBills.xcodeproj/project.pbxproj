@@ -54,6 +54,7 @@
 		A51083192CAD928B00103E76 /* Flows.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083182CAD928B00103E76 /* Flows.swift */; };
 		A510831C2CAD9D1200103E76 /* UpdatePublisherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */; };
 		A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */; };
+		A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -151,6 +152,7 @@
 		A51083182CAD928B00103E76 /* Flows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flows.swift; sourceTree = "<group>"; };
 		A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePublisherMock.swift; sourceTree = "<group>"; };
 		A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectViewModelMock.swift; sourceTree = "<group>"; };
+		A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValuesListViewModelMock.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 			children = (
 				A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */,
 				A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */,
+				A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
+				A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */,
 				A540DD292C7F729700F5624E /* BillingMap.swift in Sources */,
 				A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,

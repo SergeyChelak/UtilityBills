@@ -29,3 +29,10 @@ protocol EditPropertyInfoFlow: AnyObject {
 protocol AddMeterFlow: AnyObject {
     func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Double) throws
 }
+
+protocol MeterValuesListFlow: AnyObject {
+    var updatePublisher: UpdatePublisher { get }
+    func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue]
+    func addNewMeterValue(_ meterId: MeterId)
+    func openMeterValue(_ meterValue: MeterValue)
+}

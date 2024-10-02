@@ -42,20 +42,7 @@ struct MeterValuesListView: View {
     }
 }
 
-import Combine
-
 #Preview {
-    let values = [
-        MeterValue(id: UUID(), date: Date(), value: 10, isPaid: true),
-        MeterValue(id: UUID(), date: Date(), value: 17, isPaid: true),
-        MeterValue(id: UUID(), date: Date(), value: 24, isPaid: true),
-        MeterValue(id: UUID(), date: Date(), value: 25, isPaid: false)
-    ].reversed()
-    let vm = MeterValuesListViewModel(
-        actionLoad: { Array(values) },
-        actionNewValue: { },
-        actionSelect:  { _ in },
-        updatePublisher: Empty().eraseToAnyPublisher()
-    )
+    let vm = meterValuesListViewModelMock(meterId: MeterId())
     return MeterValuesListView(viewModel: vm)
 }

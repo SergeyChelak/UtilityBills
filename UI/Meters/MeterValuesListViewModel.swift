@@ -7,26 +7,33 @@
 
 import Combine
 
-typealias MeterActionNewValue = () -> ()
-
 class MeterValuesListViewModel: CommonListViewModel<MeterValue> {
     private var cancellables: Set<AnyCancellable> = []
-    private let actionNewValue: MeterActionNewValue    
+    let meterId: MeterId
+    private weak var delegate: MeterValuesListFlow?
     
     init(
-        actionLoad: @escaping CommonListActionLoad<MeterValue>,
-        actionNewValue: @escaping MeterActionNewValue,
-        actionSelect: @escaping CommonListActionSelect<MeterValue>,        
-        updatePublisher: AnyPublisher<(), Never>
+        meterId: MeterId,
+        delegate: MeterValuesListFlow?
     ) {
-        self.actionNewValue = actionNewValue        
-        super.init(actionLoad: actionLoad, actionSelect: actionSelect)
-        updatePublisher
+        self.meterId = meterId
+        self.delegate = delegate
+        super.init(
+            actionLoad: {
+                try delegate?.loadMeterValues(meterId) ?? []
+            },
+            actionSelect: {
+                delegate?.openMeterValue($0)
+            }
+        )
+        
+        delegate?.updatePublisher
+            .publisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
     }
     
     func newValue() {
-        actionNewValue()
+        delegate?.addNewMeterValue(meterId)
     }    
 }

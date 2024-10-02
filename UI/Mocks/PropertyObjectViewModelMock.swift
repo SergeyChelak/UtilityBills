@@ -7,8 +7,7 @@
 
 #if DEBUG
 import Foundation
-
-class PropertyObjectFlowMock: PropertyObjectFlow {
+private class PropertyObjectFlowMock: PropertyObjectFlow {
     let updatePublisher: UpdatePublisher = UpdatePublisherMock()
     let objId = PropertyObjectId()
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData {
@@ -43,11 +42,11 @@ class PropertyObjectFlowMock: PropertyObjectFlow {
     }
 }
 
-class PropertyObjectViewModelMock: PropertyObjectViewModel {
+private class PropertyObjectViewModelMock: PropertyObjectViewModel {
     var retainer: AnyObject?
 }
 
-func propertyObjectViewModelMock() -> PropertyObjectViewModel {
+func _propertyObjectViewModelMock() -> PropertyObjectViewModel {
     let flow = PropertyObjectFlowMock()
     let viewModel = PropertyObjectViewModelMock(
         UUID(),

@@ -60,14 +60,8 @@ struct iOSAppViewFactory {
     
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
         let viewModel = MeterValuesListViewModel(
-            actionLoad: { try storage.meterValues(meterId) },
-            actionNewValue: {
-                router.showOverlay(.addMeterValue(meterId))
-            },
-            actionSelect: {
-                router.showOverlay(.editMeterValue($0))
-            },
-            updatePublisher: storageWatcher.publisher
+            meterId: meterId,
+            delegate: appFlow
         )
         return MeterValuesListView(viewModel: viewModel)
     }

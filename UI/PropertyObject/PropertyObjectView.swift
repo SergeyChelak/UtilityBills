@@ -77,6 +77,6 @@ struct PropertyObjectView: View {
 }
 
 #Preview {
-    let viewModel = propertyObjectViewModelMock()
+    let viewModel = _propertyObjectViewModelMock()
     return PropertyObjectView(viewModel: viewModel)
 }
