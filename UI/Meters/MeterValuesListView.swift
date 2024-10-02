@@ -31,7 +31,7 @@ struct MeterValuesListView: View {
         .toolbar {
             ToolbarItem {
                 Button("Add") {
-                    viewModel.newValue()
+                    viewModel.openNewMeterValue()
                 }
             }
         }

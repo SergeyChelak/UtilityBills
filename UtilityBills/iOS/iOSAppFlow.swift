@@ -93,7 +93,7 @@ extension iOSAppFlow: MeterValuesListFlow {
         try storage.meterValues(meterId)
     }
     
-    func addNewMeterValue(_ meterId: MeterId) {
+    func openNewMeterValue(_ meterId: MeterId) {
         router.showOverlay(.addMeterValue(meterId))
     }
     

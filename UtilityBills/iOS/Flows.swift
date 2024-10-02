@@ -33,6 +33,6 @@ protocol AddMeterFlow: AnyObject {
 protocol MeterValuesListFlow: AnyObject {
     var updatePublisher: UpdatePublisher { get }
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue]
-    func addNewMeterValue(_ meterId: MeterId)
+    func openNewMeterValue(_ meterId: MeterId)
     func openMeterValue(_ meterValue: MeterValue)
 }

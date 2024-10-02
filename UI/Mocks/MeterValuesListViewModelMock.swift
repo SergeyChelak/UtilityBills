@@ -28,7 +28,7 @@ private class __MeterValuesListFlowMock: MeterValuesListFlow {
         meterValuesMock()
     }
     
-    func addNewMeterValue(_ meterId: MeterId) {
+    func openNewMeterValue(_ meterId: MeterId) {
         //
     }
     

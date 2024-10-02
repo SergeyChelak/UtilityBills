@@ -33,7 +33,7 @@ class MeterValuesListViewModel: CommonListViewModel<MeterValue> {
             .store(in: &cancellables)
     }
     
-    func newValue() {
-        delegate?.addNewMeterValue(meterId)
+    func openNewMeterValue() {
+        delegate?.openNewMeterValue(meterId)
     }    
 }
