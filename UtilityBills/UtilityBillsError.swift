@@ -15,6 +15,7 @@ enum UtilityBillsError: Error {
     case loadingFailure
     case noMonthSelected
     case invalidPriceValue
+    case unexpectedState(String)
 }
 
 extension UtilityBillsError: LocalizedError {
@@ -34,6 +35,8 @@ extension UtilityBillsError: LocalizedError {
             "Month not selected"
         case .invalidPriceValue:
             "Price value is incorrect"
+        case .unexpectedState(let msg):
+            "Unexpected state: \(msg)"
         }
     }
 }

@@ -42,11 +42,10 @@ struct MeterValueView: View {
 
 #Preview("New") {
     let vm = MeterValueViewModel(
+        meterId: MeterId(),
         date: Date(),
         value: 123,
-        actionAdd: { _ in
-            throw NSError(domain: "MeterNewValueViewModel", code: 1)
-        }
+        delegate: nil
     )
     return MeterValueView(viewModel: vm)
 }
@@ -60,8 +59,7 @@ struct MeterValueView: View {
     )
     let vm = MeterValueViewModel(
         meterValue: value,
-        actionUpdate: { _ in },
-        actionDelete: { _ in }
+        delegate: nil
     )
     return MeterValueView(viewModel: vm)
 }

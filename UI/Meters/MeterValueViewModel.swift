@@ -7,12 +7,10 @@
 
 import Foundation
 
-typealias MeterValueActionAdd = (MeterValue) throws -> Void
-typealias MeterValueActionUpdate = (MeterValue) throws -> Void
-typealias MeterValueActionDelete = (MeterValueId) throws -> Void
-
 class MeterValueViewModel: ViewModel, ActionControllable {
-    let id: MeterValueId
+    let meterId: MeterId?
+    let meterValueId: MeterValueId
+    private weak var delegate: ManageMeterValueFlow?
     @Published
     var date: Date
     @Published
@@ -22,34 +20,33 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     
     let actions: [ControlAction]
     let screenTitle: String
-    private var actionAdd: MeterValueActionAdd?
-    private var actionUpdate: MeterValueActionUpdate?
-    private var actionDelete: MeterValueActionDelete?
     
     init(
+        meterId: MeterId,
         date: Date,
         value: Double,
-        actionAdd: @escaping MeterValueActionAdd
+        delegate: ManageMeterValueFlow?
     ) {
-        self.id = MeterValueId()
+        self.meterId = meterId
+        self.meterValueId = MeterValueId()
         self.date = date
         self.value = value
-        self.actionAdd = actionAdd
+        self.delegate = delegate
         self.actions = [.new]
         self.screenTitle = "Add new meter value"
     }
     
     init(
         meterValue: MeterValue,
-        actionUpdate: @escaping MeterValueActionUpdate,
-        actionDelete: @escaping MeterValueActionDelete
+        delegate: ManageMeterValueFlow?
     ) {
-        self.id = meterValue.id
+        // TODO: fix it!
+        self.meterId = nil
+        self.meterValueId = meterValue.id
         self.date = meterValue.date
         self.value = meterValue.value
         self.isPaid = meterValue.isPaid
-        self.actionUpdate = actionUpdate
-        self.actionDelete = actionDelete
+        self.delegate = delegate
         self.actions = [.update, .delete]
         self.screenTitle = "Edit meter value"
     }
@@ -68,7 +65,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     private func validatedMeterValue() throws -> MeterValue {
         // TODO: check if meter value is inside meter capacity
         MeterValue(
-            id: id,
+            id: meterValueId,
             date: date,
             value: value,
             isPaid: isPaid
@@ -76,9 +73,13 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     }
     
     private func add() {
+        guard let meterId else {
+            setError(UtilityBillsError.unexpectedState("MeterValueViewModel: meterId is nil"))
+            return
+        }
         do {
             let meterValue = try validatedMeterValue()
-            try actionAdd?(meterValue)
+            try delegate?.addNewMeterValue(meterId, value: meterValue)
         } catch {
             setError(error)
         }
@@ -87,7 +88,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     private func update() {
         do {
             let meterValue = try validatedMeterValue()
-            try actionUpdate?(meterValue)
+            try delegate?.updateMeterValue(meterValue)
         } catch {
             setError(error)
         }
@@ -95,7 +96,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     
     private func delete() {
         do {
-            try actionDelete?(id)
+            try delegate?.deleteMeterValue(meterValueId)
         } catch {
             setError(error)
         }

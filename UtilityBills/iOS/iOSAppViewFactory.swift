@@ -68,12 +68,10 @@ struct iOSAppViewFactory {
     
     private func composeAddMeterValueView(_ meterId: MeterId) -> some View {
         let viewModel = MeterValueViewModel(
+            meterId: meterId,
             date: Date(),
             value: 0,
-            actionAdd: {
-                try storage.insertMeterValue(meterId, value: $0)
-                router.hideOverlay()
-            }
+            delegate: appFlow
         )
         return MeterValueView(viewModel: viewModel)
     }
@@ -81,14 +79,7 @@ struct iOSAppViewFactory {
     private func composeEditMeterValueView(_ meterValue: MeterValue) -> some View {
         let viewModel = MeterValueViewModel(
             meterValue: meterValue,
-            actionUpdate: {
-                try storage.updateMeterValue($0)
-                router.hideOverlay()
-            },
-            actionDelete: {
-                try storage.deleteMeterValue($0)
-                router.hideOverlay()
-            }
+            delegate: appFlow
         )
         return MeterValueView(viewModel: viewModel)
     }
