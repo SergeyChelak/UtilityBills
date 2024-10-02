@@ -8,64 +8,24 @@
 import Combine
 import Foundation
 
-struct PropertySettingsData {
-    let meters: [Meter]
-    let tariffs: [Tariff]
-    let billingMaps: [BillingMap]
-    
-    static func `default`() -> Self {
-        PropertySettingsData(meters: [], tariffs: [], billingMaps: [])
-    }
-}
-
-typealias PropertySettingsActionLoad = () throws -> PropertySettingsData
-typealias PropertySettingsActionMeterHeaderSectionTap = (PropertyObjectId) -> Void
-typealias PropertySettingsActionMeterSelectionTap = (Meter) -> Void
-typealias PropertySettingsActionAddTariff = (PropertyObjectId) -> Void
-typealias PropertySettingsActionEditTariff = (Tariff) -> Void
-typealias PropertySettingsActionAddBillingMap = (BillingMapData) throws -> Void
-typealias PropertySettingsActionEditBillingMap = (BillingMap, BillingMapData) -> Void
-typealias PropertySettingsActionDelete = () throws -> Void
-
 class PropertySettingsViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
-    private let actionLoad: PropertySettingsActionLoad
-    private let actionMeterHeaderSectionTap: PropertySettingsActionMeterHeaderSectionTap
-    private let actionMeterSelectionTap: PropertySettingsActionMeterSelectionTap
-    private let actionAddTariff: PropertySettingsActionAddTariff
-    private let actionEditTariff: PropertySettingsActionEditTariff
-    private let actionAddBillingMap: PropertySettingsActionAddBillingMap
-    private let actionEditBillingMap: PropertySettingsActionEditBillingMap
-    private let actionDelete: PropertySettingsActionDelete
+    private weak var delegate: PropertyObjectSettingFlow?
     
     @Published
     var data: PropertySettingsData = .default()
     
     init(
         objectId: PropertyObjectId,
-        actionLoad: @escaping PropertySettingsActionLoad,
-        actionMeterHeaderSectionTap: @escaping PropertySettingsActionMeterHeaderSectionTap,
-        actionMeterSelectionTap: @escaping PropertySettingsActionMeterSelectionTap,
-        actionAddTariff: @escaping PropertySettingsActionAddTariff,
-        actionEditTariff: @escaping PropertySettingsActionEditTariff,
-        actionAddBillingMap: @escaping PropertySettingsActionAddBillingMap,
-        actionEditBillingMap: @escaping PropertySettingsActionEditBillingMap,
-        actionDelete: @escaping PropertySettingsActionDelete,
-        updatePublisher: AnyPublisher<(), Never>
+        delegate: PropertyObjectSettingFlow?
     ) {
         self.objectId = objectId
-        self.actionLoad = actionLoad
-        self.actionMeterHeaderSectionTap = actionMeterHeaderSectionTap
-        self.actionMeterSelectionTap = actionMeterSelectionTap
-        self.actionAddTariff = actionAddTariff
-        self.actionEditTariff = actionEditTariff
-        self.actionAddBillingMap = actionAddBillingMap
-        self.actionEditBillingMap = actionEditBillingMap
-        self.actionDelete = actionDelete
+        self.delegate = delegate
         super.init()
-        updatePublisher
+        delegate?.updatePublisher
+            .publisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
     }
@@ -83,44 +43,43 @@ class PropertySettingsViewModel: ViewModel {
     }
     
     func load() {
+        guard let delegate else {
+            return
+        }
         do {
-            data = try actionLoad()
+            data = try delegate.loadPropertySettingsData(objectId)
         } catch {
             setError(error)
         }
     }
     
     func addMeter() {
-        actionMeterHeaderSectionTap(objectId)
+        delegate?.openAddMeter(objectId)
     }
     
     func meterSelected(_ meter: Meter) {
-        actionMeterSelectionTap(meter)
+        delegate?.openEditMeter(meter)
     }
     
     func tariffSelected(_ tariff: Tariff) {
-        actionEditTariff(tariff)
+        delegate?.openEditTariff(tariff)
     }
     
     func addTariff() {
-        actionAddTariff(objectId)
+        delegate?.openAddTariff(objectId)
     }
     
     func addBillingMap() {
-        do {
-            try actionAddBillingMap(billingMapData)
-        } catch {
-            setError(error)
-        }
+        delegate?.openAddBillingMap(billingMapData)
     }
     
     func editBillingMap(_ billingMap: BillingMap) {
-        actionEditBillingMap(billingMap, billingMapData)
+        delegate?.openEditBillingMap(billingMap, data: billingMapData)
     }
     
     func deleteObject() {
         do {
-            try actionDelete()
+            try delegate?.deletePropertyObject(objectId)
         } catch {
             setError(error)
         }

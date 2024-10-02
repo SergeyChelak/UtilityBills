@@ -24,3 +24,13 @@ struct PropertyObjectData {
     let meters: [Meter]
     let bills: [Bill]
 }
+
+struct PropertySettingsData {
+    let meters: [Meter]
+    let tariffs: [Tariff]
+    let billingMaps: [BillingMap]
+    
+    static func `default`() -> Self {
+        PropertySettingsData(meters: [], tariffs: [], billingMaps: [])
+    }
+}

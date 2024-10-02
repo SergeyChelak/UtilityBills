@@ -103,27 +103,7 @@ struct iOSAppViewFactory {
     private func composePropertyObjectSettingsView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = PropertySettingsViewModel(
             objectId: propObjId,
-            actionLoad: {
-                let meters = try storage.allMeters(propObjId)
-                let tariffs = try storage.allTariffs(propObjId)
-                let billingMaps = try storage.allBillingMaps(propObjId)
-                return PropertySettingsData(
-                    meters: meters,
-                    tariffs: tariffs,
-                    billingMaps: billingMaps
-                )
-            },
-            actionMeterHeaderSectionTap: { router.showOverlay(.addMeter($0)) },
-            actionMeterSelectionTap: { router.showOverlay(.editMeter($0)) },
-            actionAddTariff: { router.showOverlay(.addTariff($0)) },
-            actionEditTariff: { router.showOverlay(.editTariff($0)) },
-            actionAddBillingMap: { router.showOverlay(.addBillingMap($0)) },
-            actionEditBillingMap: { router.showOverlay(.editBillingMap($0, $1)) },
-            actionDelete: {
-                try storage.deleteProperty(propObjId)
-                router.popToRoot()
-            },
-            updatePublisher: storageWatcher.publisher
+            delegate: appFlow
         )
         return PropertySettingsView(viewModel: viewModel)
     }
