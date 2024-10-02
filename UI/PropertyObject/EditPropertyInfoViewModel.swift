@@ -7,11 +7,9 @@
 
 import Foundation
 
-typealias PropertyObjectActionUpdateInfo = (PropertyObject) throws -> Void
-
 class EditPropertyInfoViewModel: ViewModel {
     private let propertyObject: PropertyObject
-    private let actionUpdate: PropertyObjectActionUpdateInfo
+    private weak var delegate: EditPropertyInfoFlow?
     
     @Published
     var name: String
@@ -20,11 +18,10 @@ class EditPropertyInfoViewModel: ViewModel {
     
     init(
         propertyObject: PropertyObject,
-        actionUpdate: @escaping PropertyObjectActionUpdateInfo
+        delegate: EditPropertyInfoFlow?
     ) {
         self.propertyObject = propertyObject
-        self.actionUpdate = actionUpdate
-        
+        self.delegate = delegate
         self.name = propertyObject.name
         self.details = propertyObject.details
     }
@@ -38,7 +35,7 @@ class EditPropertyInfoViewModel: ViewModel {
         obj.name = name
         obj.details = details
         do {
-            try actionUpdate(obj)
+            try delegate?.updatePropertyObject(obj)
         } catch {
             setError(error)
         }

@@ -45,10 +45,7 @@ struct iOSAppViewFactory {
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
         let viewModel = EditPropertyInfoViewModel(
             propertyObject: obj,
-            actionUpdate: {
-                try storage.updateProperty($0)
-                router.hideOverlay()
-            }
+            delegate: appFlow
         )
         return EditPropertyInfoView(viewModel: viewModel)
     }

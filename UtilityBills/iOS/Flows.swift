@@ -21,3 +21,7 @@ protocol PropertyObjectFlow: AnyObject {
     func openPropertyObjectSettings(_ propertyObjectId: PropertyObjectId)
     func openGenerateBill(_ propertyObjectId: PropertyObjectId)
 }
+
+protocol EditPropertyInfoFlow: AnyObject {
+    func updatePropertyObject(_ propertyObject: PropertyObject) throws
+}

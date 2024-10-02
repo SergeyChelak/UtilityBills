@@ -67,3 +67,11 @@ extension iOSAppFlow: PropertyObjectFlow {
         router.push(.generateBill(propertyObjectId))
     }
 }
+
+// MARK: EditPropertyInfoFlow
+extension iOSAppFlow: EditPropertyInfoFlow {
+    func updatePropertyObject(_ propertyObject: PropertyObject) throws {
+        try storage.updateProperty(propertyObject)
+        router.hideOverlay()
+    }
+}

@@ -39,7 +39,7 @@ struct EditPropertyInfoView: View {
     )
     let vm = EditPropertyInfoViewModel(
         propertyObject: obj,
-        actionUpdate: { _ in }
+        delegate: nil
     )
     return EditPropertyInfoView(viewModel: vm)
 }
