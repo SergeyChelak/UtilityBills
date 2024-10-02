@@ -8,8 +8,12 @@
 import Combine
 import Foundation
 
+protocol UpdatePublisher {
+    var publisher: AnyPublisher<(), Never> { get }
+}
+
 // TODO: this is temporary solution to notify view models about managed context changes
-class StorageWatcher {
+class StorageWatcher: UpdatePublisher {
     private var cancellables: Set<AnyCancellable> = []
     let _publisher = PassthroughSubject<(), Never>()
     

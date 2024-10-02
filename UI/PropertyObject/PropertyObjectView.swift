@@ -77,27 +77,6 @@ struct PropertyObjectView: View {
 }
 
 #Preview {
-    let store = PropertyObjectViewModel(
-        UUID(),
-        actionLoad: {
-            let obj = PropertyObject(id: UUID(), name: "House", details: "My home")
-            let meters: [Meter] = [
-                // TODO: ...
-            ]
-            let bills: [Bill] = [
-                // TODO: ...
-            ]
-            return PropertyObjectData(
-                propObj: obj,
-                meters: meters,
-                bills: bills
-            )
-        },
-        actionInfoSectionTap: { _ in },
-        actionMeterSelectionTap: { _ in },
-        actionSettings: { },
-        actionGenerateBill: { _ in },
-        updatePublisher: Empty().eraseToAnyPublisher()
-    )
-    return PropertyObjectView(viewModel: store)
+    let viewModel = propertyObjectViewModelMock()
+    return PropertyObjectView(viewModel: viewModel)
 }

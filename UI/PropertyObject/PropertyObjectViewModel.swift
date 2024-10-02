@@ -8,24 +8,12 @@
 import Combine
 import Foundation
 
-typealias PropertyObjectActionLoad = () throws -> PropertyObjectData
-typealias PropertyObjectActionInfoSectionTap = (PropertyObject) -> Void
-typealias PropertyObjectActionMeterSelectionTap = (MeterId) -> Void
-typealias PropertyObjectActionSettings = () -> Void
-typealias PropertyObjectActionGenerateBill = (PropertyObjectId) -> Void
-
-
 class PropertyObjectViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
+    private weak var delegate: PropertyObjectFlow?
 
-    private let actionLoad: PropertyObjectActionLoad
-    private let actionInfoSectionTap: PropertyObjectActionInfoSectionTap
-    private let actionMeterSelectionTap: PropertyObjectActionMeterSelectionTap
-    private let actionSettings: PropertyObjectActionSettings
-    private let actionGenerateBill: PropertyObjectActionGenerateBill
-    
     @Published 
     var data: PropertyObjectData?
 
@@ -43,28 +31,20 @@ class PropertyObjectViewModel: ViewModel {
     
     init(
         _ objectId: PropertyObjectId,
-        actionLoad: @escaping PropertyObjectActionLoad,
-        actionInfoSectionTap: @escaping PropertyObjectActionInfoSectionTap,
-        actionMeterSelectionTap: @escaping PropertyObjectActionMeterSelectionTap,
-        actionSettings: @escaping PropertyObjectActionSettings,
-        actionGenerateBill: @escaping PropertyObjectActionGenerateBill,
-        updatePublisher: AnyPublisher<(), Never>
+        delegate: PropertyObjectFlow?
     ) {
         self.objectId = objectId
-        self.actionLoad = actionLoad
-        self.actionInfoSectionTap = actionInfoSectionTap
-        self.actionMeterSelectionTap = actionMeterSelectionTap
-        self.actionSettings = actionSettings
-        self.actionGenerateBill = actionGenerateBill
+        self.delegate = delegate
         super.init()
-        updatePublisher
+        delegate?.updatePublisher
+            .publisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
     }
     
     func load() {
         do {
-            data = try actionLoad()
+            data = try delegate?.loadPropertyObjectData(objectId)
         } catch {
             setError(error)
         }
@@ -75,19 +55,19 @@ class PropertyObjectViewModel: ViewModel {
             self.error = UtilityBillsError.loadingFailure
             return
         }
-        actionInfoSectionTap(propObj)
+        delegate?.openEditPropertyObject(propObj)
     }
     
     func meterSelected(_ meter: Meter) {
-        actionMeterSelectionTap(meter.id)
+        delegate?.openMeterValues(meter.id)
     }
         
     func openSettings() {
-        actionSettings()
+        delegate?.openPropertyObjectSettings(objectId)
     }
     
     func generateBill() {
-        actionGenerateBill(objectId)
+        delegate?.openGenerateBill(objectId)
     }
     
     func billSelected(_ bill: Bill) {

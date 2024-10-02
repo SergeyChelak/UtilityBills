@@ -10,48 +10,34 @@ import SwiftUI
 import Combine
 
 struct iOSAppViewFactory {
-    let storage: LocalStorage
-    let storageWatcher: StorageWatcher
-    let router: Router
+    private let appFlow: iOSAppFlow
     
-    init(router: Router) {
-        self.router = router
-        
-        // TODO: inject dependency as protocol
-        let storage = LocalStorage.instance()
-        let storageWatcher = StorageWatcher(storage: storage)
-        
-        self.storage = storage
-        self.storageWatcher = storageWatcher
+    init(appFlow: iOSAppFlow) {
+        self.appFlow = appFlow
+    }
+    
+    // Temporary variables for migration purposes
+    var storage: LocalStorage {
+        appFlow.storage
+    }
+    
+    var storageWatcher: UpdatePublisher {
+        appFlow.updatePublisher
+    }
+    
+    var router: Router {
+        appFlow.router
     }
     
     private func composePropertyObjectListView() -> some View {
-        let viewModel = PropertyListViewModel(
-            actionLoad: storage.allProperties,
-            actionSelect: { router.push(.propertyObjectHome($0.id)) },
-            actionCreate: storage.createProperty
-        )
+        let viewModel = PropertyListViewModel(delegate: appFlow)
         return PropertyListView(viewModel: viewModel)
     }
     
     private func composePropertyHomeView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = PropertyObjectViewModel(
             propObjId,
-            actionLoad: {
-                let propObj = try storage.fetchProperty(propObjId)
-                let meters = try storage.allMeters(propObjId)
-                let bills = try storage.bills(propObjId, limit: 5)
-                return PropertyObjectData(
-                    propObj: propObj,
-                    meters: meters,
-                    bills: bills
-                )
-            },
-            actionInfoSectionTap: { router.showOverlay(.editPropertyInfo($0)) },
-            actionMeterSelectionTap: { router.push(.meterValues($0)) },
-            actionSettings: { router.push(.propertyObjectSettings(propObjId)) },
-            actionGenerateBill: { router.push(.generateBill($0)) },
-            updatePublisher: storageWatcher.publisher
+            delegate: appFlow
         )
         return PropertyObjectView(viewModel: viewModel)
     }
