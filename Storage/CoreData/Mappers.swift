@@ -73,6 +73,7 @@ func mapBill(_ cdBill: CDBill) -> Bill {
 func mapBillRecord(_ cdBill: CDBillRecord) -> BillRecord {
     BillRecord(
         name: cdBill.name ?? "",
+        amount: cdBill.price!.decimalValue as Decimal,
         price: cdBill.price!.decimalValue as Decimal
     )
 }

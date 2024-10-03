@@ -22,5 +22,6 @@ struct Bill {
 
 struct BillRecord {
     let name: String
+    let amount: Decimal
     let price: Decimal
 }

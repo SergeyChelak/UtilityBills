@@ -14,6 +14,7 @@
         <relationship name="tariff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTariff" inverseName="mapping" inverseEntity="CDTariff"/>
     </entity>
     <entity name="CDBillRecord" representedClassName=".CDBillRecord" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDBill" inverseName="records" inverseEntity="CDBill"/>

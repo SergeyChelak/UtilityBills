@@ -15,11 +15,12 @@ class iOSAppFlow {
     
     init(
         router: Router,
-        storage: LocalStorage
+        storage: LocalStorage,
+        updatePublisher: UpdatePublisher
     ) {
         self.router = router
         self.storage = storage
-        self.updatePublisher = StorageWatcher(storage: storage)
+        self.updatePublisher = updatePublisher
     }
 }
 

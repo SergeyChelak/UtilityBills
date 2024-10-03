@@ -121,7 +121,8 @@ struct iOSAppViewFactory {
     }
     
     func composeGenerateBillView(_ propObjId: PropertyObjectId) -> some View {
-        GenerateBillView()
+//        GenerateBillView()
+        Text("Hi!")
     }
 }
 
