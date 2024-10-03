@@ -8,18 +8,13 @@
 import Combine
 import Foundation
 
-typealias BillingMapActionSave = (BillingMap) throws -> Void
-typealias BillingMapActionUpdate = (BillingMap) throws -> Void
-typealias BillingMapActionDelete = (BillingMapId) throws -> Void
-
 class BillingMapViewModel: ViewModel, ActionControllable {
     private var cancellables: Set<AnyCancellable> = []
     let billingMapId: BillingMapId
     let actions: [ControlAction]
-    private var actionSave: BillingMapActionSave = { _ in }
-    private var actionUpdate: BillingMapActionUpdate = { _ in }
-    private var actionDelete: BillingMapActionDelete = { _ in }
-        
+    private weak var delegate: ManageBillingMapFlow?
+    private let propertyObjectId: PropertyObjectId
+    
     @Published
     var name: String = ""
 
@@ -30,10 +25,11 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     
     init(
         billingMapData: BillingMapData,
-        actionSave: @escaping BillingMapActionSave
+        delegate: ManageBillingMapFlow?
     ) {
         self.actions = [.new]
-        self.actionSave = actionSave
+        self.delegate = delegate
+        self.propertyObjectId = billingMapData.propertyObjectId
         self.billingMapId = BillingMapId()
         self.tariffModel = SingleChoiceViewModel<Tariff>(items: billingMapData.tariffs) { _ in false }
         self.meterModel = MultiChoiceViewModel<Meter>(items: billingMapData.meters) { (_: Int) in false }
@@ -44,12 +40,11 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     init(
         billingMap: BillingMap,
         billingMapData: BillingMapData,
-        actionUpdate: @escaping BillingMapActionUpdate,
-        actionDelete: @escaping BillingMapActionDelete
+        delegate: ManageBillingMapFlow?
     ) {
         self.actions = [.update, .delete]
-        self.actionUpdate = actionUpdate
-        self.actionDelete = actionDelete
+        self.delegate = delegate
+        self.propertyObjectId = billingMapData.propertyObjectId
         self.billingMapId = billingMap.id
         self.name = billingMap.name
         self.tariffModel = SingleChoiceViewModel<Tariff>(items: billingMapData.tariffs) {
@@ -98,12 +93,12 @@ class BillingMapViewModel: ViewModel, ActionControllable {
             switch action {
             case .new:
                 let billingMap = try validatedBillingMap()
-                try actionSave(billingMap)
+                try delegate?.addNewBillingMap(propertyObjectId, billingMap: billingMap)
             case .update:
                 let billingMap = try validatedBillingMap()
-                try actionUpdate(billingMap)
+                try delegate?.updateBillingMap(billingMap)
             case .delete:
-                try actionDelete(billingMapId)
+                try delegate?.deleteBillingMap(billingMapId)
             }
         } catch {
             setError(error)

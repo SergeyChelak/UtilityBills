@@ -91,7 +91,7 @@ struct BillingMapView: View {
     }()
     let vm = BillingMapViewModel(
         billingMapData: data,
-        actionSave: { _ in }
+        delegate: nil
     )
     return BillingMapView(viewModel: vm)
 }

@@ -192,3 +192,21 @@ extension iOSAppFlow: PropertyObjectSettingFlow {
         router.popToRoot()
     }
 }
+
+// MARK: ManageBillingMapFlow
+extension iOSAppFlow: ManageBillingMapFlow {
+    func addNewBillingMap(_ propertyObjectId: PropertyObjectId, billingMap: BillingMap) throws {
+        try storage.newBillingMap(propertyObjectId, value: billingMap)
+        router.hideOverlay()
+    }
+    
+    func updateBillingMap(_ billingMap: BillingMap) throws {
+        try storage.updateBillingMap(billingMap)
+        router.hideOverlay()
+    }
+    
+    func deleteBillingMap(_ billingMapId: BillingMapId) throws {
+        try storage.deleteBillingMap(billingMapId)
+        router.hideOverlay()
+    }
+}

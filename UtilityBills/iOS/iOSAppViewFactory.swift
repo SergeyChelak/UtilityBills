@@ -119,10 +119,8 @@ struct iOSAppViewFactory {
     private func composeAddBillingMapView(_ billingMapData: BillingMapData) -> some View {
         let viewModel = BillingMapViewModel(
             billingMapData: billingMapData,
-            actionSave: {
-                try storage.newBillingMap(billingMapData.propertyObjectId, value: $0)
-                router.hideOverlay()
-            })
+            delegate: appFlow
+        )
         return BillingMapView(viewModel: viewModel)
     }
     
@@ -130,14 +128,7 @@ struct iOSAppViewFactory {
         let viewModel = BillingMapViewModel(
             billingMap: billingMap,
             billingMapData: billingMapData,
-            actionUpdate: {
-                try storage.updateBillingMap($0)
-                router.hideOverlay()
-            },
-            actionDelete: {
-                try storage.deleteBillingMap($0)
-                router.hideOverlay()
-            }
+            delegate: appFlow
         )
         return BillingMapView(viewModel: viewModel)
     }

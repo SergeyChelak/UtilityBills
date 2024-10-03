@@ -62,3 +62,9 @@ protocol PropertyObjectSettingFlow: AnyObject {
     func openEditBillingMap(_ billingMap: BillingMap, data: BillingMapData)
     func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws
 }
+
+protocol ManageBillingMapFlow: AnyObject {
+    func addNewBillingMap(_ propertyObjectId: PropertyObjectId, billingMap: BillingMap) throws
+    func updateBillingMap(_ billingMap: BillingMap) throws
+    func deleteBillingMap(_ billingMapId: BillingMapId) throws
+}
