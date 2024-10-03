@@ -16,12 +16,12 @@ struct UtilityBillsApp: App {
         let navigationController = iOSNavigationController(store: navigationStore)
         let storage = LocalStorage.instance()
         let updatePublisher = StorageWatcher(storage: storage)
-        let appFlow = iOSAppFlow(
+        let flowFactory = iOSAppFlowFactory(
             router: navigationController,
             storage: storage,
             updatePublisher: updatePublisher
         )
-        let factory = iOSAppViewFactory(appFlow: appFlow)
+        let factory = iOSAppViewFactory(flowFactory: flowFactory)
         let navigationView = iOSNavigationView(
             rootView: AnyView(factory.view(for: .properlyObjectList)),
             navigationStore: navigationStore,

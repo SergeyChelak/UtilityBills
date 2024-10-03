@@ -11,7 +11,7 @@ class AddMeterViewModel: ViewModel {
     private static let availableCapacities = [5, 6, 7, 8, 9, 10, 11, 12]
     
     let propertyObjectId: PropertyObjectId
-    private weak var delegate: ManageMeterFlow?
+    private var flow: ManageMeterFlow?
     
     @Published
     var name: String = "New Meter"
@@ -28,10 +28,10 @@ class AddMeterViewModel: ViewModel {
 
     init(
         propertyObjectId: PropertyObjectId,
-        delegate: ManageMeterFlow?
+        flow: ManageMeterFlow?
     ) {
         self.propertyObjectId = propertyObjectId
-        self.delegate = delegate
+        self.flow = flow
     }
     
     var capacities: [Int] {
@@ -55,7 +55,7 @@ class AddMeterViewModel: ViewModel {
         )
         // TODO: validate initial value
         do {
-            try delegate?.addNewMeter(
+            try flow?.addNewMeter(
                 meter,
                 propertyObjectId: propertyObjectId,
                 initialValue: initialValue)

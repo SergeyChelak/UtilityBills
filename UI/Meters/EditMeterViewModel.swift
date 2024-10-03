@@ -9,7 +9,7 @@ import Foundation
 
 class EditMeterViewModel: ViewModel {
     let meter: Meter
-    private weak var delegate: ManageMeterFlow?
+    private var flow: ManageMeterFlow?
     
     @Published
     var name: String
@@ -20,10 +20,10 @@ class EditMeterViewModel: ViewModel {
     
     init(
         meter: Meter,
-        delegate: ManageMeterFlow?
+        flow: ManageMeterFlow?
     ) {
         self.meter = meter
-        self.delegate = delegate
+        self.flow = flow
         self.name = meter.name
         self.isInspectionDateApplicable = meter.inspectionDate != nil
         self.inspectionDate = meter.inspectionDate ?? Date()
@@ -40,7 +40,7 @@ class EditMeterViewModel: ViewModel {
                 capacity: meter.capacity,
                 inspectionDate: isInspectionDateApplicable ? inspectionDate : nil
             )            
-            try delegate?.updateMeter(updatedMeter)
+            try flow?.updateMeter(updatedMeter)
         } catch {
             setError(error)
         }
@@ -48,7 +48,7 @@ class EditMeterViewModel: ViewModel {
     
     func delete() {
         do {
-            try delegate?.deleteMeter(meter.id)
+            try flow?.deleteMeter(meter.id)
         } catch {
             setError(error)
         }

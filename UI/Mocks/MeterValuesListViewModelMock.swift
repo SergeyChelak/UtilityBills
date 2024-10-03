@@ -17,11 +17,7 @@ private func meterValuesMock() -> [MeterValue] {
     return Array(values)
 }
 
-private class __MeterValuesListViewModelMock: MeterValuesListViewModel {
-    var retain: AnyObject?
-}
-
-private class __MeterValuesListFlowMock: MeterValuesListFlow {
+private class MeterValuesListFlowMock: MeterValuesListFlow {
     let updatePublisher: UpdatePublisher = UpdatePublisherMock()
     
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue] {
@@ -38,12 +34,11 @@ private class __MeterValuesListFlowMock: MeterValuesListFlow {
 }
 
 func meterValuesListViewModelMock(meterId: MeterId) -> MeterValuesListViewModel {
-    let delegate = __MeterValuesListFlowMock()
-    let vm = __MeterValuesListViewModelMock(
+    let flow = MeterValuesListFlowMock()
+    let vm = MeterValuesListViewModel(
         meterId: meterId,
-        delegate: delegate
+        flow: flow
     )
-    vm.retain = delegate
     return vm
 }
 #endif

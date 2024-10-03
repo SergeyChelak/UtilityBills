@@ -12,7 +12,7 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     private var cancellables: Set<AnyCancellable> = []
     let billingMapId: BillingMapId
     let actions: [ControlAction]
-    private weak var delegate: ManageBillingMapFlow?
+    private var flow: ManageBillingMapFlow?
     private let propertyObjectId: PropertyObjectId
     
     @Published
@@ -25,10 +25,10 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     
     init(
         billingMapData: BillingMapData,
-        delegate: ManageBillingMapFlow?
+        flow: ManageBillingMapFlow?
     ) {
         self.actions = [.new]
-        self.delegate = delegate
+        self.flow = flow
         self.propertyObjectId = billingMapData.propertyObjectId
         self.billingMapId = BillingMapId()
         self.tariffModel = SingleChoiceViewModel<Tariff>(items: billingMapData.tariffs) { _ in false }
@@ -40,10 +40,10 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     init(
         billingMap: BillingMap,
         billingMapData: BillingMapData,
-        delegate: ManageBillingMapFlow?
+        flow: ManageBillingMapFlow?
     ) {
         self.actions = [.update, .delete]
-        self.delegate = delegate
+        self.flow = flow
         self.propertyObjectId = billingMapData.propertyObjectId
         self.billingMapId = billingMap.id
         self.name = billingMap.name
@@ -93,12 +93,12 @@ class BillingMapViewModel: ViewModel, ActionControllable {
             switch action {
             case .new:
                 let billingMap = try validatedBillingMap()
-                try delegate?.addNewBillingMap(propertyObjectId, billingMap: billingMap)
+                try flow?.addNewBillingMap(propertyObjectId, billingMap: billingMap)
             case .update:
                 let billingMap = try validatedBillingMap()
-                try delegate?.updateBillingMap(billingMap)
+                try flow?.updateBillingMap(billingMap)
             case .delete:
-                try delegate?.deleteBillingMap(billingMapId)
+                try flow?.deleteBillingMap(billingMapId)
             }
         } catch {
             setError(error)

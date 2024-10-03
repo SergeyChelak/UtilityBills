@@ -10,21 +10,23 @@ import SwiftUI
 import Combine
 
 struct iOSAppViewFactory {
-    private let appFlow: iOSAppFlow
+    private let flowFactory: iOSAppFlowFactory
     
-    init(appFlow: iOSAppFlow) {
-        self.appFlow = appFlow
+    init(flowFactory: iOSAppFlowFactory) {
+        self.flowFactory = flowFactory
     }
     
     private func composePropertyObjectListView() -> some View {
-        let viewModel = PropertyListViewModel(delegate: appFlow)
+        let viewModel = PropertyListViewModel(
+            flow: flowFactory.getPropertyObjectListFlow()
+        )
         return PropertyListView(viewModel: viewModel)
     }
     
     private func composePropertyHomeView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = PropertyObjectViewModel(
             propObjId,
-            delegate: appFlow
+            flow: flowFactory.getPropertyObjectFlow()
         )
         return PropertyObjectView(viewModel: viewModel)
     }
@@ -32,7 +34,7 @@ struct iOSAppViewFactory {
     private func composeEditPropertyInfoView(_ obj: PropertyObject) -> some View {
         let viewModel = EditPropertyInfoViewModel(
             propertyObject: obj,
-            delegate: appFlow
+            flow: flowFactory.getEditPropertyInfoFlow()
         )
         return EditPropertyInfoView(viewModel: viewModel)
     }
@@ -40,7 +42,7 @@ struct iOSAppViewFactory {
     private func composeAddMeterView(_ propObjId: PropertyObjectId) -> some View {
         let vm = AddMeterViewModel(
             propertyObjectId: propObjId,
-            delegate: appFlow
+            flow: flowFactory.getManageMeterFlow()
         )
         return AddMeterView(viewModel: vm)
     }
@@ -48,7 +50,7 @@ struct iOSAppViewFactory {
     private func composeMeterValuesView(_ meterId: MeterId) -> some View {
         let viewModel = MeterValuesListViewModel(
             meterId: meterId,
-            delegate: appFlow
+            flow: flowFactory.getMeterValuesListFlow()
         )
         return MeterValuesListView(viewModel: viewModel)
     }
@@ -58,7 +60,7 @@ struct iOSAppViewFactory {
             meterId: meterId,
             date: Date(),
             value: 0,
-            delegate: appFlow
+            flow: flowFactory.getManageMeterValueFlow()
         )
         return MeterValueView(viewModel: viewModel)
     }
@@ -66,7 +68,7 @@ struct iOSAppViewFactory {
     private func composeEditMeterValueView(_ meterValue: MeterValue) -> some View {
         let viewModel = MeterValueViewModel(
             meterValue: meterValue,
-            delegate: appFlow
+            flow: flowFactory.getManageMeterValueFlow()
         )
         return MeterValueView(viewModel: viewModel)
     }
@@ -74,7 +76,7 @@ struct iOSAppViewFactory {
     private func composeAddTariffView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = ManageTariffViewModel(
             propertyObjectId: propObjId,
-            delegate: appFlow
+            flow: flowFactory.getManageTariffFlow()
         )
         return ManageTariffView(viewModel: viewModel)
     }
@@ -82,7 +84,7 @@ struct iOSAppViewFactory {
     private func composeEditTariffView(_ tariff: Tariff) -> some View {
         let viewModel = ManageTariffViewModel(
             tariff: tariff,
-            delegate: appFlow
+            flow: flowFactory.getManageTariffFlow()
         )
         return ManageTariffView(viewModel: viewModel)
     }
@@ -90,7 +92,7 @@ struct iOSAppViewFactory {
     private func composePropertyObjectSettingsView(_ propObjId: PropertyObjectId) -> some View {
         let viewModel = PropertySettingsViewModel(
             objectId: propObjId,
-            delegate: appFlow
+            flow: flowFactory.getPropertyObjectSettingFlow()
         )
         return PropertySettingsView(viewModel: viewModel)
     }
@@ -98,7 +100,7 @@ struct iOSAppViewFactory {
     private func composeEditMeterView(_ meter: Meter) -> some View {
         let viewModel = EditMeterViewModel(
             meter: meter,
-            delegate: appFlow
+            flow: flowFactory.getManageMeterFlow()
         )
         return EditMeterView(viewModel: viewModel)
     }
@@ -106,7 +108,7 @@ struct iOSAppViewFactory {
     private func composeAddBillingMapView(_ billingMapData: BillingMapData) -> some View {
         let viewModel = BillingMapViewModel(
             billingMapData: billingMapData,
-            delegate: appFlow
+            flow: flowFactory.getManageBillingMapFlow()
         )
         return BillingMapView(viewModel: viewModel)
     }
@@ -115,7 +117,7 @@ struct iOSAppViewFactory {
         let viewModel = BillingMapViewModel(
             billingMap: billingMap,
             billingMapData: billingMapData,
-            delegate: appFlow
+            flow: flowFactory.getManageBillingMapFlow()
         )
         return BillingMapView(viewModel: viewModel)
     }

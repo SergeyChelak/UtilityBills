@@ -10,30 +10,30 @@ import Combine
 class MeterValuesListViewModel: CommonListViewModel<MeterValue> {
     private var cancellables: Set<AnyCancellable> = []
     let meterId: MeterId
-    private weak var delegate: MeterValuesListFlow?
+    private var flow: MeterValuesListFlow?
     
     init(
         meterId: MeterId,
-        delegate: MeterValuesListFlow?
+        flow: MeterValuesListFlow?
     ) {
         self.meterId = meterId
-        self.delegate = delegate
+        self.flow = flow
         super.init(
             actionLoad: {
-                try delegate?.loadMeterValues(meterId) ?? []
+                try flow?.loadMeterValues(meterId) ?? []
             },
             actionSelect: {
-                delegate?.openMeterValue($0)
+                flow?.openMeterValue($0)
             }
         )
         
-        delegate?.updatePublisher
+        flow?.updatePublisher
             .publisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
     }
     
     func openNewMeterValue() {
-        delegate?.openNewMeterValue(meterId)
+        flow?.openNewMeterValue(meterId)
     }    
 }

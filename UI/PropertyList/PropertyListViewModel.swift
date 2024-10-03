@@ -8,25 +8,25 @@
 import Foundation
 
 class PropertyListViewModel: CommonListViewModel<PropertyObject> {
-    private weak var delegate: PropertyObjectListFlow?
+    private var flow: PropertyObjectListFlow?
     
     init(
-        delegate: PropertyObjectListFlow?
+        flow: PropertyObjectListFlow?
     ) {
-        self.delegate = delegate
+        self.flow = flow
         super.init(
             actionLoad: {
-                try delegate?.loadPropertyObjects() ?? []
+                try flow?.loadPropertyObjects() ?? []
             },
             actionSelect: {
-                delegate?.openPropertyObject($0.id)
+                flow?.openPropertyObject($0.id)
             }
         )
     }
         
     func onCreate() {
         do {
-            try delegate?.createPropertyObject()
+            try flow?.createPropertyObject()
             load()
         } catch {
             setError(error)

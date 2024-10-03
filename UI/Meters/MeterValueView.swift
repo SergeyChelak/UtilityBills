@@ -45,7 +45,7 @@ struct MeterValueView: View {
         meterId: MeterId(),
         date: Date(),
         value: 123,
-        delegate: nil
+        flow: nil
     )
     return MeterValueView(viewModel: vm)
 }
@@ -59,7 +59,7 @@ struct MeterValueView: View {
     )
     let vm = MeterValueViewModel(
         meterValue: value,
-        delegate: nil
+        flow: nil
     )
     return MeterValueView(viewModel: vm)
 }

@@ -42,17 +42,12 @@ private class PropertyObjectFlowMock: PropertyObjectFlow {
     }
 }
 
-private class PropertyObjectViewModelMock: PropertyObjectViewModel {
-    var retainer: AnyObject?
-}
-
 func _propertyObjectViewModelMock() -> PropertyObjectViewModel {
     let flow = PropertyObjectFlowMock()
-    let viewModel = PropertyObjectViewModelMock(
+    let viewModel = PropertyObjectViewModel(
         UUID(),
-        delegate: flow
+        flow: flow
     )
-    viewModel.retainer = flow
     return viewModel
 }
 #endif

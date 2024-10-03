@@ -91,7 +91,7 @@ struct BillingMapView: View {
     }()
     let vm = BillingMapViewModel(
         billingMapData: data,
-        delegate: nil
+        flow: nil
     )
     return BillingMapView(viewModel: vm)
 }

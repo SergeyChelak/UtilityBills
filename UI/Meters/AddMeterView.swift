@@ -60,7 +60,7 @@ struct AddMeterView: View {
 #Preview {
     let vm = AddMeterViewModel(
         propertyObjectId: PropertyObjectId(),
-        delegate: nil
+        flow: nil
     )
     return AddMeterView(viewModel: vm)
 }

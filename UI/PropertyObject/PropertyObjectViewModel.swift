@@ -12,7 +12,7 @@ class PropertyObjectViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
-    private weak var delegate: PropertyObjectFlow?
+    private var flow: PropertyObjectFlow?
 
     @Published 
     var data: PropertyObjectData?
@@ -31,12 +31,12 @@ class PropertyObjectViewModel: ViewModel {
     
     init(
         _ objectId: PropertyObjectId,
-        delegate: PropertyObjectFlow?
+        flow: PropertyObjectFlow?
     ) {
         self.objectId = objectId
-        self.delegate = delegate
+        self.flow = flow
         super.init()
-        delegate?.updatePublisher
+        flow?.updatePublisher
             .publisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
@@ -44,7 +44,7 @@ class PropertyObjectViewModel: ViewModel {
     
     func load() {
         do {
-            data = try delegate?.loadPropertyObjectData(objectId)
+            data = try flow?.loadPropertyObjectData(objectId)
         } catch {
             setError(error)
         }
@@ -55,19 +55,19 @@ class PropertyObjectViewModel: ViewModel {
             self.error = UtilityBillsError.loadingFailure
             return
         }
-        delegate?.openEditPropertyObject(propObj)
+        flow?.openEditPropertyObject(propObj)
     }
     
     func meterSelected(_ meter: Meter) {
-        delegate?.openMeterValues(meter.id)
+        flow?.openMeterValues(meter.id)
     }
         
     func openSettings() {
-        delegate?.openPropertyObjectSettings(objectId)
+        flow?.openPropertyObjectSettings(objectId)
     }
     
     func generateBill() {
-        delegate?.openGenerateBill(objectId)
+        flow?.openGenerateBill(objectId)
     }
     
     func billSelected(_ bill: Bill) {

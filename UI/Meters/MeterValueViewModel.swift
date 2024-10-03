@@ -10,7 +10,7 @@ import Foundation
 class MeterValueViewModel: ViewModel, ActionControllable {
     let meterId: MeterId?
     let meterValueId: MeterValueId
-    private weak var delegate: ManageMeterValueFlow?
+    private var flow: ManageMeterValueFlow?
     @Published
     var date: Date
     @Published
@@ -25,20 +25,20 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         meterId: MeterId,
         date: Date,
         value: Double,
-        delegate: ManageMeterValueFlow?
+        flow: ManageMeterValueFlow?
     ) {
         self.meterId = meterId
         self.meterValueId = MeterValueId()
         self.date = date
         self.value = value
-        self.delegate = delegate
+        self.flow = flow
         self.actions = [.new]
         self.screenTitle = "Add new meter value"
     }
     
     init(
         meterValue: MeterValue,
-        delegate: ManageMeterValueFlow?
+        flow: ManageMeterValueFlow?
     ) {
         // TODO: fix it!
         self.meterId = nil
@@ -46,7 +46,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         self.date = meterValue.date
         self.value = meterValue.value
         self.isPaid = meterValue.isPaid
-        self.delegate = delegate
+        self.flow = flow
         self.actions = [.update, .delete]
         self.screenTitle = "Edit meter value"
     }
@@ -79,7 +79,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         }
         do {
             let meterValue = try validatedMeterValue()
-            try delegate?.addNewMeterValue(meterId, value: meterValue)
+            try flow?.addNewMeterValue(meterId, value: meterValue)
         } catch {
             setError(error)
         }
@@ -88,7 +88,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     private func update() {
         do {
             let meterValue = try validatedMeterValue()
-            try delegate?.updateMeterValue(meterValue)
+            try flow?.updateMeterValue(meterValue)
         } catch {
             setError(error)
         }
@@ -96,7 +96,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     
     private func delete() {
         do {
-            try delegate?.deleteMeterValue(meterValueId)
+            try flow?.deleteMeterValue(meterValueId)
         } catch {
             setError(error)
         }

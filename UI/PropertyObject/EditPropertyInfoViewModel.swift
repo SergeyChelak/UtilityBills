@@ -9,7 +9,7 @@ import Foundation
 
 class EditPropertyInfoViewModel: ViewModel {
     private let propertyObject: PropertyObject
-    private weak var delegate: EditPropertyInfoFlow?
+    private var flow: EditPropertyInfoFlow?
     
     @Published
     var name: String
@@ -18,10 +18,10 @@ class EditPropertyInfoViewModel: ViewModel {
     
     init(
         propertyObject: PropertyObject,
-        delegate: EditPropertyInfoFlow?
+        flow: EditPropertyInfoFlow?
     ) {
         self.propertyObject = propertyObject
-        self.delegate = delegate
+        self.flow = flow
         self.name = propertyObject.name
         self.details = propertyObject.details
     }
@@ -35,7 +35,7 @@ class EditPropertyInfoViewModel: ViewModel {
         obj.name = name
         obj.details = details
         do {
-            try delegate?.updatePropertyObject(obj)
+            try flow?.updatePropertyObject(obj)
         } catch {
             setError(error)
         }

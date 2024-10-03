@@ -8,10 +8,6 @@
 #if DEBUG
 import Foundation
 
-private class PropertySettingsViewModelMock: PropertySettingsViewModel {
-    var retainer: AnyObject?
-}
-
 private func propertySettingsData() -> PropertySettingsData {
     let tariff = Tariff(
         id: TariffId(),
@@ -85,12 +81,10 @@ private class PropertyObjectSettingFlowMock: PropertyObjectSettingFlow {
 
 func __propertySettingsViewModel() -> PropertySettingsViewModel {
     let delegate = PropertyObjectSettingFlowMock()
-    let vm = PropertySettingsViewModelMock(
+    let vm = PropertySettingsViewModel(
         objectId: PropertyObjectId(),
-        delegate: delegate
+        flow: delegate
     )
-    vm.retainer = delegate
     return vm
 }
-
 #endif

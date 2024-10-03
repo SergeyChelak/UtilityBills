@@ -37,14 +37,14 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     let actions: [ControlAction]
     let choiceViewModel: MultiChoiceViewModel<String>
     let propertyObjectId: PropertyObjectId?
-    private weak var delegate: ManageTariffFlow?
+    private var flow: ManageTariffFlow?
     
     init(
         propertyObjectId: PropertyObjectId,
-        delegate: ManageTariffFlow?
+        flow: ManageTariffFlow?
     ) {
         self.propertyObjectId = propertyObjectId
-        self.delegate = delegate
+        self.flow = flow
         self.tariffId = TariffId()
         self.name = ""
         self.price = ""
@@ -54,15 +54,14 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
         )
         self.dialogTitle = "Add new tariff"
         self.actions = [.new]
-        self.delegate = delegate
     }
     
     init(
         tariff: Tariff,
-        delegate: ManageTariffFlow?
+        flow: ManageTariffFlow?
     ) {
         self.propertyObjectId = nil
-        self.delegate = delegate
+        self.flow = flow
         
         self.tariffId = tariff.id
         self.name = tariff.name
@@ -134,7 +133,7 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
         }
         do {
             let tariff = try validatedTariff()
-            try delegate?.addNewTariff(propertyObjectId, tariff: tariff)
+            try flow?.addNewTariff(propertyObjectId, tariff: tariff)
         } catch {
             setError(error)
         }
@@ -143,7 +142,7 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     private func update() {
         do {
             let tariff = try validatedTariff()
-            try delegate?.updateTariff(tariff)
+            try flow?.updateTariff(tariff)
         } catch {
             setError(error)
         }
@@ -151,7 +150,7 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     
     private func delete() {
         do {
-            try delegate?.deleteTariff(tariffId)
+            try flow?.deleteTariff(tariffId)
         } catch {
             setError(error)
         }

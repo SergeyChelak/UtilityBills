@@ -12,19 +12,19 @@ class PropertySettingsViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
-    private weak var delegate: PropertyObjectSettingFlow?
+    private var flow: PropertyObjectSettingFlow?
     
     @Published
     var data: PropertySettingsData = .default()
     
     init(
         objectId: PropertyObjectId,
-        delegate: PropertyObjectSettingFlow?
+        flow: PropertyObjectSettingFlow?
     ) {
         self.objectId = objectId
-        self.delegate = delegate
+        self.flow = flow
         super.init()
-        delegate?.updatePublisher
+        flow?.updatePublisher
             .publisher
             .sink(receiveValue: load)
             .store(in: &cancellables)
@@ -43,43 +43,43 @@ class PropertySettingsViewModel: ViewModel {
     }
     
     func load() {
-        guard let delegate else {
+        guard let flow else {
             return
         }
         do {
-            data = try delegate.loadPropertySettingsData(objectId)
+            data = try flow.loadPropertySettingsData(objectId)
         } catch {
             setError(error)
         }
     }
     
     func addMeter() {
-        delegate?.openAddMeter(objectId)
+        flow?.openAddMeter(objectId)
     }
     
     func meterSelected(_ meter: Meter) {
-        delegate?.openEditMeter(meter)
+        flow?.openEditMeter(meter)
     }
     
     func tariffSelected(_ tariff: Tariff) {
-        delegate?.openEditTariff(tariff)
+        flow?.openEditTariff(tariff)
     }
     
     func addTariff() {
-        delegate?.openAddTariff(objectId)
+        flow?.openAddTariff(objectId)
     }
     
     func addBillingMap() {
-        delegate?.openAddBillingMap(billingMapData)
+        flow?.openAddBillingMap(billingMapData)
     }
     
     func editBillingMap(_ billingMap: BillingMap) {
-        delegate?.openEditBillingMap(billingMap, data: billingMapData)
+        flow?.openEditBillingMap(billingMap, data: billingMapData)
     }
     
     func deleteObject() {
         do {
-            try delegate?.deletePropertyObject(objectId)
+            try flow?.deletePropertyObject(objectId)
         } catch {
             setError(error)
         }
