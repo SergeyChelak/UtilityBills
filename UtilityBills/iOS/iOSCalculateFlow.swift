@@ -83,6 +83,7 @@ extension iOSCalculateFlow: CalculateFlow {
 
 fileprivate extension Tariff {
     var isActive: Bool {
-        true
+        let month = Date().get(.month) - 1
+        return activeMonthMask & (1 << month) > 0
     }
 }

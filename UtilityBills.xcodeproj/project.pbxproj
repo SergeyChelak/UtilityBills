@@ -60,6 +60,8 @@
 		A51083282CAEB90D00103E76 /* iOSAppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */; };
 		A510832A2CAEC5DC00103E76 /* iOSCalculateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083292CAEC5DC00103E76 /* iOSCalculateFlow.swift */; };
 		A510832C2CAEFD5200103E76 /* MeterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832B2CAEFD5200103E76 /* MeterUtils.swift */; };
+		A510832E2CAF021C00103E76 /* MeterUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */; };
+		A51083302CAF088700103E76 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832F2CAF088700103E76 /* Date+Utils.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -163,6 +165,8 @@
 		A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppFlowFactory.swift; sourceTree = "<group>"; };
 		A51083292CAEC5DC00103E76 /* iOSCalculateFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCalculateFlow.swift; sourceTree = "<group>"; };
 		A510832B2CAEFD5200103E76 /* MeterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtils.swift; sourceTree = "<group>"; };
+		A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtilsTest.swift; sourceTree = "<group>"; };
+		A510832F2CAF088700103E76 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			children = (
 				A51082D92CA4864C00103E76 /* BitmaskUtils.swift */,
 				A510832B2CAEFD5200103E76 /* MeterUtils.swift */,
+				A510832F2CAF088700103E76 /* Date+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 			children = (
 				A55C635E2C838AD600F66741 /* LocalStorageTest.swift */,
 				A51082DB2CA4878C00103E76 /* BitMaskUtilsTest.swift */,
+				A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */,
 			);
 			path = UtilityBillsTests;
 			sourceTree = "<group>";
@@ -672,6 +678,7 @@
 				A51083192CAD928B00103E76 /* Flows.swift in Sources */,
 				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
+				A51083302CAF088700103E76 /* Date+Utils.swift in Sources */,
 				A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */,
 				A51082FE2CA870F700103E76 /* BillingMapViewModel.swift in Sources */,
 				A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */,
@@ -739,6 +746,7 @@
 			files = (
 				A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */,
 				A51082DC2CA4878C00103E76 /* BitMaskUtilsTest.swift in Sources */,
+				A510832E2CAF021C00103E76 /* MeterUtilsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ func diff(_ left: Decimal, _ right: Decimal, capacity: Int?) -> Decimal {
     }
     var left = left
     if left < right {
-        left += maxValue(for: capacity)
+        left += 1 + maxValue(for: capacity)
     }
     return left - right
 }
