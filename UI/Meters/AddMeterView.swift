@@ -44,7 +44,7 @@ struct AddMeterView: View {
                 }
             }
             
-            TextField("", value: $viewModel.initialValue, format: .number)
+            TextField("", text: $viewModel.initialValue)
                 .keyboardType(.decimalPad)
                 .inputStyle(caption: "Initial value")
             
@@ -65,10 +65,7 @@ struct AddMeterView: View {
     return AddMeterView(viewModel: vm)
 }
 
-func maxValue(for capacity: Int) -> Double {
-    (pow(10, capacity) as NSNumber).doubleValue - 1
-}
-
 func formatPicker(for capacity: Int) -> String {
-    String(format: "%d digits, max value: %.0f", capacity, maxValue(for: capacity) as CVarArg)
+    let val = maxValue(for: capacity).formatted()
+    return String(format: "%d digits, max value: %@", capacity, val)
 }

@@ -37,7 +37,12 @@ class iOSCalculateFlow {
     }
     
     func calculateMeterDelta(_ meter: Meter) throws -> Decimal {
-        1.0
+        guard let paidValue = try storage.fetchLatestValue(meter.id, isPaid: true),
+              let notPaidValue = try storage.fetchLatestValue(meter.id, isPaid: true),
+              notPaidValue.date > paidValue.date else {
+            return 0.0
+        }
+        return diff(notPaidValue.value, paidValue.value, capacity: meter.capacity)
     }
 }
 

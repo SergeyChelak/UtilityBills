@@ -78,4 +78,52 @@ final class LocalStorageTest: XCTestCase {
         let allMeters = try! storage.allMeters(obj.id)
         XCTAssertTrue(allMeters.count == 1)
     }
+    
+    func test_fetchLatestMeterValue() {
+        let storage: LocalStorage = .previewInstance()
+        let obj = try! storage.createProperty()
+        let meter = Meter(id: UUID(), name: "new meter", capacity: nil, inspectionDate: nil)
+        _ = try! storage.newMeter(propertyObjectId: obj.id, meter: meter, initialValue: 10)
+        let meterId = try! storage.allMeters(obj.id).first!.id
+    
+        var date = Date()
+        do {
+            date.addTimeInterval(10)
+            let val = MeterValue(
+                id: MeterValueId(),
+                date: date,
+                value: 20,
+                isPaid: true
+            )
+            try! storage.insertMeterValue(meterId, value: val)
+        }
+        
+        do {
+            date.addTimeInterval(10)
+            let val = MeterValue(
+                id: MeterValueId(),
+                date: date,
+                value: 30,
+                isPaid: false
+            )
+            try! storage.insertMeterValue(meterId, value: val)
+        }
+        
+        do {
+            date.addTimeInterval(10)
+            let val = MeterValue(
+                id: MeterValueId(),
+                date: date,
+                value: 50,
+                isPaid: false
+            )
+            try! storage.insertMeterValue(meterId, value: val)
+        }
+        
+        let latestPaid = try! storage.fetchLatestValue(meterId, isPaid: true)
+        XCTAssertEqual(latestPaid!.value, 20)
+        
+        let latestNotPaid = try! storage.fetchLatestValue(meterId, isPaid: false)
+        XCTAssertEqual(latestNotPaid!.value, 50)
+    }
 }

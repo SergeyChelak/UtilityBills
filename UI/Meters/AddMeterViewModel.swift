@@ -24,7 +24,7 @@ class AddMeterViewModel: ViewModel {
     @Published
     var isInspectionDateApplicable = true
     @Published
-    var initialValue: Double = 0.0
+    var initialValue: String = "0"
 
     init(
         propertyObjectId: PropertyObjectId,
@@ -55,10 +55,13 @@ class AddMeterViewModel: ViewModel {
         )
         // TODO: validate initial value
         do {
+            guard let value = Decimal(string: initialValue) else {
+                throw UtilityBillsError.invalidMeterValue
+            }
             try flow?.addNewMeter(
                 meter,
                 propertyObjectId: propertyObjectId,
-                initialValue: initialValue)
+                initialValue: value)
         } catch {
             setError(error)
         }

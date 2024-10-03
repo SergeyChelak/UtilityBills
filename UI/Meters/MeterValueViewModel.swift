@@ -14,7 +14,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     @Published
     var date: Date
     @Published
-    var value: Double
+    var value: String
     @Published
     var isPaid = false
     
@@ -30,7 +30,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         self.meterId = meterId
         self.meterValueId = MeterValueId()
         self.date = date
-        self.value = value
+        self.value = value.formatted()
         self.flow = flow
         self.actions = [.new]
         self.screenTitle = "Add new meter value"
@@ -44,7 +44,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         self.meterId = nil
         self.meterValueId = meterValue.id
         self.date = meterValue.date
-        self.value = meterValue.value
+        self.value = meterValue.value.formatted()
         self.isPaid = meterValue.isPaid
         self.flow = flow
         self.actions = [.update, .delete]
@@ -63,11 +63,14 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     }
     
     private func validatedMeterValue() throws -> MeterValue {
+        guard let price = Decimal(string: value) else {
+            throw UtilityBillsError.invalidPriceValue            
+        }
         // TODO: check if meter value is inside meter capacity
-        MeterValue(
+        return MeterValue(
             id: meterValueId,
             date: date,
-            value: value,
+            value: price,
             isPaid: isPaid
         )
     }

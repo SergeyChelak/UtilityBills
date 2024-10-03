@@ -28,7 +28,7 @@ func mapMeterValue(_ cdMeterValue: CDMeterValue) -> MeterValue {
     MeterValue(
         id: cdMeterValue.uuid!,
         date: cdMeterValue.date!,
-        value: cdMeterValue.value!.doubleValue,
+        value: cdMeterValue.value! as Decimal,
         isPaid: cdMeterValue.isPaid
     )
 }

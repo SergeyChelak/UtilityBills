@@ -21,7 +21,7 @@ struct MeterValuesListView: View {
                     let item = viewModel.items[i]
                     CaptionValueCell(
                         caption: item.date.formatted(),
-                        value: String(format: "%.0f", item.value)
+                        value: item.value.formatted()
                     )
                     .onTapGesture(perform: { viewModel.select(index: i) })
                 }

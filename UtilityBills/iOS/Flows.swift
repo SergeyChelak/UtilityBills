@@ -27,7 +27,7 @@ protocol EditPropertyInfoFlow {
 }
 
 protocol ManageMeterFlow {
-    func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Double) throws
+    func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Decimal) throws
     func updateMeter(_ meter: Meter) throws
     func deleteMeter(_ meterId: MeterId) throws
 }

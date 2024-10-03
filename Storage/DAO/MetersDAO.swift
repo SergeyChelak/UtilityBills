@@ -17,7 +17,7 @@ protocol MetersDAO {
     func newMeter(
         propertyObjectId: PropertyObjectId,
         meter: Meter,
-        initialValue: Double
+        initialValue: Decimal
     ) throws
  
     func updateMeter(_ meter: Meter) throws
@@ -27,4 +27,6 @@ protocol MetersDAO {
     func updateMeterValue(_ meterValue: MeterValue) throws
     
     func deleteMeterValue(_ meterValueId: MeterValueId) throws
+    
+    func fetchLatestValue(_ meterId: MeterId, isPaid: Bool) throws -> MeterValue?
 }

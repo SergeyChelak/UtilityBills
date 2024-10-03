@@ -34,7 +34,7 @@ extension LocalStorage: MetersDAO {
     func newMeter(
         propertyObjectId: PropertyObjectId,
         meter: Meter,
-        initialValue: Double
+        initialValue: Decimal
     ) throws {
         let context = viewContext
         guard let propertyObject = try fetchPropertyObject(propertyObjectId, into: context) else {
@@ -85,7 +85,7 @@ extension LocalStorage: MetersDAO {
             throw StorageError.meterValueNotFound
         }
         obj.date = meterValue.date
-        obj.value = meterValue.value as NSNumber
+        obj.value = meterValue.value as NSDecimalNumber
         obj.isPaid = meterValue.isPaid
         try context.save()
     }
@@ -97,5 +97,18 @@ extension LocalStorage: MetersDAO {
         }
         context.delete(obj)
         try context.save()
+    }
+    
+    func fetchLatestValue(_ meterId: MeterId, isPaid: Bool) throws -> MeterValue? {
+        let context = viewContext
+        let request = CDMeterValue.fetchRequest()
+        request.predicate = NSPredicate(format: "(SELF.meter.uuid == %@) AND (SELF.isPaid == %d)", meterId.uuidString, isPaid)
+        request.sortDescriptors = [
+            NSSortDescriptor(key: "date", ascending: false)
+        ]
+        guard let cdValue = try context.fetch(request).first else {
+            return nil
+        }
+        return mapMeterValue(cdValue)
     }
 }

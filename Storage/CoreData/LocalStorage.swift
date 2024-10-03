@@ -100,7 +100,7 @@ extension LocalStorage {
         cdValue.meter = meter
         cdValue.date = value.date
         cdValue.isPaid = value.isPaid
-        cdValue.value = value.value as NSNumber
+        cdValue.value = value.value as NSDecimalNumber
         return cdValue
     }
 }

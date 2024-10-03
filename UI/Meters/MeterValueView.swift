@@ -23,7 +23,7 @@ struct MeterValueView: View {
                 displayedComponents: [.date]
             )
             
-            TextField("", value: $viewModel.value, format: .number)
+            TextField("", text: $viewModel.value)
                 .keyboardType(.decimalPad)
                 .inputStyle(caption: "Value")
             

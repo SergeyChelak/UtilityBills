@@ -79,7 +79,7 @@ extension iOSAppFlow: EditPropertyInfoFlow {
 
 // MARK: AddMeterFlow
 extension iOSAppFlow: ManageMeterFlow {
-    func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Double) throws {
+    func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Decimal) throws {
         try storage.newMeter(
             propertyObjectId: propertyObjectId,
             meter: meter,
