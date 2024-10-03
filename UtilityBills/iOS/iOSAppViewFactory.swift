@@ -16,19 +16,6 @@ struct iOSAppViewFactory {
         self.appFlow = appFlow
     }
     
-    // Temporary variables for migration purposes
-    var storage: LocalStorage {
-        appFlow.storage
-    }
-    
-    var storageWatcher: UpdatePublisher {
-        appFlow.updatePublisher
-    }
-    
-    var router: Router {
-        appFlow.router
-    }
-    
     private func composePropertyObjectListView() -> some View {
         let viewModel = PropertyListViewModel(delegate: appFlow)
         return PropertyListView(viewModel: viewModel)
