@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="CDBill" representedClassName=".CDBill" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="propertyObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDPropertyObject" inverseName="bills" inverseEntity="CDPropertyObject"/>
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDBillRecord" inverseName="bill" inverseEntity="CDBillRecord"/>
     </entity>
@@ -17,6 +18,7 @@
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDBill" inverseName="records" inverseEntity="CDBill"/>
     </entity>
     <entity name="CDMeter" representedClassName=".CDMeter" syncable="YES" codeGenerationType="class">

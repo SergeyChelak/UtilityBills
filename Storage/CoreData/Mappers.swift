@@ -65,15 +65,17 @@ func mapBill(_ cdBill: CDBill) -> Bill {
             mapBillRecord($0 as! CDBillRecord)
         }
     return Bill(
+        id: cdBill.uuid!,
         date: cdBill.date!,
         records: records
     )
 }
 
-func mapBillRecord(_ cdBill: CDBillRecord) -> BillRecord {
+func mapBillRecord(_ cdBillRecord: CDBillRecord) -> BillRecord {
     BillRecord(
-        name: cdBill.name ?? "",
-        amount: cdBill.price!.decimalValue as Decimal,
-        price: cdBill.price!.decimalValue as Decimal
+        id: cdBillRecord.uuid!,
+        name: cdBillRecord.name ?? "",
+        amount: cdBillRecord.price!.decimalValue as Decimal,
+        price: cdBillRecord.price!.decimalValue as Decimal
     )
 }

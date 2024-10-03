@@ -41,6 +41,9 @@ struct GenerateBillView: View {
 }
 
 #Preview {
-    let vm = GenerateBillViewModel()
+    let vm = GenerateBillViewModel(
+        propertyObjectId: PropertyObjectId(),
+        flow: nil
+    )
     return GenerateBillView(viewModel: vm)
 }

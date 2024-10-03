@@ -65,4 +65,13 @@ final class iOSAppFlowFactory {
     func getManageBillingMapFlow() -> ManageBillingMapFlow {
         appFlow
     }
+    
+    func getCalculateFlow(_ propertyObjectId: PropertyObjectId) -> CalculateFlow {
+        iOSCalculateFlow(
+            router: router,
+            storage: storage,
+            updatePublisher: updatePublisher,
+            propertyObjectId: propertyObjectId
+        )
+    }
 }

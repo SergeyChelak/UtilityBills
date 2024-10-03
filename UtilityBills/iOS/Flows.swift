@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol PropertyObjectListFlow: AnyObject {
+protocol PropertyObjectListFlow {
     func loadPropertyObjects() throws -> [PropertyObject]
     func openPropertyObject(_ propertyObjectId: PropertyObjectId)
     func createPropertyObject() throws
 }
 
-protocol PropertyObjectFlow: AnyObject {
+protocol PropertyObjectFlow {
     var updatePublisher: UpdatePublisher { get }
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData
     func openEditPropertyObject(_ propertyObject: PropertyObject)
@@ -22,36 +22,36 @@ protocol PropertyObjectFlow: AnyObject {
     func openGenerateBill(_ propertyObjectId: PropertyObjectId)
 }
 
-protocol EditPropertyInfoFlow: AnyObject {
+protocol EditPropertyInfoFlow {
     func updatePropertyObject(_ propertyObject: PropertyObject) throws
 }
 
-protocol ManageMeterFlow: AnyObject {
+protocol ManageMeterFlow {
     func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Double) throws
     func updateMeter(_ meter: Meter) throws
     func deleteMeter(_ meterId: MeterId) throws
 }
 
-protocol MeterValuesListFlow: AnyObject {
+protocol MeterValuesListFlow {
     var updatePublisher: UpdatePublisher { get }
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue]
     func openNewMeterValue(_ meterId: MeterId)
     func openMeterValue(_ meterValue: MeterValue)
 }
 
-protocol ManageMeterValueFlow: AnyObject {
+protocol ManageMeterValueFlow {
     func addNewMeterValue(_ meterId: MeterId, value: MeterValue) throws
     func updateMeterValue(_ value: MeterValue) throws
     func deleteMeterValue(_ meterValueId: MeterValueId) throws
 }
 
-protocol ManageTariffFlow: AnyObject {
+protocol ManageTariffFlow {
     func addNewTariff(_ propertyObjectId: PropertyObjectId, tariff: Tariff) throws
     func updateTariff(_ tariff: Tariff) throws
     func deleteTariff(_ tariffId: TariffId) throws
 }
 
-protocol PropertyObjectSettingFlow: AnyObject {
+protocol PropertyObjectSettingFlow {
     var updatePublisher: UpdatePublisher { get }
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData
     func openAddMeter(_ propertyObjectId: PropertyObjectId)
@@ -63,8 +63,15 @@ protocol PropertyObjectSettingFlow: AnyObject {
     func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws
 }
 
-protocol ManageBillingMapFlow: AnyObject {
+protocol ManageBillingMapFlow {
     func addNewBillingMap(_ propertyObjectId: PropertyObjectId, billingMap: BillingMap) throws
     func updateBillingMap(_ billingMap: BillingMap) throws
     func deleteBillingMap(_ billingMapId: BillingMapId) throws
+}
+
+protocol CalculateFlow {
+    func calculate() throws -> [BillRecord]
+    func openBillRecord(_ billRecord: BillRecord)
+    func updateBillRecord(_ billRecord: BillRecord)
+    func deleteBillRecord(_ billRecordId: BillRecordId)
 }

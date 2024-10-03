@@ -9,8 +9,8 @@ import Combine
 import Foundation
 
 class iOSAppFlow {
-    let storage: LocalStorage
-    let router: Router
+    private let storage: LocalStorage
+    private let router: Router
     let updatePublisher: UpdatePublisher
     
     init(

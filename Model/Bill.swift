@@ -7,7 +7,10 @@
 
 import Foundation
 
+typealias BillId = UUID
+
 struct Bill {
+    let id: BillId
     let date: Date
     let records: [BillRecord]
     
@@ -20,8 +23,11 @@ struct Bill {
     }
 }
 
+typealias BillRecordId = UUID
+
 struct BillRecord {
+    let id: BillRecordId
     let name: String
-    let amount: Decimal
+    let amount: Decimal?
     let price: Decimal
 }

@@ -123,8 +123,11 @@ struct iOSAppViewFactory {
     }
     
     func composeGenerateBillView(_ propObjId: PropertyObjectId) -> some View {
-//        GenerateBillView()
-        Text("Hi!")
+        let viewModel = GenerateBillViewModel(
+            propertyObjectId: propObjId,
+            flow: flowFactory.getCalculateFlow(propObjId)
+        )
+        return GenerateBillView(viewModel: viewModel)
     }
 }
 
