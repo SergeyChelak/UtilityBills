@@ -29,5 +29,5 @@ struct BillRecord {
     let id: BillRecordId
     let name: String
     let amount: Decimal?
-    let price: Decimal
+    var price: Decimal
 }

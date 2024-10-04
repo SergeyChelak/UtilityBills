@@ -23,6 +23,9 @@ struct GenerateBillView: View {
                         caption: item.name,
                         value: item.price.formatted()
                     )
+                    .onTapGesture {
+                        viewModel.onSelected(i)
+                    }
                 }
             }
             Spacer()

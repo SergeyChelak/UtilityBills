@@ -72,6 +72,9 @@ protocol ManageBillingMapFlow {
 protocol CalculateFlow {
     func calculate() throws -> [BillRecord]
     func openBillRecord(_ billRecord: BillRecord)
+}
+
+protocol ManageBillRecordFlow {
     func updateBillRecord(_ billRecord: BillRecord)
     func deleteBillRecord(_ billRecordId: BillRecordId)
 }

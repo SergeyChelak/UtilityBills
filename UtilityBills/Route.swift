@@ -22,6 +22,7 @@ enum Route: Hashable {
     case addBillingMap(BillingMapData)
     case editBillingMap(BillingMap, BillingMapData)
     case generateBill(PropertyObjectId)
+//    case manageBillRecord(BillRecord)
 }
 
 protocol Router {

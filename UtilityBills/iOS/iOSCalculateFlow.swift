@@ -71,13 +71,17 @@ extension iOSCalculateFlow: CalculateFlow {
     func openBillRecord(_ billRecord: BillRecord) {
         fatalError()
     }
-    
+}
+
+extension iOSCalculateFlow: ManageBillRecordFlow {
     func updateBillRecord(_ billRecord: BillRecord) {
-        fatalError()
+//        fatalError()
+        router.hideOverlay()
     }
     
     func deleteBillRecord(_ billRecordId: BillRecordId) {
-        fatalError()
+//        fatalError()
+        router.hideOverlay()
     }
 }
 

@@ -62,6 +62,8 @@
 		A510832C2CAEFD5200103E76 /* MeterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832B2CAEFD5200103E76 /* MeterUtils.swift */; };
 		A510832E2CAF021C00103E76 /* MeterUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */; };
 		A51083302CAF088700103E76 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832F2CAF088700103E76 /* Date+Utils.swift */; };
+		A51083322CB043F800103E76 /* ModifyBillRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083312CB043F800103E76 /* ModifyBillRecordView.swift */; };
+		A51083342CB0440400103E76 /* ModifyBillRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -167,6 +169,8 @@
 		A510832B2CAEFD5200103E76 /* MeterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtils.swift; sourceTree = "<group>"; };
 		A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtilsTest.swift; sourceTree = "<group>"; };
 		A510832F2CAF088700103E76 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		A51083312CB043F800103E76 /* ModifyBillRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBillRecordView.swift; sourceTree = "<group>"; };
+		A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBillRecordViewModel.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 			children = (
 				A51083132CAD8A7500103E76 /* GenerateBillView.swift */,
 				A51083252CAEAE3600103E76 /* GenerateBillViewModel.swift */,
+				A51083312CB043F800103E76 /* ModifyBillRecordView.swift */,
+				A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -680,6 +686,7 @@
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
 				A51083302CAF088700103E76 /* Date+Utils.swift in Sources */,
 				A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */,
+				A51083322CB043F800103E76 /* ModifyBillRecordView.swift in Sources */,
 				A51082FE2CA870F700103E76 /* BillingMapViewModel.swift in Sources */,
 				A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
@@ -722,6 +729,7 @@
 				A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
 				A51082CF2CA3277000103E76 /* MeterValueViewModel.swift in Sources */,
+				A51083342CB0440400103E76 /* ModifyBillRecordViewModel.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertyListViewModel.swift in Sources */,
 				A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */,
 				A51082C72CA2E7C200103E76 /* AddMeterViewModel.swift in Sources */,
