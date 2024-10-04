@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-class iOSNavigationStore: ObservableObject {
+class iOSRouterData: ObservableObject {
     @Published var navigationPath = NavigationPath()
     @Published var popover: Route?
 }
 
-class iOSNavigationController: Router {
-    private let store: iOSNavigationStore
+class iOSRouter: Router {
+    private let store: iOSRouterData
     
-    init(store: iOSNavigationStore) {
+    init(store: iOSRouterData) {
         self.store = store
     }
     
@@ -47,18 +47,18 @@ class iOSNavigationController: Router {
 struct iOSNavigationView: View {
     let rootView: AnyView
     @StateObject
-    var navigationStore: iOSNavigationStore
+    var routerData: iOSRouterData
     var createViewCallback: (Route) -> AnyView
     
     private var isPopoverVisible: Binding<Bool> {
         Binding(
-            get: { navigationStore.popover != nil },
-            set: { if !$0 { navigationStore.popover = nil } }
+            get: { routerData.popover != nil },
+            set: { if !$0 { routerData.popover = nil } }
         )
     }
     
     var body: some View {
-        NavigationStack(path: $navigationStore.navigationPath) {
+        NavigationStack(path: $routerData.navigationPath) {
             rootView
                 .navigationDestination(
                     for: Route.self,
@@ -66,7 +66,7 @@ struct iOSNavigationView: View {
                 )
         }
         .sheet(isPresented: isPopoverVisible) {
-            if let overlay = navigationStore.popover {
+            if let overlay = routerData.popover {
                 createViewCallback(overlay)
             }
         }

@@ -12,19 +12,19 @@ struct UtilityBillsApp: App {
     private var contentView: AnyView
     
     init() {
-        let navigationStore = iOSNavigationStore()
-        let navigationController = iOSNavigationController(store: navigationStore)
+        let routerData = iOSRouterData()
+        let router = iOSRouter(store: routerData)
         let storage = LocalStorage.instance()
         let updatePublisher = StorageWatcher(storage: storage)
         let flowFactory = iOSAppFlowFactory(
-            router: navigationController,
+            router: router,
             storage: storage,
             updatePublisher: updatePublisher
         )
         let factory = iOSAppViewFactory(flowFactory: flowFactory)
         let navigationView = iOSNavigationView(
             rootView: AnyView(factory.view(for: .properlyObjectList)),
-            navigationStore: navigationStore,
+            routerData: routerData,
             createViewCallback: {
                 AnyView(factory.view(for: $0))
             }
