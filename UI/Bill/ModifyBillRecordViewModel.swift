@@ -10,13 +10,13 @@ import Foundation
 class ModifyBillRecordViewModel: ViewModel, ActionControllable {
     let actions: [ControlAction] = [.update, .delete]
     let billRecord: BillRecord
-    let flow: ManageBillRecordFlow?
+    let flow: ManageBillRecordFlowDelegate?
     @Published
     var price: String
     
     init(
         billRecord: BillRecord,
-        flow: ManageBillRecordFlow?
+        flow: ManageBillRecordFlowDelegate?
     ) {
         self.billRecord = billRecord
         self.flow = flow

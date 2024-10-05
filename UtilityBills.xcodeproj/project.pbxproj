@@ -51,14 +51,14 @@
 		A51083112CAC695900103E76 /* LocalStorage+BillDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083102CAC695900103E76 /* LocalStorage+BillDAO.swift */; };
 		A51083142CAD8A7500103E76 /* GenerateBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083132CAD8A7500103E76 /* GenerateBillView.swift */; };
 		A51083162CAD8E5900103E76 /* iOSAppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083152CAD8E5900103E76 /* iOSAppFlow.swift */; };
-		A51083192CAD928B00103E76 /* Flows.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083182CAD928B00103E76 /* Flows.swift */; };
+		A51083192CAD928B00103E76 /* FlowDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083182CAD928B00103E76 /* FlowDelegates.swift */; };
 		A510831C2CAD9D1200103E76 /* UpdatePublisherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */; };
 		A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */; };
 		A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */; };
 		A51083242CADCAE100103E76 /* PropertySettingsViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083232CADCAE100103E76 /* PropertySettingsViewModelMock.swift */; };
 		A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083252CAEAE3600103E76 /* GenerateBillViewModel.swift */; };
 		A51083282CAEB90D00103E76 /* iOSAppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */; };
-		A510832A2CAEC5DC00103E76 /* iOSCalculateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083292CAEC5DC00103E76 /* iOSCalculateFlow.swift */; };
+		A510832A2CAEC5DC00103E76 /* CalculateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083292CAEC5DC00103E76 /* CalculateFlow.swift */; };
 		A510832C2CAEFD5200103E76 /* MeterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832B2CAEFD5200103E76 /* MeterUtils.swift */; };
 		A510832E2CAF021C00103E76 /* MeterUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */; };
 		A51083302CAF088700103E76 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832F2CAF088700103E76 /* Date+Utils.swift */; };
@@ -72,6 +72,7 @@
 		A51083492CB14FBA00103E76 /* AppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083482CB14FBA00103E76 /* AppViewFactory.swift */; };
 		A510834D2CB178C000103E76 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834C2CB178C000103E76 /* MainFlow.swift */; };
 		A510834F2CB1792300103E76 /* PropertyObjectFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */; };
+		A51083522CB18B5500103E76 /* iOSViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083512CB18B5500103E76 /* iOSViewFactory.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -166,14 +167,14 @@
 		A51083102CAC695900103E76 /* LocalStorage+BillDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+BillDAO.swift"; sourceTree = "<group>"; };
 		A51083132CAD8A7500103E76 /* GenerateBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBillView.swift; sourceTree = "<group>"; };
 		A51083152CAD8E5900103E76 /* iOSAppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppFlow.swift; sourceTree = "<group>"; };
-		A51083182CAD928B00103E76 /* Flows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flows.swift; sourceTree = "<group>"; };
+		A51083182CAD928B00103E76 /* FlowDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDelegates.swift; sourceTree = "<group>"; };
 		A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePublisherMock.swift; sourceTree = "<group>"; };
 		A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectViewModelMock.swift; sourceTree = "<group>"; };
 		A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValuesListViewModelMock.swift; sourceTree = "<group>"; };
 		A51083232CADCAE100103E76 /* PropertySettingsViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingsViewModelMock.swift; sourceTree = "<group>"; };
 		A51083252CAEAE3600103E76 /* GenerateBillViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBillViewModel.swift; sourceTree = "<group>"; };
 		A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppFlowFactory.swift; sourceTree = "<group>"; };
-		A51083292CAEC5DC00103E76 /* iOSCalculateFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCalculateFlow.swift; sourceTree = "<group>"; };
+		A51083292CAEC5DC00103E76 /* CalculateFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateFlow.swift; sourceTree = "<group>"; };
 		A510832B2CAEFD5200103E76 /* MeterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtils.swift; sourceTree = "<group>"; };
 		A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtilsTest.swift; sourceTree = "<group>"; };
 		A510832F2CAF088700103E76 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 		A51083482CB14FBA00103E76 /* AppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewFactory.swift; sourceTree = "<group>"; };
 		A510834C2CB178C000103E76 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectFlow.swift; sourceTree = "<group>"; };
+		A51083512CB18B5500103E76 /* iOSViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSViewFactory.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -380,9 +382,7 @@
 				A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */,
 				A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */,
 				A51083152CAD8E5900103E76 /* iOSAppFlow.swift */,
-				A51083292CAEC5DC00103E76 /* iOSCalculateFlow.swift */,
 				A55C63552C83358900F66741 /* iOSAppRouter.swift */,
-				A51083182CAD928B00103E76 /* Flows.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -413,11 +413,21 @@
 			isa = PBXGroup;
 			children = (
 				A51083462CB14E0400103E76 /* Flow.swift */,
-				A51083482CB14FBA00103E76 /* AppViewFactory.swift */,
 				A510834C2CB178C000103E76 /* MainFlow.swift */,
 				A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */,
+				A51083292CAEC5DC00103E76 /* CalculateFlow.swift */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		A51083502CB18B2800103E76 /* ViewFactory */ = {
+			isa = PBXGroup;
+			children = (
+				A51083182CAD928B00103E76 /* FlowDelegates.swift */,
+				A51083482CB14FBA00103E76 /* AppViewFactory.swift */,
+				A51083512CB18B5500103E76 /* iOSViewFactory.swift */,
+			);
+			path = ViewFactory;
 			sourceTree = "<group>";
 		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
@@ -536,6 +546,7 @@
 		A5D8092B2C7156A300F2E6AF /* UtilityBills */ = {
 			isa = PBXGroup;
 			children = (
+				A51083502CB18B2800103E76 /* ViewFactory */,
 				A51083452CB14DFC00103E76 /* Flow */,
 				A510833E2CB14D3700103E76 /* Navigation */,
 				A51083172CAD920F00103E76 /* iOS */,
@@ -725,7 +736,7 @@
 				A510834F2CB1792300103E76 /* PropertyObjectFlow.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */,
 				A51082D72CA4699800103E76 /* ManageTariffViewModel.swift in Sources */,
-				A51083192CAD928B00103E76 /* Flows.swift in Sources */,
+				A51083192CAD928B00103E76 /* FlowDelegates.swift in Sources */,
 				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
 				A51083422CB14D6800103E76 /* NavigationViewModel.swift in Sources */,
@@ -746,6 +757,7 @@
 				A51083042CAB1D5800103E76 /* ViewModel.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
+				A51083522CB18B5500103E76 /* iOSViewFactory.swift in Sources */,
 				A51083002CA8715A00103E76 /* PopoverTitleViewModifier.swift in Sources */,
 				A51082E72CA7172F00103E76 /* BillMapDAO.swift in Sources */,
 				A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */,
@@ -765,7 +777,7 @@
 				A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */,
 				A51083162CAD8E5900103E76 /* iOSAppFlow.swift in Sources */,
 				A510830D2CAC65FD00103E76 /* Bill.swift in Sources */,
-				A510832A2CAEC5DC00103E76 /* iOSCalculateFlow.swift in Sources */,
+				A510832A2CAEC5DC00103E76 /* CalculateFlow.swift in Sources */,
 				A51082E52CA7170A00103E76 /* LocalStorage+BillMapDAO.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
 				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,

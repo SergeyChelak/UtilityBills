@@ -9,11 +9,11 @@ import Foundation
 
 class GenerateBillViewModel: ViewModel {
     private let propertyObjectId: PropertyObjectId
-    private let flow: CalculateFlow?
+    private let flow: CalculateFlowDelegate?
     
     init(
         propertyObjectId: PropertyObjectId,
-        flow: CalculateFlow?
+        flow: CalculateFlowDelegate?
     ) {
         self.propertyObjectId = propertyObjectId
         self.flow = flow

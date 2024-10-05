@@ -7,23 +7,27 @@
 
 import Foundation
 
-class iOSCalculateFlow {
+class CalculateFlow {
+    private let viewFactory: AppViewFactory
     private let storage: LocalStorage
-    private let router: Router
-    private let updatePublisher: UpdatePublisher
+    private let navigation: StackNavigation
     private let propertyObjectId: PropertyObjectId
+    let updatePublisher: UpdatePublisher
     
     init(
-        router: Router,
+        viewFactory: AppViewFactory,
         storage: LocalStorage,
         updatePublisher: UpdatePublisher,
+        navigation: StackNavigation,
         propertyObjectId: PropertyObjectId
     ) {
-        self.router = router
+        self.viewFactory = viewFactory
         self.storage = storage
         self.updatePublisher = updatePublisher
+        self.navigation = navigation
         self.propertyObjectId = propertyObjectId
     }
+
     
     func calculateMetersDelta(_ meters: [Meter]) throws -> Decimal {
         guard !meters.isEmpty else {
@@ -46,7 +50,16 @@ class iOSCalculateFlow {
     }
 }
 
-extension iOSCalculateFlow: CalculateFlow {
+// MARK: Flow
+extension CalculateFlow: Flow {
+    func start() {
+        let view = viewFactory.generateBillView(propertyObjectId, flowDelegate: self)
+        navigation.push(view)
+    }
+}
+
+// MARK: CalculateFlowDelegate
+extension CalculateFlow: CalculateFlowDelegate {
     func calculate() throws -> [BillRecord] {
         let billingMaps = try storage
             .allBillingMaps(propertyObjectId)
@@ -73,15 +86,16 @@ extension iOSCalculateFlow: CalculateFlow {
     }
 }
 
-extension iOSCalculateFlow: ManageBillRecordFlow {
+// MARK: ManageBillRecordFlow
+extension CalculateFlow: ManageBillRecordFlowDelegate {
     func updateBillRecord(_ billRecord: BillRecord) {
 //        fatalError()
-        router.hideOverlay()
+        navigation.hideSheet()
     }
     
     func deleteBillRecord(_ billRecordId: BillRecordId) {
 //        fatalError()
-        router.hideOverlay()
+        navigation.hideSheet()
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  Flows.swift
+//  FlowDelegates.swift
 //  UtilityBills
 //
 //  Created by Sergey on 02.10.2024.
@@ -69,12 +69,12 @@ protocol ManageBillingMapFlowDelegate {
     func deleteBillingMap(_ billingMapId: BillingMapId) throws
 }
 
-protocol CalculateFlow {
+protocol CalculateFlowDelegate {
     func calculate() throws -> [BillRecord]
     func openBillRecord(_ billRecord: BillRecord)
 }
 
-protocol ManageBillRecordFlow {
+protocol ManageBillRecordFlowDelegate {
     func updateBillRecord(_ billRecord: BillRecord)
     func deleteBillRecord(_ billRecordId: BillRecordId)
 }

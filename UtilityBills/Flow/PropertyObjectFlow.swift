@@ -14,6 +14,8 @@ class PropertyObjectFlow {
     private let propertyObjectId: PropertyObjectId
     let updatePublisher: UpdatePublisher
     
+    private var calculateFlow: CalculateFlow?
+    
     init(
         viewFactory: AppViewFactory,
         storage: LocalStorage,
@@ -62,8 +64,14 @@ extension PropertyObjectFlow: PropertyObjectFlowDelegate {
     }
     
     func openGenerateBill(_ propertyObjectId: PropertyObjectId) {
-        fatalError()
-//        router.push(.generateBill(propertyObjectId))
+        let flow = CalculateFlow(
+            viewFactory: viewFactory,
+            storage: storage,
+            updatePublisher: updatePublisher,
+            navigation: navigation,
+            propertyObjectId: propertyObjectId)
+        self.calculateFlow = flow
+        flow.start()
     }
 }
 

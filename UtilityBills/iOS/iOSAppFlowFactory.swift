@@ -66,12 +66,7 @@ final class iOSAppFlowFactory {
         appFlow
     }
     
-    func getCalculateFlow(_ propertyObjectId: PropertyObjectId) -> CalculateFlow {
-        iOSCalculateFlow(
-            router: router,
-            storage: storage,
-            updatePublisher: updatePublisher,
-            propertyObjectId: propertyObjectId
-        )
+    func getCalculateFlow(_ propertyObjectId: PropertyObjectId) -> CalculateFlowDelegate {
+        fatalError()
     }
 }
