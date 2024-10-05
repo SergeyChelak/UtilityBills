@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@main
+//@main
 struct UtilityBillsApp: App {
     private var contentView: AnyView
     
@@ -39,6 +39,31 @@ struct UtilityBillsApp: App {
     }
 }
 
-protocol ViewFactory {
-    func view(for route: Route) -> any View
+@main
+struct _UtilityBillsApp: App {
+    let mainFlow: MainFlow
+    let contentView: NavigationView
+    
+    init() {
+        let viewFactory = iOSViewFactory()
+        let storage = LocalStorage.instance()
+        
+        let updatePublisher = StorageWatcher(storage: storage)
+        
+        let navigationViewModel = NavigationViewModel()
+        self.contentView = NavigationView(viewModel: navigationViewModel)
+        
+        self.mainFlow = MainFlow(
+            viewFactory: viewFactory,
+            storage: storage,
+            updatePublisher: updatePublisher,
+            navigation: navigationViewModel)
+        self.mainFlow.start()
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            contentView
+        }
+    }
 }

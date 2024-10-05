@@ -10,11 +10,11 @@ import Combine
 class MeterValuesListViewModel: CommonListViewModel<MeterValue> {
     private var cancellables: Set<AnyCancellable> = []
     let meterId: MeterId
-    private var flow: MeterValuesListFlow?
+    private var flow: MeterValuesListFlowDelegate?
     
     init(
         meterId: MeterId,
-        flow: MeterValuesListFlow?
+        flow: MeterValuesListFlowDelegate?
     ) {
         self.meterId = meterId
         self.flow = flow

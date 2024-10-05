@@ -8,10 +8,10 @@
 import Foundation
 
 class PropertyListViewModel: CommonListViewModel<PropertyObject> {
-    private var flow: PropertyObjectListFlow?
+    private var flow: PropertyObjectListFlowDelegate?
     
     init(
-        flow: PropertyObjectListFlow?
+        flow: PropertyObjectListFlowDelegate?
     ) {
         self.flow = flow
         super.init(

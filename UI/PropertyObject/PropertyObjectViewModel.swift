@@ -12,7 +12,7 @@ class PropertyObjectViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
-    private var flow: PropertyObjectFlow?
+    private var flow: PropertyObjectFlowDelegate?
 
     @Published 
     var data: PropertyObjectData?
@@ -31,7 +31,7 @@ class PropertyObjectViewModel: ViewModel {
     
     init(
         _ objectId: PropertyObjectId,
-        flow: PropertyObjectFlow?
+        flow: PropertyObjectFlowDelegate?
     ) {
         self.objectId = objectId
         self.flow = flow

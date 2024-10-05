@@ -7,7 +7,7 @@
 
 #if DEBUG
 import Foundation
-private class PropertyObjectFlowMock: PropertyObjectFlow {
+private class PropertyObjectFlowMock: PropertyObjectFlowDelegate {
     let updatePublisher: UpdatePublisher = UpdatePublisherMock()
     let objId = PropertyObjectId()
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData {

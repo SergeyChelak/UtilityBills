@@ -30,15 +30,15 @@ final class iOSAppFlowFactory {
         )
     }()
     
-    func getPropertyObjectListFlow() -> PropertyObjectListFlow {
+    func getPropertyObjectListFlow() -> PropertyObjectListFlowDelegate {
         appFlow
     }
     
-    func getPropertyObjectFlow() -> PropertyObjectFlow {
+    func getPropertyObjectFlow() -> PropertyObjectFlowDelegate {
         appFlow
     }
     
-    func getEditPropertyInfoFlow() -> EditPropertyInfoFlow {
+    func getEditPropertyInfoFlow() -> EditPropertyInfoFlowDelegate {
         appFlow
     }
     
@@ -46,7 +46,7 @@ final class iOSAppFlowFactory {
         appFlow
     }
     
-    func getMeterValuesListFlow() -> MeterValuesListFlow {
+    func getMeterValuesListFlow() -> MeterValuesListFlowDelegate {
         appFlow
     }
     

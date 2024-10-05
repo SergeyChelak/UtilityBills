@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol PropertyObjectListFlow {
+protocol PropertyObjectListFlowDelegate {
     func loadPropertyObjects() throws -> [PropertyObject]
     func openPropertyObject(_ propertyObjectId: PropertyObjectId)
     func createPropertyObject() throws
 }
 
-protocol PropertyObjectFlow {
+protocol PropertyObjectFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData
     func openEditPropertyObject(_ propertyObject: PropertyObject)
@@ -22,7 +22,7 @@ protocol PropertyObjectFlow {
     func openGenerateBill(_ propertyObjectId: PropertyObjectId)
 }
 
-protocol EditPropertyInfoFlow {
+protocol EditPropertyInfoFlowDelegate {
     func updatePropertyObject(_ propertyObject: PropertyObject) throws
 }
 
@@ -32,7 +32,7 @@ protocol ManageMeterFlow {
     func deleteMeter(_ meterId: MeterId) throws
 }
 
-protocol MeterValuesListFlow {
+protocol MeterValuesListFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue]
     func openNewMeterValue(_ meterId: MeterId)

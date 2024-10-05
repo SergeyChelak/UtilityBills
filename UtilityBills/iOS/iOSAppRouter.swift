@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+protocol ViewFactory {
+    func view(for route: Route) -> any View
+}
+
 class iOSRouterData: ObservableObject {
     @Published var navigationPath = NavigationPath()
     @Published var popover: Route?

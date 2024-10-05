@@ -17,7 +17,7 @@ private func meterValuesMock() -> [MeterValue] {
     return Array(values)
 }
 
-private class MeterValuesListFlowMock: MeterValuesListFlow {
+private class MeterValuesListFlowMock: MeterValuesListFlowDelegate {
     let updatePublisher: UpdatePublisher = UpdatePublisherMock()
     
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue] {

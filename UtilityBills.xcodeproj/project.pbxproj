@@ -64,6 +64,15 @@
 		A51083302CAF088700103E76 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832F2CAF088700103E76 /* Date+Utils.swift */; };
 		A51083322CB043F800103E76 /* ModifyBillRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083312CB043F800103E76 /* ModifyBillRecordView.swift */; };
 		A51083342CB0440400103E76 /* ModifyBillRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */; };
+		A510833D2CB140B900103E76 /* ViewHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510833C2CB140B900103E76 /* ViewHolder.swift */; };
+		A51083402CB14D4600103E76 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510833F2CB14D4600103E76 /* NavigationView.swift */; };
+		A51083422CB14D6800103E76 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083412CB14D6800103E76 /* NavigationViewModel.swift */; };
+		A51083442CB14DE400103E76 /* StackNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083432CB14DE400103E76 /* StackNavigation.swift */; };
+		A51083472CB14E0400103E76 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083462CB14E0400103E76 /* Flow.swift */; };
+		A51083492CB14FBA00103E76 /* AppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083482CB14FBA00103E76 /* AppViewFactory.swift */; };
+		A510834B2CB1522200103E76 /* StackNavigation+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834A2CB1522200103E76 /* StackNavigation+SwiftUI.swift */; };
+		A510834D2CB178C000103E76 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834C2CB178C000103E76 /* MainFlow.swift */; };
+		A510834F2CB1792300103E76 /* PropertyObjectFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -171,6 +180,15 @@
 		A510832F2CAF088700103E76 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		A51083312CB043F800103E76 /* ModifyBillRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBillRecordView.swift; sourceTree = "<group>"; };
 		A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyBillRecordViewModel.swift; sourceTree = "<group>"; };
+		A510833C2CB140B900103E76 /* ViewHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHolder.swift; sourceTree = "<group>"; };
+		A510833F2CB14D4600103E76 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		A51083412CB14D6800103E76 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
+		A51083432CB14DE400103E76 /* StackNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackNavigation.swift; sourceTree = "<group>"; };
+		A51083462CB14E0400103E76 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		A51083482CB14FBA00103E76 /* AppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewFactory.swift; sourceTree = "<group>"; };
+		A510834A2CB1522200103E76 /* StackNavigation+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackNavigation+SwiftUI.swift"; sourceTree = "<group>"; };
+		A510834C2CB178C000103E76 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
+		A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectFlow.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -382,6 +400,29 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		A510833E2CB14D3700103E76 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A510833C2CB140B900103E76 /* ViewHolder.swift */,
+				A510833F2CB14D4600103E76 /* NavigationView.swift */,
+				A51083412CB14D6800103E76 /* NavigationViewModel.swift */,
+				A51083432CB14DE400103E76 /* StackNavigation.swift */,
+				A510834A2CB1522200103E76 /* StackNavigation+SwiftUI.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		A51083452CB14DFC00103E76 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				A51083462CB14E0400103E76 /* Flow.swift */,
+				A51083482CB14FBA00103E76 /* AppViewFactory.swift */,
+				A510834C2CB178C000103E76 /* MainFlow.swift */,
+				A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		A510F24F2C9CD5FE00942F8A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +539,8 @@
 		A5D8092B2C7156A300F2E6AF /* UtilityBills */ = {
 			isa = PBXGroup;
 			children = (
+				A51083452CB14DFC00103E76 /* Flow */,
+				A510833E2CB14D3700103E76 /* Navigation */,
 				A51083172CAD920F00103E76 /* iOS */,
 				A5D809302C7156A300F2E6AF /* Assets.xcassets */,
 				A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */,
@@ -666,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51083142CAD8A7500103E76 /* GenerateBillView.swift in Sources */,
+				A51083472CB14E0400103E76 /* Flow.swift in Sources */,
 				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
 				A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */,
@@ -675,15 +719,19 @@
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectView.swift in Sources */,
 				A51083112CAC695900103E76 /* LocalStorage+BillDAO.swift in Sources */,
 				A51082CD2CA3269D00103E76 /* MeterValueView.swift in Sources */,
+				A51083492CB14FBA00103E76 /* AppViewFactory.swift in Sources */,
 				A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */,
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A51083242CADCAE100103E76 /* PropertySettingsViewModelMock.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */,
+				A51083442CB14DE400103E76 /* StackNavigation.swift in Sources */,
+				A510834F2CB1792300103E76 /* PropertyObjectFlow.swift in Sources */,
 				A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */,
 				A51082D72CA4699800103E76 /* ManageTariffViewModel.swift in Sources */,
 				A51083192CAD928B00103E76 /* Flows.swift in Sources */,
 				A50302792C9CD77F00033AE3 /* Mappers.swift in Sources */,
 				A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */,
+				A51083422CB14D6800103E76 /* NavigationViewModel.swift in Sources */,
 				A51083302CAF088700103E76 /* Date+Utils.swift in Sources */,
 				A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */,
 				A51083322CB043F800103E76 /* ModifyBillRecordView.swift in Sources */,
@@ -691,6 +739,8 @@
 				A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
+				A510834D2CB178C000103E76 /* MainFlow.swift in Sources */,
+				A51083402CB14D4600103E76 /* NavigationView.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A50302742C9CD65300033AE3 /* MetersDAO.swift in Sources */,
@@ -729,6 +779,7 @@
 				A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
 				A51082CF2CA3277000103E76 /* MeterValueViewModel.swift in Sources */,
+				A510834B2CB1522200103E76 /* StackNavigation+SwiftUI.swift in Sources */,
 				A51083342CB0440400103E76 /* ModifyBillRecordViewModel.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertyListViewModel.swift in Sources */,
 				A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */,
@@ -743,6 +794,7 @@
 				A51082C92CA2FB0F00103E76 /* MeterValuesListView.swift in Sources */,
 				A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
+				A510833D2CB140B900103E76 /* ViewHolder.swift in Sources */,
 				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,
 				A51082BF2CA2D7D100103E76 /* CommonListViewModel.swift in Sources */,
 			);

@@ -9,7 +9,7 @@ import Foundation
 
 class EditPropertyInfoViewModel: ViewModel {
     private let propertyObject: PropertyObject
-    private var flow: EditPropertyInfoFlow?
+    private var flow: EditPropertyInfoFlowDelegate?
     
     @Published
     var name: String
@@ -18,7 +18,7 @@ class EditPropertyInfoViewModel: ViewModel {
     
     init(
         propertyObject: PropertyObject,
-        flow: EditPropertyInfoFlow?
+        flow: EditPropertyInfoFlowDelegate?
     ) {
         self.propertyObject = propertyObject
         self.flow = flow

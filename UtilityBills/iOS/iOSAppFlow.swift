@@ -24,8 +24,8 @@ class iOSAppFlow {
     }
 }
 
-// MARK: PropertyObjectListFlow
-extension iOSAppFlow: PropertyObjectListFlow {
+// MARK: +PropertyObjectListFlow
+extension iOSAppFlow: PropertyObjectListFlowDelegate {
     func loadPropertyObjects() throws -> [PropertyObject] {
         try storage.allProperties()
     }
@@ -39,8 +39,8 @@ extension iOSAppFlow: PropertyObjectListFlow {
     }
 }
 
-// MARK: PropertyObjectFlow
-extension iOSAppFlow: PropertyObjectFlow {
+// MARK: +PropertyObjectFlow
+extension iOSAppFlow: PropertyObjectFlowDelegate {
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData {
         let propObj = try storage.fetchProperty(propertyObjectId)
         let meters = try storage.allMeters(propertyObjectId)
@@ -69,8 +69,8 @@ extension iOSAppFlow: PropertyObjectFlow {
     }
 }
 
-// MARK: EditPropertyInfoFlow
-extension iOSAppFlow: EditPropertyInfoFlow {
+// MARK: +EditPropertyInfoFlow
+extension iOSAppFlow: EditPropertyInfoFlowDelegate {
     func updatePropertyObject(_ propertyObject: PropertyObject) throws {
         try storage.updateProperty(propertyObject)
         router.hideOverlay()
@@ -98,7 +98,7 @@ extension iOSAppFlow: ManageMeterFlow {
 }
 
 // MARK: MeterValuesListFlow
-extension iOSAppFlow: MeterValuesListFlow {
+extension iOSAppFlow: MeterValuesListFlowDelegate {
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue] {
         try storage.meterValues(meterId)
     }
