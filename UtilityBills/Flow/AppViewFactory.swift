@@ -26,6 +26,14 @@ protocol AppViewFactory {
     func addMeterView(_ propObjId: PropertyObjectId, flowDelegate: ManageMeterFlowDelegate) -> ViewHolder
     
     func editMeterView(_ meter: Meter, flowDelegate: ManageMeterFlowDelegate) -> ViewHolder
+    
+    func addTariffView(_ propObjId: PropertyObjectId, flowDelegate: ManageTariffFlowDelegate) -> ViewHolder
+    
+    func editTariffView(_ tariff: Tariff, flowDelegate: ManageTariffFlowDelegate) -> ViewHolder
+    
+    func addBillingMapView(_ billingMapData: BillingMapData, flowDelegate: ManageBillingMapFlowDelegate) -> ViewHolder
+    
+    func editBillingMapView(_ billingMap: BillingMap, billingMapData: BillingMapData, flowDelegate: ManageBillingMapFlowDelegate) -> ViewHolder
 }
 
 struct iOSViewFactory: AppViewFactory {
@@ -108,6 +116,43 @@ struct iOSViewFactory: AppViewFactory {
             flow: flowDelegate
         )
         let view = EditMeterView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
+    func addTariffView(_ propObjId: PropertyObjectId, flowDelegate: ManageTariffFlowDelegate) -> ViewHolder {
+        let viewModel = ManageTariffViewModel(
+            propertyObjectId: propObjId,
+            flow: flowDelegate
+        )
+        let view = ManageTariffView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
+    func editTariffView(_ tariff: Tariff, flowDelegate: ManageTariffFlowDelegate) -> ViewHolder {
+        let viewModel = ManageTariffViewModel(
+            tariff: tariff,
+            flow: flowDelegate
+        )
+        let view = ManageTariffView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
+    func addBillingMapView(_ billingMapData: BillingMapData, flowDelegate: ManageBillingMapFlowDelegate) -> ViewHolder {
+        let viewModel = BillingMapViewModel(
+            billingMapData: billingMapData,
+            flow: flowDelegate
+        )
+        let view = BillingMapView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
+    func editBillingMapView(_ billingMap: BillingMap, billingMapData: BillingMapData, flowDelegate: ManageBillingMapFlowDelegate) -> ViewHolder {
+        let viewModel = BillingMapViewModel(
+            billingMap: billingMap,
+            billingMapData: billingMapData,
+            flow: flowDelegate
+        )
+        let view = BillingMapView(viewModel: viewModel)
         return ViewHolder(view)
     }
 }

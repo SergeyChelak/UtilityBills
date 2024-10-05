@@ -134,23 +134,23 @@ extension PropertyObjectFlow: PropertyObjectSettingFlowDelegate {
     }
     
     func openAddTariff(_ propertyObjectId: PropertyObjectId) {
-//        router.showOverlay(.addTariff(propertyObjectId))
-        fatalError()
+        let view = viewFactory.addTariffView(propertyObjectId, flowDelegate: self)
+        navigation.showSheet(view)
     }
     
     func openEditTariff(_ tariff: Tariff) {
-//        router.showOverlay(.editTariff(tariff))
-        fatalError()
+        let view = viewFactory.editTariffView(tariff, flowDelegate: self)
+        navigation.showSheet(view)
     }
     
     func openAddBillingMap(_ data: BillingMapData) {
-//        router.showOverlay(.addBillingMap(data))
-        fatalError()
+        let view = viewFactory.addBillingMapView(data, flowDelegate: self)
+        navigation.showSheet(view)
     }
     
     func openEditBillingMap(_ billingMap: BillingMap, data: BillingMapData) {
-//        router.showOverlay(.editBillingMap(billingMap, data))
-        fatalError()
+        let view = viewFactory.editBillingMapView(billingMap, billingMapData: data, flowDelegate: self)
+        navigation.showSheet(view)
     }
     
     func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws {
