@@ -77,8 +77,8 @@ extension iOSAppFlow: EditPropertyInfoFlowDelegate {
     }
 }
 
-// MARK: AddMeterFlow
-extension iOSAppFlow: ManageMeterFlow {
+// MARK: +AddMeterFlow
+extension iOSAppFlow: ManageMeterFlowDelegate {
     func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Decimal) throws {
         try storage.newMeter(
             propertyObjectId: propertyObjectId,
@@ -97,7 +97,7 @@ extension iOSAppFlow: ManageMeterFlow {
     }
 }
 
-// MARK: MeterValuesListFlow
+// MARK: +MeterValuesListFlow
 extension iOSAppFlow: MeterValuesListFlowDelegate {
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue] {
         try storage.meterValues(meterId)
@@ -112,8 +112,8 @@ extension iOSAppFlow: MeterValuesListFlowDelegate {
     }
 }
 
-// MARK: ManageMeterValueFlow
-extension iOSAppFlow: ManageMeterValueFlow {
+// MARK: +ManageMeterValueFlow
+extension iOSAppFlow: ManageMeterValueFlowDelegate {
     func addNewMeterValue(_ meterId: MeterId, value: MeterValue) throws {
         try storage.insertMeterValue(meterId, value: value)
         router.hideOverlay()

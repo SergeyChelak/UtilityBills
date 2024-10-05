@@ -16,6 +16,12 @@ protocol AppViewFactory {
     func editPropertyInfoView(_ obj: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> AnyView
     
     func meterValuesView(_ meterId: MeterId, flowDelegate: MeterValuesListFlowDelegate) -> AnyView
+    
+    func addMeterValueView(_ meterId: MeterId, flowDelegate: ManageMeterValueFlowDelegate) -> AnyView
+    
+    func editMeterValueView(_ meterValue: MeterValue, flowDelegate: ManageMeterValueFlowDelegate) -> AnyView
+    
+    func addMeterView(_ propObjId: PropertyObjectId, flowDelegate: ManageMeterFlowDelegate) -> AnyView
 }
 
 struct iOSViewFactory: AppViewFactory {
@@ -51,6 +57,35 @@ struct iOSViewFactory: AppViewFactory {
             flow: flowDelegate
         )
         let view = MeterValuesListView(viewModel: viewModel)
+        return AnyView(view)
+    }
+    
+    func addMeterValueView(_ meterId: MeterId, flowDelegate: ManageMeterValueFlowDelegate) -> AnyView {
+        let viewModel = MeterValueViewModel(
+            meterId: meterId,
+            date: Date(),
+            value: 0,
+            flow: flowDelegate
+        )
+        let view = MeterValueView(viewModel: viewModel)
+        return AnyView(view)
+    }
+    
+    func editMeterValueView(_ meterValue: MeterValue, flowDelegate: ManageMeterValueFlowDelegate) -> AnyView {
+        let viewModel = MeterValueViewModel(
+            meterValue: meterValue,
+            flow: flowDelegate
+        )
+        let view = MeterValueView(viewModel: viewModel)
+        return AnyView(view)
+    }
+    
+    func addMeterView(_ propObjId: PropertyObjectId, flowDelegate: ManageMeterFlowDelegate) -> AnyView {
+        let vm = AddMeterViewModel(
+            propertyObjectId: propObjId,
+            flow: flowDelegate
+        )
+        let view = AddMeterView(viewModel: vm)
         return AnyView(view)
     }
 }

@@ -42,7 +42,7 @@ final class iOSAppFlowFactory {
         appFlow
     }
     
-    func getManageMeterFlow() -> ManageMeterFlow {
+    func getManageMeterFlow() -> ManageMeterFlowDelegate {
         appFlow
     }
     
@@ -50,7 +50,7 @@ final class iOSAppFlowFactory {
         appFlow
     }
     
-    func getManageMeterValueFlow() -> ManageMeterValueFlow {
+    func getManageMeterValueFlow() -> ManageMeterValueFlowDelegate {
         appFlow
     }
     

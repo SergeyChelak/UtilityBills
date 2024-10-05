@@ -11,7 +11,7 @@ class AddMeterViewModel: ViewModel {
     private static let availableCapacities = [5, 6, 7, 8, 9, 10, 11, 12]
     
     let propertyObjectId: PropertyObjectId
-    private var flow: ManageMeterFlow?
+    private var flow: ManageMeterFlowDelegate?
     
     @Published
     var name: String = "New Meter"
@@ -28,7 +28,7 @@ class AddMeterViewModel: ViewModel {
 
     init(
         propertyObjectId: PropertyObjectId,
-        flow: ManageMeterFlow?
+        flow: ManageMeterFlowDelegate?
     ) {
         self.propertyObjectId = propertyObjectId
         self.flow = flow

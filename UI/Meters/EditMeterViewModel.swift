@@ -9,7 +9,7 @@ import Foundation
 
 class EditMeterViewModel: ViewModel {
     let meter: Meter
-    private var flow: ManageMeterFlow?
+    private var flow: ManageMeterFlowDelegate?
     
     @Published
     var name: String
@@ -20,7 +20,7 @@ class EditMeterViewModel: ViewModel {
     
     init(
         meter: Meter,
-        flow: ManageMeterFlow?
+        flow: ManageMeterFlowDelegate?
     ) {
         self.meter = meter
         self.flow = flow

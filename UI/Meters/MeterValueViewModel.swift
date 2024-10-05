@@ -10,7 +10,7 @@ import Foundation
 class MeterValueViewModel: ViewModel, ActionControllable {
     let meterId: MeterId?
     let meterValueId: MeterValueId
-    private var flow: ManageMeterValueFlow?
+    private var flow: ManageMeterValueFlowDelegate?
     @Published
     var date: Date
     @Published
@@ -25,7 +25,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         meterId: MeterId,
         date: Date,
         value: Double,
-        flow: ManageMeterValueFlow?
+        flow: ManageMeterValueFlowDelegate?
     ) {
         self.meterId = meterId
         self.meterValueId = MeterValueId()
@@ -38,7 +38,7 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     
     init(
         meterValue: MeterValue,
-        flow: ManageMeterValueFlow?
+        flow: ManageMeterValueFlowDelegate?
     ) {
         // TODO: fix it!
         self.meterId = nil

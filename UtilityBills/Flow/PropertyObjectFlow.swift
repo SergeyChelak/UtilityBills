@@ -75,25 +75,43 @@ extension PropertyObjectFlow: EditPropertyInfoFlowDelegate {
     }
 }
 
-// MARK: MeterValuesListFlow
+// MARK: MeterValuesListFlowDelegate
 extension PropertyObjectFlow: MeterValuesListFlowDelegate {
     func loadMeterValues(_ meterId: MeterId) throws -> [MeterValue] {
         try storage.meterValues(meterId)
     }
     
     func openNewMeterValue(_ meterId: MeterId) {
-        fatalError()
-//        router.showOverlay(.addMeterValue(meterId))
+        let view = viewFactory.addMeterValueView(meterId, flowDelegate: self)
+        navigation.showSheet(view)
     }
     
     func openMeterValue(_ meterValue: MeterValue) {
-        fatalError()
-//        router.showOverlay(.editMeterValue(meterValue))
+        let view = viewFactory.editMeterValueView(meterValue, flowDelegate: self)
+        navigation.showSheet(view)
     }
 }
 
-// MARK: ManageMeterFlow
-extension PropertyObjectFlow: ManageMeterFlow {
+// MARK: ManageMeterValueFlow
+extension PropertyObjectFlow: ManageMeterValueFlowDelegate {
+    func addNewMeterValue(_ meterId: MeterId, value: MeterValue) throws {
+        try storage.insertMeterValue(meterId, value: value)
+        navigation.hideSheet()
+    }
+    
+    func updateMeterValue(_ value: MeterValue) throws {
+        try storage.updateMeterValue(value)
+        navigation.hideSheet()
+    }
+    
+    func deleteMeterValue(_ meterValueId: MeterValueId) throws {
+        try storage.deleteMeterValue(meterValueId)
+        navigation.hideSheet()
+    }
+}
+
+// MARK: ManageMeterFlowDelegate
+extension PropertyObjectFlow: ManageMeterFlowDelegate {
     func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Decimal) throws {
         try storage.newMeter(
             propertyObjectId: propertyObjectId,
