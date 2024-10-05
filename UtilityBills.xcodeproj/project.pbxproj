@@ -50,14 +50,12 @@
 		A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510830E2CAC693C00103E76 /* BillDAO.swift */; };
 		A51083112CAC695900103E76 /* LocalStorage+BillDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083102CAC695900103E76 /* LocalStorage+BillDAO.swift */; };
 		A51083142CAD8A7500103E76 /* GenerateBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083132CAD8A7500103E76 /* GenerateBillView.swift */; };
-		A51083162CAD8E5900103E76 /* iOSAppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083152CAD8E5900103E76 /* iOSAppFlow.swift */; };
 		A51083192CAD928B00103E76 /* FlowDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083182CAD928B00103E76 /* FlowDelegates.swift */; };
 		A510831C2CAD9D1200103E76 /* UpdatePublisherMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */; };
 		A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */; };
 		A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */; };
 		A51083242CADCAE100103E76 /* PropertySettingsViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083232CADCAE100103E76 /* PropertySettingsViewModelMock.swift */; };
 		A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083252CAEAE3600103E76 /* GenerateBillViewModel.swift */; };
-		A51083282CAEB90D00103E76 /* iOSAppFlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */; };
 		A510832A2CAEC5DC00103E76 /* CalculateFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083292CAEC5DC00103E76 /* CalculateFlow.swift */; };
 		A510832C2CAEFD5200103E76 /* MeterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832B2CAEFD5200103E76 /* MeterUtils.swift */; };
 		A510832E2CAF021C00103E76 /* MeterUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */; };
@@ -79,8 +77,6 @@
 		A540DD292C7F729700F5624E /* BillingMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD282C7F729700F5624E /* BillingMap.swift */; };
 		A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */; };
 		A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63392C7FB67B00F66741 /* ObjectListCell.swift */; };
-		A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */; };
-		A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C63552C83358900F66741 /* iOSAppRouter.swift */; };
 		A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A55C63592C83808800F66741 /* LocalStorageModel.xcdatamodeld */; };
 		A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */; };
 		A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635E2C838AD600F66741 /* LocalStorageTest.swift */; };
@@ -95,7 +91,6 @@
 		A5E00B842C8FA291002BC8EF /* StorageWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B832C8FA291002BC8EF /* StorageWatcher.swift */; };
 		A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */; };
 		A5E00B882C905104002BC8EF /* AddMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B872C905104002BC8EF /* AddMeterView.swift */; };
-		A5E00B8C2C90736D002BC8EF /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B8B2C90736D002BC8EF /* Route.swift */; };
 		A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E00B8D2C90757F002BC8EF /* MeterValue.swift */; };
 		A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F944362C8CC4F600A5FD47 /* UBImage.swift */; };
 		A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */; };
@@ -166,14 +161,12 @@
 		A510830E2CAC693C00103E76 /* BillDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDAO.swift; sourceTree = "<group>"; };
 		A51083102CAC695900103E76 /* LocalStorage+BillDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+BillDAO.swift"; sourceTree = "<group>"; };
 		A51083132CAD8A7500103E76 /* GenerateBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBillView.swift; sourceTree = "<group>"; };
-		A51083152CAD8E5900103E76 /* iOSAppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppFlow.swift; sourceTree = "<group>"; };
 		A51083182CAD928B00103E76 /* FlowDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDelegates.swift; sourceTree = "<group>"; };
 		A510831B2CAD9D1200103E76 /* UpdatePublisherMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePublisherMock.swift; sourceTree = "<group>"; };
 		A510831D2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectViewModelMock.swift; sourceTree = "<group>"; };
 		A51083212CADA48200103E76 /* MeterValuesListViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValuesListViewModelMock.swift; sourceTree = "<group>"; };
 		A51083232CADCAE100103E76 /* PropertySettingsViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingsViewModelMock.swift; sourceTree = "<group>"; };
 		A51083252CAEAE3600103E76 /* GenerateBillViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBillViewModel.swift; sourceTree = "<group>"; };
-		A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppFlowFactory.swift; sourceTree = "<group>"; };
 		A51083292CAEC5DC00103E76 /* CalculateFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateFlow.swift; sourceTree = "<group>"; };
 		A510832B2CAEFD5200103E76 /* MeterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtils.swift; sourceTree = "<group>"; };
 		A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterUtilsTest.swift; sourceTree = "<group>"; };
@@ -195,8 +188,6 @@
 		A540DD282C7F729700F5624E /* BillingMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingMap.swift; sourceTree = "<group>"; };
 		A540DD3B2C7F8CF100F5624E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		A55C63392C7FB67B00F66741 /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
-		A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppViewFactory.swift; sourceTree = "<group>"; };
-		A55C63552C83358900F66741 /* iOSAppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppRouter.swift; sourceTree = "<group>"; };
 		A55C635A2C83808800F66741 /* UtilityBillsStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UtilityBillsStorage.xcdatamodel; sourceTree = "<group>"; };
 		A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+PropertyObjectDAO.swift"; sourceTree = "<group>"; };
 		A55C635E2C838AD600F66741 /* LocalStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTest.swift; sourceTree = "<group>"; };
@@ -214,7 +205,6 @@
 		A5E00B832C8FA291002BC8EF /* StorageWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWatcher.swift; sourceTree = "<group>"; };
 		A5E00B852C8FB4D9002BC8EF /* CaptionValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionValueCell.swift; sourceTree = "<group>"; };
 		A5E00B872C905104002BC8EF /* AddMeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeterView.swift; sourceTree = "<group>"; };
-		A5E00B8B2C90736D002BC8EF /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		A5E00B8D2C90757F002BC8EF /* MeterValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValue.swift; sourceTree = "<group>"; };
 		A5F944362C8CC4F600A5FD47 /* UBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBImage.swift; sourceTree = "<group>"; };
 		A5F9443C2C8D0D1700A5FD47 /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
@@ -374,17 +364,6 @@
 				A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */,
 			);
 			path = Bill;
-			sourceTree = "<group>";
-		};
-		A51083172CAD920F00103E76 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A55C63532C83355F00F66741 /* iOSAppViewFactory.swift */,
-				A51083272CAEB90D00103E76 /* iOSAppFlowFactory.swift */,
-				A51083152CAD8E5900103E76 /* iOSAppFlow.swift */,
-				A55C63552C83358900F66741 /* iOSAppRouter.swift */,
-			);
-			path = iOS;
 			sourceTree = "<group>";
 		};
 		A510831A2CAD9CEC00103E76 /* Mocks */ = {
@@ -549,11 +528,9 @@
 				A51083502CB18B2800103E76 /* ViewFactory */,
 				A51083452CB14DFC00103E76 /* Flow */,
 				A510833E2CB14D3700103E76 /* Navigation */,
-				A51083172CAD920F00103E76 /* iOS */,
 				A5D809302C7156A300F2E6AF /* Assets.xcassets */,
 				A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */,
 				A510830A2CAB265B00103E76 /* UtilityBillsError.swift */,
-				A5E00B8B2C90736D002BC8EF /* Route.swift */,
 				A5D809322C7156A300F2E6AF /* Preview Content */,
 			);
 			path = UtilityBills;
@@ -721,7 +698,6 @@
 				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
 				A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */,
-				A5E00B8C2C90736D002BC8EF /* Route.swift in Sources */,
 				A51082EF2CA74B7000103E76 /* EditMeterViewModel.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectView.swift in Sources */,
@@ -767,20 +743,16 @@
 				A503027D2C9CD81600033AE3 /* LocalStorage+TariffDAO.swift in Sources */,
 				A510832C2CAEFD5200103E76 /* MeterUtils.swift in Sources */,
 				A51082FC2CA8708B00103E76 /* BillingMapView.swift in Sources */,
-				A55C63542C83355F00F66741 /* iOSAppViewFactory.swift in Sources */,
-				A51083282CAEB90D00103E76 /* iOSAppFlowFactory.swift in Sources */,
 				A51082E22CA7040E00103E76 /* PropertySettingsViewModel.swift in Sources */,
 				A51082E32CA7044100103E76 /* PropertySettingsView.swift in Sources */,
 				A51083092CAB209100103E76 /* ControlButtonsView.swift in Sources */,
 				A510830B2CAB265B00103E76 /* UtilityBillsError.swift in Sources */,
 				A51082FA2CA86B2F00103E76 /* EditPropertyInfoViewModel.swift in Sources */,
 				A51082F22CA8591100103E76 /* ChoiceView.swift in Sources */,
-				A51083162CAD8E5900103E76 /* iOSAppFlow.swift in Sources */,
 				A510830D2CAC65FD00103E76 /* Bill.swift in Sources */,
 				A510832A2CAEC5DC00103E76 /* CalculateFlow.swift in Sources */,
 				A51082E52CA7170A00103E76 /* LocalStorage+BillMapDAO.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
-				A55C63562C83358900F66741 /* iOSAppRouter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */,
 				A540DD292C7F729700F5624E /* BillingMap.swift in Sources */,
