@@ -70,7 +70,8 @@ protocol ManageBillingMapFlowDelegate {
 }
 
 protocol CalculateFlowDelegate {
-    func calculate() throws -> [BillRecord]
+    var updatePublisher: UpdatePublisher { get }
+    func load() throws -> [BillRecord]
     func openBillRecord(_ billRecord: BillRecord)
 }
 

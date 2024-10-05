@@ -1,5 +1,5 @@
 //
-//  iOSCalculateFlow.swift
+//  CalculateFlow.swift
 //  UtilityBills
 //
 //  Created by Sergey on 03.10.2024.
@@ -14,21 +14,21 @@ class CalculateFlow {
     private let propertyObjectId: PropertyObjectId
     let updatePublisher: UpdatePublisher
     
+    private let dirtyBillStorage = DirtyBillStorage()
+    
     init(
         viewFactory: AppViewFactory,
         storage: LocalStorage,
-        updatePublisher: UpdatePublisher,
         navigation: StackNavigation,
         propertyObjectId: PropertyObjectId
     ) {
         self.viewFactory = viewFactory
         self.storage = storage
-        self.updatePublisher = updatePublisher
+        self.updatePublisher = dirtyBillStorage
         self.navigation = navigation
         self.propertyObjectId = propertyObjectId
     }
 
-    
     func calculateMetersDelta(_ meters: [Meter]) throws -> Decimal {
         guard !meters.isEmpty else {
             return Decimal(1.0)
@@ -48,18 +48,7 @@ class CalculateFlow {
         }
         return diff(notPaidValue.value, paidValue.value, capacity: meter.capacity)
     }
-}
-
-// MARK: Flow
-extension CalculateFlow: Flow {
-    func start() {
-        let view = viewFactory.generateBillView(propertyObjectId, flowDelegate: self)
-        navigation.push(view)
-    }
-}
-
-// MARK: CalculateFlowDelegate
-extension CalculateFlow: CalculateFlowDelegate {
+    
     func calculate() throws -> [BillRecord] {
         let billingMaps = try storage
             .allBillingMaps(propertyObjectId)
@@ -67,7 +56,6 @@ extension CalculateFlow: CalculateFlowDelegate {
                 $0.tariff.isActive
             }
         var result: [BillRecord] = []
-        
         for billingMap in billingMaps {
             let amount = try calculateMetersDelta(billingMap.meters)
             let record = BillRecord(
@@ -80,21 +68,41 @@ extension CalculateFlow: CalculateFlowDelegate {
         }
         return result
     }
+}
+
+// MARK: Flow
+extension CalculateFlow: Flow {
+    func start() {
+        let view = viewFactory.generateBillView(propertyObjectId, flowDelegate: self)
+        navigation.push(view)
+    }
+}
+
+// MARK: CalculateFlowDelegate
+extension CalculateFlow: CalculateFlowDelegate {
+    func load() throws -> [BillRecord] {
+        if !dirtyBillStorage.hasData {
+            let records = try calculate()
+            dirtyBillStorage.setRecords(records)
+        }
+        return dirtyBillStorage.items
+    }
     
     func openBillRecord(_ billRecord: BillRecord) {
-        fatalError()
+        let view = viewFactory.modifyBillRecordView(billRecord, flowDelegate: self)
+        navigation.showSheet(view)
     }
 }
 
 // MARK: ManageBillRecordFlow
 extension CalculateFlow: ManageBillRecordFlowDelegate {
     func updateBillRecord(_ billRecord: BillRecord) {
-//        fatalError()
+        dirtyBillStorage.update(billRecord)
         navigation.hideSheet()
     }
     
     func deleteBillRecord(_ billRecordId: BillRecordId) {
-//        fatalError()
+        dirtyBillStorage.delete(billRecordId)
         navigation.hideSheet()
     }
 }

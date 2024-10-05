@@ -29,6 +29,7 @@ struct ModifyBillRecordView: View {
                 .padding(.bottom, 12)
         }
         .padding(.horizontal)
+        .errorAlert(for: $viewModel.error)
     }
 }
 

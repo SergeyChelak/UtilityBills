@@ -67,7 +67,6 @@ extension PropertyObjectFlow: PropertyObjectFlowDelegate {
         let flow = CalculateFlow(
             viewFactory: viewFactory,
             storage: storage,
-            updatePublisher: updatePublisher,
             navigation: navigation,
             propertyObjectId: propertyObjectId)
         self.calculateFlow = flow

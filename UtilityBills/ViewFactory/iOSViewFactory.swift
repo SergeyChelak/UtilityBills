@@ -135,4 +135,13 @@ struct iOSViewFactory: AppViewFactory {
         let view = GenerateBillView(viewModel: viewModel)
         return ViewHolder(view)
     }
+    
+    func modifyBillRecordView(_ billRecord: BillRecord, flowDelegate: ManageBillRecordFlowDelegate) -> ViewHolder {
+        let vm = ModifyBillRecordViewModel(
+            billRecord: billRecord,
+            flow: flowDelegate
+        )
+        let view = ModifyBillRecordView(viewModel: vm)
+        return ViewHolder(view)
+    }
 }

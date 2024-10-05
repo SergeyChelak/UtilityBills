@@ -5,9 +5,11 @@
 //  Created by Sergey on 03.10.2024.
 //
 
+import Combine
 import Foundation
 
 class GenerateBillViewModel: ViewModel {
+    private var cancellables: Set<AnyCancellable> = []
     private let propertyObjectId: PropertyObjectId
     private let flow: CalculateFlowDelegate?
     
@@ -17,6 +19,13 @@ class GenerateBillViewModel: ViewModel {
     ) {
         self.propertyObjectId = propertyObjectId
         self.flow = flow
+        super.init()
+        flow?.updatePublisher
+            .publisher
+            .sink { [weak self] in
+                self?.load()
+            }
+            .store(in: &cancellables)
     }
     
     @Published
@@ -32,7 +41,7 @@ class GenerateBillViewModel: ViewModel {
             return
         }
         do {
-            self.records = try flow.calculate()
+            self.records = try flow.load()
         } catch {
             setError(error)
         }
