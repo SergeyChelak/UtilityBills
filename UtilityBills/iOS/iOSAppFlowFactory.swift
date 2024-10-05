@@ -54,15 +54,15 @@ final class iOSAppFlowFactory {
         appFlow
     }
     
-    func getManageTariffFlow() -> ManageTariffFlow {
+    func getManageTariffFlow() -> ManageTariffFlowDelegate {
         appFlow
     }
     
-    func getPropertyObjectSettingFlow() -> PropertyObjectSettingFlow {
+    func getPropertyObjectSettingFlow() -> PropertyObjectSettingFlowDelegate {
         appFlow
     }
     
-    func getManageBillingMapFlow() -> ManageBillingMapFlow {
+    func getManageBillingMapFlow() -> ManageBillingMapFlowDelegate {
         appFlow
     }
     

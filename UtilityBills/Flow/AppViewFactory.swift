@@ -15,6 +15,8 @@ protocol AppViewFactory {
     
     func editPropertyInfoView(_ obj: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder
     
+    func propertyObjectSettingsView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectSettingFlowDelegate) -> ViewHolder
+    
     func meterValuesView(_ meterId: MeterId, flowDelegate: MeterValuesListFlowDelegate) -> ViewHolder
     
     func addMeterValueView(_ meterId: MeterId, flowDelegate: ManageMeterValueFlowDelegate) -> ViewHolder
@@ -22,6 +24,8 @@ protocol AppViewFactory {
     func editMeterValueView(_ meterValue: MeterValue, flowDelegate: ManageMeterValueFlowDelegate) -> ViewHolder
     
     func addMeterView(_ propObjId: PropertyObjectId, flowDelegate: ManageMeterFlowDelegate) -> ViewHolder
+    
+    func editMeterView(_ meter: Meter, flowDelegate: ManageMeterFlowDelegate) -> ViewHolder
 }
 
 struct iOSViewFactory: AppViewFactory {
@@ -48,6 +52,15 @@ struct iOSViewFactory: AppViewFactory {
             flow: flowDelegate
         )
         let view = EditPropertyInfoView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
+    func propertyObjectSettingsView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectSettingFlowDelegate) -> ViewHolder {
+        let viewModel = PropertySettingsViewModel(
+            objectId: propObjId,
+            flow: flowDelegate
+        )
+        let view = PropertySettingsView(viewModel: viewModel)
         return ViewHolder(view)
     }
     
@@ -86,6 +99,15 @@ struct iOSViewFactory: AppViewFactory {
             flow: flowDelegate
         )
         let view = AddMeterView(viewModel: vm)
+        return ViewHolder(view)
+    }
+    
+    func editMeterView(_ meter: Meter, flowDelegate: ManageMeterFlowDelegate) -> ViewHolder {
+        let viewModel = EditMeterViewModel(
+            meter: meter,
+            flow: flowDelegate
+        )
+        let view = EditMeterView(viewModel: viewModel)
         return ViewHolder(view)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 protocol StackNavigation {
     func push(_ holder: ViewHolder)
     func pop()
+    func popToRoot()
     func showSheet(_ holder: ViewHolder)
     func hideSheet()
     func setRoot(_ holder: ViewHolder)

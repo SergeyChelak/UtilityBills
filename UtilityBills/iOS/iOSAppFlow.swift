@@ -131,8 +131,8 @@ extension iOSAppFlow: ManageMeterValueFlowDelegate {
     
 }
 
-// MARK: ManageTariffFlow
-extension iOSAppFlow: ManageTariffFlow {
+// MARK: +ManageTariffFlow
+extension iOSAppFlow: ManageTariffFlowDelegate {
     func addNewTariff(_ propertyObjectId: PropertyObjectId, tariff: Tariff) throws {
         try storage.newTariff(
             propertyId: propertyObjectId,
@@ -151,8 +151,8 @@ extension iOSAppFlow: ManageTariffFlow {
     }
 }
 
-// MARK: PropertyObjectSettingFlow
-extension iOSAppFlow: PropertyObjectSettingFlow {
+// MARK: +PropertyObjectSettingFlow
+extension iOSAppFlow: PropertyObjectSettingFlowDelegate {
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData {
         let meters = try storage.allMeters(propertyObjectId)
         let tariffs = try storage.allTariffs(propertyObjectId)
@@ -194,8 +194,8 @@ extension iOSAppFlow: PropertyObjectSettingFlow {
     }
 }
 
-// MARK: ManageBillingMapFlow
-extension iOSAppFlow: ManageBillingMapFlow {
+// MARK: +ManageBillingMapFlow
+extension iOSAppFlow: ManageBillingMapFlowDelegate {
     func addNewBillingMap(_ propertyObjectId: PropertyObjectId, billingMap: BillingMap) throws {
         try storage.newBillingMap(propertyObjectId, value: billingMap)
         router.hideOverlay()

@@ -12,14 +12,14 @@ class PropertySettingsViewModel: ViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     let objectId: PropertyObjectId
-    private var flow: PropertyObjectSettingFlow?
+    private var flow: PropertyObjectSettingFlowDelegate?
     
     @Published
     var data: PropertySettingsData = .default()
     
     init(
         objectId: PropertyObjectId,
-        flow: PropertyObjectSettingFlow?
+        flow: PropertyObjectSettingFlowDelegate?
     ) {
         self.objectId = objectId
         self.flow = flow

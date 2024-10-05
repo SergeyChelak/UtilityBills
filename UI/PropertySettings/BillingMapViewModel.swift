@@ -12,7 +12,7 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     private var cancellables: Set<AnyCancellable> = []
     let billingMapId: BillingMapId
     let actions: [ControlAction]
-    private var flow: ManageBillingMapFlow?
+    private var flow: ManageBillingMapFlowDelegate?
     private let propertyObjectId: PropertyObjectId
     
     @Published
@@ -25,7 +25,7 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     
     init(
         billingMapData: BillingMapData,
-        flow: ManageBillingMapFlow?
+        flow: ManageBillingMapFlowDelegate?
     ) {
         self.actions = [.new]
         self.flow = flow
@@ -40,7 +40,7 @@ class BillingMapViewModel: ViewModel, ActionControllable {
     init(
         billingMap: BillingMap,
         billingMapData: BillingMapData,
-        flow: ManageBillingMapFlow?
+        flow: ManageBillingMapFlowDelegate?
     ) {
         self.actions = [.update, .delete]
         self.flow = flow

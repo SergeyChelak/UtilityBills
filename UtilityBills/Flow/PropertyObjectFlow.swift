@@ -57,8 +57,8 @@ extension PropertyObjectFlow: PropertyObjectFlowDelegate {
     }
     
     func openPropertyObjectSettings(_ propertyObjectId: PropertyObjectId) {
-        fatalError()
-//        router.push(.propertyObjectSettings(propertyObjectId))
+        let view = viewFactory.propertyObjectSettingsView(propertyObjectId, flowDelegate: self)
+        navigation.push(view)
     }
     
     func openGenerateBill(_ propertyObjectId: PropertyObjectId) {
@@ -92,7 +92,7 @@ extension PropertyObjectFlow: MeterValuesListFlowDelegate {
     }
 }
 
-// MARK: ManageMeterValueFlow
+// MARK: ManageMeterValueFlowDelegate
 extension PropertyObjectFlow: ManageMeterValueFlowDelegate {
     func addNewMeterValue(_ meterId: MeterId, value: MeterValue) throws {
         try storage.insertMeterValue(meterId, value: value)
@@ -110,6 +110,56 @@ extension PropertyObjectFlow: ManageMeterValueFlowDelegate {
     }
 }
 
+// MARK: PropertyObjectSettingFlowDelegate
+extension PropertyObjectFlow: PropertyObjectSettingFlowDelegate {
+    func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData {
+        let meters = try storage.allMeters(propertyObjectId)
+        let tariffs = try storage.allTariffs(propertyObjectId)
+        let billingMaps = try storage.allBillingMaps(propertyObjectId)
+        return PropertySettingsData(
+            meters: meters,
+            tariffs: tariffs,
+            billingMaps: billingMaps
+        )
+    }
+    
+    func openAddMeter(_ propertyObjectId: PropertyObjectId) {
+        let view = viewFactory.addMeterView(propertyObjectId, flowDelegate: self)
+        navigation.showSheet(view)
+    }
+    
+    func openEditMeter(_ meter: Meter) {
+        let view = viewFactory.editMeterView(meter, flowDelegate: self)
+        navigation.showSheet(view)
+    }
+    
+    func openAddTariff(_ propertyObjectId: PropertyObjectId) {
+//        router.showOverlay(.addTariff(propertyObjectId))
+        fatalError()
+    }
+    
+    func openEditTariff(_ tariff: Tariff) {
+//        router.showOverlay(.editTariff(tariff))
+        fatalError()
+    }
+    
+    func openAddBillingMap(_ data: BillingMapData) {
+//        router.showOverlay(.addBillingMap(data))
+        fatalError()
+    }
+    
+    func openEditBillingMap(_ billingMap: BillingMap, data: BillingMapData) {
+//        router.showOverlay(.editBillingMap(billingMap, data))
+        fatalError()
+    }
+    
+    func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws {
+        try storage.deleteProperty(propertyObjectId)
+        navigation.popToRoot()
+    }
+}
+
+
 // MARK: ManageMeterFlowDelegate
 extension PropertyObjectFlow: ManageMeterFlowDelegate {
     func addNewMeter(_ meter: Meter, propertyObjectId: PropertyObjectId, initialValue: Decimal) throws {
@@ -126,6 +176,44 @@ extension PropertyObjectFlow: ManageMeterFlowDelegate {
     
     func deleteMeter(_ meterId: MeterId) throws {
         try storage.deleteMeter(meterId)
+        navigation.hideSheet()
+    }
+}
+
+// MARK: ManageTariffFlowDelegate
+extension PropertyObjectFlow: ManageTariffFlowDelegate {
+    func addNewTariff(_ propertyObjectId: PropertyObjectId, tariff: Tariff) throws {
+        try storage.newTariff(
+            propertyId: propertyObjectId,
+            tariff: tariff)
+        navigation.hideSheet()
+    }
+    
+    func updateTariff(_ tariff: Tariff) throws {
+        try storage.updateTariff(tariff: tariff)
+        navigation.hideSheet()
+    }
+    
+    func deleteTariff(_ tariffId: TariffId) throws {
+        try storage.deleteTariff(tariffId: tariffId)
+        navigation.hideSheet()
+    }
+}
+
+// MARK: ManageBillingMapFlowDelegate
+extension PropertyObjectFlow: ManageBillingMapFlowDelegate {
+    func addNewBillingMap(_ propertyObjectId: PropertyObjectId, billingMap: BillingMap) throws {
+        try storage.newBillingMap(propertyObjectId, value: billingMap)
+        navigation.hideSheet()
+    }
+    
+    func updateBillingMap(_ billingMap: BillingMap) throws {
+        try storage.updateBillingMap(billingMap)
+        navigation.hideSheet()
+    }
+    
+    func deleteBillingMap(_ billingMapId: BillingMapId) throws {
+        try storage.deleteBillingMap(billingMapId)
         navigation.hideSheet()
     }
 }

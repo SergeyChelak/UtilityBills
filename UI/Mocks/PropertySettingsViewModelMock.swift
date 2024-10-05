@@ -43,7 +43,7 @@ private func propertySettingsData() -> PropertySettingsData {
     )
 }
 
-private class PropertyObjectSettingFlowMock: PropertyObjectSettingFlow {
+private class PropertyObjectSettingFlowMock: PropertyObjectSettingFlowDelegate {
     var updatePublisher: UpdatePublisher = UpdatePublisherMock()
     
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData {

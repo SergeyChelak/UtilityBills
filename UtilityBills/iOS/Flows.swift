@@ -45,13 +45,13 @@ protocol ManageMeterValueFlowDelegate {
     func deleteMeterValue(_ meterValueId: MeterValueId) throws
 }
 
-protocol ManageTariffFlow {
+protocol ManageTariffFlowDelegate {
     func addNewTariff(_ propertyObjectId: PropertyObjectId, tariff: Tariff) throws
     func updateTariff(_ tariff: Tariff) throws
     func deleteTariff(_ tariffId: TariffId) throws
 }
 
-protocol PropertyObjectSettingFlow {
+protocol PropertyObjectSettingFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData
     func openAddMeter(_ propertyObjectId: PropertyObjectId)
@@ -63,7 +63,7 @@ protocol PropertyObjectSettingFlow {
     func deletePropertyObject(_ propertyObjectId: PropertyObjectId) throws
 }
 
-protocol ManageBillingMapFlow {
+protocol ManageBillingMapFlowDelegate {
     func addNewBillingMap(_ propertyObjectId: PropertyObjectId, billingMap: BillingMap) throws
     func updateBillingMap(_ billingMap: BillingMap) throws
     func deleteBillingMap(_ billingMapId: BillingMapId) throws

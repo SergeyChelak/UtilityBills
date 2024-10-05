@@ -37,11 +37,11 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     let actions: [ControlAction]
     let choiceViewModel: MultiChoiceViewModel<String>
     let propertyObjectId: PropertyObjectId?
-    private var flow: ManageTariffFlow?
+    private var flow: ManageTariffFlowDelegate?
     
     init(
         propertyObjectId: PropertyObjectId,
-        flow: ManageTariffFlow?
+        flow: ManageTariffFlowDelegate?
     ) {
         self.propertyObjectId = propertyObjectId
         self.flow = flow
@@ -58,7 +58,7 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     
     init(
         tariff: Tariff,
-        flow: ManageTariffFlow?
+        flow: ManageTariffFlowDelegate?
     ) {
         self.propertyObjectId = nil
         self.flow = flow
