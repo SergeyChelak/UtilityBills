@@ -70,7 +70,6 @@
 		A51083442CB14DE400103E76 /* StackNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083432CB14DE400103E76 /* StackNavigation.swift */; };
 		A51083472CB14E0400103E76 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083462CB14E0400103E76 /* Flow.swift */; };
 		A51083492CB14FBA00103E76 /* AppViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083482CB14FBA00103E76 /* AppViewFactory.swift */; };
-		A510834B2CB1522200103E76 /* StackNavigation+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834A2CB1522200103E76 /* StackNavigation+SwiftUI.swift */; };
 		A510834D2CB178C000103E76 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834C2CB178C000103E76 /* MainFlow.swift */; };
 		A510834F2CB1792300103E76 /* PropertyObjectFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
@@ -186,7 +185,6 @@
 		A51083432CB14DE400103E76 /* StackNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackNavigation.swift; sourceTree = "<group>"; };
 		A51083462CB14E0400103E76 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		A51083482CB14FBA00103E76 /* AppViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewFactory.swift; sourceTree = "<group>"; };
-		A510834A2CB1522200103E76 /* StackNavigation+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackNavigation+SwiftUI.swift"; sourceTree = "<group>"; };
 		A510834C2CB178C000103E76 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		A510834E2CB1792300103E76 /* PropertyObjectFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectFlow.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
@@ -407,7 +405,6 @@
 				A510833F2CB14D4600103E76 /* NavigationView.swift */,
 				A51083412CB14D6800103E76 /* NavigationViewModel.swift */,
 				A51083432CB14DE400103E76 /* StackNavigation.swift */,
-				A510834A2CB1522200103E76 /* StackNavigation+SwiftUI.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -779,7 +776,6 @@
 				A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
 				A51082CF2CA3277000103E76 /* MeterValueViewModel.swift in Sources */,
-				A510834B2CB1522200103E76 /* StackNavigation+SwiftUI.swift in Sources */,
 				A51083342CB0440400103E76 /* ModifyBillRecordViewModel.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertyListViewModel.swift in Sources */,
 				A5E00B7E2C8F6D78002BC8EF /* EditPropertyInfoView.swift in Sources */,
