@@ -17,6 +17,7 @@
     <entity name="CDBillRecord" representedClassName=".CDBillRecord" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" attributeType="String"/>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDBill" inverseName="records" inverseEntity="CDBill"/>

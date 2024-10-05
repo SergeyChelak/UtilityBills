@@ -36,6 +36,7 @@ class PropertyObjectFlow {
     }
 }
 
+// MARK: PropertyObjectFlowDelegate
 extension PropertyObjectFlow: PropertyObjectFlowDelegate {
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData {
         let propObj = try storage.fetchProperty(propertyObjectId)

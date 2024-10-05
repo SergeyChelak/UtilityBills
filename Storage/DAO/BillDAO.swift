@@ -9,4 +9,6 @@ import Foundation
 
 protocol BillDAO {
     func bills(_ propertyObjectId: PropertyObjectId, limit: Int?) throws -> [Bill]
+    
+    func saveBillRecords(_ propertyObjectId: PropertyObjectId, records: [BillRecord]) throws
 }

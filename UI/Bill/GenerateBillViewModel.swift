@@ -32,7 +32,11 @@ class GenerateBillViewModel: ViewModel {
     var records: [BillRecord] = []
     
     func onTapAccept() {
-        setError(UtilityBillsError.notImplemented("onTapAccept"))
+        do {
+            try flow?.acceptBillRecords()
+        } catch {
+            setError(error)
+        }
     }
     
     func load() {

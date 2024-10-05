@@ -92,6 +92,11 @@ extension CalculateFlow: CalculateFlowDelegate {
         let view = viewFactory.modifyBillRecordView(billRecord, flowDelegate: self)
         navigation.showSheet(view)
     }
+    
+    func acceptBillRecords() throws {
+        try storage.saveBillRecords(propertyObjectId, records: dirtyBillStorage.items)
+        navigation.pop()
+    }
 }
 
 // MARK: ManageBillRecordFlow

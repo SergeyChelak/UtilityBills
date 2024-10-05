@@ -73,6 +73,7 @@ protocol CalculateFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
     func load() throws -> [BillRecord]
     func openBillRecord(_ billRecord: BillRecord)
+    func acceptBillRecords() throws
 }
 
 protocol ManageBillRecordFlowDelegate {
