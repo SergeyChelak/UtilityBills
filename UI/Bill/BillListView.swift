@@ -24,7 +24,7 @@ struct BillListView: View {
                         value: item.total.formatted()
                     )
                     .onTapGesture {
-                        viewModel.onSelect(i)
+                        viewModel.select(index: i)
                     }
                 }
             }

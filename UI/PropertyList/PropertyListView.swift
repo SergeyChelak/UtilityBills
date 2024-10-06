@@ -19,7 +19,9 @@ struct PropertyListView: View {
             List {
                 ForEach(viewModel.items.indices, id: \.self) { i in
                     ObjectListCell(item: viewModel.items[i])
-                        .onTapGesture(perform: { viewModel.select(index: i) })
+                        .onTapGesture {
+                            viewModel.select(index: i)
+                        }
                 }
             }
         }

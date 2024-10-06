@@ -7,25 +7,14 @@
 
 import Foundation
 
-class BillListViewModel: ViewModel {
-    @Published
-    private(set) var items: [Bill] = []
-    
-    private var flowDelegate: BillListFlowDelegate?
-    
+class BillListViewModel: CommonListViewModel<Bill> {
     init(flowDelegate: BillListFlowDelegate?) {
-        self.flowDelegate = flowDelegate
-    }
-    
-    func load() {
-        do {
-            self.items = try flowDelegate?.loadBillsList() ?? []
-        } catch {
-            setError(error)
-        }
-    }
-    
-    func onSelect(_ index: Int) {
-        flowDelegate?.openBillDetails(items[index])
+        super.init(
+            actionLoad: {
+                try flowDelegate?.loadBillsList() ?? []
+            }, actionSelect: {
+                flowDelegate?.openBillDetails($0)
+            }
+        )
     }
 }
