@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct iOSViewFactory: AppViewFactory {
+struct iOSViewFactory: ViewFactory {
     func propertyObjectListView(delegateFlow: PropertyObjectListFlowDelegate) -> ViewHolder {
         let viewModel = PropertyListViewModel(
             flow: delegateFlow
@@ -25,12 +25,18 @@ struct iOSViewFactory: AppViewFactory {
         return ViewHolder(view)
     }
 
-    func editPropertyInfoView(_ obj: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder {
+    func editPropertyInfoView(_ propObjId: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder {
         let viewModel = EditPropertyInfoViewModel(
-            propertyObject: obj,
+            propertyObject: propObjId,
             flow: flowDelegate
         )
         let view = EditPropertyInfoView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
+    func billsListView(_ propObjId: PropertyObjectId, flowDelegate: BillListFlowDelegate) -> ViewHolder {
+        let viewModel = BillListViewModel(flowDelegate: flowDelegate)
+        let view = BillListView(viewModel: viewModel)
         return ViewHolder(view)
     }
     

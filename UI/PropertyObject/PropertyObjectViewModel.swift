@@ -71,13 +71,11 @@ class PropertyObjectViewModel: ViewModel {
     }
     
     func billSelected(_ bill: Bill) {
-        setError(UtilityBillsError.notImplemented("billSelected"))
-        print("Not implemented: billSelected")
+        flow?.openBillDetails(bill)
     }
     
     func viewAllBills() {
-        setError(UtilityBillsError.notImplemented("viewAllBills"))
-        print("Not implemented: viewAllBills")
+        flow?.openBillList(objectId)
     }
 }
 

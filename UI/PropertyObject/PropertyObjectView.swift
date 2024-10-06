@@ -41,7 +41,10 @@ struct PropertyObjectView: View {
                             items: viewModel.bills,
                             selectionCallback: viewModel.billSelected(_:),
                             cellProducer: {
-                                CaptionValueCell(caption: $0.date.formatted())
+                                CaptionValueCell(
+                                    caption: $0.date.formatted(),
+                                    value: $0.total.formatted()
+                                )
                             }
                         )
                         .sectionWith(

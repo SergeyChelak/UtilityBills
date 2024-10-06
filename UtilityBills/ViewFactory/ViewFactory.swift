@@ -1,5 +1,5 @@
 //
-//  AppViewFactory.swift
+//  ViewFactory.swift
 //  UtilityBills
 //
 //  Created by Sergey on 05.10.2024.
@@ -8,16 +8,18 @@
 import Foundation
 import SwiftUI
 
-protocol AppViewFactory {
+protocol ViewFactory {
     func propertyObjectListView(delegateFlow: PropertyObjectListFlowDelegate) -> ViewHolder
     
     func propertyHomeView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectFlowDelegate) -> ViewHolder
     
-    func editPropertyInfoView(_ obj: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder
+    func editPropertyInfoView(_ propObjId: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder
     
     func propertyObjectSettingsView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectSettingFlowDelegate) -> ViewHolder
     
     func meterValuesView(_ meterId: MeterId, flowDelegate: MeterValuesListFlowDelegate) -> ViewHolder
+    
+    func billsListView(_ propObjId: PropertyObjectId, flowDelegate: BillListFlowDelegate) -> ViewHolder
     
     func addMeterValueView(_ meterId: MeterId, flowDelegate: ManageMeterValueFlowDelegate) -> ViewHolder
     

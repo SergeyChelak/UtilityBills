@@ -8,7 +8,7 @@
 import Foundation
 
 class CalculateFlow {
-    private let viewFactory: AppViewFactory
+    private let viewFactory: ViewFactory
     private let storage: LocalStorage
     private let navigation: StackNavigation
     private let propertyObjectId: PropertyObjectId
@@ -17,7 +17,7 @@ class CalculateFlow {
     private let dirtyBillStorage = DirtyBillStorage()
     
     init(
-        viewFactory: AppViewFactory,
+        viewFactory: ViewFactory,
         storage: LocalStorage,
         navigation: StackNavigation,
         propertyObjectId: PropertyObjectId

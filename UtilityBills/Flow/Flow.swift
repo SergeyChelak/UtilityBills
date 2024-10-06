@@ -7,8 +7,6 @@
 
 import Foundation
 
-// typealias FlowCompletion = () -> Void
-
 protocol Flow {
     func start()
 }

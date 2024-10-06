@@ -20,6 +20,8 @@ protocol PropertyObjectFlowDelegate {
     func openMeterValues(_ meterId: MeterId)
     func openPropertyObjectSettings(_ propertyObjectId: PropertyObjectId)
     func openGenerateBill(_ propertyObjectId: PropertyObjectId)
+    func openBillList(_ propertyObjectId: PropertyObjectId)
+    func openBillDetails(_ bill: Bill)
 }
 
 protocol EditPropertyInfoFlowDelegate {
@@ -79,4 +81,9 @@ protocol CalculateFlowDelegate {
 protocol ManageBillRecordFlowDelegate {
     func updateBillRecord(_ billRecord: BillRecord)
     func deleteBillRecord(_ billRecordId: BillRecordId)
+}
+
+protocol BillListFlowDelegate {
+    func loadBillsList() throws -> [Bill]
+    func openBillDetails(_ bill: Bill)
 }

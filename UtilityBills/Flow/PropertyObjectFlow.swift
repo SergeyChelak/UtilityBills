@@ -8,7 +8,7 @@
 import Foundation
 
 class PropertyObjectFlow {
-    private let viewFactory: AppViewFactory
+    private let viewFactory: ViewFactory
     private let storage: LocalStorage
     private let navigation: StackNavigation
     private let propertyObjectId: PropertyObjectId
@@ -17,7 +17,7 @@ class PropertyObjectFlow {
     private var calculateFlow: CalculateFlow?
     
     init(
-        viewFactory: AppViewFactory,
+        viewFactory: ViewFactory,
         storage: LocalStorage,
         updatePublisher: UpdatePublisher,
         navigation: StackNavigation,
@@ -72,6 +72,11 @@ extension PropertyObjectFlow: PropertyObjectFlowDelegate {
             propertyObjectId: propertyObjectId)
         self.calculateFlow = flow
         flow.start()
+    }
+    
+    func openBillList(_ propertyObjectId: PropertyObjectId) {
+        let view = viewFactory.billsListView(propertyObjectId, flowDelegate: self)
+        navigation.push(view)
     }
 }
 
@@ -223,5 +228,16 @@ extension PropertyObjectFlow: ManageBillingMapFlowDelegate {
     func deleteBillingMap(_ billingMapId: BillingMapId) throws {
         try storage.deleteBillingMap(billingMapId)
         navigation.hideSheet()
+    }
+}
+
+// MARK: BillListFlowDelegate
+extension PropertyObjectFlow: BillListFlowDelegate {
+    func loadBillsList() throws -> [Bill] {
+        try storage.bills(propertyObjectId, limit: nil)
+    }
+    
+    func openBillDetails(_ bill: Bill) {
+        fatalError()
     }
 }

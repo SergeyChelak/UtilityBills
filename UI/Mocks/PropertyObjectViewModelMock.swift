@@ -40,6 +40,14 @@ private class PropertyObjectFlowMock: PropertyObjectFlowDelegate {
     func openGenerateBill(_ propertyObjectId: PropertyObjectId) {
         //
     }
+    
+    func openBillList(_ propertyObjectId: PropertyObjectId) {
+        //
+    }
+    
+    func openBillDetails(_ bill: Bill) {
+        //
+    }
 }
 
 func _propertyObjectViewModelMock() -> PropertyObjectViewModel {

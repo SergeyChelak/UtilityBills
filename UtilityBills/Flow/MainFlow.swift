@@ -8,7 +8,7 @@
 import Foundation
 
 class MainFlow: Flow {
-    private let viewFactory: AppViewFactory
+    private let viewFactory: ViewFactory
     private let storage: LocalStorage
     let updatePublisher: UpdatePublisher
     private let navigation: StackNavigation
@@ -16,7 +16,7 @@ class MainFlow: Flow {
     private var propertyObjectFlow: PropertyObjectFlow?
     
     init(
-        viewFactory: AppViewFactory,
+        viewFactory: ViewFactory,
         storage: LocalStorage,
         updatePublisher: UpdatePublisher,
         navigation: StackNavigation
