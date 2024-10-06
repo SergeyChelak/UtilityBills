@@ -37,6 +37,7 @@ private func propertySettingsData() -> PropertySettingsData {
         meters: [meter1, meter2]
     )
     return PropertySettingsData(
+        propObj: nil,
         meters: [meter1, meter2],
         tariffs: [tariff, tariff],
         billingMaps: [billingItem, billingItem, billingItem]
@@ -48,6 +49,10 @@ private class PropertyObjectSettingFlowMock: PropertyObjectSettingFlowDelegate {
     
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData {
         propertySettingsData()
+    }
+    
+    func openEditPropertyObject(_ propertyObject: PropertyObject) {
+        //
     }
     
     func openAddMeter(_ propertyObjectId: PropertyObjectId) {

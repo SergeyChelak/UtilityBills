@@ -50,14 +50,6 @@ class PropertyObjectViewModel: ViewModel {
         }
     }
     
-    func infoSectionSelected() {
-        guard let propObj = data?.propObj else {
-            self.error = UtilityBillsError.loadingFailure
-            return
-        }
-        flow?.openEditPropertyObject(propObj)
-    }
-    
     func meterSelected(_ meter: Meter) {
         flow?.openMeterValues(meter.id)
     }

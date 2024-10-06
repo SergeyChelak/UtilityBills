@@ -42,6 +42,10 @@ class PropertySettingsViewModel: ViewModel {
         data.billingMaps
     }
     
+    var propObj: PropertyObject? {
+        data.propObj
+    }
+    
     func load() {
         guard let flow else {
             return
@@ -51,6 +55,14 @@ class PropertySettingsViewModel: ViewModel {
         } catch {
             setError(error)
         }
+    }
+    
+    func editPropertyDetails() {
+        guard let propObj = data.propObj else {
+            self.error = UtilityBillsError.loadingFailure
+            return
+        }
+        flow?.openEditPropertyObject(propObj)
     }
     
     func addMeter() {

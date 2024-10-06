@@ -48,12 +48,7 @@ extension PropertyObjectFlow: PropertyObjectFlowDelegate {
             bills: bills
         )
     }
-    
-    func openEditPropertyObject(_ propertyObject: PropertyObject) {
-        let view = viewFactory.editPropertyInfoView(propertyObject, flowDelegate: self)
-        navigation.showSheet(view)
-    }
-    
+        
     func openMeterValues(_ meterId: MeterId) {
         let view = viewFactory.meterValuesView(meterId, flowDelegate: self)
         navigation.push(view)
@@ -126,14 +121,21 @@ extension PropertyObjectFlow: ManageMeterValueFlowDelegate {
 // MARK: PropertyObjectSettingFlowDelegate
 extension PropertyObjectFlow: PropertyObjectSettingFlowDelegate {
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData {
+        let propObj = try storage.fetchProperty(propertyObjectId)
         let meters = try storage.allMeters(propertyObjectId)
         let tariffs = try storage.allTariffs(propertyObjectId)
         let billingMaps = try storage.allBillingMaps(propertyObjectId)
         return PropertySettingsData(
+            propObj: propObj,
             meters: meters,
             tariffs: tariffs,
             billingMaps: billingMaps
         )
+    }
+    
+    func openEditPropertyObject(_ propertyObject: PropertyObject) {
+        let view = viewFactory.editPropertyInfoView(propertyObject, flowDelegate: self)
+        navigation.showSheet(view)
     }
     
     func openAddMeter(_ propertyObjectId: PropertyObjectId) {

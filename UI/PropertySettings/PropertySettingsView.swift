@@ -18,6 +18,15 @@ struct PropertySettingsView: View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
+                    if let obj = viewModel.propObj {
+                        PropertyInfoView(propertyObject: obj)
+                            .sectionWith(
+                                title: "Info",
+                                action: HeaderAction(
+                                    title: "Edit",
+                                    callback: viewModel.editPropertyDetails)
+                            )
+                    }
                     SectionListView(
                         items: viewModel.meters,
                         emptyListMessage: "You have no meters yet",

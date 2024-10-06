@@ -15,8 +15,7 @@ protocol PropertyObjectListFlowDelegate {
 
 protocol PropertyObjectFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
-    func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData
-    func openEditPropertyObject(_ propertyObject: PropertyObject)
+    func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData    
     func openMeterValues(_ meterId: MeterId)
     func openPropertyObjectSettings(_ propertyObjectId: PropertyObjectId)
     func openGenerateBill(_ propertyObjectId: PropertyObjectId)
@@ -56,6 +55,7 @@ protocol ManageTariffFlowDelegate {
 protocol PropertyObjectSettingFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
     func loadPropertySettingsData(_ propertyObjectId: PropertyObjectId) throws -> PropertySettingsData
+    func openEditPropertyObject(_ propertyObject: PropertyObject)
     func openAddMeter(_ propertyObjectId: PropertyObjectId)
     func openEditMeter(_ meter: Meter)
     func openAddTariff(_ propertyObjectId: PropertyObjectId)

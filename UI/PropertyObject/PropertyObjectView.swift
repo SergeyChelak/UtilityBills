@@ -15,16 +15,6 @@ struct PropertyObjectView: View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    // TODO: move to settings screen
-                    if let obj = viewModel.propObj {
-                        PropertyInfoView(propertyObject: obj)
-                            .sectionWith(
-                                title: "Info",
-                                action: HeaderAction(
-                                    title: "Edit",
-                                    callback: viewModel.infoSectionSelected)
-                            )
-                    }
                     if !viewModel.meters.isEmpty {
                         SectionListView(
                             items: viewModel.meters,
