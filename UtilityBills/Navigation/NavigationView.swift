@@ -11,7 +11,7 @@ struct NavigationView: View {
     @StateObject
     var viewModel: NavigationViewModel
     
-    private var isPopoverVisible: Binding<Bool> {
+    private var isSheetVisible: Binding<Bool> {
         Binding(
             get: { viewModel.sheetViewHolder != nil },
             set: { if !$0 { viewModel.sheetViewHolder = nil } }
@@ -24,7 +24,7 @@ struct NavigationView: View {
                     viewModel.viewHolder(for: $0).view
                 }
         }
-        .sheet(isPresented: isPopoverVisible) {
+        .sheet(isPresented: isSheetVisible) {
             if let sheet = viewModel.sheetViewHolder {
                 sheet.view
             }
