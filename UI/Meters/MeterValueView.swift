@@ -22,9 +22,10 @@ struct MeterValueView: View {
                 selection: $viewModel.date,
                 displayedComponents: [.date]
             )
-            
             TextField("", text: $viewModel.value)
+                #if os(iOS)
                 .keyboardType(.decimalPad)
+                #endif
                 .inputStyle(caption: "Value")
             
             Toggle(isOn: $viewModel.isPaid, label: {

@@ -22,7 +22,9 @@ struct ModifyBillRecordView: View {
                 )
             }
             TextField("", text: $viewModel.price)
+                #if os(iOS)
                 .keyboardType(.decimalPad)
+                #endif
                 .inputStyle(caption: "Price")
             Spacer()
             ControlButtonsView(viewModel: viewModel)

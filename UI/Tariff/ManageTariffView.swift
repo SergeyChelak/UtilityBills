@@ -24,7 +24,9 @@ struct ManageTariffView: View {
                 .inputStyle(caption: "Tariff name")
             
             TextField("", text: $viewModel.price)
+                #if os(iOS)
                 .keyboardType(.decimalPad)
+                #endif
                 .inputStyle(caption: "Price")
             
             GridChoiceView(minWidth: 150, viewModel: viewModel.choiceViewModel) {

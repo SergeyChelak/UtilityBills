@@ -45,9 +45,10 @@ struct AddMeterView: View {
             }
             
             TextField("", text: $viewModel.initialValue)
+                #if os(iOS)
                 .keyboardType(.decimalPad)
+                #endif
                 .inputStyle(caption: "Initial value")
-            
             Spacer()
             CTAButton(caption: "Add Meter", callback: viewModel.save)
             .padding(.bottom, 12)
