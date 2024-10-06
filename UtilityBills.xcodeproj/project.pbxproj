@@ -74,6 +74,8 @@
 		A51083542CB19A6A00103E76 /* DirtyBillStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083532CB19A6A00103E76 /* DirtyBillStorage.swift */; };
 		A51083582CB2B52600103E76 /* BillListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083572CB2B52600103E76 /* BillListView.swift */; };
 		A510835A2CB2B54300103E76 /* BillListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083592CB2B54300103E76 /* BillListViewModel.swift */; };
+		A510835C2CB2C06100103E76 /* BillDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510835B2CB2C06100103E76 /* BillDetailsView.swift */; };
+		A510835E2CB2C07300103E76 /* BillDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -188,6 +190,8 @@
 		A51083532CB19A6A00103E76 /* DirtyBillStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirtyBillStorage.swift; sourceTree = "<group>"; };
 		A51083572CB2B52600103E76 /* BillListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListView.swift; sourceTree = "<group>"; };
 		A51083592CB2B54300103E76 /* BillListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListViewModel.swift; sourceTree = "<group>"; };
+		A510835B2CB2C06100103E76 /* BillDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailsView.swift; sourceTree = "<group>"; };
+		A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailsViewModel.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -370,6 +374,8 @@
 				A51083332CB0440400103E76 /* ModifyBillRecordViewModel.swift */,
 				A51083572CB2B52600103E76 /* BillListView.swift */,
 				A51083592CB2B54300103E76 /* BillListViewModel.swift */,
+				A510835B2CB2C06100103E76 /* BillDetailsView.swift */,
+				A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 				A51083472CB14E0400103E76 /* Flow.swift in Sources */,
 				A5F9443D2C8D0D1700A5FD47 /* TitleSubtitleCell.swift in Sources */,
 				A5F944422C8F5D2400A5FD47 /* SectionHeaderView.swift in Sources */,
+				A510835C2CB2C06100103E76 /* BillDetailsView.swift in Sources */,
 				A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */,
 				A51082EF2CA74B7000103E76 /* EditMeterViewModel.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* ObjectListCell.swift in Sources */,
@@ -784,6 +791,7 @@
 				A51082BB2CA2D4F300103E76 /* PropertyListView.swift in Sources */,
 				A51082C92CA2FB0F00103E76 /* MeterValuesListView.swift in Sources */,
 				A51083542CB19A6A00103E76 /* DirtyBillStorage.swift in Sources */,
+				A510835E2CB2C07300103E76 /* BillDetailsViewModel.swift in Sources */,
 				A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
 				A510833D2CB140B900103E76 /* ViewHolder.swift in Sources */,

@@ -40,6 +40,12 @@ struct iOSViewFactory: ViewFactory {
         return ViewHolder(view)
     }
     
+    func billDetailsView(_ bill: Bill) -> ViewHolder {
+        let viewModel = BillDetailsViewModel(bill)
+        let view = BillDetailsView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
     func propertyObjectSettingsView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectSettingFlowDelegate) -> ViewHolder {
         let viewModel = PropertySettingsViewModel(
             objectId: propObjId,

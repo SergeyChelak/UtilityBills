@@ -13,7 +13,7 @@ struct BillListView: View {
     
     var body: some View {
         VStack {
-            if viewModel.items.isEmpty {
+            if viewModel.isEmpty {
                 Text("You have no bills yet")
             }
             List {
@@ -33,6 +33,7 @@ struct BillListView: View {
         .task {
             viewModel.load()
         }
+        .errorAlert(for: $viewModel.error)
     }
 }
 

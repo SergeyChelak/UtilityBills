@@ -21,6 +21,8 @@ protocol ViewFactory {
     
     func billsListView(_ propObjId: PropertyObjectId, flowDelegate: BillListFlowDelegate) -> ViewHolder
     
+    func billDetailsView(_ bill: Bill) -> ViewHolder
+    
     func addMeterValueView(_ meterId: MeterId, flowDelegate: ManageMeterValueFlowDelegate) -> ViewHolder
     
     func editMeterValueView(_ meterValue: MeterValue, flowDelegate: ManageMeterValueFlowDelegate) -> ViewHolder

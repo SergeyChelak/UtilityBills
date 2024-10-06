@@ -238,6 +238,7 @@ extension PropertyObjectFlow: BillListFlowDelegate {
     }
     
     func openBillDetails(_ bill: Bill) {
-        fatalError()
+        let view = viewFactory.billDetailsView(bill)
+        navigation.showSheet(view)
     }
 }
