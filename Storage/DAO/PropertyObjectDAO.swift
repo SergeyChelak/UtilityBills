@@ -10,7 +10,7 @@ import Foundation
 protocol PropertyObjectDAO {
     func allProperties() throws -> [PropertyObject]
     
-    func createProperty() throws -> PropertyObject
+    func createProperty(_ propertyObject: PropertyObject) throws
     
     func deleteProperty(_ propertyObjectId: PropertyObjectId) throws
 

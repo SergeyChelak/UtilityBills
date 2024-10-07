@@ -10,7 +10,7 @@ import Foundation
 protocol PropertyObjectListFlowDelegate {
     func loadPropertyObjects() throws -> [PropertyObject]
     func openPropertyObject(_ propertyObjectId: PropertyObjectId)
-    func createPropertyObject() throws
+    func openCreateNewPropertyObject()
 }
 
 protocol PropertyObjectFlowDelegate {
@@ -23,7 +23,11 @@ protocol PropertyObjectFlowDelegate {
     func openBillDetails(_ bill: Bill)
 }
 
-protocol EditPropertyInfoFlowDelegate {
+protocol CreatePropertyObjectFlowDelegate {
+    func createPropertyObject(_ propertyObject: PropertyObject) throws
+}
+
+protocol UpdatePropertyObjectFlowDelegate {    
     func updatePropertyObject(_ propertyObject: PropertyObject) throws
 }
 

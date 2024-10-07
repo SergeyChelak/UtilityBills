@@ -24,13 +24,21 @@ struct iOSViewFactory: ViewFactory {
         let view = PropertyObjectView(viewModel: viewModel)
         return ViewHolder(view)
     }
-
-    func editPropertyInfoView(_ propObjId: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder {
-        let viewModel = EditPropertyInfoViewModel(
-            propertyObject: propObjId,
-            flow: flowDelegate
+    
+    func createPropertyObjectView(flowDelegate: CreatePropertyObjectFlowDelegate) -> ViewHolder {
+        let viewModel = ManagePropertyObjectViewModel(
+            createFlow: flowDelegate
         )
-        let view = EditPropertyInfoView(viewModel: viewModel)
+        let view = ManagePropertyObjectView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+
+    func updatePropertyObjectView(_ propObjId: PropertyObject, flowDelegate: UpdatePropertyObjectFlowDelegate) -> ViewHolder {
+        let viewModel = ManagePropertyObjectViewModel(
+            propertyObject: propObjId,
+            updateFlow: flowDelegate
+        )
+        let view = ManagePropertyObjectView(viewModel: viewModel)
         return ViewHolder(view)
     }
     

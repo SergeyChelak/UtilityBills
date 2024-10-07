@@ -13,7 +13,9 @@ protocol ViewFactory {
     
     func propertyHomeView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectFlowDelegate) -> ViewHolder
     
-    func editPropertyInfoView(_ propObjId: PropertyObject, flowDelegate: EditPropertyInfoFlowDelegate) -> ViewHolder
+    func createPropertyObjectView(flowDelegate: CreatePropertyObjectFlowDelegate) -> ViewHolder
+    
+    func updatePropertyObjectView(_ propObjId: PropertyObject, flowDelegate: UpdatePropertyObjectFlowDelegate) -> ViewHolder
     
     func propertyObjectSettingsView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectSettingFlowDelegate) -> ViewHolder
     

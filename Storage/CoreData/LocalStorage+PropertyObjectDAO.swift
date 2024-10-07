@@ -15,14 +15,13 @@ extension LocalStorage: PropertyObjectDAO {
         return result.map(mapPropertyObject(_:))
     }
     
-    func createProperty() throws -> PropertyObject {
+    func createProperty(_ propertyObject: PropertyObject) throws {
         let context = viewContext
         let obj = CDPropertyObject(context: context)
-        obj.uuid = UUID()
-        obj.name = "Title"
-        obj.details = "Details"
+        obj.uuid = propertyObject.id
+        obj.name = propertyObject.name
+        obj.details = propertyObject.details
         try context.save()
-        return mapPropertyObject(obj)
     }
     
     func deleteProperty(_ propertyObjectId: PropertyObjectId) throws {
@@ -36,8 +35,8 @@ extension LocalStorage: PropertyObjectDAO {
         try context.save()
     }
     
-    func fetchProperty(_ uuid: PropertyObjectId) throws -> PropertyObject? {
-        guard let obj = try fetchPropertyObject(uuid, into: viewContext) else {
+    func fetchProperty(_ propertyObjectId: PropertyObjectId) throws -> PropertyObject? {
+        guard let obj = try fetchPropertyObject(propertyObjectId, into: viewContext) else {
             return nil
         }
         return mapPropertyObject(obj)

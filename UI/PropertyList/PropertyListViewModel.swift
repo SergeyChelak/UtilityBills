@@ -26,11 +26,10 @@ class PropertyListViewModel: CommonListViewModel<PropertyObject> {
         
     func onCreate() {
         do {
-            try flow?.createPropertyObject()
+            try flow?.openCreateNewPropertyObject()
             load()
         } catch {
             setError(error)
-            print("Failed to create item: \(error)")
         }
     }
 }

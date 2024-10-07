@@ -32,7 +32,7 @@ class MainFlow: Flow {
     }
 }
 
-// MARK: PropertyObjectListFlow
+// MARK: PropertyObjectListFlowDelegate
 extension MainFlow: PropertyObjectListFlowDelegate {
     func loadPropertyObjects() throws -> [PropertyObject] {
         try storage.allProperties()
@@ -50,7 +50,16 @@ extension MainFlow: PropertyObjectListFlowDelegate {
         self.propertyObjectFlow = flow
     }
     
-    func createPropertyObject() throws {
-        _ = try storage.createProperty()
+    func openCreateNewPropertyObject() {
+        let view = viewFactory.createPropertyObjectView(flowDelegate: self)
+        navigation.showSheet(view)
+    }
+}
+
+// MARK: CreatePropertyObjectFlowDelegate
+extension MainFlow: CreatePropertyObjectFlowDelegate {
+    func createPropertyObject(_ propertyObject: PropertyObject) throws {
+        try storage.createProperty(propertyObject)
+        openPropertyObject(propertyObject.id)
     }
 }

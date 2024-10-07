@@ -1,5 +1,5 @@
 //
-//  EditPropertyInfoView.swift
+//  ManagePropertyObjectView.swift
 //  UtilityBills
 //
 //  Created by Sergey on 09.09.2024.
@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct EditPropertyInfoView: View {
+struct ManagePropertyObjectView: View {
     @StateObject
-    var viewModel: EditPropertyInfoViewModel
+    var viewModel: ManagePropertyObjectViewModel
     
     var body: some View {
         VStack(spacing: 24) {
             Text("Object Properties")
-                .padding(.top, 12)
+                .popoverTitle()
+                
             Spacer()
             TextField("", text: $viewModel.name)
                 .inputStyle(caption: "Title")
@@ -23,7 +24,7 @@ struct EditPropertyInfoView: View {
                 .inputStyle(caption: "Details")
             
             Spacer()
-            CTAButton(caption: "Save", callback: viewModel.save)
+            ControlButtonsView(viewModel: viewModel)
                 .padding(.bottom, 12)
         }
         .padding(.horizontal)
@@ -37,9 +38,9 @@ struct EditPropertyInfoView: View {
         name: "Villa",
         details: "Unknown Road, 42"
     )
-    let vm = EditPropertyInfoViewModel(
+    let vm = ManagePropertyObjectViewModel(
         propertyObject: obj,
-        flow: nil
+        updateFlow: nil
     )
-    return EditPropertyInfoView(viewModel: vm)
+    return ManagePropertyObjectView(viewModel: vm)
 }

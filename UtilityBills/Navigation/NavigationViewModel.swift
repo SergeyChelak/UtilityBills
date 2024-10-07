@@ -35,6 +35,7 @@ class NavigationViewModel: ObservableObject, StackNavigation {
     }
         
     func push(_ holder: ViewHolder) {
+        hideSheet()
         let id = ViewIdentifier()
         viewBuffer[id] = holder
         navigationPath.append(id)

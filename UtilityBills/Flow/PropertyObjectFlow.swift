@@ -75,8 +75,8 @@ extension PropertyObjectFlow: PropertyObjectFlowDelegate {
     }
 }
 
-// MARK: EditPropertyInfoFlowDelegate
-extension PropertyObjectFlow: EditPropertyInfoFlowDelegate {
+// MARK: UpdatePropertyObjectFlowDelegate
+extension PropertyObjectFlow: UpdatePropertyObjectFlowDelegate {
     func updatePropertyObject(_ propertyObject: PropertyObject) throws {
         try storage.updateProperty(propertyObject)
         navigation.hideSheet()
@@ -134,7 +134,7 @@ extension PropertyObjectFlow: PropertyObjectSettingFlowDelegate {
     }
     
     func openEditPropertyObject(_ propertyObject: PropertyObject) {
-        let view = viewFactory.editPropertyInfoView(propertyObject, flowDelegate: self)
+        let view = viewFactory.updatePropertyObjectView(propertyObject, flowDelegate: self)
         navigation.showSheet(view)
     }
     
