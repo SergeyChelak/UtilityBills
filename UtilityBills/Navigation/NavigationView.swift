@@ -24,6 +24,9 @@ struct NavigationView: View {
                     viewModel.viewHolder(for: $0).view
                 }
         }
+        #if os(OSX)
+        .padding()
+        #endif
         .sheet(isPresented: isSheetVisible) {
             if let sheet = viewModel.sheetViewHolder {
                 sheet.view

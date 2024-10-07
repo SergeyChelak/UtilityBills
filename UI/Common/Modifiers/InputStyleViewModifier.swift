@@ -17,12 +17,14 @@ struct InputStyleViewModifier: ViewModifier {
                     .lineLimit(1)
             }
             content
+            #if os(iOS)
                 .padding(8)
                 .background(
                     RoundedRectangle(cornerRadius: .infinity)
                         .fill(.fill)
                 )
                 .padding(.horizontal, 1)
+            #endif                
         }
     }
 }
