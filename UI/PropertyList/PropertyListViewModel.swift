@@ -25,11 +25,6 @@ class PropertyListViewModel: CommonListViewModel<PropertyObject> {
     }
         
     func onCreate() {
-        do {
-            try flow?.openCreateNewPropertyObject()
-            load()
-        } catch {
-            setError(error)
-        }
+        flow?.openCreateNewPropertyObject()
     }
 }
