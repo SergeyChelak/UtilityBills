@@ -9,10 +9,10 @@ import Foundation
 
 struct iOSViewFactory: ViewFactory {
     func propertyObjectListView(delegateFlow: PropertyObjectListFlowDelegate) -> ViewHolder {
-        let viewModel = PropertyListViewModel(
+        let viewModel = PropertiesViewModel(
             flow: delegateFlow
         )
-        let view = PropertyListView(viewModel: viewModel)
+        let view = PropertiesView(viewModel: viewModel)
         return ViewHolder(view)
     }
     

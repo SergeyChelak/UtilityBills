@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PropertyObjectListFlowDelegate {
+    var updatePublisher: UpdatePublisher { get }
     func loadPropertyObjects() throws -> [PropertyObject]
     func openPropertyObject(_ propertyObjectId: PropertyObjectId)
     func openCreateNewPropertyObject()
