@@ -15,6 +15,7 @@ enum StorageError: Error {
     case meterValueNotFound
     case tariffNotFound
     case billingMapNotFound
+    case remappingFailed(String)
 }
 
 struct LocalStorage {

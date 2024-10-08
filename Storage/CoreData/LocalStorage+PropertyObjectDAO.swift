@@ -12,7 +12,7 @@ extension LocalStorage: PropertyObjectDAO {
     func allProperties() throws -> [PropertyObject] {
         let request = CDPropertyObject.fetchRequest()
         let result = try viewContext.fetch(request)
-        return result.map(mapPropertyObject(_:))
+        return try result.map(mapPropertyObject(_:))
     }
     
     func createProperty(_ propertyObject: PropertyObject) throws {
@@ -39,7 +39,7 @@ extension LocalStorage: PropertyObjectDAO {
         guard let obj = try fetchPropertyObject(propertyObjectId, into: viewContext) else {
             return nil
         }
-        return mapPropertyObject(obj)
+        return try mapPropertyObject(obj)
     }
     
     func updateProperty(_ propertyObject: PropertyObject) throws {

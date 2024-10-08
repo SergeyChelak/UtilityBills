@@ -115,6 +115,6 @@ extension LocalStorage: MetersDAO {
         guard let cdValue = try context.fetch(request).first else {
             return nil
         }
-        return mapMeterValue(cdValue)
+        return try mapMeterValue(cdValue)
     }
 }
