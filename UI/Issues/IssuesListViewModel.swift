@@ -38,6 +38,6 @@ class IssuesListViewModel: ViewModel {
     }
     
     func onSelectIssue(_ issue: Issue) {
-        fatalError()
+        flow?.openIssue(issue)
     }
 }
