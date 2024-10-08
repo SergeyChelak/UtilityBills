@@ -20,6 +20,13 @@ class PropertiesViewModel: ViewModel {
     @Published
     private(set) var items: [HomeCard] = [.addNewObjectAction]
     
+    @Published
+    private var issues: [Issue] = []
+    
+    var issuesCount: Int {
+        issues.count
+    }
+    
     init(flow: PropertyObjectListFlowDelegate?) {
         self.flow = flow
         super.init()
@@ -33,12 +40,14 @@ class PropertiesViewModel: ViewModel {
     func load() {
         guard let flow else { return }
         do {
-            var array = try flow.loadPropertyObjects()
+            let data = try flow.loadDashboardData()
+            var array = data.properties
                 .map {
                     HomeCard.propertyObject($0)
                 }
             array.append(.addNewObjectAction)
             self.items = array
+            self.issues = data.issues
         } catch {
             setError(error)
         }
@@ -52,5 +61,9 @@ class PropertiesViewModel: ViewModel {
         case .addNewObjectAction:
             flow?.openCreateNewPropertyObject()
         }
+    }
+    
+    func showIssues() {
+        flow?.openIssuesList(issues)
     }
 }

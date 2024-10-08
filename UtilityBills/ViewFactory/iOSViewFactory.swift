@@ -25,6 +25,12 @@ struct iOSViewFactory: ViewFactory {
         return ViewHolder(view)
     }
     
+    func issuesListView(flowDelegate: IssuesFlowDelegate) -> ViewHolder {
+        let viewModel = IssuesListViewModel(flow: flowDelegate)
+        let view = IssuesListView(viewModel: viewModel)
+        return ViewHolder(view)
+    }
+    
     func createPropertyObjectView(flowDelegate: CreatePropertyObjectFlowDelegate) -> ViewHolder {
         let viewModel = ManagePropertyObjectViewModel(
             createFlow: flowDelegate

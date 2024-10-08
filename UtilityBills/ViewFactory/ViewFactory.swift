@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import SwiftUI
 
 protocol ViewFactory {
     func propertyObjectListView(delegateFlow: PropertyObjectListFlowDelegate) -> ViewHolder
     
     func propertyHomeView(_ propObjId: PropertyObjectId, flowDelegate: PropertyObjectFlowDelegate) -> ViewHolder
+    
+    func issuesListView(flowDelegate: IssuesFlowDelegate) -> ViewHolder
     
     func createPropertyObjectView(flowDelegate: CreatePropertyObjectFlowDelegate) -> ViewHolder
     

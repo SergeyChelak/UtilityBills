@@ -9,9 +9,16 @@ import Foundation
 
 protocol PropertyObjectListFlowDelegate {
     var updatePublisher: UpdatePublisher { get }
-    func loadPropertyObjects() throws -> [PropertyObject]
+    func loadDashboardData() throws -> DashboardData
     func openPropertyObject(_ propertyObjectId: PropertyObjectId)
     func openCreateNewPropertyObject()
+    func openIssuesList(_ issues: [Issue])
+}
+
+protocol IssuesFlowDelegate {
+    var updatePublisher: UpdatePublisher { get }
+    func fetchIssues() throws -> [Issue]
+    func openIssue(_ issue: Issue)
 }
 
 protocol PropertyObjectFlowDelegate {

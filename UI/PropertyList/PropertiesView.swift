@@ -32,6 +32,17 @@ struct PropertiesView: View {
             Spacer()
         }
         .navigationTitle("My Objects")
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    viewModel.showIssues()
+                }
+                label: {
+                    Image(systemName: "bell")
+                        .customBadge(viewModel.issuesCount)
+                }
+            }            
+        }
         .task {
             viewModel.load()
         }
@@ -41,6 +52,14 @@ struct PropertiesView: View {
 
 #Preview {
     struct Flow: PropertyObjectListFlowDelegate {
+        func loadDashboardData() throws -> DashboardData {
+            let objects = try loadPropertyObjects()
+            return DashboardData(
+                properties: objects,
+                issues: []
+            )
+        }
+        
         let updatePublisher: UpdatePublisher = UpdatePublisherMock()
         
         func loadPropertyObjects() throws -> [PropertyObject] {
@@ -59,6 +78,10 @@ struct PropertiesView: View {
         }
         
         func openCreateNewPropertyObject() {
+            //
+        }
+        
+        func openIssuesList(_ issues: [Issue]) {
             //
         }
     }

@@ -9,6 +9,12 @@ import Foundation
 import CoreData
 
 extension LocalStorage: MetersDAO {
+    func allMeters() throws -> [Meter] {
+        let context = viewContext
+        let request = CDMeter.fetchRequest()
+        return try context.fetch(request).map(mapMeter)
+    }
+    
     func allMeters(_ propertyId: PropertyObjectId) throws -> [Meter] {
         let context = viewContext
         guard let obj = try fetchPropertyObject(propertyId, into: context) else {

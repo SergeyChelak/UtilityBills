@@ -76,6 +76,12 @@
 		A510835A2CB2B54300103E76 /* BillListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51083592CB2B54300103E76 /* BillListViewModel.swift */; };
 		A510835C2CB2C06100103E76 /* BillDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510835B2CB2C06100103E76 /* BillDetailsView.swift */; };
 		A510835E2CB2C07300103E76 /* BillDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */; };
+		A51FF4672CB5590900C71C12 /* BadgeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51FF4662CB5590900C71C12 /* BadgeViewModifier.swift */; };
+		A51FF4692CB55F9200C71C12 /* DashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51FF4682CB55F9200C71C12 /* DashboardData.swift */; };
+		A51FF46B2CB56E6400C71C12 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51FF46A2CB56E6400C71C12 /* Issue.swift */; };
+		A51FF46D2CB577B500C71C12 /* IssuesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51FF46C2CB577B500C71C12 /* IssuesListView.swift */; };
+		A51FF46F2CB577C000C71C12 /* IssuesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51FF46E2CB577C000C71C12 /* IssuesListViewModel.swift */; };
+		A51FF4732CB5849D00C71C12 /* MeterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51FF4722CB5849D00C71C12 /* MeterTest.swift */; };
 		A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD202C7F6FE800F5624E /* PropertyObject.swift */; };
 		A540DD252C7F711B00F5624E /* Meter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD242C7F711B00F5624E /* Meter.swift */; };
 		A540DD272C7F718800F5624E /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540DD262C7F718800F5624E /* Tariff.swift */; };
@@ -192,6 +198,12 @@
 		A51083592CB2B54300103E76 /* BillListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListViewModel.swift; sourceTree = "<group>"; };
 		A510835B2CB2C06100103E76 /* BillDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailsView.swift; sourceTree = "<group>"; };
 		A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailsViewModel.swift; sourceTree = "<group>"; };
+		A51FF4662CB5590900C71C12 /* BadgeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewModifier.swift; sourceTree = "<group>"; };
+		A51FF4682CB55F9200C71C12 /* DashboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardData.swift; sourceTree = "<group>"; };
+		A51FF46A2CB56E6400C71C12 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		A51FF46C2CB577B500C71C12 /* IssuesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesListView.swift; sourceTree = "<group>"; };
+		A51FF46E2CB577C000C71C12 /* IssuesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesListViewModel.swift; sourceTree = "<group>"; };
+		A51FF4722CB5849D00C71C12 /* MeterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterTest.swift; sourceTree = "<group>"; };
 		A540DD202C7F6FE800F5624E /* PropertyObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObject.swift; sourceTree = "<group>"; };
 		A540DD242C7F711B00F5624E /* Meter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meter.swift; sourceTree = "<group>"; };
 		A540DD262C7F718800F5624E /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
@@ -286,6 +298,7 @@
 				A51082C22CA2DC2800103E76 /* AlertErrorViewModifier.swift */,
 				A5E00B7F2C8F9347002BC8EF /* InputStyleViewModifier.swift */,
 				A51082FF2CA8715A00103E76 /* PopoverTitleViewModifier.swift */,
+				A51FF4662CB5590900C71C12 /* BadgeViewModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -432,6 +445,15 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		A51FF4632CB554B000C71C12 /* Issues */ = {
+			isa = PBXGroup;
+			children = (
+				A51FF46C2CB577B500C71C12 /* IssuesListView.swift */,
+				A51FF46E2CB577C000C71C12 /* IssuesListViewModel.swift */,
+			);
+			path = Issues;
+			sourceTree = "<group>";
+		};
 		A540DD1F2C7F6FD600F5624E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +464,8 @@
 				A540DD282C7F729700F5624E /* BillingMap.swift */,
 				A510830C2CAC65FD00103E76 /* Bill.swift */,
 				A51083532CB19A6A00103E76 /* DirtyBillStorage.swift */,
+				A51FF4682CB55F9200C71C12 /* DashboardData.swift */,
+				A51FF46A2CB56E6400C71C12 /* Issue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -468,6 +492,7 @@
 			children = (
 				A55C63662C8C94FB00F66741 /* Common */,
 				A51082B92CA2D4DB00103E76 /* PropertyList */,
+				A51FF4632CB554B000C71C12 /* Issues */,
 				A55C633F2C7FD50E00F66741 /* PropertyObject */,
 				A51083122CAD8A6000103E76 /* Bill */,
 				A51082C52CA2E70E00103E76 /* Meters */,
@@ -565,6 +590,7 @@
 				A55C635E2C838AD600F66741 /* LocalStorageTest.swift */,
 				A51082DB2CA4878C00103E76 /* BitMaskUtilsTest.swift */,
 				A510832D2CAF021C00103E76 /* MeterUtilsTest.swift */,
+				A51FF4722CB5849D00C71C12 /* MeterTest.swift */,
 			);
 			path = UtilityBillsTests;
 			sourceTree = "<group>";
@@ -736,10 +762,12 @@
 				A51083302CAF088700103E76 /* Date+Utils.swift in Sources */,
 				A51082DA2CA4864C00103E76 /* BitmaskUtils.swift in Sources */,
 				A51083322CB043F800103E76 /* ModifyBillRecordView.swift in Sources */,
+				A51FF46D2CB577B500C71C12 /* IssuesListView.swift in Sources */,
 				A51082FE2CA870F700103E76 /* BillingMapViewModel.swift in Sources */,
 				A510831E2CAD9D7600103E76 /* PropertyObjectViewModelMock.swift in Sources */,
 				A540DD3C2C7F8CF100F5624E /* LocalStorage.swift in Sources */,
 				A5F944372C8CC4F600A5FD47 /* UBImage.swift in Sources */,
+				A51FF4692CB55F9200C71C12 /* DashboardData.swift in Sources */,
 				A510834D2CB178C000103E76 /* MainFlow.swift in Sources */,
 				A51083402CB14D4600103E76 /* NavigationView.swift in Sources */,
 				A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */,
@@ -762,6 +790,7 @@
 				A510832C2CAEFD5200103E76 /* MeterUtils.swift in Sources */,
 				A51082FC2CA8708B00103E76 /* BillingMapView.swift in Sources */,
 				A51082E22CA7040E00103E76 /* PropertySettingsViewModel.swift in Sources */,
+				A51FF46F2CB577C000C71C12 /* IssuesListViewModel.swift in Sources */,
 				A51082E32CA7044100103E76 /* PropertySettingsView.swift in Sources */,
 				A51083092CAB209100103E76 /* ControlButtonsView.swift in Sources */,
 				A510830B2CAB265B00103E76 /* UtilityBillsError.swift in Sources */,
@@ -779,10 +808,12 @@
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
 				A51082CF2CA3277000103E76 /* MeterValueViewModel.swift in Sources */,
 				A51083342CB0440400103E76 /* ModifyBillRecordViewModel.swift in Sources */,
+				A51FF46B2CB56E6400C71C12 /* Issue.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertiesViewModel.swift in Sources */,
 				A5E00B7E2C8F6D78002BC8EF /* ManagePropertyObjectView.swift in Sources */,
 				A51082C72CA2E7C200103E76 /* AddMeterViewModel.swift in Sources */,
 				A50302752C9CD65300033AE3 /* PropertyObjectDAO.swift in Sources */,
+				A51FF4672CB5590900C71C12 /* BadgeViewModifier.swift in Sources */,
 				A51082CB2CA2FB1E00103E76 /* MeterValuesListViewModel.swift in Sources */,
 				A51082C32CA2DC2800103E76 /* AlertErrorViewModifier.swift in Sources */,
 				A51083022CAB0F3100103E76 /* ControlAction.swift in Sources */,
@@ -807,6 +838,7 @@
 				A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */,
 				A51082DC2CA4878C00103E76 /* BitMaskUtilsTest.swift in Sources */,
 				A510832E2CAF021C00103E76 /* MeterUtilsTest.swift in Sources */,
+				A51FF4732CB5849D00C71C12 /* MeterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,12 +30,31 @@ class MainFlow: Flow {
     func start() {
         navigation.setRoot(viewFactory.propertyObjectListView(delegateFlow: self))
     }
+    
+    func loadPropertyObjects() throws -> [PropertyObject] {
+        try storage.allProperties()
+    }
+    
+    func fetchIssues() throws -> [Issue] {
+        try storage.allMeters()
+            .filter {
+                $0.getInspectionState() != .normal
+            }
+            .map {
+                Issue.meter($0)
+            }
+    }
 }
 
 // MARK: PropertyObjectListFlowDelegate
 extension MainFlow: PropertyObjectListFlowDelegate {
-    func loadPropertyObjects() throws -> [PropertyObject] {
-        try storage.allProperties()
+    func loadDashboardData() throws -> DashboardData {
+        let properties = try loadPropertyObjects()
+        let issues = try fetchIssues()
+        return DashboardData(
+            properties: properties,
+            issues: issues
+        )
     }
     
     func openPropertyObject(_ propertyObjectId: PropertyObjectId) {
@@ -54,6 +73,11 @@ extension MainFlow: PropertyObjectListFlowDelegate {
         let view = viewFactory.createPropertyObjectView(flowDelegate: self)
         navigation.showSheet(view)
     }
+    
+    func openIssuesList(_ issues: [Issue]) {
+        let view = viewFactory.issuesListView(flowDelegate: self)
+        navigation.push(view)
+    }
 }
 
 // MARK: CreatePropertyObjectFlowDelegate
@@ -61,5 +85,12 @@ extension MainFlow: CreatePropertyObjectFlowDelegate {
     func createPropertyObject(_ propertyObject: PropertyObject) throws {
         try storage.createProperty(propertyObject)
         openPropertyObject(propertyObject.id)
+    }
+}
+
+// MARK: IssuesFlowDelegate
+extension MainFlow: IssuesFlowDelegate {
+    func openIssue(_ issue: Issue) {
+        fatalError("Not implemented")
     }
 }
