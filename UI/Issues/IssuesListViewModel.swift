@@ -36,4 +36,8 @@ class IssuesListViewModel: ViewModel {
             setError(error)
         }
     }
+    
+    func onSelectIssue(_ issue: Issue) {
+        fatalError()
+    }
 }

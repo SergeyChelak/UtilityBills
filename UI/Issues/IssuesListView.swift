@@ -15,19 +15,21 @@ struct IssuesListView: View {
         VStack {
             if viewModel.isEmpty {
                 Text("It looks like everything is ok")
+                    .padding(.horizontal)
             } else {
                 List {
                     ForEach(viewModel.items.indices, id: \.self) { i in
                         let item = viewModel.items[i]
-                        switch item {
-                        case .meter(let meter):
-                            Text(meter.name)
-                        }
+                        IssueView(issue: item)
+                            .onTapGesture {
+                                viewModel.onSelectIssue(item)
+                            }
                     }
                 }
                 Spacer()
             }
         }
+        .navigationTitle("Issues")
         .task {
             viewModel.load()
         }
@@ -47,7 +49,9 @@ struct IssuesListView: View {
         }
     }
     let vm = IssuesListViewModel(flow: Flow())
-    return IssuesListView(viewModel: vm)
+    return NavigationStack {
+        IssuesListView(viewModel: vm)
+    }
 }
 
 #Preview("Some items") {
@@ -76,5 +80,7 @@ struct IssuesListView: View {
     }
 
     let vm = IssuesListViewModel(flow: Flow())
-    return IssuesListView(viewModel: vm)
+    return NavigationStack {
+        IssuesListView(viewModel: vm)
+    }
 }
