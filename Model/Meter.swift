@@ -9,14 +9,17 @@ import Foundation
 
 typealias MeterId = UUID
 
-struct Meter {
+struct Meter: Equatable, Hashable {
     let id: MeterId
     let name: String
     let capacity: Int?
     let inspectionDate: Date?
 }
 
-extension Meter: Equatable, Hashable { }
+struct FullMeterData {
+    let propertyObject: PropertyObject
+    let meter: Meter
+}
 
 enum InspectionState {
     case normal, expiring, overdue

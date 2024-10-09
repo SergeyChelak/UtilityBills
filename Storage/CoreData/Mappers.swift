@@ -19,6 +19,17 @@ func mapPropertyObject(_ cdPropertyObject: CDPropertyObject) throws -> PropertyO
         currencyId: nil)
 }
 
+func mapFullMeterData(_ cdMeter: CDMeter) throws -> FullMeterData {
+    guard let obj = cdMeter.propertyObject else {
+        throw StorageError.propertyObjectNotFound
+    }
+    let meter = try mapMeter(cdMeter)
+    let propertyObject = try mapPropertyObject(obj)
+    return FullMeterData(
+        propertyObject: propertyObject,
+        meter: meter)
+}
+
 func mapMeter(_ cdMeter: CDMeter) throws -> Meter {
     guard let id = cdMeter.uuid,
           let name = cdMeter.name else {

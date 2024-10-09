@@ -8,5 +8,5 @@
 import Foundation
 
 enum Issue {
-    case meter(Meter)
+    case meter(FullMeterData)
 }

@@ -65,12 +65,7 @@ struct HomeCardView: View {
 }
 
 #Preview {
-    let item = PropertyObject(
-        id: UUID(),
-        name: "House",
-        details: "Best Street, 74",
-        currencyId: nil
-    )
+    let item = _propertyObject()
     let card = HomeCard.propertyObject(item)
     return HomeCardView(card: card)
         .frame(width: 150, height: 150)

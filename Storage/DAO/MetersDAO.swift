@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MetersDAO {
-    func allMeters() throws -> [Meter]
+    func allMeters() throws -> [FullMeterData]
     
     func allMeters(_ property: PropertyObjectId) throws -> [Meter]
     

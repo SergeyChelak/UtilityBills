@@ -48,7 +48,7 @@ class AddMeterViewModel: ViewModel {
     
     func save() {
         let meter = Meter(
-            id: UUID(),
+            id: MeterId(),
             name: name,
             capacity: selectedCapacity,
             inspectionDate: selectedInspectionDate

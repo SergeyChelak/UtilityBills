@@ -59,12 +59,7 @@ struct EditMeterView: View {
 }
 
 #Preview {
-    let meter = Meter(
-        id: UUID(),
-        name: "Unknown Meter",
-        capacity: nil,
-        inspectionDate: nil
-    )
+    let meter = _meter()
     let vm = EditMeterViewModel(
         meter: meter,
         flow: nil

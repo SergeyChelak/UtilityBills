@@ -12,14 +12,18 @@ struct IssueView: View {
     
     var body: some View {
         switch issue {
-        case .meter(let meter):
-            MeterIssueView(meter: meter)
+        case .meter(let data):
+            MeterIssueView(fullMeterData: data)
         }
     }
 }
 
 struct MeterIssueView: View {
-    let meter: Meter
+    let fullMeterData: FullMeterData
+    
+    private var meter: Meter {
+        fullMeterData.meter
+    }
     
     private var message: String {
         guard let date = meter.inspectionDate else {
@@ -48,18 +52,24 @@ struct MeterIssueView: View {
         }
     }
     
+    private var objectName: String {
+        fullMeterData.propertyObject.name
+    }
+    
     private var title: String {
-        "Meter \"\(meter.name)\""
+        "Meter \"\(meter.name)\" of \"\(objectName)\""
     }
     
     var body: some View {
-        HStack {
+        VStack {
             Text(title)
                 .lineLimit(1)
-            Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
             Text(message)
+                .font(.headline)
                 .foregroundColor(messageColor)
                 .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .contentShape(Rectangle())
 
@@ -73,6 +83,8 @@ struct MeterIssueView: View {
         capacity: 10,
         inspectionDate: Date()
     )
-    let issue = Issue.meter(meter)
+    let obj = _propertyObject()
+    let fullData = FullMeterData(propertyObject: obj, meter: meter)
+    let issue = Issue.meter(fullData)
     return IssueView(issue: issue)
 }

@@ -63,11 +63,15 @@ struct IssuesListView: View {
             return (0...10)
                 .map { i in
                     date = date.addingTimeInterval(Double(i) * 10.0)
-                    return Meter(
+                    let meter = Meter(
                         id: MeterId(),
                         name: "Meter #\(i)",
                         capacity: nil,
                         inspectionDate: date)
+                    return FullMeterData(
+                        propertyObject: _propertyObject(),
+                        meter: meter
+                    )
                 }
                 .map {
                     Issue.meter($0)

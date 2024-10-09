@@ -65,11 +65,7 @@ struct PropertiesView: View {
         func loadPropertyObjects() throws -> [PropertyObject] {
             (0...5)
                 .map { _ in
-                    PropertyObject(
-                        id: PropertyObjectId(),
-                        name: "Obj #" + String(arc4random()),
-                        details: "Details " + String(arc4random())
-                    )
+                    _randPropertyObject()
                 }
         }
         

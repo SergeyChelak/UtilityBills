@@ -31,18 +31,28 @@ class MainFlow: Flow {
         navigation.setRoot(viewFactory.propertyObjectListView(delegateFlow: self))
     }
     
-    func loadPropertyObjects() throws -> [PropertyObject] {
+    private func loadPropertyObjects() throws -> [PropertyObject] {
         try storage.allProperties()
     }
     
     func fetchIssues() throws -> [Issue] {
         try storage.allMeters()
             .filter {
-                $0.getInspectionState() != .normal
+                $0.meter.getInspectionState() != .normal
             }
             .map {
                 Issue.meter($0)
             }
+    }
+    
+    private func createPropertyObjectFlow(_ propertyObjectId: PropertyObjectId) -> PropertyObjectFlow {
+        PropertyObjectFlow(
+            viewFactory: self.viewFactory,
+            storage: self.storage,
+            updatePublisher: self.updatePublisher,
+            navigation: self.navigation,
+            propertyObjectId: propertyObjectId
+        )
     }
 }
 
@@ -91,6 +101,14 @@ extension MainFlow: CreatePropertyObjectFlowDelegate {
 // MARK: IssuesFlowDelegate
 extension MainFlow: IssuesFlowDelegate {
     func openIssue(_ issue: Issue) {
-        fatalError("Not implemented")
+        switch issue {
+        case .meter(let fullMeterData):
+            openReviewMeter(fullMeterData)
+        }
+    }
+    
+    private func openReviewMeter(_ fullMeterData: FullMeterData) {
+        self.propertyObjectFlow = createPropertyObjectFlow(fullMeterData.propertyObject.id)
+        self.propertyObjectFlow?.openEditMeter(fullMeterData.meter)
     }
 }

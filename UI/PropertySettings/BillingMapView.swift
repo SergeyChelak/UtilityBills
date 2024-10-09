@@ -71,18 +71,10 @@ struct BillingMapView: View {
             price: Decimal(32.10),
             activeMonthMask: 4094
         )
-        let meter1 = Meter(
-            id: MeterId(),
-            name: "M1",
-            capacity: nil,
-            inspectionDate: nil)
+        let meter1 = _randMeter()
             
-        let meter2 = Meter(
-            id: MeterId(),
-            name: "M2",
-            capacity: nil,
-            inspectionDate: nil
-        )
+        let meter2 = _randMeter()
+        
         return BillingMapData(
             tariffs: [tariff1, tariff2],
             meters: [meter1, meter2, meter2, meter1, meter1],

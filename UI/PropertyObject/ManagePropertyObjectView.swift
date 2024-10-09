@@ -33,11 +33,7 @@ struct ManagePropertyObjectView: View {
 }
 
 #Preview {
-    let obj = PropertyObject(
-        id: UUID(),
-        name: "Villa",
-        details: "Unknown Road, 42"
-    )
+    let obj = _propertyObject()
     let vm = ManagePropertyObjectViewModel(
         propertyObject: obj,
         updateFlow: nil

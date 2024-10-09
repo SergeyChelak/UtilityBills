@@ -11,7 +11,7 @@ private class PropertyObjectFlowMock: PropertyObjectFlowDelegate {
     let updatePublisher: UpdatePublisher = UpdatePublisherMock()
     let objId = PropertyObjectId()
     func loadPropertyObjectData(_ propertyObjectId: PropertyObjectId) throws -> PropertyObjectData {
-        let obj = PropertyObject(id: UUID(), name: "House", details: "My home")
+        let obj = _propertyObject()
         let meters: [Meter] = [
             // TODO: ...
         ]
