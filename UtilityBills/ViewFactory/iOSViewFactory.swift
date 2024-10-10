@@ -216,11 +216,12 @@ struct iOSViewFactory: ViewFactory {
     }
     
     func modifyBillRecordView(_ billRecord: BillRecord, flowDelegate: ManageBillRecordFlowDelegate) -> ViewHolder {
-        let vm = ModifyBillRecordViewModel(
+        let viewModel = ModifyBillRecordViewModel(
             billRecord: billRecord,
             flow: flowDelegate
         )
-        let view = ModifyBillRecordView(viewModel: vm)
+        let presenter = iOSModifyBillRecordPresenter()
+        let view = ModifyBillRecordView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
 }

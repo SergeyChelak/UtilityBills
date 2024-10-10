@@ -10,6 +10,7 @@ import SwiftUI
 struct ModifyBillRecordView: View {
     @StateObject
     var viewModel: ModifyBillRecordViewModel
+    let presenter: ModifyBillRecordPresenter
     
     var body: some View {
         VStack(spacing: 24) {
@@ -17,7 +18,7 @@ struct ModifyBillRecordView: View {
                 .popoverTitle()
             if let amount = viewModel.amount {
                 CaptionValueCell(
-                    caption: "Amount/Volume",
+                    caption: presenter.amountCellCaption,
                     value: amount
                 )
             }
@@ -25,7 +26,7 @@ struct ModifyBillRecordView: View {
                 #if os(iOS)
                 .keyboardType(.decimalPad)
                 #endif
-                .inputStyle(caption: "Price")
+                .inputStyle(caption: presenter.priceInputFieldTitle)
             Spacer()
             ControlButtonsView(viewModel: viewModel)
                 .padding(.bottom, 12)
@@ -46,5 +47,6 @@ struct ModifyBillRecordView: View {
         billRecord: record,
         flow: nil
     )
-    return ModifyBillRecordView(viewModel: vm)
+    let presenter = iOSModifyBillRecordPresenter()
+    return ModifyBillRecordView(viewModel: vm, presenter: presenter)
 }
