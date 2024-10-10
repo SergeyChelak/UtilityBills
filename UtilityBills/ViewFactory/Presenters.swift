@@ -25,3 +25,25 @@ protocol HomeCardPresenter {
     
     func cardImage(_ card: HomeCard) -> ImageHolder
 }
+
+// MARK: PropertyObjectPresenter
+protocol PropertyObjectPresenter {
+    func screenTitle(_ propertyObject: PropertyObject?) -> String
+    
+    var sectionMetersTitle: String { get }
+    
+    var sectionBillsTitle: String { get }
+    
+    var sectionBillsActionViewAllTitle: String { get }
+    
+    var buttonGenerateTitle: String { get }
+    
+    var propertySettingsIcon: ImageHolder { get }
+}
+
+// MARK: BillCellPresenter
+protocol BillCellPresenter {
+    func title(_ bill: Bill) -> String 
+    
+    func value(_ bill: Bill) -> String
+}

@@ -13,14 +13,14 @@ struct PropertiesView: View {
     
     private let adaptiveColumn: [GridItem]
     
-    private let presenter: PropertiesPresenter
+    private let screenPresenter: PropertiesPresenter
     private let cardPresenter: HomeCardPresenter
     
     init(viewModel: PropertiesViewModel, 
          presenter: PropertiesPresenter,
          cardPresenter: HomeCardPresenter) {
         self.viewModel = viewModel
-        self.presenter = presenter
+        self.screenPresenter = presenter
         self.cardPresenter = cardPresenter
         self.adaptiveColumn = [
             GridItem(.adaptive(minimum: presenter.gridWidth))
@@ -37,8 +37,8 @@ struct PropertiesView: View {
                             presenter: cardPresenter
                         )
                         .frame(
-                            width: presenter.gridWidth,
-                            height: presenter.gridHeight
+                            width: screenPresenter.gridWidth,
+                            height: screenPresenter.gridHeight
                         )
                         .onTapGesture {
                             viewModel.onSelect(i)
@@ -49,14 +49,14 @@ struct PropertiesView: View {
             .padding(.horizontal)
             Spacer()
         }
-        .navigationTitle(presenter.screenTitle)
+        .navigationTitle(screenPresenter.screenTitle)
         .toolbar {
             ToolbarItem {
                 Button {
                     viewModel.showIssues()
                 }
                 label: {
-                    UBImage(holder: presenter.issuesIcon)
+                    UBImage(holder: screenPresenter.issuesIcon)
                         .customBadge(viewModel.issuesCount)
                 }
             }            

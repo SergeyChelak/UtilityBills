@@ -27,7 +27,11 @@ struct iOSViewFactory: ViewFactory {
             propObjId,
             flow: flowDelegate
         )
-        let view = PropertyObjectView(viewModel: viewModel)
+        let view = PropertyObjectView(
+            viewModel: viewModel,
+            screenPresenter: DefaultPropertyObjectPresenter(),
+            billCellPresenter: DefaultBillCellPresenter()
+        )
         return ViewHolder(view)
     }
     

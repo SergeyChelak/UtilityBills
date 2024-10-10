@@ -9,7 +9,11 @@ import Combine
 import SwiftUI
 
 struct PropertyObjectView: View {
-    @StateObject var viewModel: PropertyObjectViewModel
+    @StateObject 
+    var viewModel: PropertyObjectViewModel
+    
+    let screenPresenter: PropertyObjectPresenter
+    let billCellPresenter: BillCellPresenter
     
     var body: some View {
         VStack {
@@ -19,10 +23,13 @@ struct PropertyObjectView: View {
                         SectionListView(
                             items: viewModel.meters,
                             selectionCallback: viewModel.meterSelected(_:),
-                            cellProducer: { CaptionValueCell(caption: $0.name) }
+                            cellProducer: {
+                                // TODO: replace to specific cell with own presenter
+                                CaptionValueCell(caption: $0.name)
+                            }
                         )
                         .sectionWith(
-                            title: "Meters"
+                            title: screenPresenter.sectionMetersTitle
                         )
                     }
                     
@@ -31,16 +38,18 @@ struct PropertyObjectView: View {
                             items: viewModel.bills,
                             selectionCallback: viewModel.billSelected(_:),
                             cellProducer: {
-                                CaptionValueCell(
-                                    caption: $0.date.formatted(),
-                                    value: $0.total.formatted()
+                                let caption = billCellPresenter.title($0)
+                                let value = billCellPresenter.value($0)
+                                return CaptionValueCell(
+                                    caption: caption,
+                                    value: value
                                 )
                             }
                         )
                         .sectionWith(
-                            title: "Bills",
+                            title: screenPresenter.sectionBillsTitle,
                             action: HeaderAction(
-                                title: "View all",
+                                title: screenPresenter.sectionBillsActionViewAllTitle,
                                 callback: viewModel.viewAllBills
                             )
                         )
@@ -49,16 +58,16 @@ struct PropertyObjectView: View {
             }
             Spacer()
             CTAButton(
-                caption: "Generate bill",
+                caption: screenPresenter.buttonGenerateTitle,
                 callback: viewModel.generateBill
             )
             .padding(.horizontal)
         }
-        .navigationTitle(viewModel.propObj?.name ?? "")
+        .navigationTitle(screenPresenter.screenTitle(viewModel.propObj))
         .toolbar {
             ToolbarItem {
                 Button(action: viewModel.openSettings) {
-                    Image(systemName: "gearshape")
+                    UBImage(holder: screenPresenter.propertySettingsIcon)
                 }
             }
         }
@@ -71,5 +80,9 @@ struct PropertyObjectView: View {
 
 #Preview {
     let viewModel = _propertyObjectViewModelMock()
-    return PropertyObjectView(viewModel: viewModel)
+    return PropertyObjectView(
+        viewModel: viewModel,
+        screenPresenter: DefaultPropertyObjectPresenter(),
+        billCellPresenter: DefaultBillCellPresenter()
+    )
 }
