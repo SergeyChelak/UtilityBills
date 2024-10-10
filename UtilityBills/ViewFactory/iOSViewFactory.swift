@@ -91,7 +91,12 @@ struct iOSViewFactory: ViewFactory {
             objectId: propObjId,
             flow: flowDelegate
         )
-        let view = PropertySettingsView(viewModel: viewModel)
+        let alertPresenter = DeletePropertyObjectAlertPresenter()
+        let presenter = iOSPropertySettingsPresenter(deleteAlertPresenter: alertPresenter)
+        let view = PropertySettingsView(
+            viewModel: viewModel,
+            presenter: presenter
+        )
         return ViewHolder(view)
     }
     

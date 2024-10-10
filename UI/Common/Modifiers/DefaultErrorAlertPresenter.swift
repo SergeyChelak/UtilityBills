@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct DefaultAlertErrorPresenter: AlertErrorPresenter {
+struct DefaultErrorAlertPresenter: ErrorAlertPresenter {
     //
 }
 
-extension AlertErrorPresenter {
+extension ErrorAlertPresenter {
     func errorAlertTitle(_ error: Error?) -> String {
         "Error"
     }

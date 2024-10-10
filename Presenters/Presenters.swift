@@ -60,12 +60,6 @@ protocol ControlButtonsPresenter {
     func actionName(_ action: ControlAction) -> String
 }
 
-protocol AlertErrorPresenter {
-    func errorAlertTitle(_ error: Error?) -> String
-    func errorAlertMessage(_ error: Error?) -> String
-    var dismissButtonTitle: String { get }
-}
-
 protocol BillListPresenter {
     var emptyBillListMessage: String { get }
     var screenTitle: String { get }

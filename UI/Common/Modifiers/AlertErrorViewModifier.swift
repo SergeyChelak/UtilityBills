@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-
 struct AlertErrorViewModifier: ViewModifier {
     @Binding
     var error: Error?
-    let presenter: AlertErrorPresenter
+    let presenter: ErrorAlertPresenter
     
-    init(error: Binding<Error?>, presenter: AlertErrorPresenter) {
+    init(error: Binding<Error?>, presenter: ErrorAlertPresenter) {
         self._error = error
         self.presenter = presenter
     }
@@ -39,7 +38,7 @@ struct AlertErrorViewModifier: ViewModifier {
 extension View {
     func errorAlert(
         for error: Binding<Error?>,
-        presenter: AlertErrorPresenter = DefaultAlertErrorPresenter()
+        presenter: ErrorAlertPresenter = DefaultErrorAlertPresenter()
     ) -> some View {
         modifier(AlertErrorViewModifier(error: error, presenter: presenter))
     }

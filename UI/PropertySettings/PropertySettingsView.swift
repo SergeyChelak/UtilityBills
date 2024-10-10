@@ -11,6 +11,7 @@ import SwiftUI
 struct PropertySettingsView: View {
     @StateObject
     var viewModel: PropertySettingsViewModel
+    let presenter: PropertySettingsPresenter
     @State
     var isConfirmDeleteAlertVisible = false
     
@@ -21,28 +22,28 @@ struct PropertySettingsView: View {
                     if let obj = viewModel.propObj {
                         PropertyInfoView(propertyObject: obj)
                             .sectionWith(
-                                title: "Info",
+                                title: presenter.sectionInfoTitle,
                                 action: HeaderAction(
-                                    title: "Edit",
+                                    title: presenter.sectionInfoActionButtonTitle,
                                     callback: viewModel.editPropertyDetails)
                             )
                     }
                     SectionListView(
                         items: viewModel.meters,
-                        emptyListMessage: "You have no meters yet",
+                        emptyListMessage: presenter.noMetersMessage,
                         selectionCallback: viewModel.meterSelected(_:),
                         cellProducer: { CaptionValueCell(caption: $0.name) }
                     )
                     .sectionWith(
-                        title: "Meters",
+                        title: presenter.sectionMetersTitle,
                         action: HeaderAction(
-                            title: "Add",
+                            title: presenter.sectionMetersActionButtonTitle,
                             callback: viewModel.addMeter
                         )
                     )
                     SectionListView(
                         items: viewModel.tariffs,
-                        emptyListMessage: "You have no tariffs yet",
+                        emptyListMessage: presenter.noTariffsMessage,
                         selectionCallback: viewModel.tariffSelected(_:),
                         cellProducer: {
                             CaptionValueCell(
@@ -52,23 +53,23 @@ struct PropertySettingsView: View {
                         }
                     )
                     .sectionWith(
-                        title: "Tariffs",
+                        title: presenter.sectionTariffsTitle,
                         action: HeaderAction(
-                            title: "Add",
+                            title: presenter.sectionTariffsActionButtonTitle,
                             callback: viewModel.addTariff
                         )
                     )
                     // Manage payment's settings
                     SectionListView(
                         items: viewModel.billingMaps,
-                        emptyListMessage: "You didn't add any payment maps yet",
+                        emptyListMessage: presenter.noBillingMapsMessage,
                         selectionCallback: viewModel.editBillingMap(_:),
                         cellProducer: { CaptionValueCell(caption: $0.name) }
                     )
                     .sectionWith(
-                        title: "Payment Mapping",
+                        title: presenter.sectionBillingMapsTitle,
                         action: HeaderAction(
-                            title: "Add",
+                            title: presenter.sectionBillingMapsActionButtonTitle,
                             callback: viewModel.addBillingMap
                         )
                     )
@@ -78,21 +79,19 @@ struct PropertySettingsView: View {
                 .errorAlert(for: $viewModel.error)
             
             CTAButton(
-                caption: "Delete Object",
+                caption: presenter.deleteObjectButtonTitle,
                 actionKind: .destructive,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.horizontal)
             .alert(isPresented: $isConfirmDeleteAlertVisible) {
-                Alert(
-                    title: Text("Warning"),
-                    message: Text("Do you want to delete this object?"),
-                    primaryButton: .destructive(Text("Delete"), action: viewModel.deleteObject),
-                    secondaryButton: .default(Text("Cancel"))
+                confirmationAlert(
+                    presenter: presenter.deleteAlertPresenter,
+                    action: viewModel.deleteObject
                 )
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle(presenter.screenTitle)
         .task {
             viewModel.load()
         }
@@ -101,5 +100,10 @@ struct PropertySettingsView: View {
 
 #Preview {
     let vm = __propertySettingsViewModel()
-    return PropertySettingsView(viewModel: vm)
+    let alertPresenter = DeletePropertyObjectAlertPresenter()
+    let presenter = iOSPropertySettingsPresenter(deleteAlertPresenter: alertPresenter)
+    return PropertySettingsView(
+        viewModel: vm,
+        presenter: presenter
+    )
 }
