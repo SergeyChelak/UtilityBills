@@ -13,15 +13,14 @@ struct PropertiesView: View {
     
     private let adaptiveColumn: [GridItem]
     
-    private let screenPresenter: PropertiesPresenter
-    private let cardPresenter: HomeCardPresenter
+    private let presenter: PropertiesPresenter
     
-    init(viewModel: PropertiesViewModel, 
-         presenter: PropertiesPresenter,
-         cardPresenter: HomeCardPresenter) {
+    init(
+        viewModel: PropertiesViewModel,
+        presenter: PropertiesPresenter
+    ) {
         self.viewModel = viewModel
-        self.screenPresenter = presenter
-        self.cardPresenter = cardPresenter
+        self.presenter = presenter
         self.adaptiveColumn = [
             GridItem(.adaptive(minimum: presenter.gridWidth))
         ]
@@ -34,11 +33,11 @@ struct PropertiesView: View {
                     ForEach(viewModel.items.indices, id: \.self) { i in
                         HomeCardView(
                             card: viewModel.items[i],
-                            presenter: cardPresenter
+                            presenter: presenter.cardPresenter
                         )
                         .frame(
-                            width: screenPresenter.gridWidth,
-                            height: screenPresenter.gridHeight
+                            width: presenter.gridWidth,
+                            height: presenter.gridHeight
                         )
                         .onTapGesture {
                             viewModel.onSelect(i)
@@ -49,14 +48,14 @@ struct PropertiesView: View {
             .padding(.horizontal)
             Spacer()
         }
-        .navigationTitle(screenPresenter.screenTitle)
+        .navigationTitle(presenter.screenTitle)
         .toolbar {
             ToolbarItem {
                 Button {
                     viewModel.showIssues()
                 }
                 label: {
-                    UBImage(holder: screenPresenter.issuesIcon)
+                    UBImage(holder: presenter.issuesIcon)
                         .customBadge(viewModel.issuesCount)
                 }
             }            
@@ -100,11 +99,12 @@ struct PropertiesView: View {
         }
     }
     let vm = PropertiesViewModel(flow: Flow())
+    let cardPresenter = iOSHomeCardPresenter()
+    let presenter = iOSPropertiesPresenter(cardPresenter: cardPresenter)
     return NavigationStack {
         PropertiesView(
             viewModel: vm,
-            presenter: iOSPropertiesPresenter(),
-            cardPresenter: iOSHomeCardPresenter()
+            presenter: presenter
         )
     }
 }

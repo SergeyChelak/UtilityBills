@@ -93,7 +93,7 @@
 		A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */; };
 		A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635E2C838AD600F66741 /* LocalStorageTest.swift */; };
 		A5AF03C32CB6CD0E000E5E58 /* MockUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C22CB6CD0E000E5E58 /* MockUtils.swift */; };
-		A5AF03C52CB7E630000E5E58 /* PropertiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */; };
+		A5AF03C52CB7E630000E5E58 /* PropertiesPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C42CB7E630000E5E58 /* PropertiesPresenters.swift */; };
 		A5AF03C72CB7ED64000E5E58 /* Presenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C62CB7ED64000E5E58 /* Presenters.swift */; };
 		A5AF03C92CB7F0D1000E5E58 /* PropertyObjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C82CB7F0D1000E5E58 /* PropertyObjectPresenter.swift */; };
 		A5AF03CB2CB7F8D6000E5E58 /* IssuePresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CA2CB7F8D6000E5E58 /* IssuePresenters.swift */; };
@@ -107,6 +107,8 @@
 		A5AF03DC2CB81BE4000E5E58 /* PropertySettingsPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03DB2CB81BE4000E5E58 /* PropertySettingsPresenters.swift */; };
 		A5AF03DE2CB81C2E000E5E58 /* PropertySettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03DD2CB81C2E000E5E58 /* PropertySettingsPresenter.swift */; };
 		A5B721582CB81E9200BF18E7 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721572CB81E9200BF18E7 /* UIUtils.swift */; };
+		A5B7215A2CB81F9400BF18E7 /* PropertiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721592CB81F9400BF18E7 /* PropertiesPresenter.swift */; };
+		A5B7215C2CB81FAA00BF18E7 /* HomeCardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7215B2CB81FAA00BF18E7 /* HomeCardPresenter.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -231,7 +233,7 @@
 		A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+PropertyObjectDAO.swift"; sourceTree = "<group>"; };
 		A55C635E2C838AD600F66741 /* LocalStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTest.swift; sourceTree = "<group>"; };
 		A5AF03C22CB6CD0E000E5E58 /* MockUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUtils.swift; sourceTree = "<group>"; };
-		A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPresenter.swift; sourceTree = "<group>"; };
+		A5AF03C42CB7E630000E5E58 /* PropertiesPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPresenters.swift; sourceTree = "<group>"; };
 		A5AF03C62CB7ED64000E5E58 /* Presenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenters.swift; sourceTree = "<group>"; };
 		A5AF03C82CB7F0D1000E5E58 /* PropertyObjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectPresenter.swift; sourceTree = "<group>"; };
 		A5AF03CA2CB7F8D6000E5E58 /* IssuePresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuePresenters.swift; sourceTree = "<group>"; };
@@ -245,6 +247,8 @@
 		A5AF03DB2CB81BE4000E5E58 /* PropertySettingsPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingsPresenters.swift; sourceTree = "<group>"; };
 		A5AF03DD2CB81C2E000E5E58 /* PropertySettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingsPresenter.swift; sourceTree = "<group>"; };
 		A5B721572CB81E9200BF18E7 /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
+		A5B721592CB81F9400BF18E7 /* PropertiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPresenter.swift; sourceTree = "<group>"; };
+		A5B7215B2CB81FAA00BF18E7 /* HomeCardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardPresenter.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -320,7 +324,7 @@
 				A51082BA2CA2D4F300103E76 /* PropertiesView.swift */,
 				A51082BC2CA2D4FD00103E76 /* PropertiesViewModel.swift */,
 				A55C63392C7FB67B00F66741 /* HomeCardView.swift */,
-				A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */,
+				A5AF03C42CB7E630000E5E58 /* PropertiesPresenters.swift */,
 			);
 			path = PropertyList;
 			sourceTree = "<group>";
@@ -589,6 +593,8 @@
 				A5AF03D72CB81A55000E5E58 /* ConfirmationAlertPresenter.swift */,
 				A5AF03D92CB81AA7000E5E58 /* ErrorAlertPresenter.swift */,
 				A5AF03DD2CB81C2E000E5E58 /* PropertySettingsPresenter.swift */,
+				A5B721592CB81F9400BF18E7 /* PropertiesPresenter.swift */,
+				A5B7215B2CB81FAA00BF18E7 /* HomeCardPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -835,6 +841,7 @@
 				A540DD252C7F711B00F5624E /* Meter.swift in Sources */,
 				A50302742C9CD65300033AE3 /* MetersDAO.swift in Sources */,
 				A5AF03C92CB7F0D1000E5E58 /* PropertyObjectPresenter.swift in Sources */,
+				A5B7215C2CB81FAA00BF18E7 /* HomeCardPresenter.swift in Sources */,
 				A5AF03D82CB81A55000E5E58 /* ConfirmationAlertPresenter.swift in Sources */,
 				A5AF03D12CB80DE4000E5E58 /* DefaultErrorAlertPresenter.swift in Sources */,
 				A510831C2CAD9D1200103E76 /* UpdatePublisherMock.swift in Sources */,
@@ -890,9 +897,10 @@
 				A51082BB2CA2D4F300103E76 /* PropertiesView.swift in Sources */,
 				A51082C92CA2FB0F00103E76 /* MeterValuesListView.swift in Sources */,
 				A51083542CB19A6A00103E76 /* DirtyBillStorage.swift in Sources */,
+				A5B7215A2CB81F9400BF18E7 /* PropertiesPresenter.swift in Sources */,
 				A510835E2CB2C07300103E76 /* BillDetailsViewModel.swift in Sources */,
 				A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */,
-				A5AF03C52CB7E630000E5E58 /* PropertiesPresenter.swift in Sources */,
+				A5AF03C52CB7E630000E5E58 /* PropertiesPresenters.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
 				A5AF03CD2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift in Sources */,
 				A5AF03D32CB81062000E5E58 /* BillCellView.swift in Sources */,

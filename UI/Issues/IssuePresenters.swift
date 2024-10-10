@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct iOSIssuesListPresenter: IssuesListPresenter {
+    let issueCellPresenter: IssueCellPresenter
+    
     var emptyListMessage: String {
         "It looks like everything is ok"
     }

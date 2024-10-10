@@ -8,6 +8,8 @@
 import Foundation
 
 struct iOSPropertyObjectPresenter: PropertyObjectPresenter {
+    let billCellPresenter: BillCellPresenter
+    
     func screenTitle(_ propertyObject: PropertyObject?) -> String {
         propertyObject?.name ?? ""
     }

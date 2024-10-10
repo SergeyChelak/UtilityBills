@@ -12,7 +12,6 @@ struct IssuesListView: View {
     var viewModel: IssuesListViewModel
     
     let presenter: IssuesListPresenter
-    let issueCellPresenter: IssueCellPresenter
     
     var body: some View {
         VStack {
@@ -23,7 +22,7 @@ struct IssuesListView: View {
                 List {
                     ForEach(viewModel.items.indices, id: \.self) { i in
                         let item = viewModel.items[i]
-                        IssueView(issue: item, presenter: issueCellPresenter)
+                        IssueView(issue: item, presenter: presenter.issueCellPresenter)
                             .onTapGesture {
                                 viewModel.onSelectIssue(item)
                             }
@@ -52,11 +51,12 @@ struct IssuesListView: View {
         }
     }
     let vm = IssuesListViewModel(flow: Flow())
+    let issueCellPresenter = iOSIssueCellPresenter()
+    let presenter = iOSIssuesListPresenter(issueCellPresenter: issueCellPresenter)
     return NavigationStack {
         IssuesListView(
             viewModel: vm,
-            presenter: iOSIssuesListPresenter(),
-            issueCellPresenter: iOSIssueCellPresenter()
+            presenter: presenter
         )
     }
 }
@@ -91,11 +91,12 @@ struct IssuesListView: View {
     }
 
     let vm = IssuesListViewModel(flow: Flow())
+    let issueCellPresenter = iOSIssueCellPresenter()
+    let presenter = iOSIssuesListPresenter(issueCellPresenter: issueCellPresenter)
     return NavigationStack {
         IssuesListView(
             viewModel: vm,
-            presenter: iOSIssuesListPresenter(),
-            issueCellPresenter: iOSIssueCellPresenter()
+            presenter: presenter
         )
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PropertiesPresenter.swift
+//  PropertiesPresenters.swift
 //  UtilityBills
 //
 //  Created by Sergey on 10.10.2024.
@@ -8,6 +8,8 @@
 import Foundation
 
 struct iOSPropertiesPresenter: PropertiesPresenter {
+    let cardPresenter: HomeCardPresenter
+    
     var screenTitle: String {
         "My Objects"
     }

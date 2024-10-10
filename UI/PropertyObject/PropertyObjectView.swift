@@ -12,8 +12,7 @@ struct PropertyObjectView: View {
     @StateObject 
     var viewModel: PropertyObjectViewModel
     
-    let screenPresenter: PropertyObjectPresenter
-    let billCellPresenter: BillCellPresenter
+    let presenter: PropertyObjectPresenter
     
     var body: some View {
         VStack {
@@ -29,7 +28,7 @@ struct PropertyObjectView: View {
                             }
                         )
                         .sectionWith(
-                            title: screenPresenter.sectionMetersTitle
+                            title: presenter.sectionMetersTitle
                         )
                     }
                     
@@ -38,13 +37,13 @@ struct PropertyObjectView: View {
                             items: viewModel.bills,
                             selectionCallback: viewModel.billSelected(_:),
                             cellProducer: {
-                                BillCellView(item: $0, presenter: billCellPresenter)
+                                BillCellView(item: $0, presenter: presenter.billCellPresenter)
                             }
                         )
                         .sectionWith(
-                            title: screenPresenter.sectionBillsTitle,
+                            title: presenter.sectionBillsTitle,
                             action: HeaderAction(
-                                title: screenPresenter.sectionBillsActionViewAllTitle,
+                                title: presenter.sectionBillsActionViewAllTitle,
                                 callback: viewModel.viewAllBills
                             )
                         )
@@ -53,16 +52,16 @@ struct PropertyObjectView: View {
             }
             Spacer()
             CTAButton(
-                caption: screenPresenter.buttonGenerateTitle,
+                caption: presenter.buttonGenerateTitle,
                 callback: viewModel.generateBill
             )
             .padding(.horizontal)
         }
-        .navigationTitle(screenPresenter.screenTitle(viewModel.propObj))
+        .navigationTitle(presenter.screenTitle(viewModel.propObj))
         .toolbar {
             ToolbarItem {
                 Button(action: viewModel.openSettings) {
-                    UBImage(holder: screenPresenter.propertySettingsIcon)
+                    UBImage(holder: presenter.propertySettingsIcon)
                 }
             }
         }
@@ -75,9 +74,10 @@ struct PropertyObjectView: View {
 
 #Preview {
     let viewModel = _propertyObjectViewModelMock()
+    let billCellPresenter = iOSBillCellPresenter()
+    let presenter = iOSPropertyObjectPresenter(billCellPresenter: billCellPresenter)
     return PropertyObjectView(
         viewModel: viewModel,
-        screenPresenter: iOSPropertyObjectPresenter(),
-        billCellPresenter: iOSBillCellPresenter()
+        presenter: presenter
     )
 }
