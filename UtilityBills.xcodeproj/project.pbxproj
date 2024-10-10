@@ -100,6 +100,8 @@
 		A5AF03CD2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CC2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift */; };
 		A5AF03CF2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CE2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift */; };
 		A5AF03D12CB80DE4000E5E58 /* DefaultAlertErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D02CB80DE4000E5E58 /* DefaultAlertErrorPresenter.swift */; };
+		A5AF03D32CB81062000E5E58 /* BillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D22CB81062000E5E58 /* BillCellView.swift */; };
+		A5AF03D52CB81205000E5E58 /* BillListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D42CB81205000E5E58 /* BillListPresenter.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -231,6 +233,8 @@
 		A5AF03CC2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultControlButtonsPresenter.swift; sourceTree = "<group>"; };
 		A5AF03CE2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePropertyObjectPresenter.swift; sourceTree = "<group>"; };
 		A5AF03D02CB80DE4000E5E58 /* DefaultAlertErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlertErrorPresenter.swift; sourceTree = "<group>"; };
+		A5AF03D22CB81062000E5E58 /* BillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCellView.swift; sourceTree = "<group>"; };
+		A5AF03D42CB81205000E5E58 /* BillListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListPresenter.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -414,6 +418,8 @@
 				A51083592CB2B54300103E76 /* BillListViewModel.swift */,
 				A510835B2CB2C06100103E76 /* BillDetailsView.swift */,
 				A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */,
+				A5AF03D22CB81062000E5E58 /* BillCellView.swift */,
+				A5AF03D42CB81205000E5E58 /* BillListPresenter.swift */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -834,6 +840,7 @@
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */,
 				A540DD292C7F729700F5624E /* BillingMap.swift in Sources */,
+				A5AF03D52CB81205000E5E58 /* BillListPresenter.swift in Sources */,
 				A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */,
 				A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
@@ -860,6 +867,7 @@
 				A5AF03C52CB7E630000E5E58 /* PropertiesPresenter.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
 				A5AF03CD2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift in Sources */,
+				A5AF03D32CB81062000E5E58 /* BillCellView.swift in Sources */,
 				A510833D2CB140B900103E76 /* ViewHolder.swift in Sources */,
 				A51FF4752CB5AB3100C71C12 /* IssueView.swift in Sources */,
 				A5F944442C8F5F9000A5FD47 /* SectionViewModifier.swift in Sources */,

@@ -65,3 +65,8 @@ protocol AlertErrorPresenter {
     func errorAlertMessage(_ error: Error?) -> String
     var dismissButtonTitle: String { get }
 }
+
+protocol BillListPresenter {
+    var emptyBillListMessage: String { get }
+    var screenTitle: String { get }
+}

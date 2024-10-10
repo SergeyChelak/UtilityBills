@@ -10,26 +10,25 @@ import SwiftUI
 struct BillListView: View {
     @StateObject
     var viewModel: BillListViewModel
+    let presenter: BillListPresenter
+    let billCellPresenter: BillCellPresenter
     
     var body: some View {
         VStack {
             if viewModel.isEmpty {
-                Text("You have no bills yet")
+                Text(presenter.emptyBillListMessage)
             }
             List {
                 ForEach(viewModel.items.indices, id: \.self) { i in
                     let item = viewModel.items[i]
-                    CaptionValueCell(
-                        caption: item.date.formatted(),
-                        value: item.total.formatted()
-                    )
-                    .onTapGesture {
-                        viewModel.select(index: i)
-                    }
+                    BillCellView(item: item, presenter: billCellPresenter)
+                        .onTapGesture {
+                            viewModel.select(index: i)
+                        }
                 }
             }
         }
-        .navigationTitle("Your Bills")
+        .navigationTitle(presenter.screenTitle)
         .task {
             viewModel.load()
         }
@@ -66,6 +65,10 @@ struct BillListView: View {
     }
     let vm = BillListViewModel(flowDelegate: Flow())
     return NavigationStack {
-        BillListView(viewModel: vm)
+        BillListView(
+            viewModel: vm,
+            presenter: iOSBillListPresenter(),
+            billCellPresenter: iOSBillCellPresenter()
+        )
     }
 }

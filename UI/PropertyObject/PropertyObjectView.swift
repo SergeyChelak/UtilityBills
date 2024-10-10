@@ -38,12 +38,7 @@ struct PropertyObjectView: View {
                             items: viewModel.bills,
                             selectionCallback: viewModel.billSelected(_:),
                             cellProducer: {
-                                let caption = billCellPresenter.title($0)
-                                let value = billCellPresenter.value($0)
-                                return CaptionValueCell(
-                                    caption: caption,
-                                    value: value
-                                )
+                                BillCellView(item: $0, presenter: billCellPresenter)
                             }
                         )
                         .sectionWith(
