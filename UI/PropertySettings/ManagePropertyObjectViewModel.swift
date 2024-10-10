@@ -30,13 +30,15 @@ class ManagePropertyObjectViewModel: ViewModel, ActionControllable {
     }
     
     init(
-        createFlow: CreatePropertyObjectFlowDelegate?
+        createFlow: CreatePropertyObjectFlowDelegate?,
+        name: String = "",
+        details: String = ""
     ) {
         self.actions = [.new]
         self.propertyObjectId = PropertyObjectId()
         self.createFlow = createFlow
-        self.name = "New Object"
-        self.details = ""
+        self.name = name
+        self.details = details
     }
     
     func onAction(_ action: ControlAction) {
