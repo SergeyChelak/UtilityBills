@@ -365,6 +365,9 @@
 				A51082E02CA703B300103E76 /* PropertySettingsViewModel.swift */,
 				A51082FB2CA8708B00103E76 /* BillingMapView.swift */,
 				A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */,
+				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
+				A5E00B7D2C8F6D78002BC8EF /* ManagePropertyObjectView.swift */,
+				A51082F92CA86B2F00103E76 /* ManagePropertyObjectViewModel.swift */,
 			);
 			path = PropertySettings;
 			sourceTree = "<group>";
@@ -533,9 +536,6 @@
 				A5F9443E2C8D130E00A5FD47 /* PropertyObjectView.swift */,
 				A5AF03C82CB7F0D1000E5E58 /* PropertyObjectPresenter.swift */,
 				A51082B12CA0934100103E76 /* PropertyObjectViewModel.swift */,
-				A5F944452C8F629500A5FD47 /* PropertyInfoView.swift */,
-				A5E00B7D2C8F6D78002BC8EF /* ManagePropertyObjectView.swift */,
-				A51082F92CA86B2F00103E76 /* ManagePropertyObjectViewModel.swift */,
 			);
 			path = PropertyObject;
 			sourceTree = "<group>";
