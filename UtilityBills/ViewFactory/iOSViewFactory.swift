@@ -160,7 +160,12 @@ struct iOSViewFactory: ViewFactory {
             propertyObjectId: propObjId,
             flow: flowDelegate
         )
-        let view = ManageTariffView(viewModel: viewModel)
+        let alertPresenter = DeleteTariffAlertPresenter()
+        let presenter = iOSManageTariffPresenter(
+            mode: .add,
+            deleteTariffAlertPresenter: alertPresenter
+        )
+        let view = ManageTariffView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     
@@ -169,7 +174,13 @@ struct iOSViewFactory: ViewFactory {
             tariff: tariff,
             flow: flowDelegate
         )
-        let view = ManageTariffView(viewModel: viewModel)
+        let alertPresenter = DeleteTariffAlertPresenter()
+        let presenter = iOSManageTariffPresenter(
+            mode: .edit,
+            deleteTariffAlertPresenter: alertPresenter
+        )
+        let view = ManageTariffView(viewModel: viewModel, presenter: presenter)
+
         return ViewHolder(view)
     }
     

@@ -70,9 +70,3 @@ struct AddMeterView: View {
     let presenter = iOSAddMeterPresenter()
     return AddMeterView(viewModel: vm, presenter: presenter)
 }
-
-// TODO: delete
-func formatPicker(for capacity: Int) -> String {
-    let val = maxValue(for: capacity).formatted()
-    return String(format: "%d digits, max value: %@", capacity, val)
-}

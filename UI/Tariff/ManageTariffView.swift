@@ -7,9 +7,17 @@
 
 import SwiftUI
 
+protocol ManageTariffPresenter {
+    var screenTitle: String { get }
+    var tariffNameInputFieldTitle: String { get }
+    var priceInputFieldTitle: String { get }
+    var deleteTariffAlertPresenter: ConfirmationAlertPresenter { get }
+}
+
 struct ManageTariffView: View {
     @StateObject
     var viewModel: ManageTariffViewModel
+    let presenter: ManageTariffPresenter
     
     private let adaptiveColumn = [
         GridItem(.adaptive(minimum: 150))
@@ -17,17 +25,17 @@ struct ManageTariffView: View {
         
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
-            Text(viewModel.dialogTitle)
+            Text(presenter.screenTitle)
                 .popoverTitle()
             
             TextField("", text: $viewModel.name)
-                .inputStyle(caption: "Tariff name")
+                .inputStyle(caption: presenter.tariffNameInputFieldTitle)
             
             TextField("", text: $viewModel.price)
                 #if os(iOS)
                 .keyboardType(.decimalPad)
                 #endif
-                .inputStyle(caption: "Price")
+                .inputStyle(caption: presenter.priceInputFieldTitle)
             
             GridChoiceView(minWidth: 150, viewModel: viewModel.choiceViewModel) {
                 Text($0)
@@ -38,12 +46,9 @@ struct ManageTariffView: View {
             ControlButtonsView(viewModel: viewModel)
                 .padding(.bottom, 12)
                 .alert(isPresented: $viewModel.isConfirmationAlertVisible) {
-                    Alert(
-                        title: Text("Warning"),
-                        message: Text("This action isn't undoable. Do you want to proceed?"),
-                        primaryButton: .destructive(Text("Proceed"), action: viewModel.confirm),
-                        secondaryButton: .default(Text("Cancel"))
-                    )
+                    confirmationAlert(
+                        presenter: presenter.deleteTariffAlertPresenter,
+                        action: viewModel.confirm)
                 }
         }
         .padding(.horizontal)
@@ -55,7 +60,12 @@ struct ManageTariffView: View {
         propertyObjectId: PropertyObjectId(),
         flow: nil
     )
-    return ManageTariffView(viewModel: vm)
+    let alertPresenter = DeleteTariffAlertPresenter()
+    let presenter = iOSManageTariffPresenter(
+        mode: .add,
+        deleteTariffAlertPresenter: alertPresenter
+    )
+    return ManageTariffView(viewModel: vm, presenter: presenter)
 }
 
 #Preview("Edit") {
@@ -69,5 +79,11 @@ struct ManageTariffView: View {
         tariff: tariff,
         flow: nil
     )
-    return ManageTariffView(viewModel: vm)
+    let alertPresenter = DeleteTariffAlertPresenter()
+    let presenter = iOSManageTariffPresenter(
+        mode: .edit,
+        deleteTariffAlertPresenter: alertPresenter
+    )
+    return ManageTariffView(viewModel: vm, presenter: presenter)
+
 }
