@@ -109,6 +109,8 @@
 		A5B721582CB81E9200BF18E7 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721572CB81E9200BF18E7 /* UIUtils.swift */; };
 		A5B7215A2CB81F9400BF18E7 /* PropertiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721592CB81F9400BF18E7 /* PropertiesPresenter.swift */; };
 		A5B7215C2CB81FAA00BF18E7 /* HomeCardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7215B2CB81FAA00BF18E7 /* HomeCardPresenter.swift */; };
+		A5B7215E2CB8270800BF18E7 /* MeterValuesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7215D2CB8270800BF18E7 /* MeterValuesListPresenter.swift */; };
+		A5B721602CB8271D00BF18E7 /* iOSMeterValuesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7215F2CB8271D00BF18E7 /* iOSMeterValuesListPresenter.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -249,6 +251,8 @@
 		A5B721572CB81E9200BF18E7 /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 		A5B721592CB81F9400BF18E7 /* PropertiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPresenter.swift; sourceTree = "<group>"; };
 		A5B7215B2CB81FAA00BF18E7 /* HomeCardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardPresenter.swift; sourceTree = "<group>"; };
+		A5B7215D2CB8270800BF18E7 /* MeterValuesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterValuesListPresenter.swift; sourceTree = "<group>"; };
+		A5B7215F2CB8271D00BF18E7 /* iOSMeterValuesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSMeterValuesListPresenter.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 				A51082CA2CA2FB1E00103E76 /* MeterValuesListViewModel.swift */,
 				A51082CC2CA3269D00103E76 /* MeterValueView.swift */,
 				A51082CE2CA3277000103E76 /* MeterValueViewModel.swift */,
+				A5B7215F2CB8271D00BF18E7 /* iOSMeterValuesListPresenter.swift */,
 			);
 			path = Meters;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 				A5AF03DD2CB81C2E000E5E58 /* PropertySettingsPresenter.swift */,
 				A5B721592CB81F9400BF18E7 /* PropertiesPresenter.swift */,
 				A5B7215B2CB81FAA00BF18E7 /* HomeCardPresenter.swift */,
+				A5B7215D2CB8270800BF18E7 /* MeterValuesListPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				A51082B22CA0934100103E76 /* PropertyObjectViewModel.swift in Sources */,
 				A51083042CAB1D5800103E76 /* ViewModel.swift in Sources */,
 				A55C635B2C83808800F66741 /* LocalStorageModel.xcdatamodeld in Sources */,
+				A5B721602CB8271D00BF18E7 /* iOSMeterValuesListPresenter.swift in Sources */,
 				A510835A2CB2B54300103E76 /* BillListViewModel.swift in Sources */,
 				A540DD272C7F718800F5624E /* Tariff.swift in Sources */,
 				A51083522CB18B5500103E76 /* iOSViewFactory.swift in Sources */,
@@ -871,6 +878,7 @@
 				A510832A2CAEC5DC00103E76 /* CalculateFlow.swift in Sources */,
 				A51082E52CA7170A00103E76 /* LocalStorage+BillMapDAO.swift in Sources */,
 				A5F944462C8F629500A5FD47 /* PropertyInfoView.swift in Sources */,
+				A5B7215E2CB8270800BF18E7 /* MeterValuesListPresenter.swift in Sources */,
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */,
 				A540DD292C7F729700F5624E /* BillingMap.swift in Sources */,

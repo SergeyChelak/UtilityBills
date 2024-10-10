@@ -107,7 +107,8 @@ struct iOSViewFactory: ViewFactory {
             meterId: meterId,
             flow: flowDelegate
         )
-        let view = MeterValuesListView(viewModel: viewModel)
+        let presenter = iOSMeterValuesListPresenter()
+        let view = MeterValuesListView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     

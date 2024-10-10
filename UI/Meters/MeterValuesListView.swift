@@ -10,27 +10,28 @@ import SwiftUI
 struct MeterValuesListView: View {
     @StateObject
     var viewModel: MeterValuesListViewModel
+    let presenter: MeterValuesListPresenter
     
     var body: some View {
         VStack {
             if viewModel.isEmpty {
-                Text("No records found for this meter")
+                Text(presenter.emptyListMessage)
             }
             List {
                 ForEach(viewModel.items.indices, id: \.self) { i in
                     let item = viewModel.items[i]
                     CaptionValueCell(
-                        caption: item.date.formatted(),
-                        value: item.value.formatted()
+                        caption: presenter.cellCaption(item),
+                        value: presenter.cellValue(item)
                     )
                     .onTapGesture(perform: { viewModel.select(index: i) })
                 }
             }
         }
-        .navigationTitle("Values")
+        .navigationTitle(presenter.screenTitle)
         .toolbar {
             ToolbarItem {
-                Button("Add") {
+                Button(presenter.addButtonTitle) {
                     viewModel.openNewMeterValue()
                 }
             }
@@ -44,5 +45,9 @@ struct MeterValuesListView: View {
 
 #Preview {
     let vm = meterValuesListViewModelMock(meterId: MeterId())
-    return MeterValuesListView(viewModel: vm)
+    let presenter = iOSMeterValuesListPresenter()
+    return MeterValuesListView(
+        viewModel: vm,
+        presenter: presenter
+    )
 }
