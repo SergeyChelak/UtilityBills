@@ -49,7 +49,8 @@ struct iOSViewFactory: ViewFactory {
         let viewModel = ManagePropertyObjectViewModel(
             createFlow: flowDelegate
         )
-        let view = ManagePropertyObjectView(viewModel: viewModel)
+        let presenter = CreateManagePropertyObjectPresenter()
+        let view = ManagePropertyObjectView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
 
@@ -58,7 +59,11 @@ struct iOSViewFactory: ViewFactory {
             propertyObject: propObjId,
             updateFlow: flowDelegate
         )
-        let view = ManagePropertyObjectView(viewModel: viewModel)
+        let presenter = UpdateManagePropertyObjectPresenter()
+        let view = ManagePropertyObjectView(
+            viewModel: viewModel,
+            presenter: presenter
+        )
         return ViewHolder(view)
     }
     

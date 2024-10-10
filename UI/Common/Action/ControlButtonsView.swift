@@ -9,11 +9,23 @@ import SwiftUI
 
 struct ControlButtonsView: View {
     let viewModel: ActionControllable
+    let presenter: ControlButtonsPresenter
+    
+    init(
+        viewModel: ActionControllable,
+        presenter: ControlButtonsPresenter = DefaultControlButtonsPresenter()
+    ) {
+        self.viewModel = viewModel
+        self.presenter = presenter
+    }
     
     var body: some View {
         VStack(spacing: 24) {
             ForEach(viewModel.actions, id: \.hashValue) { action in
-                CTAButton(caption: action.name, actionKind: action.kind) {
+                CTAButton(
+                    caption: presenter.actionName(action),
+                    actionKind: action.kind
+                ) {
                     viewModel.onAction(action)
                 }
             }

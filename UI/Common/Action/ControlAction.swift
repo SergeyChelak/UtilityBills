@@ -12,18 +12,6 @@ enum ControlAction: Hashable {
     case update
     case delete
     
-    // TODO: move to presentation layer
-    var name: String {
-        switch self {
-        case .new:
-            "Add"
-        case .update:
-            "Update"
-        case .delete:
-            "Delete"
-        }
-    }
-    
     var kind: ActionKind {
         switch self {
         case .new:

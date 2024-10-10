@@ -10,22 +10,26 @@ import SwiftUI
 struct ManagePropertyObjectView: View {
     @StateObject
     var viewModel: ManagePropertyObjectViewModel
+    let presenter: ManagePropertyObjectPresenter
     
     var body: some View {
         VStack(spacing: 24) {
-            Text("Object Properties")
+            Text(presenter.header)
                 .popoverTitle()
                 
             Spacer()
             TextField("", text: $viewModel.name)
-                .inputStyle(caption: "Title")
+                .inputStyle(caption: presenter.objectNameInputFieldTitle)
                         
             TextField("", text: $viewModel.details)
-                .inputStyle(caption: "Details")
+                .inputStyle(caption: presenter.objectDetailsInputFieldTitle)
             
             Spacer()
-            ControlButtonsView(viewModel: viewModel)
-                .padding(.bottom, 12)
+            ControlButtonsView(
+                viewModel: viewModel,
+                presenter: presenter
+            )
+            .padding(.bottom, 12)
         }
         .padding(.horizontal)
         .errorAlert(for: $viewModel.error)
@@ -38,5 +42,8 @@ struct ManagePropertyObjectView: View {
         propertyObject: obj,
         updateFlow: nil
     )
-    return ManagePropertyObjectView(viewModel: vm)
+    return ManagePropertyObjectView(
+        viewModel: vm,
+        presenter: CreateManagePropertyObjectPresenter()
+    )
 }

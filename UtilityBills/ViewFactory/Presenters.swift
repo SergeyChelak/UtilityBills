@@ -49,3 +49,13 @@ protocol IssueCellPresenter {
     func meterIssueMessage(_ data: FullMeterData) -> String
     func meterIssueColor(_ data: FullMeterData) -> Color
 }
+
+protocol ManagePropertyObjectPresenter: ControlButtonsPresenter {
+    var header: String { get }
+    var objectNameInputFieldTitle: String { get }
+    var objectDetailsInputFieldTitle: String { get }
+}
+
+protocol ControlButtonsPresenter {
+    func actionName(_ action: ControlAction) -> String
+}
