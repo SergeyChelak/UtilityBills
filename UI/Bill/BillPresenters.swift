@@ -8,6 +8,8 @@
 import Foundation
 
 struct iOSBillListPresenter: BillListPresenter {
+    let billCellPresenter: BillCellPresenter
+    
     var emptyBillListMessage: String {
         "You have no bills yet"
     }

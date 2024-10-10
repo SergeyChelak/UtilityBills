@@ -70,10 +70,11 @@ struct iOSViewFactory: ViewFactory {
     
     func billsListView(_ propObjId: PropertyObjectId, flowDelegate: BillListFlowDelegate) -> ViewHolder {
         let viewModel = BillListViewModel(flowDelegate: flowDelegate)
+        let billCellPresenter = iOSBillCellPresenter()
+        let presenter = iOSBillListPresenter(billCellPresenter: billCellPresenter)
         let view = BillListView(
             viewModel: viewModel,
-            presenter: iOSBillListPresenter(),
-            billCellPresenter: iOSBillCellPresenter()
+            presenter: presenter
         )
         return ViewHolder(view)
     }

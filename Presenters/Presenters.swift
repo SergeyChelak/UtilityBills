@@ -48,6 +48,7 @@ protocol ControlButtonsPresenter {
 }
 
 protocol BillListPresenter {
+    var billCellPresenter: BillCellPresenter { get }
     var emptyBillListMessage: String { get }
     var screenTitle: String { get }
 }

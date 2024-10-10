@@ -11,7 +11,6 @@ struct BillListView: View {
     @StateObject
     var viewModel: BillListViewModel
     let presenter: BillListPresenter
-    let billCellPresenter: BillCellPresenter
     
     var body: some View {
         VStack {
@@ -21,7 +20,7 @@ struct BillListView: View {
             List {
                 ForEach(viewModel.items.indices, id: \.self) { i in
                     let item = viewModel.items[i]
-                    BillCellView(item: item, presenter: billCellPresenter)
+                    BillCellView(item: item, presenter: presenter.billCellPresenter)
                         .onTapGesture {
                             viewModel.select(index: i)
                         }
@@ -64,11 +63,12 @@ struct BillListView: View {
         }
     }
     let vm = BillListViewModel(flowDelegate: Flow())
+    let billCellPresenter = iOSBillCellPresenter()
+    let presenter = iOSBillListPresenter(billCellPresenter: billCellPresenter)
     return NavigationStack {
         BillListView(
             viewModel: vm,
-            presenter: iOSBillListPresenter(),
-            billCellPresenter: iOSBillCellPresenter()
+            presenter: presenter
         )
     }
 }
