@@ -96,12 +96,12 @@
 		A5AF03C52CB7E630000E5E58 /* PropertiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */; };
 		A5AF03C72CB7ED64000E5E58 /* Presenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C62CB7ED64000E5E58 /* Presenters.swift */; };
 		A5AF03C92CB7F0D1000E5E58 /* PropertyObjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C82CB7F0D1000E5E58 /* PropertyObjectPresenter.swift */; };
-		A5AF03CB2CB7F8D6000E5E58 /* IssuesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CA2CB7F8D6000E5E58 /* IssuesPresenter.swift */; };
+		A5AF03CB2CB7F8D6000E5E58 /* IssuePresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CA2CB7F8D6000E5E58 /* IssuePresenters.swift */; };
 		A5AF03CD2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CC2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift */; };
 		A5AF03CF2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03CE2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift */; };
 		A5AF03D12CB80DE4000E5E58 /* DefaultAlertErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D02CB80DE4000E5E58 /* DefaultAlertErrorPresenter.swift */; };
 		A5AF03D32CB81062000E5E58 /* BillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D22CB81062000E5E58 /* BillCellView.swift */; };
-		A5AF03D52CB81205000E5E58 /* BillListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D42CB81205000E5E58 /* BillListPresenter.swift */; };
+		A5AF03D52CB81205000E5E58 /* BillPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D42CB81205000E5E58 /* BillPresenters.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -229,12 +229,12 @@
 		A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPresenter.swift; sourceTree = "<group>"; };
 		A5AF03C62CB7ED64000E5E58 /* Presenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenters.swift; sourceTree = "<group>"; };
 		A5AF03C82CB7F0D1000E5E58 /* PropertyObjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyObjectPresenter.swift; sourceTree = "<group>"; };
-		A5AF03CA2CB7F8D6000E5E58 /* IssuesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesPresenter.swift; sourceTree = "<group>"; };
+		A5AF03CA2CB7F8D6000E5E58 /* IssuePresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuePresenters.swift; sourceTree = "<group>"; };
 		A5AF03CC2CB80339000E5E58 /* DefaultControlButtonsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultControlButtonsPresenter.swift; sourceTree = "<group>"; };
 		A5AF03CE2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePropertyObjectPresenter.swift; sourceTree = "<group>"; };
 		A5AF03D02CB80DE4000E5E58 /* DefaultAlertErrorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlertErrorPresenter.swift; sourceTree = "<group>"; };
 		A5AF03D22CB81062000E5E58 /* BillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCellView.swift; sourceTree = "<group>"; };
-		A5AF03D42CB81205000E5E58 /* BillListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListPresenter.swift; sourceTree = "<group>"; };
+		A5AF03D42CB81205000E5E58 /* BillPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPresenters.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -419,7 +419,7 @@
 				A510835B2CB2C06100103E76 /* BillDetailsView.swift */,
 				A510835D2CB2C07300103E76 /* BillDetailsViewModel.swift */,
 				A5AF03D22CB81062000E5E58 /* BillCellView.swift */,
-				A5AF03D42CB81205000E5E58 /* BillListPresenter.swift */,
+				A5AF03D42CB81205000E5E58 /* BillPresenters.swift */,
 			);
 			path = Bill;
 			sourceTree = "<group>";
@@ -484,7 +484,7 @@
 				A51FF46C2CB577B500C71C12 /* IssuesListView.swift */,
 				A51FF46E2CB577C000C71C12 /* IssuesListViewModel.swift */,
 				A51FF4742CB5AB3100C71C12 /* IssueView.swift */,
-				A5AF03CA2CB7F8D6000E5E58 /* IssuesPresenter.swift */,
+				A5AF03CA2CB7F8D6000E5E58 /* IssuePresenters.swift */,
 			);
 			path = Issues;
 			sourceTree = "<group>";
@@ -840,7 +840,7 @@
 				A540DD212C7F6FE800F5624E /* PropertyObject.swift in Sources */,
 				A51083222CADA48200103E76 /* MeterValuesListViewModelMock.swift in Sources */,
 				A540DD292C7F729700F5624E /* BillingMap.swift in Sources */,
-				A5AF03D52CB81205000E5E58 /* BillListPresenter.swift in Sources */,
+				A5AF03D52CB81205000E5E58 /* BillPresenters.swift in Sources */,
 				A51082F42CA8594A00103E76 /* ChoiceViewModel.swift in Sources */,
 				A51083262CAEAE3600103E76 /* GenerateBillViewModel.swift in Sources */,
 				A50302772C9CD71600033AE3 /* LocalStorage+MetersDAO.swift in Sources */,
@@ -850,7 +850,7 @@
 				A51FF46B2CB56E6400C71C12 /* Issue.swift in Sources */,
 				A51082BD2CA2D4FD00103E76 /* PropertiesViewModel.swift in Sources */,
 				A5E00B7E2C8F6D78002BC8EF /* ManagePropertyObjectView.swift in Sources */,
-				A5AF03CB2CB7F8D6000E5E58 /* IssuesPresenter.swift in Sources */,
+				A5AF03CB2CB7F8D6000E5E58 /* IssuePresenters.swift in Sources */,
 				A51082C72CA2E7C200103E76 /* AddMeterViewModel.swift in Sources */,
 				A50302752C9CD65300033AE3 /* PropertyObjectDAO.swift in Sources */,
 				A51FF4672CB5590900C71C12 /* BadgeViewModifier.swift in Sources */,

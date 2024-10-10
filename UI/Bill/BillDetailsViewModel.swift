@@ -22,11 +22,11 @@ class BillDetailsViewModel: CommonListViewModel<BillRecord> {
         )
     }
     
-    var date: String {
-        bill.date.formatted()
+    var date: Date {
+        bill.date
     }
     
-    var totalPrice: String {
-        bill.total.formatted()
+    var totalPrice: Decimal {
+        bill.total
     }
 }

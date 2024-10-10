@@ -70,3 +70,10 @@ protocol BillListPresenter {
     var emptyBillListMessage: String { get }
     var screenTitle: String { get }
 }
+
+protocol BillDetailsPresenter {
+    var header: String { get }
+    var emptyBillMessage: String { get }
+    func totalPrice(_ price: Decimal) -> String
+    func billDate(_ date: Date) -> String
+}

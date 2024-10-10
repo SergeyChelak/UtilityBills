@@ -79,7 +79,10 @@ struct iOSViewFactory: ViewFactory {
     
     func billDetailsView(_ bill: Bill) -> ViewHolder {
         let viewModel = BillDetailsViewModel(bill)
-        let view = BillDetailsView(viewModel: viewModel)
+        let view = BillDetailsView(
+            viewModel: viewModel,
+            presenter: iOSBillDetailsPresenter()
+        )
         return ViewHolder(view)
     }
     

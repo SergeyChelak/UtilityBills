@@ -10,23 +10,24 @@ import SwiftUI
 struct BillDetailsView: View {
     @StateObject
     var viewModel: BillDetailsViewModel
+    let presenter: BillDetailsPresenter
     
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
-            Text("Bill Details")
+            Text(presenter.header)
                 .popoverTitle()
 
             HStack {
-                Text("Total price: \(viewModel.totalPrice)")
+                Text(presenter.totalPrice(viewModel.totalPrice))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 
-                Text(viewModel.date)
+                Text(presenter.billDate(viewModel.date))
                     .padding(.horizontal)
             }
             
             if viewModel.isEmpty {
-                Text("No records found")
+                Text(presenter.emptyBillMessage)
             }
             List {
                 ForEach(viewModel.items.indices, id: \.self) { i in
@@ -61,5 +62,8 @@ struct BillDetailsView: View {
         records: records
     )
     let vm = BillDetailsViewModel(bill)
-    return BillDetailsView(viewModel: vm)
+    return BillDetailsView(
+        viewModel: vm,
+        presenter: iOSBillDetailsPresenter()
+    )
 }
