@@ -19,7 +19,6 @@ class MeterValueViewModel: ViewModel, ActionControllable {
     var isPaid = false
     
     let actions: [ControlAction]
-    let screenTitle: String
     
     init(
         meterId: MeterId,
@@ -33,7 +32,6 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         self.value = value.formatted()
         self.flow = flow
         self.actions = [.new]
-        self.screenTitle = "Add new meter value"
     }
     
     init(
@@ -48,7 +46,6 @@ class MeterValueViewModel: ViewModel, ActionControllable {
         self.isPaid = meterValue.isPaid
         self.flow = flow
         self.actions = [.update, .delete]
-        self.screenTitle = "Edit meter value"
     }
     
     func onAction(_ action: ControlAction) {

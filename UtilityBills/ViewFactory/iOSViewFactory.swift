@@ -119,7 +119,8 @@ struct iOSViewFactory: ViewFactory {
             value: 0,
             flow: flowDelegate
         )
-        let view = MeterValueView(viewModel: viewModel)
+        let presenter = AddMeterValuePresenter()
+        let view = MeterValueView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     
@@ -128,7 +129,8 @@ struct iOSViewFactory: ViewFactory {
             meterValue: meterValue,
             flow: flowDelegate
         )
-        let view = MeterValueView(viewModel: viewModel)
+        let presenter = EditMeterValuePresenter()
+        let view = MeterValueView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     

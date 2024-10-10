@@ -10,15 +10,16 @@ import SwiftUI
 struct MeterValueView: View {
     @ObservedObject
     var viewModel: MeterValueViewModel
+    let presenter: MeterValuePresenter
     
     var body: some View {
         VStack(alignment: .center) {
-            Text(viewModel.screenTitle)
+            Text(presenter.screenTitle)
                 .popoverTitle()
             
             Spacer()
             DatePicker(
-                "Date",
+                presenter.datePickerTitle,
                 selection: $viewModel.date,
                 displayedComponents: [.date]
             )
@@ -26,10 +27,10 @@ struct MeterValueView: View {
                 #if os(iOS)
                 .keyboardType(.decimalPad)
                 #endif
-                .inputStyle(caption: "Value")
+                .inputStyle(caption: presenter.valueInputTitle)
             
             Toggle(isOn: $viewModel.isPaid, label: {
-                Text("Value already included in bill")
+                Text(presenter.paidToggleTitle)
             })
                         
             Spacer()
@@ -48,7 +49,8 @@ struct MeterValueView: View {
         value: 123,
         flow: nil
     )
-    return MeterValueView(viewModel: vm)
+    let presenter = AddMeterValuePresenter()
+    return MeterValueView(viewModel: vm, presenter: presenter)
 }
 
 #Preview("Edit") {
@@ -62,5 +64,6 @@ struct MeterValueView: View {
         meterValue: value,
         flow: nil
     )
-    return MeterValueView(viewModel: vm)
+    let presenter = EditMeterValuePresenter()
+    return MeterValueView(viewModel: vm, presenter: presenter)
 }
