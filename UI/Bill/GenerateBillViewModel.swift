@@ -59,10 +59,9 @@ class GenerateBillViewModel: ViewModel {
         flow?.openBillRecord(records[index])
     }
     
-    var totalPrice: String {
+    var totalPrice: Decimal {
         records
             .map { $0.price }
             .reduce(0) { $0 + $1 }
-            .formatted()
     }
 }

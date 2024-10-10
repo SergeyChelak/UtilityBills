@@ -210,7 +210,8 @@ struct iOSViewFactory: ViewFactory {
             propertyObjectId: propObjId,
             flow: flowDelegate
         )
-        let view = GenerateBillView(viewModel: viewModel)
+        let presenter = iOSGenerateBillPresenter()
+        let view = GenerateBillView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     

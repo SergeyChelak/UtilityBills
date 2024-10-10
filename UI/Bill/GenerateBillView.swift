@@ -10,10 +10,11 @@ import SwiftUI
 struct GenerateBillView: View {
     @StateObject
     var viewModel: GenerateBillViewModel
+    let presenter: GenerateBillPresenter
     
     var body: some View {
         VStack {
-            Text("Total price: \(viewModel.totalPrice)")
+            Text(presenter.totalPrice(viewModel.totalPrice))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
             List {
@@ -30,13 +31,13 @@ struct GenerateBillView: View {
             }
             Spacer()
             CTAButton(
-                caption: "Accept",
+                caption: presenter.saveButtonTitle,
                 callback: viewModel.onTapAccept
             )
             .padding(.horizontal)
         }
         .errorAlert(for: $viewModel.error)
-        .navigationTitle("New Bill")
+        .navigationTitle(presenter.screenTitle)
         .task {
             viewModel.load()
         }
@@ -48,5 +49,6 @@ struct GenerateBillView: View {
         propertyObjectId: PropertyObjectId(),
         flow: nil
     )
-    return GenerateBillView(viewModel: vm)
+    let presenter = iOSGenerateBillPresenter()
+    return GenerateBillView(viewModel: vm, presenter: presenter)
 }
