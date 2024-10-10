@@ -59,3 +59,9 @@ protocol ManagePropertyObjectPresenter: ControlButtonsPresenter {
 protocol ControlButtonsPresenter {
     func actionName(_ action: ControlAction) -> String
 }
+
+protocol AlertErrorPresenter {
+    func errorAlertTitle(_ error: Error?) -> String
+    func errorAlertMessage(_ error: Error?) -> String
+    var dismissButtonTitle: String { get }
+}

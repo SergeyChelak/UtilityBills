@@ -7,12 +7,15 @@
 
 import SwiftUI
 
+
 struct AlertErrorViewModifier: ViewModifier {
     @Binding
     var error: Error?
+    let presenter: AlertErrorPresenter
     
-    init(error: Binding<Error?>) {
+    init(error: Binding<Error?>, presenter: AlertErrorPresenter) {
         self._error = error
+        self.presenter = presenter
     }
     
     private var isErrorAlertVisible: Binding<Bool> {
@@ -22,23 +25,22 @@ struct AlertErrorViewModifier: ViewModifier {
         )
     }
     
-    private var message: String {
-        error?.localizedDescription ??  "Something went wrong"
-    }
-    
     func body(content: Content) -> some View {
         content
             .alert(isPresented: isErrorAlertVisible) {
                 Alert(
-                    title: Text("Error"),
-                    message: Text(message),
-                    dismissButton: .default(Text("Dismiss")))
+                    title: Text(presenter.errorAlertTitle(error)),
+                    message: Text(presenter.errorAlertMessage(error)),
+                    dismissButton: .default(Text(presenter.dismissButtonTitle)))
             }
     }
 }
 
 extension View {
-    func errorAlert(for error: Binding<Error?>) -> some View {
-        modifier(AlertErrorViewModifier(error: error))
+    func errorAlert(
+        for error: Binding<Error?>,
+        presenter: AlertErrorPresenter = DefaultAlertErrorPresenter()
+    ) -> some View {
+        modifier(AlertErrorViewModifier(error: error, presenter: presenter))
     }
 }
