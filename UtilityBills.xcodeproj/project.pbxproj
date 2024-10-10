@@ -124,6 +124,8 @@
 		A5B721762CB83A4E00BF18E7 /* ManagePropertyObjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721752CB83A4E00BF18E7 /* ManagePropertyObjectPresenter.swift */; };
 		A5B721782CB83A6200BF18E7 /* BillListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721772CB83A6200BF18E7 /* BillListPresenter.swift */; };
 		A5B7217A2CB83A7400BF18E7 /* BillDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721792CB83A7400BF18E7 /* BillDetailsPresenter.swift */; };
+		A5B7217C2CB83C2800BF18E7 /* BillingMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7217B2CB83C2800BF18E7 /* BillingMapPresenter.swift */; };
+		A5B7217E2CB83C3D00BF18E7 /* iOSBillingMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7217D2CB83C3D00BF18E7 /* iOSBillingMapPresenter.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -279,6 +281,8 @@
 		A5B721752CB83A4E00BF18E7 /* ManagePropertyObjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePropertyObjectPresenter.swift; sourceTree = "<group>"; };
 		A5B721772CB83A6200BF18E7 /* BillListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListPresenter.swift; sourceTree = "<group>"; };
 		A5B721792CB83A7400BF18E7 /* BillDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetailsPresenter.swift; sourceTree = "<group>"; };
+		A5B7217B2CB83C2800BF18E7 /* BillingMapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingMapPresenter.swift; sourceTree = "<group>"; };
+		A5B7217D2CB83C3D00BF18E7 /* iOSBillingMapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBillingMapPresenter.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -431,6 +435,7 @@
 				A5E00B7D2C8F6D78002BC8EF /* ManagePropertyObjectView.swift */,
 				A5AF03CE2CB8046E000E5E58 /* ManagePropertyObjectPresenters.swift */,
 				A51082F92CA86B2F00103E76 /* ManagePropertyObjectViewModel.swift */,
+				A5B7217D2CB83C3D00BF18E7 /* iOSBillingMapPresenter.swift */,
 			);
 			path = PropertySettings;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 				A5B721752CB83A4E00BF18E7 /* ManagePropertyObjectPresenter.swift */,
 				A5B721772CB83A6200BF18E7 /* BillListPresenter.swift */,
 				A5B721792CB83A7400BF18E7 /* BillDetailsPresenter.swift */,
+				A5B7217B2CB83C2800BF18E7 /* BillingMapPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -852,6 +858,7 @@
 				A510830F2CAC693C00103E76 /* BillDAO.swift in Sources */,
 				A51082EF2CA74B7000103E76 /* EditMeterViewModel.swift in Sources */,
 				A55C633A2C7FB67B00F66741 /* HomeCardView.swift in Sources */,
+				A5B7217C2CB83C2800BF18E7 /* BillingMapPresenter.swift in Sources */,
 				A5B7216A2CB8372000BF18E7 /* iOSManageTariffPresenter.swift in Sources */,
 				A5F9443F2C8D130E00A5FD47 /* PropertyObjectView.swift in Sources */,
 				A51083112CAC695900103E76 /* LocalStorage+BillDAO.swift in Sources */,
@@ -904,6 +911,7 @@
 				A51083002CA8715A00103E76 /* PopoverTitleViewModifier.swift in Sources */,
 				A51082E72CA7172F00103E76 /* BillMapDAO.swift in Sources */,
 				A503027F2C9CD8B300033AE3 /* NSPredicate+CoreData.swift in Sources */,
+				A5B7217E2CB83C3D00BF18E7 /* iOSBillingMapPresenter.swift in Sources */,
 				A51082ED2CA74B6000103E76 /* EditMeterView.swift in Sources */,
 				A503027B2C9CD7D900033AE3 /* TariffDAO.swift in Sources */,
 				A51082D52CA4698C00103E76 /* ManageTariffView.swift in Sources */,

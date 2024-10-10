@@ -36,13 +36,16 @@ struct ManageTariffView: View {
             }            
             Spacer()
                 .errorAlert(for: $viewModel.error)
-            ControlButtonsView(viewModel: viewModel)
-                .padding(.bottom, 12)
-                .alert(isPresented: $viewModel.isConfirmationAlertVisible) {
-                    confirmationAlert(
-                        presenter: presenter.deleteTariffAlertPresenter,
-                        action: viewModel.confirm)
-                }
+            ControlButtonsView(
+                viewModel: viewModel,
+                presenter: presenter
+            )
+            .padding(.bottom, 12)
+            .alert(isPresented: $viewModel.isConfirmationAlertVisible) {
+                confirmationAlert(
+                    presenter: presenter.deleteTariffAlertPresenter,
+                    action: viewModel.confirm)
+            }
         }
         .padding(.horizontal)
     }

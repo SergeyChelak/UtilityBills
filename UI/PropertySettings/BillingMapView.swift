@@ -10,22 +10,23 @@ import SwiftUI
 struct BillingMapView: View {
     @StateObject
     var viewModel: BillingMapViewModel
+    let presenter: BillingMapPresenter
     
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 24) {
-                    Text("Billing Map")
+                    Text(presenter.screenTitle)
                         .popoverTitle()
                     
                     TextField("", text: $viewModel.name)
-                        .inputStyle(caption: "Billing item name")
+                        .inputStyle(caption: presenter.itemNameInputFieldTitle)
                     Divider()
                     if viewModel.tariffModel.isEmpty {
-                        Text("You should create at least one tariff")
+                        Text(presenter.emptyTariffListMessage)
                     } else {
                         VStack(spacing: 4) {
-                            Text("Pick tariff")
+                            Text(presenter.tariffPickerTitle)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
                             GridChoiceView(viewModel: viewModel.tariffModel) {
@@ -37,7 +38,7 @@ struct BillingMapView: View {
                     Divider()
                     if !viewModel.meterModel.isEmpty {
                         VStack(spacing: 4) {
-                            Text("Pick meter(s) if needed")
+                            Text(presenter.meterPickerTitle)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .lineLimit(1)
                             GridChoiceView(viewModel: viewModel.meterModel) {
@@ -49,8 +50,11 @@ struct BillingMapView: View {
                 }
             }
             Spacer()
-            ControlButtonsView(viewModel: viewModel)
-                .padding(.bottom, 12)
+            ControlButtonsView(
+                viewModel: viewModel,
+                presenter: presenter
+            )
+            .padding(.bottom, 12)
         }
         .padding(.horizontal)
         .errorAlert(for: $viewModel.error)
@@ -85,5 +89,6 @@ struct BillingMapView: View {
         billingMapData: data,
         flow: nil
     )
-    return BillingMapView(viewModel: vm)
+    let presenter = iOSBillingMapPresenter()
+    return BillingMapView(viewModel: vm, presenter: presenter)
 }

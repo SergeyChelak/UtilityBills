@@ -189,7 +189,8 @@ struct iOSViewFactory: ViewFactory {
             billingMapData: billingMapData,
             flow: flowDelegate
         )
-        let view = BillingMapView(viewModel: viewModel)
+        let presenter = iOSBillingMapPresenter()
+        let view = BillingMapView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     
@@ -199,7 +200,8 @@ struct iOSViewFactory: ViewFactory {
             billingMapData: billingMapData,
             flow: flowDelegate
         )
-        let view = BillingMapView(viewModel: viewModel)
+        let presenter = iOSBillingMapPresenter()
+        let view = BillingMapView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     

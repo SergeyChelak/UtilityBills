@@ -34,8 +34,11 @@ struct MeterValueView: View {
             })
                         
             Spacer()
-            ControlButtonsView(viewModel: viewModel)
-                .padding(.bottom, 12)
+            ControlButtonsView(
+                viewModel: viewModel,
+                presenter: presenter
+            )
+            .padding(.bottom, 12)
         }
         .padding(.horizontal)
         .errorAlert(for: $viewModel.error)

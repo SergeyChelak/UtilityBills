@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ManageTariffPresenter {
+protocol ManageTariffPresenter: ControlButtonsPresenter {
     var screenTitle: String { get }
     var tariffNameInputFieldTitle: String { get }
     var priceInputFieldTitle: String { get }
