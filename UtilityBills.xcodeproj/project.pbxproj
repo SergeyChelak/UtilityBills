@@ -93,6 +93,8 @@
 		A55C635D2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */; };
 		A55C635F2C838AD600F66741 /* LocalStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C635E2C838AD600F66741 /* LocalStorageTest.swift */; };
 		A5AF03C32CB6CD0E000E5E58 /* MockUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C22CB6CD0E000E5E58 /* MockUtils.swift */; };
+		A5AF03C52CB7E630000E5E58 /* PropertiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */; };
+		A5AF03C72CB7ED64000E5E58 /* Presenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03C62CB7ED64000E5E58 /* Presenters.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
 		A5D809312C7156A300F2E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809302C7156A300F2E6AF /* Assets.xcassets */; };
 		A5D809342C7156A300F2E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5D809332C7156A300F2E6AF /* Preview Assets.xcassets */; };
@@ -217,6 +219,8 @@
 		A55C635C2C8384AC00F66741 /* LocalStorage+PropertyObjectDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+PropertyObjectDAO.swift"; sourceTree = "<group>"; };
 		A55C635E2C838AD600F66741 /* LocalStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTest.swift; sourceTree = "<group>"; };
 		A5AF03C22CB6CD0E000E5E58 /* MockUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUtils.swift; sourceTree = "<group>"; };
+		A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesPresenter.swift; sourceTree = "<group>"; };
+		A5AF03C62CB7ED64000E5E58 /* Presenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenters.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityBillsApp.swift; sourceTree = "<group>"; };
 		A5D809302C7156A300F2E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 				A51082BA2CA2D4F300103E76 /* PropertiesView.swift */,
 				A51082BC2CA2D4FD00103E76 /* PropertiesViewModel.swift */,
 				A55C63392C7FB67B00F66741 /* HomeCardView.swift */,
+				A5AF03C42CB7E630000E5E58 /* PropertiesPresenter.swift */,
 			);
 			path = PropertyList;
 			sourceTree = "<group>";
@@ -437,6 +442,7 @@
 				A51083182CAD928B00103E76 /* FlowDelegates.swift */,
 				A51083482CB14FBA00103E76 /* ViewFactory.swift */,
 				A51083512CB18B5500103E76 /* iOSViewFactory.swift */,
+				A5AF03C62CB7ED64000E5E58 /* Presenters.swift */,
 			);
 			path = ViewFactory;
 			sourceTree = "<group>";
@@ -756,6 +762,7 @@
 				A51083492CB14FBA00103E76 /* ViewFactory.swift in Sources */,
 				A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */,
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
+				A5AF03C72CB7ED64000E5E58 /* Presenters.swift in Sources */,
 				A51083242CADCAE100103E76 /* PropertySettingsViewModelMock.swift in Sources */,
 				A5E00B802C8F9347002BC8EF /* InputStyleViewModifier.swift in Sources */,
 				A51083442CB14DE400103E76 /* StackNavigation.swift in Sources */,
@@ -831,6 +838,7 @@
 				A51083542CB19A6A00103E76 /* DirtyBillStorage.swift in Sources */,
 				A510835E2CB2C07300103E76 /* BillDetailsViewModel.swift in Sources */,
 				A51082F82CA863A500103E76 /* ChoiceCellViewModifier.swift in Sources */,
+				A5AF03C52CB7E630000E5E58 /* PropertiesPresenter.swift in Sources */,
 				A5E00B822C8F9726002BC8EF /* CTAButton.swift in Sources */,
 				A510833D2CB140B900103E76 /* ViewHolder.swift in Sources */,
 				A51FF4752CB5AB3100C71C12 /* IssueView.swift in Sources */,

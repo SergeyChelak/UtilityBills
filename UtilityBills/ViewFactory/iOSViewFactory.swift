@@ -12,7 +12,13 @@ struct iOSViewFactory: ViewFactory {
         let viewModel = PropertiesViewModel(
             flow: delegateFlow
         )
-        let view = PropertiesView(viewModel: viewModel)
+        let presenter = DefaultPropertiesPresenter()
+        let cardPresenter = DefaultHomeCardPresenter()
+        let view = PropertiesView(
+            viewModel: viewModel,
+            presenter: presenter,
+            cardPresenter: cardPresenter
+        )
         return ViewHolder(view)
     }
     

@@ -9,51 +9,23 @@ import SwiftUI
 
 struct HomeCardView: View {
     let card: HomeCard
-    
-    var title: String {
-        switch card {
-        case .propertyObject(let propertyObject):
-            propertyObject.name
-        case .addNewObjectAction:
-            "New"
-        }
-    }
-    
-    var subtitle: String {
-        switch card {
-        case .propertyObject(let propertyObject):
-            propertyObject.details
-        case .addNewObjectAction:
-            "Tap to add new property object"
-        }
-    }
-    
-    var imageDescriptor: ImageDescriptor {
-        switch card {
-        case .propertyObject:
-            ImageDescriptor(type: .system, name: "house.fill")
-        case .addNewObjectAction:
-            ImageDescriptor(type: .system, name: "plus.circle")
-        }
-    }
-    
+    let presenter: HomeCardPresenter
+        
     var body: some View {
         VStack {
-            UBImage(descriptor: imageDescriptor)
+            UBImage(holder: presenter.cardImage(card))
                 .padding(.bottom, 10)
-            Text(title)
+            Text(presenter.cardTitle(card))
                 .font(.headline)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(.primary)
             
-            if !subtitle.isEmpty {
-                Text(subtitle)
-                    .font(.subheadline)
-                    .lineLimit(2)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.secondary)
-            }
+            Text(presenter.cardSubtitle(card))
+                .font(.subheadline)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
@@ -67,6 +39,9 @@ struct HomeCardView: View {
 #Preview {
     let item = _propertyObject()
     let card = HomeCard.propertyObject(item)
-    return HomeCardView(card: card)
-        .frame(width: 150, height: 150)
+    return HomeCardView(
+        card: card,
+        presenter: DefaultHomeCardPresenter()
+    )
+    .frame(width: 150, height: 150)
 }

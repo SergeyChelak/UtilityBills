@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageDescriptor {
+struct ImageHolder {
     enum ImageType {
         case system, bundle
     }
@@ -15,23 +15,23 @@ struct ImageDescriptor {
     let name: String
     
     static func system(_ name: String) -> Self {
-        ImageDescriptor(type: .system, name: name)
+        ImageHolder(type: .system, name: name)
     }
     
     static func bundle(_ name: String) -> Self {
-        ImageDescriptor(type: .bundle, name: name)
+        ImageHolder(type: .bundle, name: name)
     }
 }
 
 struct UBImage: View {
-    let descriptor: ImageDescriptor
+    let holder: ImageHolder
     
     var body: some View {
-        switch descriptor.type {
+        switch holder.type {
         case .system:
-            Image(systemName: descriptor.name)
+            Image(systemName: holder.name)
         case .bundle:
-            Image(descriptor.name)
+            Image(holder.name)
         }
     }
 }
