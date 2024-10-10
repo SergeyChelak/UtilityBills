@@ -10,24 +10,25 @@ import SwiftUI
 struct EditMeterView: View {
     @StateObject
     var viewModel: EditMeterViewModel
+    let presenter: EditMeterPresenter
     @State
     var isConfirmDeleteAlertVisible = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
-            Text("Edit meter")
+            Text(presenter.screenTitle)
                 .popoverTitle()
             
             TextField("", text: $viewModel.name)
-                .inputStyle(caption: "Meter name")
+                .inputStyle(caption: presenter.meterNameInputFieldTitle)
             
             VStack {
                 Toggle(isOn: $viewModel.isInspectionDateApplicable, label: {
-                    Text("Inspection date is applicable")
+                    Text(presenter.toggleInspectionApplicableTitle)
                 })
                 if viewModel.isInspectionDateApplicable {
                     DatePicker(
-                        "Inspection Date",
+                        presenter.inspectionDatePickerTitle,
                         selection: $viewModel.inspectionDate,
                         displayedComponents: [.date]
                     )
@@ -35,22 +36,20 @@ struct EditMeterView: View {
             }
             
             Spacer()
-            CTAButton(caption: "Update", callback: viewModel.save)
+            CTAButton(caption: presenter.updateMeterButtonTitle, callback: viewModel.save)
                 .padding(.bottom, 10)
                 .errorAlert(for: $viewModel.error)
             
             CTAButton(
-                caption: "Delete Meter",
+                caption: presenter.deleteMeterButtonTitle,
                 actionKind: .destructive,
                 callback: { isConfirmDeleteAlertVisible.toggle() }
             )
             .padding(.bottom, 12)
             .alert(isPresented: $isConfirmDeleteAlertVisible) {
-                Alert(
-                    title: Text("Warning"),
-                    message: Text("Do you want to delete this meter (\(viewModel.name))?"),
-                    primaryButton: .destructive(Text("Delete"), action: viewModel.delete),
-                    secondaryButton: .default(Text("Cancel"))
+                confirmationAlert(
+                    presenter: presenter.deleteMeterAlertPresenter,
+                    action: viewModel.delete
                 )
             }
         }
@@ -64,5 +63,7 @@ struct EditMeterView: View {
         meter: meter,
         flow: nil
     )
-    return EditMeterView(viewModel: vm)
+    let alertPresenter = DeleteMeterAlertPresenter()
+    let presenter = iOSEditMeterPresenter(deleteMeterAlertPresenter: alertPresenter)
+    return EditMeterView(viewModel: vm, presenter: presenter)
 }

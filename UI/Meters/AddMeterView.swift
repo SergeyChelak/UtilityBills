@@ -10,34 +10,35 @@ import SwiftUI
 struct AddMeterView: View {
     @ObservedObject
     var viewModel: AddMeterViewModel
+    let presenter: AddMeterPresenter
         
     var body: some View {
         VStack(alignment: .center, spacing: 24) {
-            Text("Add new meter")
+            Text(presenter.screenTitle)
                 .popoverTitle()
             
             TextField("", text: $viewModel.name)
-                .inputStyle(caption: "Meter name")
+                .inputStyle(caption: presenter.meterNameInputFieldTitle)
             
             VStack {
                 Toggle(isOn: $viewModel.isCapacityApplicable, label: {
-                    Text("Capacity is applicable for this meter")
+                    Text(presenter.toggleCapacityApplicableTitle)
                 })
                 if viewModel.isCapacityApplicable {
-                    Picker("Capacity", selection: $viewModel.capacity) {
+                    Picker(presenter.capacityPickerTitle, selection: $viewModel.capacity) {
                         ForEach(viewModel.capacities, id: \.self) {
-                            Text(formatPicker(for: $0))
+                            Text(presenter.capacityValue($0))
                         }
                     }
                 }
             }
             VStack {
                 Toggle(isOn: $viewModel.isInspectionDateApplicable, label: {
-                    Text("Inspection date is applicable")
+                    Text(presenter.toggleInspectionApplicableTitle)
                 })
                 if viewModel.isInspectionDateApplicable {
                     DatePicker(
-                        "Inspection Date",
+                        presenter.inspectionDatePickerTitle,
                         selection: $viewModel.inspectionDate,
                         displayedComponents: [.date]
                     )
@@ -48,9 +49,12 @@ struct AddMeterView: View {
                 #if os(iOS)
                 .keyboardType(.decimalPad)
                 #endif
-                .inputStyle(caption: "Initial value")
+                .inputStyle(caption: presenter.initialValueInputFieldTitle)
             Spacer()
-            CTAButton(caption: "Add Meter", callback: viewModel.save)
+            CTAButton(
+                caption: presenter.addMeterButtonTitle,
+                callback: viewModel.save
+            )
             .padding(.bottom, 12)
         }
         .padding(.horizontal)
@@ -63,9 +67,11 @@ struct AddMeterView: View {
         propertyObjectId: PropertyObjectId(),
         flow: nil
     )
-    return AddMeterView(viewModel: vm)
+    let presenter = iOSAddMeterPresenter()
+    return AddMeterView(viewModel: vm, presenter: presenter)
 }
 
+// TODO: delete
 func formatPicker(for capacity: Int) -> String {
     let val = maxValue(for: capacity).formatted()
     return String(format: "%d digits, max value: %@", capacity, val)

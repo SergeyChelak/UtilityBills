@@ -139,7 +139,8 @@ struct iOSViewFactory: ViewFactory {
             propertyObjectId: propObjId,
             flow: flowDelegate
         )
-        let view = AddMeterView(viewModel: vm)
+        let presenter = iOSAddMeterPresenter()
+        let view = AddMeterView(viewModel: vm, presenter: presenter)
         return ViewHolder(view)
     }
     
@@ -148,7 +149,9 @@ struct iOSViewFactory: ViewFactory {
             meter: meter,
             flow: flowDelegate
         )
-        let view = EditMeterView(viewModel: viewModel)
+        let alertPresenter = DeleteMeterAlertPresenter()
+        let presenter = iOSEditMeterPresenter(deleteMeterAlertPresenter: alertPresenter)
+        let view = EditMeterView(viewModel: viewModel, presenter: presenter)
         return ViewHolder(view)
     }
     
