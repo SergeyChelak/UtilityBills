@@ -104,7 +104,7 @@
 		A5AF03D52CB81205000E5E58 /* BillPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D42CB81205000E5E58 /* BillPresenters.swift */; };
 		A5AF03D82CB81A55000E5E58 /* ConfirmationAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D72CB81A55000E5E58 /* ConfirmationAlertPresenter.swift */; };
 		A5AF03DA2CB81AA7000E5E58 /* ErrorAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03D92CB81AA7000E5E58 /* ErrorAlertPresenter.swift */; };
-		A5AF03DC2CB81BE4000E5E58 /* PropertySettingPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03DB2CB81BE4000E5E58 /* PropertySettingPresenters.swift */; };
+		A5AF03DC2CB81BE4000E5E58 /* PropertySettingsPresenters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03DB2CB81BE4000E5E58 /* PropertySettingsPresenters.swift */; };
 		A5AF03DE2CB81C2E000E5E58 /* PropertySettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AF03DD2CB81C2E000E5E58 /* PropertySettingsPresenter.swift */; };
 		A5B721582CB81E9200BF18E7 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B721572CB81E9200BF18E7 /* UIUtils.swift */; };
 		A5D8092D2C7156A300F2E6AF /* UtilityBillsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D8092C2C7156A300F2E6AF /* UtilityBillsApp.swift */; };
@@ -242,7 +242,7 @@
 		A5AF03D42CB81205000E5E58 /* BillPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPresenters.swift; sourceTree = "<group>"; };
 		A5AF03D72CB81A55000E5E58 /* ConfirmationAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAlertPresenter.swift; sourceTree = "<group>"; };
 		A5AF03D92CB81AA7000E5E58 /* ErrorAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertPresenter.swift; sourceTree = "<group>"; };
-		A5AF03DB2CB81BE4000E5E58 /* PropertySettingPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingPresenters.swift; sourceTree = "<group>"; };
+		A5AF03DB2CB81BE4000E5E58 /* PropertySettingsPresenters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingsPresenters.swift; sourceTree = "<group>"; };
 		A5AF03DD2CB81C2E000E5E58 /* PropertySettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySettingsPresenter.swift; sourceTree = "<group>"; };
 		A5B721572CB81E9200BF18E7 /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 		A5D809292C7156A300F2E6AF /* UtilityBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				A51082DE2CA7039B00103E76 /* PropertySettingsView.swift */,
+				A5AF03DB2CB81BE4000E5E58 /* PropertySettingsPresenters.swift */,
 				A51082E02CA703B300103E76 /* PropertySettingsViewModel.swift */,
 				A51082FB2CA8708B00103E76 /* BillingMapView.swift */,
 				A51082FD2CA870F700103E76 /* BillingMapViewModel.swift */,
@@ -392,7 +393,6 @@
 				A5E00B7D2C8F6D78002BC8EF /* ManagePropertyObjectView.swift */,
 				A5AF03CE2CB8046E000E5E58 /* ManagePropertyObjectPresenter.swift */,
 				A51082F92CA86B2F00103E76 /* ManagePropertyObjectViewModel.swift */,
-				A5AF03DB2CB81BE4000E5E58 /* PropertySettingPresenters.swift */,
 			);
 			path = PropertySettings;
 			sourceTree = "<group>";
@@ -805,7 +805,7 @@
 				A51083582CB2B52600103E76 /* BillListView.swift in Sources */,
 				A51082CD2CA3269D00103E76 /* MeterValueView.swift in Sources */,
 				A51083492CB14FBA00103E76 /* ViewFactory.swift in Sources */,
-				A5AF03DC2CB81BE4000E5E58 /* PropertySettingPresenters.swift in Sources */,
+				A5AF03DC2CB81BE4000E5E58 /* PropertySettingsPresenters.swift in Sources */,
 				A5E00B8E2C90757F002BC8EF /* MeterValue.swift in Sources */,
 				A5E00B862C8FB4D9002BC8EF /* CaptionValueCell.swift in Sources */,
 				A5AF03C72CB7ED64000E5E58 /* Presenters.swift in Sources */,
