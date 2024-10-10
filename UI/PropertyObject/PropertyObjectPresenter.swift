@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DefaultPropertyObjectPresenter: PropertyObjectPresenter {
+struct iOSPropertyObjectPresenter: PropertyObjectPresenter {
     func screenTitle(_ propertyObject: PropertyObject?) -> String {
         propertyObject?.name ?? ""
     }
@@ -33,7 +33,7 @@ struct DefaultPropertyObjectPresenter: PropertyObjectPresenter {
     }
 }
 
-struct DefaultBillCellPresenter: BillCellPresenter {
+struct iOSBillCellPresenter: BillCellPresenter {
     func title(_ bill: Bill) -> String {
         bill.date.formatted()
     }

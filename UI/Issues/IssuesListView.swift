@@ -55,8 +55,8 @@ struct IssuesListView: View {
     return NavigationStack {
         IssuesListView(
             viewModel: vm,
-            presenter: DefaultIssuesListPresenter(),
-            issueCellPresenter: DefaultIssueCellPresenter()
+            presenter: iOSIssuesListPresenter(),
+            issueCellPresenter: iOSIssueCellPresenter()
         )
     }
 }
@@ -94,8 +94,8 @@ struct IssuesListView: View {
     return NavigationStack {
         IssuesListView(
             viewModel: vm,
-            presenter: DefaultIssuesListPresenter(),
-            issueCellPresenter: DefaultIssueCellPresenter()
+            presenter: iOSIssuesListPresenter(),
+            issueCellPresenter: iOSIssueCellPresenter()
         )
     }
 }

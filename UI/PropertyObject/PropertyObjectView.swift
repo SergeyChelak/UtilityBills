@@ -82,7 +82,7 @@ struct PropertyObjectView: View {
     let viewModel = _propertyObjectViewModelMock()
     return PropertyObjectView(
         viewModel: viewModel,
-        screenPresenter: DefaultPropertyObjectPresenter(),
-        billCellPresenter: DefaultBillCellPresenter()
+        screenPresenter: iOSPropertyObjectPresenter(),
+        billCellPresenter: iOSBillCellPresenter()
     )
 }

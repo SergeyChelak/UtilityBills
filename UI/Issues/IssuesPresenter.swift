@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct DefaultIssuesListPresenter: IssuesListPresenter {
+struct iOSIssuesListPresenter: IssuesListPresenter {
     var emptyListMessage: String {
         "It looks like everything is ok"
     }
@@ -18,7 +18,7 @@ struct DefaultIssuesListPresenter: IssuesListPresenter {
     }
 }
 
-struct DefaultIssueCellPresenter: IssueCellPresenter {
+struct iOSIssueCellPresenter: IssueCellPresenter {
     func meterIssueTitle(_ data: FullMeterData) -> String {
         let meter = data.meter
         let objectName = data.propertyObject.name

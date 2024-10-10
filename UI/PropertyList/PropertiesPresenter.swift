@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DefaultPropertiesPresenter: PropertiesPresenter {
+struct iOSPropertiesPresenter: PropertiesPresenter {
     var screenTitle: String {
         "My Objects"
     }
@@ -25,7 +25,7 @@ struct DefaultPropertiesPresenter: PropertiesPresenter {
     }
 }
 
-struct DefaultHomeCardPresenter: HomeCardPresenter {
+struct iOSHomeCardPresenter: HomeCardPresenter {
     func cardTitle(_ card: HomeCard) -> String {
         switch card {
         case .propertyObject(let propertyObject):

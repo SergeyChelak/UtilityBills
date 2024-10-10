@@ -12,8 +12,8 @@ struct iOSViewFactory: ViewFactory {
         let viewModel = PropertiesViewModel(
             flow: delegateFlow
         )
-        let presenter = DefaultPropertiesPresenter()
-        let cardPresenter = DefaultHomeCardPresenter()
+        let presenter = iOSPropertiesPresenter()
+        let cardPresenter = iOSHomeCardPresenter()
         let view = PropertiesView(
             viewModel: viewModel,
             presenter: presenter,
@@ -29,8 +29,8 @@ struct iOSViewFactory: ViewFactory {
         )
         let view = PropertyObjectView(
             viewModel: viewModel,
-            screenPresenter: DefaultPropertyObjectPresenter(),
-            billCellPresenter: DefaultBillCellPresenter()
+            screenPresenter: iOSPropertyObjectPresenter(),
+            billCellPresenter: iOSBillCellPresenter()
         )
         return ViewHolder(view)
     }
@@ -39,8 +39,8 @@ struct iOSViewFactory: ViewFactory {
         let viewModel = IssuesListViewModel(flow: flowDelegate)
         let view = IssuesListView(
             viewModel: viewModel,
-            presenter: DefaultIssuesListPresenter(),
-            issueCellPresenter: DefaultIssueCellPresenter()
+            presenter: iOSIssuesListPresenter(),
+            issueCellPresenter: iOSIssueCellPresenter()
         )
         return ViewHolder(view)
     }

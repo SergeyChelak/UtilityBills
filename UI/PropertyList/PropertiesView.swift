@@ -103,8 +103,8 @@ struct PropertiesView: View {
     return NavigationStack {
         PropertiesView(
             viewModel: vm,
-            presenter: DefaultPropertiesPresenter(),
-            cardPresenter: DefaultHomeCardPresenter()
+            presenter: iOSPropertiesPresenter(),
+            cardPresenter: iOSHomeCardPresenter()
         )
     }
 }

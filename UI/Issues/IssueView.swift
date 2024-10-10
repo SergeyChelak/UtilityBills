@@ -60,6 +60,6 @@ struct MeterIssueView: View {
     let issue = Issue.meter(fullData)
     return IssueView(
         issue: issue,
-        presenter: DefaultIssueCellPresenter()
+        presenter: iOSIssueCellPresenter()
     )
 }

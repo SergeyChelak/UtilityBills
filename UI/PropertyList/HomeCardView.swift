@@ -41,7 +41,7 @@ struct HomeCardView: View {
     let card = HomeCard.propertyObject(item)
     return HomeCardView(
         card: card,
-        presenter: DefaultHomeCardPresenter()
+        presenter: iOSHomeCardPresenter()
     )
     .frame(width: 150, height: 150)
 }
