@@ -9,56 +9,28 @@ import SwiftUI
 
 struct IssueView: View {
     let issue: Issue
+    let presenter: IssueCellPresenter
+    
     
     var body: some View {
         switch issue {
         case .meter(let data):
-            MeterIssueView(fullMeterData: data)
+            meterIssueView(data)
         }
+    }
+    
+    private func meterIssueView(_ data: FullMeterData) -> some View {
+        let title = presenter.meterIssueTitle(data)
+        let message = presenter.meterIssueMessage(data)
+        let color = presenter.meterIssueColor(data)
+        return MeterIssueView(title: title, message: message, messageColor: color)
     }
 }
 
 struct MeterIssueView: View {
-    let fullMeterData: FullMeterData
-    
-    private var meter: Meter {
-        fullMeterData.meter
-    }
-    
-    private var message: String {
-        guard let date = meter.inspectionDate else {
-            return ""
-        }
-        let value = date.formatted()
-        
-        return switch meter.getInspectionState() {
-        case .expiring:
-            "will expire at \(value)"
-        case .overdue:
-            "expired at \(value)"
-        case .normal:
-            "ok"
-        }
-    }
-    
-    private var messageColor: Color {
-        switch meter.getInspectionState() {
-        case .expiring:
-                .yellow
-        case .overdue:
-                .red
-        case .normal:
-                .black
-        }
-    }
-    
-    private var objectName: String {
-        fullMeterData.propertyObject.name
-    }
-    
-    private var title: String {
-        "Meter \"\(meter.name)\" of \"\(objectName)\""
-    }
+    let title: String
+    let message: String
+    let messageColor: Color
     
     var body: some View {
         VStack {
@@ -86,5 +58,8 @@ struct MeterIssueView: View {
     let obj = _propertyObject()
     let fullData = FullMeterData(propertyObject: obj, meter: meter)
     let issue = Issue.meter(fullData)
-    return IssueView(issue: issue)
+    return IssueView(
+        issue: issue,
+        presenter: DefaultIssueCellPresenter()
+    )
 }

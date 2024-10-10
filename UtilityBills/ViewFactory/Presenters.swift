@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: PropertiesPresenter
 protocol PropertiesPresenter {
@@ -46,4 +47,15 @@ protocol BillCellPresenter {
     func title(_ bill: Bill) -> String 
     
     func value(_ bill: Bill) -> String
+}
+
+protocol IssuesListPresenter {
+    var emptyListMessage: String { get }
+    var screenTitle: String { get }
+}
+
+protocol IssueCellPresenter {
+    func meterIssueTitle(_ data: FullMeterData) -> String
+    func meterIssueMessage(_ data: FullMeterData) -> String
+    func meterIssueColor(_ data: FullMeterData) -> Color
 }

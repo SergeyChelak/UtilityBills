@@ -37,7 +37,11 @@ struct iOSViewFactory: ViewFactory {
     
     func issuesListView(flowDelegate: IssuesFlowDelegate) -> ViewHolder {
         let viewModel = IssuesListViewModel(flow: flowDelegate)
-        let view = IssuesListView(viewModel: viewModel)
+        let view = IssuesListView(
+            viewModel: viewModel,
+            presenter: DefaultIssuesListPresenter(),
+            issueCellPresenter: DefaultIssueCellPresenter()
+        )
         return ViewHolder(view)
     }
     

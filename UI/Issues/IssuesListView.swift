@@ -11,16 +11,19 @@ struct IssuesListView: View {
     @StateObject
     var viewModel: IssuesListViewModel
     
+    let presenter: IssuesListPresenter
+    let issueCellPresenter: IssueCellPresenter
+    
     var body: some View {
         VStack {
             if viewModel.isEmpty {
-                Text("It looks like everything is ok")
+                Text(presenter.emptyListMessage)
                     .padding(.horizontal)
             } else {
                 List {
                     ForEach(viewModel.items.indices, id: \.self) { i in
                         let item = viewModel.items[i]
-                        IssueView(issue: item)
+                        IssueView(issue: item, presenter: issueCellPresenter)
                             .onTapGesture {
                                 viewModel.onSelectIssue(item)
                             }
@@ -29,7 +32,7 @@ struct IssuesListView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Issues")
+        .navigationTitle(presenter.screenTitle)
         .task {
             viewModel.load()
         }
@@ -50,7 +53,11 @@ struct IssuesListView: View {
     }
     let vm = IssuesListViewModel(flow: Flow())
     return NavigationStack {
-        IssuesListView(viewModel: vm)
+        IssuesListView(
+            viewModel: vm,
+            presenter: DefaultIssuesListPresenter(),
+            issueCellPresenter: DefaultIssueCellPresenter()
+        )
     }
 }
 
@@ -85,6 +92,10 @@ struct IssuesListView: View {
 
     let vm = IssuesListViewModel(flow: Flow())
     return NavigationStack {
-        IssuesListView(viewModel: vm)
+        IssuesListView(
+            viewModel: vm,
+            presenter: DefaultIssuesListPresenter(),
+            issueCellPresenter: DefaultIssueCellPresenter()
+        )
     }
 }
