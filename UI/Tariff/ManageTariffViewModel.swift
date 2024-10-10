@@ -33,7 +33,6 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
     private var deferredAction: ControlAction?
 
     private let tariffId: TariffId
-    let dialogTitle: String
     let actions: [ControlAction]
     let choiceViewModel: MultiChoiceViewModel<String>
     let propertyObjectId: PropertyObjectId?
@@ -52,7 +51,6 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
             items: Self.monthList,
             initialSelection: true
         )
-        self.dialogTitle = "Add new tariff"
         self.actions = [.new]
     }
     
@@ -74,7 +72,6 @@ class ManageTariffViewModel: ViewModel, ActionControllable {
         self.choiceViewModel = MultiChoiceViewModel(items: Self.monthList) {
             tariff.activeMonthMask & (1 << $0) > 0
         }
-        self.dialogTitle = "Edit tariff"
         self.actions = [.update, .delete]
     }
     
