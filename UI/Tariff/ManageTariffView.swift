@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-protocol ManageTariffPresenter {
-    var screenTitle: String { get }
-    var tariffNameInputFieldTitle: String { get }
-    var priceInputFieldTitle: String { get }
-    var deleteTariffAlertPresenter: ConfirmationAlertPresenter { get }
-}
-
 struct ManageTariffView: View {
     @StateObject
     var viewModel: ManageTariffViewModel

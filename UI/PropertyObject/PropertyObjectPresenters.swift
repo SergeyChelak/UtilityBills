@@ -1,5 +1,5 @@
 //
-//  PropertyObjectPresenter.swift
+//  PropertyObjectPresenters.swift
 //  UtilityBills
 //
 //  Created by Sergey on 10.10.2024.
